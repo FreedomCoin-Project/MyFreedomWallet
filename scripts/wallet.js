@@ -108,11 +108,11 @@ importWallet = function (newWif = false, fRaw = false) {
     createQR(privateKeyForTransactions, domPrivateQr);
 
     // Address QR
-    createQR('pivx:' + publicKeyForNetwork, domPublicQr);
+    createQR('freedomcoin:' + publicKeyForNetwork, domPublicQr);
 
     // Address Modal QR
-    createQR('pivx:' + publicKeyForNetwork, domModalQR);
-    domModalQrLabel.innerHTML = 'pivx:' + publicKeyForNetwork;
+    createQR('freedomcoin:' + publicKeyForNetwork, domModalQR);
+    domModalQrLabel.innerHTML = 'freedomcoin:' + publicKeyForNetwork;
     domModalQR.firstChild.style.width = "100%";
     domModalQR.firstChild.style.height = "auto";
     domModalQR.firstChild.style.imageRendering = "crisp-edges";
@@ -162,11 +162,11 @@ generateWallet = async function (noUI = false) {
       createQR(privateKeyForTransactions, domPrivateQr);
 
       // Address QR
-      createQR('pivx:' + publicKeyForNetwork, domPublicQr);
+      createQR('freedomcoin:' + publicKeyForNetwork, domPublicQr);
 
       // Address Modal QR
-      createQR('pivx:' + publicKeyForNetwork, domModalQR);
-      domModalQrLabel.innerHTML = 'pivx:' + publicKeyForNetwork;
+      createQR('freedomcoin:' + publicKeyForNetwork, domModalQR);
+      domModalQrLabel.innerHTML = 'freedomcoin:' + publicKeyForNetwork;
       domModalQR.firstChild.style.width = "100%";
       domModalQR.firstChild.style.height = "auto";
       domModalQR.firstChild.style.imageRendering = "crisp-edges";
