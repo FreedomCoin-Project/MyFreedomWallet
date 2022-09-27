@@ -1,6 +1,6 @@
 /* chainparams */
-const PUBKEY_ADDRESS = 30;
-const SECRET_KEY     = 212;
+const PUBKEY_ADDRESS = 66;
+const SECRET_KEY     = 156;
 
 importScripts('misc.js', 'libs/noble-secp256k1.js', 'libs/bn.js', 'libs/secp256k1.js', 'libs/crypto-min.js', 'libs/crypto-sha256-hmac.js', 'libs/crypto-sha256.js', 'libs/jsbn.js', 'libs/ripemd160.js', 'libs/sha256.js');
 
