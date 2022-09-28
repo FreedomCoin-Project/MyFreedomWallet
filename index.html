@@ -309,7 +309,7 @@
                             <div id="window-icon-piv">
                                 <div id="piv-ring"></div>
                                 <div id="number-piv">
-                                    <p id="guiBalanceBox"><b id="guiBalance">~</b> PIV</p>
+                                    <p id="guiBalanceBox"><b id="guiBalance">~</b> FREED</p>
                                 </div>
                             </div>
                             <div id="bal-title">
@@ -441,7 +441,7 @@
                             <div id="piv-price" class="staking-piv-icon"></div>
                         </div>
                         <div id="piv-price-amount">
-                            <p id="guiBalanceBoxStaking"><b id="guiBalanceStaking">~</b> PIV</p>
+                            <p id="guiBalanceBoxStaking"><b id="guiBalanceStaking">~</b> FREED</p>
                         </div>
                     </div>
                     <div id="staking-box">
@@ -452,7 +452,7 @@
               <br>
               <div class="staking-banner-bottom">
                 <div class="stake-box large-box col-md-4">
-                  <h5 id="availToDelegate" class="stake-balances">Available: 0 PIV</h5>
+                  <h5 id="availToDelegate" class="stake-balances">Available: 0 FREED</h5>
                   <textarea id="delegateAmount" class="stake-input form-control private-key-area"></textarea>
                   <div class="button-padd">
                       <button class="pivx-button-big" onclick="delegateGUI()">
@@ -463,7 +463,7 @@
                  </div>
                 </div>
                 <div class="stake-box large-box col-md-4">
-                  <h5 id="availToUndelegate" class="stake-balances">Staking: 0 PIV</h5>
+                  <h5 id="availToUndelegate" class="stake-balances">Staking: 0 FREED</h5>
                   <textarea id="undelegateAmount" class="stake-input form-control private-key-area"></textarea>
                   <div class="button-padd">
                       <button class="pivx-button-big" onclick="undelegateGUI()">
@@ -674,7 +674,7 @@
         // Set the balance, and adjust font-size for large balance strings
         const nLen = (nBalance / COIN).toFixed(2).length;
         domGuiBalance.innerText = (nBalance / COIN).toFixed(nLen >= 6 ? 0 : 2);
-        domAvailToDelegate.innerText = "Available: ~" + (nBalance / COIN).toFixed(2) + " PIV";
+        domAvailToDelegate.innerText = "Available: ~" + (nBalance / COIN).toFixed(2) + " FREED";
         
         // Add a notice to the Send page if balance is lacking
         domsendNotice.innerHTML = nBalance ? '' : '<div class="alert alert-danger" role="alert"><h4>Note:</h4><h5>You don\'t have any funds, get some coins first!</h5></div>';
@@ -690,7 +690,7 @@
         // Set the balance, and adjust font-size for large balance strings
         domGuiBalanceStaking.innerText = Math.floor(nBalance / COIN);
         domGuiBalanceBoxStaking.style.fontSize = Math.floor(nBalance / COIN).toString().length >= 4 ? "large" : "x-large";
-        domAvailToUndelegate.innerText = "Staking: ~" + (nBalance / COIN).toFixed(2) + " PIV";
+        domAvailToUndelegate.innerText = "Staking: ~" + (nBalance / COIN).toFixed(2) + " FREED";
       }
 
       return nBalance;
@@ -911,7 +911,7 @@
     function undelegateGUI() {
       // Verify the amount
       const nAmount = Math.round(Number(document.getElementById('undelegateAmount').value.trim()) * COIN);
-      if (nAmount < 0.01 * COIN || isNaN(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>Minimum amount is 0.01 PIV!', 2500);
+      if (nAmount < 0.01 * COIN || isNaN(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>Minimum amount is 0.01 FREED!', 2500);
       if (!Number.isSafeInteger(nAmount))   return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
       undelegate(nAmount);
     }
@@ -973,7 +973,7 @@
     function delegateGUI() {
       // Verify the amount
       const nAmount = Math.round(Number(document.getElementById('delegateAmount').value.trim()) * COIN);
-      if (nAmount < COIN || isNaN(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>Minimum amount is 1 PIV!', 2500);
+      if (nAmount < COIN || isNaN(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>Minimum amount is 1 FREED!', 2500);
       if (!Number.isSafeInteger(nAmount))   return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
 
       // Ensure the user has an address set - if not, request one!
@@ -1023,7 +1023,7 @@
     function ccSuccess  (data)     { return { success: true, ...data } };
 
     function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly = false) {
-      console.log("Constructing TX of value: " + (nTotalSatsRequired / COIN) + " PIV");
+      console.log("Constructing TX of value: " + (nTotalSatsRequired / COIN) + " FREED");
 
       // Select the UTXO type bucket
       const arrUTXOs = fColdOnly ? arrDelegatedUTXOs : cachedUTXOs;
@@ -1034,7 +1034,7 @@
         // Have we met the required sats threshold?
         if (cCoinControl.nValue >= nTotalSatsRequired) {
           // Required Coin Control value met, yahoo!
-          console.log("Coin Control: TX Constructed! Selected " + cCoinControl.arrSelectedUTXOs.length + " input(s) (" + (cCoinControl.nValue / COIN) + " PIV)");
+          console.log("Coin Control: TX Constructed! Selected " + cCoinControl.arrSelectedUTXOs.length + " input(s) (" + (cCoinControl.nValue / COIN) + " FREED)");
           break;
         }
         // Does the UTXO meet size requirements?
@@ -1043,7 +1043,7 @@
         // Push UTXO and cache new total value
         cCoinControl.arrSelectedUTXOs.push(cUTXO);
         cCoinControl.nValue += cUTXO.sats;
-        console.log("Coin Control: Selected input " + cUTXO.id.substr(0, 6) + "(" + cUTXO.vout + ")... (Added " + (cUTXO.sats / COIN) + " PIV - Total: " + (cCoinControl.nValue / COIN) + ")");
+        console.log("Coin Control: Selected input " + cUTXO.id.substr(0, 6) + "(" + cUTXO.vout + ")... (Added " + (cUTXO.sats / COIN) + " FREED - Total: " + (cCoinControl.nValue / COIN) + ")");
       };
 
       // If we don't have enough value: leave the cTx alone and return false
