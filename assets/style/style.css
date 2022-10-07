@@ -358,7 +358,7 @@ input::-moz-focus-inner {
     display: inline-block;
     width: 65px;
     height: 65px;
-    border-style: solid;
+    /*border-style: solid;*/
     border-radius: 50%;
     border-width: 3px;
     background-size: cover;
