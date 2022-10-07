@@ -494,11 +494,11 @@
                 <p id="communication" class="center-text">Please <b>AVOID</b> sending to Shielded addresses using this wallet - this functionality is currently unsupported.</p>
               </div>
               <div class='max-width' style='clear:both;'>
-                <div id="simpleTransactionsDropdown" class="bold-trans" onclick='toggleDropDown("simpleTransactions")'>Create Simple Transactions<span
+                <div id="simpleTransactionsDropdown" class="bold-trans" onclick='toggleDropDown("simpleTransactions")'>Send Freedom Coin<span
                     style='float:right;'>▼</span></div>
                 <div id='simpleTransactions' style='display: block'>
                   <br>
-                  <label>Address</label><br>
+                  <label>Recipient Wallet Address</label><br>
                   <input class="center-text" style="width: 100%; font-family: monospace;" type="text" id="address1s">
                   <br>
                   <label>Amount</label><br>
@@ -519,7 +519,7 @@
                 <div id='transactionFinal'></div>
               </div>
               <br>
-              <div class='max-width' style='clear:both;'>
+              <div id='CreateManualTransactions' class='max-width' style='clear:both;'>
                 <div onclick='toggleDropDown("advTransactions")' class="bold-trans">Create Manual Transactions<span
                     style='float:right;'>▼</span></div>
                 <div id='advTransactions' style='display:none'>

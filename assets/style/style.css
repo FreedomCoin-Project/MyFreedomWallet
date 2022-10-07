@@ -1057,11 +1057,14 @@ a {
 
 /* SETTINGS */
 
+#Settings {display: none;}
+
 #submit-button.pivx-button-big {
     width: auto !important;
     padding: 14px 90px;
 }
 
+#CreateManualTransactions, #communication {display: none;}
 
 /* BREAKPOINTS */
 
