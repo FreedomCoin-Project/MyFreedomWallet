@@ -764,14 +764,14 @@ input::-moz-focus-inner {
 /*PIVX TEXT CUSTOMS*/
 .pivx-bold-title {
     line-height: 1.35em;
-    font-size: calc(37.88235px + .70588vw);
+    font-size: calc(27.88235px + .70588vw);
     font-weight: 700;
     font-family: Montserrat, sans-serif;
 }
 
 .pivx-bold-title-smaller {
     line-height: 1.35em;
-    font-size: 38px;
+    font-size: 28px;
     font-weight: 700;
     font-family: Montserrat, sans-serif;
 }
