@@ -1,5 +1,5 @@
 <h2 align="center">
-  Send, Stake and Receive with PIVX's most universal wallet.
+  Send, Stake and Receive with FREED's most universal wallet.
 </h2>
 
 <p align="center">
@@ -26,7 +26,7 @@ MPW is a completely [non-custodial](https://www.bitcoin.com/get-started/custodia
 
 ## Universal and Portable
 
-MPW is completely universal and portable, at both a user-experience level & protocol-level, MPW is interopable with much of the functionality within PIVX, while also being portable enough to run on almost **any device in the world**.
+MPW is completely universal and portable, at both a user-experience level & protocol-level, MPW is interopable with much of the functionality within FREED, while also being portable enough to run on almost **any device in the world**.
 
 <br>
 
