@@ -5,7 +5,7 @@
 
 
 <!---
-Below is for LMP (Labs Micro Proposals), how your PR is rewarded PIVX: this'll help your PR be rewarded faster by the DAO!
+Below is for LMP (Labs Micro Proposals), how your PR is rewarded FREED: this'll help your PR be rewarded faster by the DAO!
 --->
 
 ## What does this PR address?

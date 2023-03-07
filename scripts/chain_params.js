@@ -17,27 +17,26 @@ export const MIN_PASS_LENGTH = 6;
 export const cChainParams = {
     current: null,
     main: {
-        collateralInSats: 10000 * COIN,
+        collateralInSats: 5000 * COIN,
         isTestnet: false,
-        TICKER: 'PIV',
-        PUBKEY_PREFIX: ['D'],
-        STAKING_PREFIX: 'S',
-        PUBKEY_ADDRESS: 30,
-        SECRET_KEY: 212,
+        TICKER: 'FREED',
+        PUBKEY_PREFIX: ['T'],
+        STAKING_PREFIX: 't',
+        PUBKEY_ADDRESS: 66,
+        SECRET_KEY: 156,
         BIP44_TYPE: 119,
         BIP44_TYPE_LEDGER: 77,
-        PROTOCOL_VERSION: 70926,
-        MASTERNODE_PORT: 51472,
+        PROTOCOL_VERSION: 72002,
+        MASTERNODE_PORT: 15110,
         // A list of Labs-trusted explorers
         Explorers: [
             // Display name      Blockbook-compatible API base
-            { name: 'rockdev', url: 'https://explorer.rockdev.org' },
-            { name: 'zkBitcoin', url: 'https://zkbitcoin.com' },
+            { name: 'freedom', url: 'https://chain.freedomcoin.global' },
         ],
-        Nodes: [{ name: 'duddino', url: 'https://rpc.duddino.com/mainnet' }],
+        Nodes: [{ name: 'duddino', url: 'https://rpc.freedomcoin.global/mainnet' }],
         Consensus: {
             // Network upgrades
-            UPGRADE_V6_0: undefined,
+            UPGRADE_V6_0: 500000,
         },
     },
     testnet: {

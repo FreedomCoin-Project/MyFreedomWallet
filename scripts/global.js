@@ -252,7 +252,7 @@ export function start() {
 export const mempool = new Mempool();
 let exportHidden = false;
 
-//                        PIVX Labs' Cold Pool
+//                        FREEDLabs' Cold Pool
 export let cachedColdStakeAddr = 'SdgQDpS8jDRJDX8yK8m9KnTMarsE84zdsy';
 
 export function openTab(evt, tabName) {
@@ -1145,12 +1145,12 @@ function renderProposals(arrProposals, fContested) {
         // Voting Buttons for Masternode owners (MNOs)
         const domVoteBtns = domRow.insertCell();
         const domNoBtn = document.createElement('button');
-        domNoBtn.className = 'pivx-button-big';
+        domNoBtn.className = 'freed-button-big';
         domNoBtn.innerText = 'No';
         domNoBtn.onclick = () => govVote(cProposal.Hash, 2);
 
         const domYesBtn = document.createElement('button');
-        domYesBtn.className = 'pivx-button-big';
+        domYesBtn.className = 'freed-button-big';
         domYesBtn.innerText = 'Yes';
         domYesBtn.onclick = () => govVote(cProposal.Hash, 1);
 

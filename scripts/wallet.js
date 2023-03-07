@@ -283,12 +283,12 @@ export class LegacyMasterKey extends MasterKey {
 // Ledger Hardware wallet constants
 export const LEDGER_ERRS = new Map([
     // Ledger error code <--> User-friendly string
-    [25870, 'Open the PIVX app on your device'],
-    [25873, 'Open the PIVX app on your device'],
-    [57408, 'Navigate to the PIVX app on your device'],
-    [27157, 'Wrong app! Open the PIVX app on your device'],
-    [27266, 'Wrong app! Open the PIVX app on your device'],
-    [27904, 'Wrong app! Open the PIVX app on your device'],
+    [25870, 'Open the FREEDapp on your device'],
+    [25873, 'Open the FREEDapp on your device'],
+    [57408, 'Navigate to the FREEDapp on your device'],
+    [27157, 'Wrong app! Open the FREEDapp on your device'],
+    [27266, 'Wrong app! Open the FREEDapp on your device'],
+    [27904, 'Wrong app! Open the FREEDapp on your device'],
     [27010, 'Unlock your Ledger, then try again!'],
     [27404, 'Unlock your Ledger, then try again!'],
 ]);
@@ -822,9 +822,9 @@ export async function getNewAddress({
     }
 
     if (updateGUI) {
-        createQR('pivx:' + address, doms.domModalQR);
+        createQR('freed:' + address, doms.domModalQR);
         doms.domModalQrLabel.innerHTML =
-            'pivx:' +
+            'freed:' +
             address +
             `<i onclick="MPW.toClipboard('${address}', this)" id="guiAddressCopy" class="fas fa-clipboard" style="cursor: pointer; width: 20px;"></i>`;
         doms.domModalQR.firstChild.style.width = '100%';
@@ -849,7 +849,7 @@ async function getHardwareWalletKeys(
         // Check if we haven't setup a connection yet OR the previous connection disconnected
         if (!cHardwareWallet || transport._disconnectEmitted) {
             transport = await TransportWebUSB.create();
-            cHardwareWallet = new AppBtc({ transport, currency: 'PIVX' });
+            cHardwareWallet = new AppBtc({ transport, currency: 'FREED' });
         }
 
         // Update device info and fetch the pubkey

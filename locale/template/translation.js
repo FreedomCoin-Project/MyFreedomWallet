@@ -45,14 +45,14 @@ var translation = {
     navExperimentalSync:"",         //<b>Experimental Sync Active</b>
 
     // Footer
-    footerBuiltWithPivxLabs: "",    //Built with 💜 by PIVX Labs
+    footerBuiltWithFreedLabs: "",    //Built with 💜 by FREEDLabs
 
     // Intro
     title: "",                      //Welcome to
-    titleName: "",                  //My PIVX Wallet!
+    titleName: "",                  //My Freedom Wallet!
 
     cardOneTitle: "",               //Be your own Bank!
-    cardOneDesc: "",                //MyPIVXWallet has <b>no custody</b> over your funds. You are in full ownership of your keys and your PIV. 
+    cardOneDesc: "",                //MyFreedomWallet has <b>no custody</b> over your funds. You are in full ownership of your keys and your PIV. 
     cardOneLink: "",                //Know more
 
     cardTwoTitle: "",               //Universal and Portable
@@ -60,18 +60,18 @@ var translation = {
     cardTwoLink: "",                //Know more
 
     cardThreeTitle: "",             //Don't trust, verify!
-    cardThreeDesc: "",              //MyPIVXWallet is completely open-source, available on the PIVX Labs github.
+    cardThreeDesc: "",              //MyFreedomWallet is completely open-source, available on the FREEDLabs github.
     cardThreeLink: "",              //Know more
 
     cardFourTitle: "",              //For the community
-    cardFourDesc: "",               //MyPIVXWallet is built with love without any fees, privacy intrusions or advertising. 
+    cardFourDesc: "",               //MyFreedomWallet is built with love without any fees, privacy intrusions or advertising. 
     cardFourLink: "",               //Know more
 
     // Dashboard
     dashboardTitle: "",             //Dashboard
     dCardOneTitle: "",              //Create a
     dCardOneSubTitle: "",           //New Wallet
-    dCardOneDesc: "",               //Create a new PIVX wallet, offering the most secure backup & security methods.
+    dCardOneDesc: "",               //Create a new FREEDwallet, offering the most secure backup & security methods.
     dCardOneButton: "",             //Create A New Wallet
 
     dCardTwoTitle: "",              //Create a new
@@ -86,7 +86,7 @@ var translation = {
 
     dCardFourTitle: "",             //Go to
     dCardFourSubTitle: "",          //My Wallet
-    dCardFourDesc: "",              //Import a PIVX wallet using a Private Key, xpriv, or Seed Phrase.
+    dCardFourDesc: "",              //Import a FREEDwallet using a Private Key, xpriv, or Seed Phrase.
     dCardFourButtonI:"",            //Import Wallet
     dCardFourButtonA:"",            //Access My Wallet
 
@@ -111,7 +111,7 @@ var translation = {
     settingsCurrency:"",            //Choose a display currency:
     settingsExplorer:"",            //Choose an explorer:
     settingsLanguage:"",            //Choose a Language:
-    settingsPivxNode:"",            //Choose a PIVX node:
+    settingsFreedNode:"",            //Choose a FREEDnode:
     settingsAnalytics:"",           //Choose your analytics contribution level:
     settingsToggleDebug:"",         //Toggle Debug Mode
     settingsToggleSync:"",          //Toggle Sync Mode
@@ -129,7 +129,7 @@ var translation = {
     FAILED_TO_IMPORT: "",            //<b>Failed to import!</b> Invalid password,
     UNSUPPORTED_CHARACTER:  "",      //"The character '{char}' is unsupported in addresses! (Not Base58 compatible)"
     UNSUPPORTED_WEBWORKERS: "",      //This browser doesn\'t support Web Workers (multi-threaded JS), unfortunately you cannot generate Vanity wallets!
-    INVALID_ADDRESS: "",             //<b>Invalid PIVX address!</b><br> {address}
+    INVALID_ADDRESS: "",             //<b>Invalid FREEDaddress!</b><br> {address}
     TESTNET_ENCRYPTION_DISABLED: "", //"<b>Testnet Mode is ON!</b><br>Wallet encryption disabled",
     PASSWORD_TOO_SMALL: "",          //"That password is a little short!<br>Use at least <b>{MIN_PASS_LENGTH} characters.</b>",
     PASSWORD_DOESNT_MATCH: "",       //'Your passwords don\'t match!',
@@ -142,8 +142,8 @@ var translation = {
     CONFIRM_TRANSACTION_H_WALLET:"", //"<b>Confirm your transaction</b><br>Confirm the TX on your {strHardwareName}",
     SUCCESS_STAKING_ADDR_SET: "",    //'<b>Staking Address set!</b><br>Now go ahead and stake!',
     STAKE_NOT_SEND: "",              //'Here, use the <b>Stake</b> screen, not the Send screen!',
-    BAD_ADDR_LENGTH: "",             //'<b>Invalid PIVX address!<b><br>Bad length ({addressLength})',
-    BAD_ADDR_PREFIX: "",             //'<b>Invalid PIVX address!<b><br>Bad prefix {address} (Should start with {addressPrefix})',
+    BAD_ADDR_LENGTH: "",             //'<b>Invalid FREEDaddress!<b><br>Bad length ({addressLength})',
+    BAD_ADDR_PREFIX: "",             //'<b>Invalid FREEDaddress!<b><br>Bad prefix {address} (Should start with {addressPrefix})',
     SENT_NOTHING: "",                //'You can\'t send \'nothing\'!',
     MORE_THEN_8_DECIMALS: "",        //'8 decimal limit exceeded',
     SAVE_WALLET_PLEASE: "",          //<b>Save your wallet!</b><br>Dashboard ➜ Set Password,
@@ -158,7 +158,7 @@ var translation = {
     WALLET_OFFLINE_AUTOMATIC: "",       //"<b>Offline Mode is active!</b><br>Please disable Offline Mode for automatic transactions",
     WALLET_UNLOCK_IMPORT: "",           //"Please {unlock} your wallet before sending transactions!",
     WALLET_FIREFOX_UNSUPPORTED: "",     //"<b>Firefox doesn't support this!</b><br>Unfortunately, Firefox does not support hardware wallets",
-    WALLET_HARDWARE_WALLET: "",         //"<b>Hardware wallet ready!</b><br>Please keep your {hardwareWallet} plugged in, unlocked, and in the PIVX app",
+    WALLET_HARDWARE_WALLET: "",         //"<b>Hardware wallet ready!</b><br>Please keep your {hardwareWallet} plugged in, unlocked, and in the FREEDapp",
     WALLET_CONFIRM_L: "",               //"Confirm the import on your Ledger",
     WALLET_NO_HARDWARE: "",             //"<b>No device available</b><br>Couldn't find a hardware wallet; please plug it in and unlock!",
     WALLET_HARDWARE_CONNECTION_LOST: "",// "<b>Lost connection to {hardwareWallet} </b><br>It seems the {hardwareWalletProductionName} was unplugged mid-operation, oops!",

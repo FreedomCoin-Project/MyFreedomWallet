@@ -6,10 +6,10 @@
     <meta http-equiv="X-UA-Compatible" content="IE=9" />
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon" />
     <!-- Primary Meta Tags -->
-    <title>My PIVX Wallet</title>
-    <meta name="title" content="My PIVX Wallet" />
-    <meta name="description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened PIVX wallet." />
-    <meta name="keywords" content="web,wallet,webwallet,crypto,cryptocurrency,opensource,oss,pivx,staking,masternodes,exchange,swap,decentralized" />
+    <title>My Freedom Wallet</title>
+    <meta name="title" content="My Freedom Wallet" />
+    <meta name="description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened FREEDwallet." />
+    <meta name="keywords" content="web,wallet,webwallet,crypto,cryptocurrency,opensource,oss,freed,staking,masternodes,exchange,swap,decentralized" />
 
     <link rel="manifest" href="manifest.json"/>
     <meta name="mobile-web-app-capable" content="yes" />
@@ -17,16 +17,16 @@
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:locale" content="en_GB" />
-    <meta property="og:url" content="https://mypivxwallet.org/" />
-    <meta property="og:title" content="My PIVX Wallet" />
-    <meta property="og:description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened PIVX wallet." />
+    <meta property="og:url" content="https://wallet.freedomcoin.global/" />
+    <meta property="og:title" content="My Freedom Wallet" />
+    <meta property="og:description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened FREEDwallet." />
     <meta property="og:image" content="logo_opaque-dark-bg.png" />
 
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://mypivxwallet.org/" />
-    <meta property="twitter:title" content="My PIVX Wallet" />
-    <meta property="twitter:description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened PIVX wallet." />
+    <meta property="twitter:url" content="https://wallet.freedomcoin.global/" />
+    <meta property="twitter:title" content="My Freedom Wallet" />
+    <meta property="twitter:description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened FREEDwallet." />
     <meta property="twitter:image" content="logo_opaque-dark-bg.png" />
 
     <!-- Colour Theme -->
@@ -34,7 +34,7 @@
     <meta name="theme-color" content="#470e75" />
 
     <link rel="icon" type="image/png" href="logo_opaque-dark-bg.png" />
-    <link rel="canonical" href="https://mypivxwallet.org/" />
+    <link rel="canonical" href="https://wallet.freedomcoin.global/" />
 
     <link rel="preconnect" href="https://fonts.bunny.net">
   <link href="https://fonts.bunny.net/css?family=chivo:900i|montserrat:100,200,300,400,500,600,700,800,900" rel="stylesheet" />
@@ -46,7 +46,7 @@
         <!-- NAVBAR -->
         <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbarSpecial">
           <div class="container">
-            <img onclick="MPW.openTab(event, 'home')" style="cursor: pointer;" class="nav-logo navbar-brand noselect" alt="PIVX" id="mpw-main-logo" />
+            <img onclick="MPW.openTab(event, 'home')" style="cursor: pointer;" class="nav-logo navbar-brand noselect" alt="FREED" id="mpw-main-logo" />
             <button id="navbarToggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
               <span class="navbar-toggler-icon"></span>
             </button>
@@ -84,7 +84,7 @@
         <!-- // WARNING MESSAGE -->
         <div class="warning-message" id="outdated">
           <div class="container">
-            <p>WARNING: your version is outdated, please update to the newest stable version at the <a href="https://github.com/PIVX-Labs/MyPIVXWallet/releases">MyPIVXWallet Github</a></p>
+            <p>WARNING: your version is outdated, please update to the newest stable version at the <a href="https://github.com/FreedomCoin-Project/MyFreedomWallet/releases">MyFreedomWallet Github</a></p>
           </div>
         </div>
         <!-- // WARNING MESSAGE -->
@@ -134,7 +134,7 @@
                   <br />
                 </div>
                 <div class="modal-footer">
-                  <button type="button" id="modalMnemonicConfirmButton" class="pivx-button-big">I have written down my seed phrase</button>
+                  <button type="button" id="modalMnemonicConfirmButton" class="freed-button-big">I have written down my seed phrase</button>
                 </div>
               </div>
             </div>
@@ -152,8 +152,8 @@
                 <!-- JS populated modal content -->
               </div>
               <div class="modal-footer" hidden="true" id="confirmModalButtons">
-                <button type="button" id="confirmModalConfirmButton" class="pivx-button-big" style="float: right;">Confirm</button>
-                <button type="button" id="confirmModalCancelButton" class="pivx-button-big" style="float: right; opacity: 0.7;">Cancel</button>
+                <button type="button" id="confirmModalConfirmButton" class="freed-button-big" style="float: right;">Confirm</button>
+                <button type="button" id="confirmModalCancelButton" class="freed-button-big" style="float: right; opacity: 0.7;">Cancel</button>
               </div>
             </div>
           </div>
@@ -163,27 +163,27 @@
           <div class="row no-gutters">
             <div class="col-md-12 rm-pd">
               <div id="home" class="tabcontent" style="display: block;">
-                <!-- PIVX TITLE SECTION -->
+                <!-- FREEDTITLE SECTION -->
                 <div class="col-md-12 title-section float-left rm-pd">
-                  <h1 class="pivx-bold-title center-text">
+                  <h1 class="freed-bold-title center-text">
                     <span data-i18n="title">Welcome to</span>
-                    <div data-i18n="titleName">My PIVX Wallet!</div>
+                    <div data-i18n="titleName">My Freedom Wallet!</div>
                   </h1>
                 </div>
-                <!-- // PIVX TITLE SECTION -->
+                <!-- // FREEDTITLE SECTION -->
 
-                <!-- PIVX FEATURE SECTION -->
+                <!-- FREEDFEATURE SECTION -->
                 <div class="col-md-12 features-section float-left rm-pd intro-page">
-                  <!-- PIVX FEATURE -->
-                  <div class="col-md-6 float-left pivx-feature-father">
-                    <div class="col-md-11 pivx-feature-interior">
+                  <!-- FREEDFEATURE -->
+                  <div class="col-md-6 float-left freed-feature-father">
+                    <div class="col-md-11 freed-feature-interior">
                       <div class="col-md-12 feature-icon">
-                        <img src="https://pivx.org/build/images/content/img_governance.png" alt="PIVX Governance" />
+                        <img src="https://freedomcoin.global/build/images/content/img_governance.png" alt="FREEDGovernance" />
                       </div>
 
                       <h4 data-i18n="cardOneTitle">Be your own Bank!</h4>
-                      <h5 data-i18n="cardOneDesc">MyPIVXWallet has <b>no custody</b> over your funds. You are in full ownership of your keys and your PIV.</h5>
-                      <span onclick="window.location.href='https://forum.pivx.org/threads/mypivxwallet-an-easy-open-source-self-sovereign-pivx-wallet.873/'" class="purple-icon-link ptr">
+                      <h5 data-i18n="cardOneDesc">MyFreedomWallet has <b>no custody</b> over your funds. You are in full ownership of your keys and your PIV.</h5>
+                      <span onclick="window.location.href='https://forum.freedomcoin.global/threads/MyFreedomwallet-an-easy-open-source-self-sovereign-freed-wallet.873/'" class="purple-icon-link ptr">
                         <span data-i18n="cardOneLink">Know more</span>
                         <span class="link-icon link-icon-suffix">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -193,20 +193,20 @@
                       </span>
                     </div>
                   </div>
-                  <!-- // PIVX FEATURE -->
+                  <!-- // FREEDFEATURE -->
 
-                  <!-- PIVX FEATURE -->
-                  <div class="col-md-6 float-left pivx-feature-father">
-                    <div class="col-md-11 pivx-feature-interior">
+                  <!-- FREEDFEATURE -->
+                  <div class="col-md-6 float-left freed-feature-father">
+                    <div class="col-md-11 freed-feature-interior">
                       <div class="col-md-12 feature-icon">
-                        <img src="https://pivx.org/build/images/content/img_pos.png" alt="PIVX Proof of Stake (PoS)" />
+                        <img src="https://freedomcoin.global/build/images/content/img_pos.png" alt="FREEDProof of Stake (PoS)" />
                       </div>
 
                       <h4 data-i18n="cardTwoTitle">Universal and Portable</h4>
                       <h5 data-i18n="cardTwoDesc">
                         You can generate cryptographically-secure addresses with your browser and hardware.
                       </h5>
-                      <span onclick="window.location.href='https://forum.pivx.org/threads/mypivxwallet-an-easy-open-source-self-sovereign-pivx-wallet.873/'" class="purple-icon-link ptr">
+                      <span onclick="window.location.href='https://forum.freedomcoin.global/threads/MyFreedomwallet-an-easy-open-source-self-sovereign-freed-wallet.873/'" class="purple-icon-link ptr">
                         <span data-i18n="cardTwoLink">Know more</span>
                         <span class="link-icon link-icon-suffix">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -216,20 +216,20 @@
                       </span>
                     </div>
                   </div>
-                  <!-- // PIVX FEATURE -->
+                  <!-- // FREEDFEATURE -->
 
-                  <!-- PIVX FEATURE -->
-                  <div class="col-md-6 float-left pivx-feature-father">
-                    <div class="col-md-11 pivx-feature-interior">
+                  <!-- FREEDFEATURE -->
+                  <div class="col-md-6 float-left freed-feature-father">
+                    <div class="col-md-11 freed-feature-interior">
                       <div class="col-md-12 feature-icon">
-                        <img src="https://pivx.org/build/images/content/img_privacy.png" alt="PIVX Privacy" class="smaller-feature" />
+                        <img src="https://freedomcoin.global/build/images/content/img_privacy.png" alt="FREEDPrivacy" class="smaller-feature" />
                       </div>
 
                       <h4 data-i18n="cardThreeTitle">Don't trust, verify!</h4>
                       <h5 data-i18n="cardThreeDesc">
-                        MyPIVXWallet is completely open-source, available on the PIVX Labs github.
+                        MyFreedomWallet is completely open-source, available on the FREEDLabs github.
                       </h5>
-                      <span onclick="window.location.href='https://forum.pivx.org/threads/mypivxwallet-an-easy-open-source-self-sovereign-pivx-wallet.873/'" class="purple-icon-link ptr">
+                      <span onclick="window.location.href='https://forum.freedomcoin.global/threads/MyFreedomwallet-an-easy-open-source-self-sovereign-freed-wallet.873/'" class="purple-icon-link ptr">
                         <span data-i18n="cardThreeLink">Know more</span>
                         <span class="link-icon link-icon-suffix">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -239,20 +239,20 @@
                       </span>
                     </div>
                   </div>
-                  <!-- // PIVX FEATURE -->
+                  <!-- // FREEDFEATURE -->
 
-                  <!-- PIVX FEATURE -->
-                  <div class="col-md-6 float-left pivx-feature-father">
-                    <div class="col-md-11 pivx-feature-interior">
+                  <!-- FREEDFEATURE -->
+                  <div class="col-md-6 float-left freed-feature-father">
+                    <div class="col-md-11 freed-feature-interior">
                       <div class="col-md-12 feature-icon">
-                        <img src="https://pivx.org/build/images/content/img_slider_bars.png" alt="PIVX Bar Chart" class="smaller-feature" />
+                        <img src="https://freedomcoin.global/build/images/content/img_slider_bars.png" alt="FREEDBar Chart" class="smaller-feature" />
                       </div>
 
                       <h4 data-i18n="cardFourTitle">For the community</h4>
                       <h5 data-i18n="cardFourDesc">
-                        MyPIVXWallet is built with love without any fees, privacy intrusions or advertising.
+                        MyFreedomWallet is built with love without any fees, privacy intrusions or advertising.
                       </h5>
-                      <span onclick="window.location.href='https://forum.pivx.org/threads/mypivxwallet-an-easy-open-source-self-sovereign-pivx-wallet.873/'" class="purple-icon-link ptr">
+                      <span onclick="window.location.href='https://forum.freedomcoin.global/threads/MyFreedomwallet-an-easy-open-source-self-sovereign-freed-wallet.873/'" class="purple-icon-link ptr">
                         <span data-i18n="cardFourLink">Know more</span>
                         <span class="link-icon link-icon-suffix">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -262,9 +262,9 @@
                       </span>
                     </div>
                   </div>
-                  <!-- // PIVX FEATURE -->
+                  <!-- // FREEDFEATURE -->
                 </div>
-                <!-- // PIVX FEATURE SECTION -->
+                <!-- // FREEDFEATURE SECTION -->
               </div>
 
               <!-- KEYPAIR SECTION -->
@@ -285,14 +285,14 @@
                       </div>
 
                       <div class="col-md-12 dashboard-title">
-                        <h3 class="pivx-bold-title-smaller">
+                        <h3 class="freed-bold-title-smaller">
                           <span data-i18n="dCardOneTitle">Create a</span>
                           <div data-i18n="dCardOneSubTitle">New Wallet</div>
                         </h3>
-                        <p data-i18n="dCardOneDesc">Create a new PIVX wallet, offering the most secure backup & security methods.</p>
+                        <p data-i18n="dCardOneDesc">Create a new FREEDwallet, offering the most secure backup & security methods.</p>
                       </div>
 
-                      <button class="pivx-button-big" onclick="MPW.generateWallet()">
+                      <button class="freed-button-big" onclick="MPW.generateWallet()">
                         <span class="buttoni-icon">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 70">
                             <path d="M3.497 25.717C1.401 25.588 0 23.847 0 21.753v-2.535c0-.775.149-1.593.925-1.593h22.719c2.173 0 3.941 1.861 3.941 4.034 0 2.174-1.769 3.988-3.941 3.988l-20.207.048c-.02 0 .08.023.06.022z"></path>
@@ -348,7 +348,7 @@
                           </div>
                         </div>
                         <div class="modal-footer text-right">
-                          <button class="pivx-button-small" onclick="MPW.guiEncryptWallet()">
+                          <button class="freed-button-small" onclick="MPW.guiEncryptWallet()">
                             <span class="dcWallet-svgIconPurple">
                               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
                                 <path
@@ -406,7 +406,7 @@
                   <!-- WALLET FEATURES -->
                   <div id="guiWallet" style="display: none;">
                     <div class="row p-0">
-                      <!-- Balance in PIVX & USD-->
+                      <!-- Balance in FREED& USD-->
                       <div class="col-12 p-0 mb-5">
                         <center>
                           <div class="dcWallet-balances mb-4">
@@ -438,7 +438,7 @@
                             </div>
 
                             <canvas id="identicon" class="innerShadow" style="width: 65px; height: 65px;" data-jdenticon-value=""></canvas><br />
-                            <span class="dcWallet-pivxBalance" id="guiBalance"></span> <span id="guiBalanceTicker" class="dcWallet-pivxTicker">PIVX</span><br />
+                            <span class="dcWallet-freedBalance" id="guiBalance"></span> <span id="guiBalanceTicker" class="dcWallet-freedTicker">FREED</span><br />
                             <div class="dcWallet-usdBalance">
                               <span id="guiBalanceValue" class="dcWallet-usdValue">$-</span>
                               <span id="guiBalanceValueCurrency" class="dcWallet-usdValue">USD</span>
@@ -491,7 +491,7 @@
                             </div>
                           </div>
                           <div class="modal-footer text-center">
-                            <button class="pivx-button-big" onclick="MPW.unblurPrivKey()">
+                            <button class="freed-button-big" onclick="MPW.unblurPrivKey()">
                               <span class="buttoni-text">View key</span>
                             </button>
                           </div>
@@ -535,7 +535,7 @@
                                     MAX
                                   </div>
                                 </span>
-                                <span id="sendAmountCoinsTicker" class="input-group-text">PIVX</span>
+                                <span id="sendAmountCoinsTicker" class="input-group-text">FREED</span>
                               </div>
                             </div>
                           </div>
@@ -579,7 +579,7 @@
       
 
                         <div class="text-right pb-2">
-                          <button class="pivx-button-medium w-100" style="margin:0px;" onclick="MPW.createTxGUI()">
+                          <button class="freed-button-medium w-100" style="margin:0px;" onclick="MPW.createTxGUI()">
                             <span class="buttoni-icon"><i class="fas fa-paper-plane fa-tiny-margin"></i></span>
                             <span class="buttoni-text" id="genIt" data-i18n="sendTransaction">Send</span>
                           </button>
@@ -606,7 +606,7 @@
                         </div>
 
                         <div class="col-md-12 dashboard-title">
-                          <h3 class="pivx-bold-title" style="font-size: 38px;">
+                          <h3 class="freed-bold-title" style="font-size: 38px;">
                             <span data-i18n="dCardTwoTitle">Create a new</span>
                             <div data-i18n="dCardTwoSubTitle">Vanity Wallet</div>
                           </h3>
@@ -618,7 +618,7 @@
 
                         <input class="center-text" style="display: none; opacity: 0;" type="text" id="prefix" placeholder="Address Prefix" onkeypress="MPW.checkVanity()" />
 
-                        <button class="pivx-button-big" onclick="MPW.generateVanityWallet()">
+                        <button class="freed-button-big" onclick="MPW.generateVanityWallet()">
                           <span class="buttoni-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 70">
                               <path d="M3.497 25.717C1.401 25.588 0 23.847 0 21.753v-2.535c0-.775.149-1.593.925-1.593h22.719c2.173 0 3.941 1.861 3.941 4.034 0 2.174-1.769 3.988-3.941 3.988l-20.207.048c-.02 0 .08.023.06.022z"></path>
@@ -653,14 +653,14 @@
                         </div>
 
                         <div class="col-md-12 dashboard-title">
-                          <h3 class="pivx-bold-title" style="font-size: 38px;">
+                          <h3 class="freed-bold-title" style="font-size: 38px;">
                             <span data-i18n="dCardThreeTitle">Access your</span>
                             <div data-i18n="dCardThreeSubTitle">Ledger Wallet</div>
                           </h3>
                           <p data-i18n="dCardThreeDesc">Use your Ledger Hardware wallet with MPW's familiar interface.</p>
                         </div>
 
-                        <button class="pivx-button-big" onclick="MPW.importWallet({isHardwareWallet: true})">
+                        <button class="freed-button-big" onclick="MPW.importWallet({isHardwareWallet: true})">
                           <span class="buttoni-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 70">
                               <path d="M3.497 25.717C1.401 25.588 0 23.847 0 21.753v-2.535c0-.775.149-1.593.925-1.593h22.719c2.173 0 3.941 1.861 3.941 4.034 0 2.174-1.769 3.988-3.941 3.988l-20.207.048c-.02 0 .08.023.06.022z"></path>
@@ -703,12 +703,12 @@
                         </div>
 
                         <div class="col-md-12 dashboard-title">
-                          <h3 class="pivx-bold-title-smaller">
+                          <h3 class="freed-bold-title-smaller">
                             <span data-i18n="dCardFourTitle">Go to</span>
                             <div data-i18n="dCardFourSubTitle">My Wallet</div>
                           </h3>
                           <p data-i18n="dCardFourDesc">
-                            Import a PIVX wallet using a Private Key, xpriv, or Seed Phrase.
+                            Import a FREEDwallet using a Private Key, xpriv, or Seed Phrase.
                           </p>
                         </div>
 
@@ -717,7 +717,7 @@
                         <div id="importWallet" style="display: none;">
                           <input type="password" class="textbox-opacity-trans" id="privateKey" placeholder="Seed Phrase, XPriv or WIF Private Key" oninput="MPW.onPrivateKeyChanged()" />
                           <input hidden type="password" id="privateKeyPassword" placeholder="Password" />
-                          <button class="pivx-button-big" onclick="MPW.guiImportWallet()">
+                          <button class="freed-button-big" onclick="MPW.guiImportWallet()">
                             <span class="buttoni-icon"><i class="fas fa-file-upload fa-tiny-margin"></i></span>
                             <span class="buttoni-text" id="importWalletText" data-i18n="dCardFourButtonI">Import Wallet</span>
                             <span class="buttoni-arrow">
@@ -729,7 +729,7 @@
                         </div>
                         <!-- // IMPORT WALLET -->
 
-                        <button class="pivx-button-big" id="accessWalletBtn" onclick="MPW.accessOrImportWallet()">
+                        <button class="freed-button-big" id="accessWalletBtn" onclick="MPW.accessOrImportWallet()">
                           <span class="buttoni-icon">
                             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 70">
                               <path d="M3.497 25.717C1.401 25.588 0 23.847 0 21.753v-2.535c0-.775.149-1.593.925-1.593h22.719c2.173 0 3.941 1.861 3.941 4.034 0 2.174-1.769 3.988-3.941 3.988l-20.207.048c-.02 0 .08.023.06.022z"></path>
@@ -766,7 +766,7 @@
                 <div class="add-frame">
                   <div class="staking-banner-top">
                     <div id="staking-rectangle" class="col-md-4">
-                      <div id="pivx-price-box">
+                      <div id="freed-price-box">
                         <div id="icon-box-piv">
                           <div id="piv-price" class="staking-piv-icon"></div>
                         </div>
@@ -785,7 +785,7 @@
                       <h5 id="availToDelegate" onclick="MPW.selectMaxBalance(MPW.doms.domGuiDelegateAmount)" class="stake-balances ptr"><span data-i18n="available">Available</span>: 0 PIV</h5>
                       <textarea id="delegateAmount" class="stake-input form-control private-key-area"></textarea>
                       <div class="button-padd">
-                        <button class="pivx-button-big" onclick="MPW.delegateGUI()">
+                        <button class="freed-button-big" onclick="MPW.delegateGUI()">
                           <span class="buttoni-icon"><i class="far fa-snowflake fa-tiny-margin"></i></span>
                           <span class="buttoni-text" data-i18n="stake">Stake</span>
                           <span class="buttoni-arrow">
@@ -800,7 +800,7 @@
                       <h5 id="availToUndelegate" onclick="MPW.selectMaxBalance(MPW.doms.domGuiUndelegateAmount, true)" class="stake-balances ptr"><span data-i18n="staking">Staking</span>: 0 PIV</h5>
                       <textarea id="undelegateAmount" class="stake-input form-control private-key-area"></textarea>
                       <div class="button-padd">
-                        <button class="pivx-button-big" onclick="MPW.undelegateGUI()">
+                        <button class="freed-button-big" onclick="MPW.undelegateGUI()">
                           <span class="buttoni-icon"><i class="far fa-snowflake fa-tiny-margin"></i></span>
                           <span class="buttoni-text" data-i18n="stakeUnstake">Unstake</span>
                           <span class="buttoni-arrow">
@@ -831,7 +831,7 @@
               </div>
               <div id="Governance" class="tabcontent">
                 <div class="col-md-12 title-section float-left rm-pd">
-                  <h3 class="pivx-bold-title center-text">Governance</h3>
+                  <h3 class="freed-bold-title center-text">Governance</h3>
                   <p class="center-text">From this tab you can check the proposals and, if you have a masternode, be a part of the <b>DAO</b> and vote!</p>
                 </div>
                 <table id="proposalsTable" class="table table-hover table-dark bg-transparent" style="width: 100%;">
@@ -860,7 +860,7 @@
               </div>
               <div id="Masternode" class="tabcontent">
                 <div class="col-md-12 title-section float-left rm-pd">
-                  <h3 class="pivx-bold-title center-text"><span>Control your</span> Masternode</h3>
+                  <h3 class="freed-bold-title center-text"><span>Control your</span> Masternode</h3>
                   <p class="center-text">From this tab you can create and access one or more masternodes</p>
                 </div>
 
@@ -879,7 +879,7 @@
                       <input type="password" id="mnPrivateKey" placeholder="Masternode Private Key" />
                       <input type="text" id="mnIP" placeholder="Masternode ip address" />
                       <select id="mnTxId" style="display: block;" placeholder="Masternode collateral tx" class="form-control"> </select>
-                      <button class="pivx-button-big" onclick="MPW.importMasternode()">
+                      <button class="freed-button-big" onclick="MPW.importMasternode()">
                         <span class="buttoni-icon"><i class="fas fa-file-upload fa-tiny-margin"></i></span>
                         <span class="buttoni-text" id="importMnText">Access Masternode</span>
                         <span class="buttoni-arrow">
@@ -906,7 +906,7 @@
                       </select>
                       <br />
                       <br />
-                      <button class="pivx-button-big" onclick="MPW.createMasternode()">
+                      <button class="freed-button-big" onclick="MPW.createMasternode()">
                         <span class="buttoni-icon"><i class="fas fa-file-upload fa-tiny-margin"></i></span>
                         <span class="buttoni-text" id="importMnText">Create Masternode</span>
                         <span class="buttoni-arrow">
@@ -944,12 +944,12 @@
                 <br />
 
                 <center id="controlMasternode" style="display: none; width: 100%;">
-                  <button class="pivx-button-big" onclick="MPW.destroyMasternode()" style="margin: 20px; font-weight: 550 !important;">
+                  <button class="freed-button-big" onclick="MPW.destroyMasternode()" style="margin: 20px; font-weight: 550 !important;">
                     <span class="buttoni-icon"><i class="fas fa-burn fa-tiny-margin"></i></span>
                     <span class="buttoni-text" id="importMnText">Destroy Masternode</span>
                   </button>
 
-                  <button class="pivx-button-big" onclick="MPW.startMasternode(true)" style="margin: 20px; font-weight: 550 !important;">
+                  <button class="freed-button-big" onclick="MPW.startMasternode(true)" style="margin: 20px; font-weight: 550 !important;">
                     <span class="buttoni-icon"><i class="fas fa-redo-alt fa-tiny-margin"></i></span>
                     <span class="buttoni-text" id="importMnText">Restart Masternode</span>
                   </button>
@@ -976,7 +976,7 @@
                 </select>
                 <br />
 
-                <label for="node" data-i18n="settingsPivxNode">Choose a PIVX node:</label>
+                <label for="node" data-i18n="settingsFreedNode">Choose a FREEDnode:</label>
                 <br />
                 <select id="node" class="form-control" name="node">
                   <!-- Populated via JS at DOM load (settings.js) -->
@@ -991,7 +991,7 @@
                 <div id="analyticsDescriptor"></div>
                 <br />
 
-                <button class="pivx-button-big" onclick="MPW.toggleDebug()">
+                <button class="freed-button-big" onclick="MPW.toggleDebug()">
                   <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
                   <span class="buttoni-text" data-i18n="settingsToggleDebug">Toggle Debug Mode</span>
                   <span class="buttoni-arrow">
@@ -1000,7 +1000,7 @@
                     </svg>
                   </span>
                 </button>
-                <button class="pivx-button-big" onclick="MPW.toggleTestnet()">
+                <button class="freed-button-big" onclick="MPW.toggleTestnet()">
                   <span class="buttoni-icon"><i class="fas fa-network-wired fa-tiny-margin"></i></span>
                   <span class="buttoni-text" data-i18n="settingsToggleTestnet">Toggle Testnet Mode</span>
                   <span class="buttoni-arrow">
@@ -1021,8 +1021,8 @@
       <footer id="foot">
         <div class="footer">
           <div>
-            <span> © MIT 2023 </span> - <span style="cursor: pointer;" onclick="MPW.playMusic()" data-i18n="footerBuiltWithPivxLabs">Built with 💜 by PIVX Labs</span><br />
-            <a href="https://github.com/PIVX-Labs/MyPIVXWallet" target="_blank"><i class="fa-brands fa-github"></i></i> GitHub</a> - <a href="https://discord.gg/zTScGaGtgv" target="_blank"><i class="fa-brands fa-discord"></i></i> Discord</a> - <a href="https://medium.com/@pivx-labs" target="_blank"><i class="fa-brands fa-medium"></i></i> Medium</a>
+            <span> © MIT 2023 </span> - <span style="cursor: pointer;" onclick="MPW.playMusic()" data-i18n="footerBuiltWithFreedLabs">Built with 💜 by FREEDLabs</span><br />
+            <a href="https://github.com/FreedomCoin-Project/MyFreedomWallet" target="_blank"><i class="fa-brands fa-github"></i></i> GitHub</a> - <a href="https://discord.gg/zTScGaGtgv" target="_blank"><i class="fa-brands fa-discord"></i></i> Discord</a> - <a href="https://medium.com/@FreedomCoin-Project" target="_blank"><i class="fa-brands fa-medium"></i></i> Medium</a>
           </div>
         </div>
       </footer>

@@ -612,7 +612,7 @@ button {
     border-bottom: 1px solid #a366ff;
 }
 
-#pivx-price-box {
+#freed-price-box {
     height: 100px;
     width: 240px;
     float: left;
@@ -720,7 +720,7 @@ button {
 /* New styling */
 
 /* Buttons */
-.pivx-button-small {
+.freed-button-small {
   display: inline-block;
   outline: none;
   margin: 5px;
@@ -750,7 +750,7 @@ button {
   transition: all .2s ease-in-out;
 }
 
-.pivx-button-big {
+.freed-button-big {
     display: inline-block;
     outline: none;
     margin: 5px;
@@ -780,7 +780,7 @@ button {
     transition: all .2s ease-in-out;
 }
 
-.pivx-button-big::before {
+.freed-button-big::before {
   position: absolute;
   content: "";
   -webkit-border-radius: 35px;
@@ -797,7 +797,7 @@ button {
   opacity: 0;
 }
 
-.pivx-button-medium {
+.freed-button-medium {
     display: inline-block;
     outline: none;
     margin: 5px;
@@ -827,7 +827,7 @@ button {
     transition: all .2s ease-in-out;
 }
 
-.pivx-button-medium::hover {
+.freed-button-medium::hover {
   position: absolute;
   content: "";
   -webkit-border-radius: 35px;
@@ -844,7 +844,7 @@ button {
   opacity: 0;
 }
 
-.pivx-button-big:hover::before {
+.freed-button-big:hover::before {
   opacity: 1;
 }
 
@@ -863,7 +863,7 @@ button {
     margin-bottom: 20px;
 }
 
-/*PIVX WARNINGS*/
+/*FREEDWARNINGS*/
 .warning-message {
     display: none;
     background-color: #9021fe;
@@ -889,23 +889,23 @@ button {
     border-color: #8300ff;
 }
 
-/*PIVX TEXT CUSTOMS*/
-.pivx-bold-title {
+/*FREEDTEXT CUSTOMS*/
+.freed-bold-title {
     line-height: 1.35em;
     font-size: calc(37.88235px + .70588vw);
     font-weight: 700;
     font-family: Montserrat, sans-serif;
 }
 
-.pivx-bold-title-smaller {
+.freed-bold-title-smaller {
     line-height: 1.35em;
     font-size: 38px;
     font-weight: 700;
     font-family: Montserrat, sans-serif;
 }
 
-.pivx-bold-title span,
-.pivx-bold-title-smaller span {
+.freed-bold-title span,
+.freed-bold-title-smaller span {
     font-size: .6em;
     display: block;
     line-height: 1.2em;
@@ -916,25 +916,25 @@ button {
     text-align: center;
 }
 
-/*PIVX FEATURES SECTION*/
-.pivx-feature-father {
+/*FREEDFEATURES SECTION*/
+.freed-feature-father {
     margin-top: 90px;
 }
 
-.pivx-feature-interior {
+.freed-feature-interior {
     background: linear-gradient(90deg, #2b1542, #230f3c);
     padding: 25px;
     text-align: center;
     border-radius: 10px;
 }
 
-.pivx-feature-interior h4 {
+.freed-feature-interior h4 {
     font-size: 24px;
     font-weight: 600;
     margin-top: 19px;
 }
 
-.pivx-feature-interior h5 {
+.freed-feature-interior h5 {
     opacity: 0.65;
     padding: .7rem 0 1.25rem;
     line-height: 1.75em;
@@ -1089,7 +1089,7 @@ a {
     border: none;
 }
 
-/*PIVX DASHBOARD*/
+/*FREEDDASHBOARD*/
 .dashboard-item {
     background: rgba(43, 9, 80, .75);
     border-radius: 6px;
@@ -1185,7 +1185,7 @@ a {
 
 /* SETTINGS */
 
-#submit-button.pivx-button-big {
+#submit-button.freed-button-big {
     width: auto !important;
     padding: 14px 90px;
 }
@@ -1197,7 +1197,7 @@ a {
 
     /* Stake page */
 
-    .button-padd .pivx-button-big {
+    .button-padd .freed-button-big {
         margin: 0;
         display: inline-block !important;
         width: 100% !important;
@@ -1208,7 +1208,7 @@ a {
 @media screen and (max-width: 1199px) {
 
     /* Dashboard page */
-    #genKeyWarning .pivx-button-big {
+    #genKeyWarning .freed-button-big {
         margin-top: 20px;
     }
     #PrivateCipheredQR img,
@@ -1260,7 +1260,7 @@ a {
 
     /* Settings */
 
-    #Settings .pivx-button-big {
+    #Settings .freed-button-big {
         margin: 8px 2px;
     }
 }
@@ -1289,7 +1289,7 @@ a {
         padding: 15px 6px;
     }
 
-    .stake-box .button-padd .pivx-button-big {
+    .stake-box .button-padd .freed-button-big {
         padding: 15px 22px 15px 27px;
     }
 
@@ -1320,7 +1320,7 @@ a {
         padding-bottom: 15px;
     }
 
-    #genKeyWarning .pivx-button-big {
+    #genKeyWarning .freed-button-big {
         float: none;
         clear: both;
         display: block !important;
@@ -1361,7 +1361,7 @@ a {
         display: block;
     }
 
-    #pubkey-box .pivx-button-big {
+    #pubkey-box .freed-button-big {
         width: 230px !important;
     }
     #PrivateCipheredQR img,
@@ -1380,7 +1380,7 @@ a {
 
 @media screen and (max-width: 770px) {
 
-    #pivx-price-box {
+    #freed-price-box {
         width: 200px;
     }
 
@@ -1443,7 +1443,7 @@ a {
         padding-top: 40px;
     }
 
-    #pubkey-box .pivx-button-big {
+    #pubkey-box .freed-button-big {
         width: 225px !important;
     }
 }
@@ -1452,7 +1452,7 @@ a {
 
     /* Dashboard */
 
-    #genKeyWarning .pivx-button-big {
+    #genKeyWarning .freed-button-big {
         padding: 13px 20px;
     }
 
@@ -1515,7 +1515,7 @@ a {
         font-size: 25px;
     }
 
-    #submit-button.pivx-button-big {
+    #submit-button.freed-button-big {
         padding: 14px 85px 14px 100px;
         margin-top: 20px;
     }
@@ -1579,7 +1579,7 @@ a {
 
     /* Dashboard */
 
-    #pubkey-box .pivx-button-big {
+    #pubkey-box .freed-button-big {
         width: 200px !important;
     }
 }
@@ -1588,7 +1588,7 @@ a {
 
     /* Dashboard page */
 
-    #pubkey-box .pivx-button-big {
+    #pubkey-box .freed-button-big {
         padding: 12px 10px;
     }
 
@@ -1601,7 +1601,7 @@ a {
         display: none;
     }
 
-    #pivx-price-box {
+    #freed-price-box {
         width: 130px;
     }
 }
@@ -1623,7 +1623,7 @@ a {
     /* Stake */
 
 
-    #pivx-price-box {
+    #freed-price-box {
         width: auto;
     }
 
@@ -1656,7 +1656,7 @@ a {
 
     /* Settings page */
 
-    #submit-button.pivx-button-big {
+    #submit-button.freed-button-big {
         display: block;
         height: auto;
         margin: 0 auto;
@@ -1691,7 +1691,7 @@ a {
         height: 55px;
     }
 
-    #pubkey-box .pivx-button-big {
+    #pubkey-box .freed-button-big {
         padding: 11px 10px;
     }
 
@@ -1759,7 +1759,7 @@ a {
         font-size: 24px;
     }
 
-    #pubkey-box .pivx-button-big {
+    #pubkey-box .freed-button-big {
         padding: 11px 10px;
     }
 }
@@ -1789,7 +1789,7 @@ a {
         font-size: 22px;
     }
 
-    #pubkey-box .pivx-button-big {
+    #pubkey-box .freed-button-big {
         width: 150px !important;
     }
 
@@ -1856,11 +1856,11 @@ a {
 
     /* Settings */
 
-    .pivx-button-big {
+    .freed-button-big {
         font-size: 14px !important;
     }
 
-    #submit-button.pivx-button-big {
+    #submit-button.freed-button-big {
         padding: 14px 50px !important;
     }
 }
@@ -1898,12 +1898,12 @@ a {
         margin-right: 20px;
     }
 
-    .pivx-feature-interior {
+    .freed-feature-interior {
         width: 100% !important;
         padding: 15px 8px;
     }
 
-    .pivx-bold-title {
+    .freed-bold-title {
         font-size: calc(32px + 1vw);
     }
 
@@ -1934,7 +1934,7 @@ a {
         font-weight: 600;
     }
 
-    .stake-box .button-padd .pivx-button-big {
+    .stake-box .button-padd .freed-button-big {
         padding: 14px 18px;
     }
 }
@@ -2148,11 +2148,11 @@ a {
   margin-top: -28px;
 }
 
-.dcWallet-balances .dcWallet-pivxBalance {
+.dcWallet-balances .dcWallet-freedBalance {
   font-size: 38px;
 }
 
-.dcWallet-balances .dcWallet-pivxTicker {
+.dcWallet-balances .dcWallet-freedTicker {
   font-size: 17px;
 }
 

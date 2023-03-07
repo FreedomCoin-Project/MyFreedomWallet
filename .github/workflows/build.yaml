@@ -59,8 +59,8 @@ jobs:
           file: docker/Dockerfile
           platforms: linux/amd64
           tags: |
-            ghcr.io/pivx-labs/mypivxwallet:latest
-            ghcr.io/pivx-labs/mypivxwallet:${{ env.tag }}
+            ghcr.io/FreedomCoin-Project/MyFreedomwallet:latest
+            ghcr.io/FreedomCoin-Project/MyFreedomwallet:${{ env.tag }}
             ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: release=1
