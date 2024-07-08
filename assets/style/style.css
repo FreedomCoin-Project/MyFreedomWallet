@@ -279,7 +279,7 @@ input::-moz-focus-inner {
 
 .image-section {
     width: 70%;
-    background: url(assets/images/wallet_g.png) no-repeat;
+    background: url(../images/wallet_g.png) no-repeat;
     background-size: 120%;
     background-position: center;
     margin-left: -10%;
