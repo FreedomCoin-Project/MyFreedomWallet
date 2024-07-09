@@ -282,6 +282,7 @@ input::-moz-focus-inner {
 .welcome-section {
     flex-basis: 55%;
     display: flex;
+    max-width: 644px;
     gap: 15px;
     padding-left: 70px;
     flex-direction: column;
@@ -315,7 +316,10 @@ input::-moz-focus-inner {
     border-radius: 200px;
     background-color: #000;
 }
-
+.image-section {
+    width: 50%;
+    max-width: 644px;
+}
 
 
 #content-wrap {
@@ -748,6 +752,7 @@ input::-moz-focus-inner {
 .navbarSpecial {
     position: fixed;
     width: 100%;
+    padding: 20px 48px;
 }
 
 /* New styling */
