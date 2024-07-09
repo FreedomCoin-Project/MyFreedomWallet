@@ -737,10 +737,6 @@ input::-moz-focus-inner {
 }
 
 .navbarSpecial {
-    background: linear-gradient(90deg, #2c0b4c 12.5%, #500f83, #2c0b4c);
-    border-bottom-color: #521186;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
     position: fixed;
     width: 100%;
 }
