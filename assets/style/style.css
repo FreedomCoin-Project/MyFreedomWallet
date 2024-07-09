@@ -99,9 +99,15 @@ button:active {
 }
 
 .nav-logo {
-    display: inline;
-    vertical-align: middle;
+    display: flex;
     width: 250px;
+    margin-right: 1rem;
+    color: #fff;
+    font-size: 22px;
+    font-weight: 800;
+    white-space: nowrap;
+    flex-direction: row;
+    align-items: center;
 }
 
 .nav-link {
@@ -271,10 +277,10 @@ input::-moz-focus-inner {
 }
 
 .welcome-section {
-    flex-basis: 50%;
+    flex-basis: 55%;
     display: flex;
-    gap: 10px;
-    padding-left: 50px;
+    gap: 15px;
+    padding-left: 70px;
     flex-direction: column;
     justify-content: center;
 }
