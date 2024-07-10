@@ -289,7 +289,10 @@ input::-moz-focus-inner {
     flex-direction: column;
     justify-content: center;
 }
-
+.buttons-section {
+    display: flex;
+    flex-direction: row;
+}
 .btn-border {
     position: relative;
     margin-right: 15px;
@@ -300,7 +303,16 @@ input::-moz-focus-inner {
     text-decoration: none;
     border-radius: 200px;
 }
-
+nav .btn-border {
+    padding: 11px;
+}
+.btn-border img {
+    position: relative;
+    top: -1px;
+    z-index: 1;
+    width: 23px;
+    height: 23px;
+}
 .btn_txt {
     position: relative;
     z-index: 1;
