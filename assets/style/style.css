@@ -1271,11 +1271,6 @@ a {
 }
 @media screen and (max-width: 992px) {
     
-    .welcome-wrapper { 
-        flex-direction: column-reverse;
-        align-items: center;
-        justify-content: flex-start;
-    }
     .welcome-wrapper:after {
         background-size: 80%;
         background-position: 170% center;
@@ -1378,6 +1373,16 @@ a {
 @media screen and (max-width: 768px) {
     .navbarSpecial { 
         padding: 20px 15px;
+    }
+    .wlc nav .buttons-section {
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 20px 5px;
+    }
+    .welcome-wrapper { 
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: flex-start;
     }
     .welcome-wrapper:after {
         background-size: 700px;
