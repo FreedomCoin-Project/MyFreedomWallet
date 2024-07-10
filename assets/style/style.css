@@ -719,7 +719,7 @@ nav .btn-border {
     border-radius: 1000px;
     border-width: 3px;
     background-size: cover;
-    background-image: url(../logo-circle.svg);
+    background-image: url(./assets/images/freed-coin.png);
 }
 
 .stake-box {
