@@ -286,7 +286,7 @@ input::-moz-focus-inner {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background: url(./assets/images/wallet_g.png) #000 no-repeat;
+    background: url(../images/wallet_g.png) #000 no-repeat;
     background-size: 70%;
     background-position: 120% center;
     z-index: -1;
