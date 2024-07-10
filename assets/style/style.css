@@ -21,10 +21,14 @@ button {
 }
 
 body {
-    background-color: #150c25;
+    --gold: #c4a129;
+    --orange: #f06500;
+    background-color: #1f1e29;
     color: #f2f8fa;
 }
-
+body.wlc {
+    overflow: hidden;
+}
 pre {
     display: block;
     font-size: 87.5%;
@@ -92,21 +96,32 @@ button:active {
 .ptr {
     cursor: pointer;
 }
-
+.wlc .ptr {
+    display: none;
+}
 .fa-stacked-ptr {
     cursor: pointer;
     margin-right: 15px;
 }
 
 .nav-logo {
-    display: inline;
-    vertical-align: middle;
-    width: 250px;
+    display: flex;
+    margin-right: 1rem;
+    color: #fff !important;
+    font-size: 21px;
+    font-weight: 800;
+    white-space: nowrap;
+    flex-direction: row;
+    align-items: center;
 }
-
+.brand-logo {
+    width: 40px;
+    margin-right: 10px;
+}
 .nav-link {
     font-weight: 500;
     font-size: 16px;
+    transition: .5s;
 }
 
 .nav-item {
@@ -254,10 +269,92 @@ input::-moz-focus-inner {
     min-height: calc(100vh - 75px);
 }
 
+
+.welcome-wrapper {    
+    position: fixed;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
+    flex-direction: row;
+    justify-content: center;
+}
+.welcome-wrapper:after {
+    content: '';
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    min-width: 100%;
+    min-height: 100%;
+    background: url(../images/wallet_g.png) #020307 no-repeat;
+    background-size: 70%;
+    background-position: 120% center;
+    z-index: -1;
+}
+.welcome-section {
+    flex-basis: 55%;
+    display: flex;
+    max-width: 644px;
+    gap: 15px;
+    flex-direction: column;
+    justify-content: center;
+}
+.buttons-section {
+    display: flex;
+    gap: 15px;
+    flex-direction: row;
+}
+.btn-border {
+    position: relative;
+    padding: 15px 30px;
+    color: #fff;
+    background-image: linear-gradient(84deg, var(--gold), var(--orange));
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 200px;
+    cursor: pointer;
+}
+nav .btn-border {
+    padding: 11px;
+}
+.btn-border:hover {
+    color: #fff;
+    text-decoration: none;
+}
+.btn-border img {
+    position: relative;
+    top: -1px;
+    z-index: 1;
+    width: 23px;
+    height: 23px;
+}
+.btn_txt {
+    position: relative;
+    text-wrap: nowrap;
+    z-index: 1;
+}
+
+.btn-border:after {
+    position: absolute;
+    content: '';
+    left: 0%;
+    top: 0%;
+    right: 0%;
+    bottom: 0%;
+    margin: 1px;
+    border-radius: 200px;
+    background-color: #020307;
+}
+.image-section {
+    width: 50%;
+    max-width: 644px;
+}
+
+
 #content-wrap {
-    padding-bottom: 4rem;
-    /* Footer height */
-    margin-top: 75px;
+    padding-bottom: 4rem; 
 }
 
 .rm-pd {
@@ -299,7 +396,7 @@ input::-moz-focus-inner {
 }
 
 .active {
-    color: #b088ff !important;
+    color: #f9b707 !important;
 }
 
 /* Style the tab content */
@@ -332,11 +429,10 @@ input::-moz-focus-inner {
     display: block;
     width: 100%;
     height: 87%;
-    border: 1px #4b1282 solid;
+    border: 1px hsla(0, 0%, 100%, .1) solid;
     border-radius: 8px;
-    box-shadow: 2px 2px 15px 2px #4b1271;
     margin: 0 0 280px 0;
-    background: linear-gradient(0.25turn, rgba(77, 77, 77, 0.5), rgba(115, 0, 255, 0.3));
+    background: #18171f;
 }
 
 /* -- Headline dashboard -- */
@@ -626,7 +722,7 @@ input::-moz-focus-inner {
     border-radius: 1000px;
     border-width: 3px;
     background-size: cover;
-    background-image: url(../logo-circle.svg);
+    background-image: url(../images/freed-op.png);
 }
 
 .stake-box {
@@ -682,12 +778,9 @@ input::-moz-focus-inner {
 }
 
 .navbarSpecial {
-    background: linear-gradient(90deg, #2c0b4c 12.5%, #500f83, #2c0b4c);
-    border-bottom-color: #521186;
-    border-bottom-style: solid;
-    border-bottom-width: 1px;
-    position: fixed;
+    position: relative;
     width: 100%;
+    padding: 20px 48px;
 }
 
 /* New styling */
@@ -728,7 +821,7 @@ input::-moz-focus-inner {
 }
 
 .home-hero {
-    background: radial-gradient(45vw 80% at 90% 40%, rgba(162, 50, 255, .3), rgba(44, 11, 76, 0) 95%), linear-gradient(90deg, rgba(44, 11, 76, .9), rgba(80, 15, 131, .5) 60%, rgba(44, 11, 76, .9)), linear-gradient(35deg, rgba(44, 11, 76, .3), rgba(80, 15, 131, .3) 37%, rgba(44, 11, 76, .3) 0, rgba(80, 15, 131, .3) 76%, rgba(44, 11, 76, .3) 0, rgba(80, 15, 131, .3)), linear-gradient(90deg, #2c0b4c, #500f83 60%, #2c0b4c);
+    background: linear-gradient(#020307, #1f1e29 25%)
 }
 
 .title-section {
@@ -756,9 +849,7 @@ input::-moz-focus-inner {
 }
 
 .alert-danger {
-    color: #fff;
-    background-color: #4b1282;
-    border-color: #8300ff;
+    border-color: hsla(0, 0%, 100%, .1);
 }
 
 /*PIVX TEXT CUSTOMS*/
@@ -969,14 +1060,14 @@ a {
 
 /*PIVX DASHBOARD*/
 .dashboard-item {
-    background: rgba(43, 9, 80, .75);
+    background: #1f1e29;
     border-radius: 6px;
     padding: 0 15% 10px 15%;
-    /*padding-right: 15%;
-    padding-left: 15%;*/
     text-align: center;
     float: left;
     margin-bottom: 15px;
+    border: 1px solid hsla(0, 0%, 100%, .1);
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 30%);
 }
 
 .send-eligibility-section .container .column-padded-around .coinstat-icon,
@@ -1171,9 +1262,20 @@ a {
         padding-right: 0;
     }
 }
-
+@media screen and (min-width: 992px) {
+    .navbar-collapse {
+        flex-basis: unset;
+        flex-grow: unset;
+        gap: 50px;
+    }
+}
 @media screen and (max-width: 992px) {
 
+    .welcome-wrapper:after {
+        background-size: 80%;
+        background-position: 170% center;
+    }
+    
     /* Dashboard page */
 
     #big-frame-address {
@@ -1246,7 +1348,13 @@ a {
         padding-bottom: 35px;
     }
 }
-
+@media screen and (max-width: 991px) {
+    .wlc nav .buttons-section {
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 20px 5px;
+    }
+}
 @media screen and (max-width: 770px) {
 
     #pivx-price-box {
@@ -1269,7 +1377,31 @@ a {
 }
 
 @media screen and (max-width: 768px) {
+    .navbarSpecial { 
+        padding: 20px 15px;
+    }
+    .welcome-wrapper { 
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    .welcome-wrapper:after {
+        background-size: 700px;
+        background-position: center -30%;
+    }
+    .welcome-section h1 {
+        font-size: 30px;
+        font-weight: 600;
+    }
+    .welcome-section h5 {
+        font-size: 17px;
+    }
+    .btn_txt {
+        font-size: 15px;
+        font-weight: 500;
+    }
 
+    
     /* Main Wallet page */
     #PrivateTxt {
         font-size: 17px;
@@ -1470,7 +1602,17 @@ a {
 }
 
 @media screen and (max-width: 480px) {
-
+    .brand-logo {
+        width: 35px; 
+    }
+    .nav-logo {
+        font-size: 19px;
+    }
+    .welcome-wrapper .buttons-section {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    
     /* Main Wallet page */
     #PrivateTxt {
         font-size: 8px;

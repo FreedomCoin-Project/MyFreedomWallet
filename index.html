@@ -19,22 +19,22 @@
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_GB">
   <meta property="og:url" content="https://wallet.freedomcoin.global">
-  <meta property="og:title" content="My Freedom wallet">
-  <meta property="og:description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened Freedom wallet.">
-  <meta property="og:image" content="https://wallet.freedomcoin.global/assets/freedomcoin_logo.png">
+  <meta property="og:title" content="My Freed wallet">
+  <meta property="og:description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened Freed wallet.">
+  <meta property="og:image" content="https://wallet.freedomcoin.global/assets/images/wallet_g.png">
 
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
-  <meta property="twitter:url" content="https://wallet.freedomcoin.global">
-  <meta property="twitter:title" content="My Freedom wallet">
+  <meta property="twitter:url" content="https://twitter.com/FreedomcoinWW">
+  <meta property="twitter:title" content="My Freed wallet">
   <meta property="twitter:description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened Freedom wallet.">
-  <meta property="twitter:image" content="https://wallet.freedomcoin.global/assets/freedomcoin_logo.png">
+  <meta property="twitter:image" content="https://wallet.freedomcoin.global/assets/images/wallet_g.png">
 
   <!-- Colour Theme -->
   <meta name="msapplication-TileColor" content="#470e75">
   <meta name="theme-color" content="#470e75">
 
-  <link rel="icon" type="image/png" href="https://wallet.freedomcoin.global/assets/freedomcoin_logo.png">
+  <link rel="icon" type="image/png" href="https://wallet.freedomcoin.global/assets/images/freed-op.png">
   <link rel="canonical" href="https://wallet.freedomcoin.global">
 
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -67,14 +67,17 @@
   </script>
 </head>
 
-<body>
+<body class="wlc">
   <div id="page-container" class="home-hero">
     <div id="content-wrap">
 
       <!-- NAVBAR -->
       <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbarSpecial">
         <div class="container">
-          <img onclick="playMusic()" class="nav-logo navbar-brand noselect"  src='assets/myfreedomwallet_logo.png' alt="FreedomCoin Logo">
+          <a href="./" class="nav-logo"> 
+            <img class="brand-logo" src="./assets/images/freed-op.png" loading="lazy" alt="FreedomCoin Logo"> 
+            <span class="brand-txt noselect">MyFreedWallet</span> 
+          </a> 
           <button id="navbarToggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
             aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -96,7 +99,11 @@
                 <li class="nav-item"><a class="nav-link tablinks active" id="Debug" onclick="toggleDebug()"></a></li>
               </ul>
             </div>
-
+            <div class="buttons-section">
+                <a href="https://freedomcoin.global" class="btn-border"><img src="./assets/icons/home.svg" loading="eager" alt="FreedomCoin"></a>
+                <a class="btn-border"><img src="./assets/icons/game.svg" loading="eager" alt="Games"></a>
+                <a class="btn-border"><img src="./assets/icons/swap.svg" loading="eager" alt="Swap"></a>
+            </div>
           </div>
         </div>
       </nav>
@@ -572,9 +579,25 @@
     <div class="alertPositioning"></div>
     <footer id="foot">
         <div class="footer">
-          <div id='dcfooter'>© MIT 2022 - Built with 💜 by PIVX Labs - <b style='cursor:pointer' onclick='openDonatePage()'>Donate to FreedomCoin!</b></div>
+          <div id='dcfooter'>© MIT 2022 - <b style='cursor:pointer' onclick='openDonatePage()'>Donate to FreedomCoin!</b></div>
         </div>
     </footer>
+    
+       <div class="welcome-wrapper container">
+        <div class="welcome-section">
+            <div class="text-section">
+                <h1>Your Keys, Your Freed</h1>
+                <h5>
+Experience a non-custodial wallet that provides a full suite of DeFi services, allowing you to buy, sell, trade, and invest in FreedomCoin—all within a safe and simple app.</span>
+            </h5>
+          </div>
+            <div class="buttons-section">
+                <a id="open" class="btn-border"><span class="btn_txt">Get Started</span></a>
+                <a class="btn-border" href="https://github.com/FreedomCoin-Project/FreedomCoin-Core/releases/"><span class="btn_txt">Download PC Wallet</span></a>
+            </div>
+        </div>
+        <div class="image-section"></div>
+    </div>
   </div>
 
   <!-- Load frontend-level components -->
@@ -690,20 +713,11 @@
       // We have our payment request info, wait until the page is fully loaded then display the payment request via .onload
     }
 
-    let audio = null;
-    function playMusic() {
-      // On first play: load the audio into memory from the host
-      if (audio === null) audio = new Audio('assets/music.mp3');
-
-      // Play or Pause
-      if (audio.paused || audio.ended) {
-        audio.play();
-        for (const domImg of document.getElementsByTagName('img')) domImg.classList.add("discoFilter");
-      } else {
-        audio.pause();
-        for (const domImg of document.getElementsByTagName('img')) domImg.classList.remove("discoFilter");
-      }
-    }
+    $("#open").click(function(){
+        $(".welcome-wrapper").fadeOut("slow", function(){
+            $("body").removeClass();
+        });
+    });
 
     function toClipboard(source, caller) {
       // Fetch the text/value source
