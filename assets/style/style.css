@@ -291,11 +291,11 @@ input::-moz-focus-inner {
 }
 .buttons-section {
     display: flex;
+    gap: 15px;
     flex-direction: row;
 }
 .btn-border {
     position: relative;
-    margin-right: 15px;
     padding: 15px 30px;
     color: #fff;
     background-image: linear-gradient(84deg, var(--gold), var(--orange));
@@ -1251,8 +1251,10 @@ a {
 }
 @media screen and (min-width: 992px) {
     .navbar-collapse {
-    flex-basis: unset;
-    flex-grow: unset;
+        flex-basis: unset;
+        flex-grow: unset;
+        gap: 50px;
+    }
 }
 @media screen and (max-width: 992px) {
 
