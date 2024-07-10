@@ -330,6 +330,7 @@ nav .btn-border {
 }
 .btn_txt {
     position: relative;
+    text-wrap: nowrap;
     z-index: 1;
 }
 
