@@ -1237,7 +1237,11 @@ a {
         padding-right: 0;
     }
 }
-
+@media screen and (min-width: 992px) {
+    .navbar-collapse {
+    flex-basis: unset;
+    flex-grow: unset;
+}
 @media screen and (max-width: 992px) {
 
     /* Dashboard page */
