@@ -290,7 +290,7 @@ input::-moz-focus-inner {
     justify-content: center;
 }
 
-.buttons-section a {
+.btn-border {
     position: relative;
     margin-right: 15px;
     padding: 15px 30px;
@@ -306,7 +306,7 @@ input::-moz-focus-inner {
     z-index: 1;
 }
 
-.buttons-section a:after {
+.btn-border:after {
     position: absolute;
     content: '';
     left: 0%;
