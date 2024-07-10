@@ -21,6 +21,8 @@ button {
 }
 
 body {
+    --gold: #c4a129;
+    --orange: #f06500;
     background-color: #150c25;
     color: #f2f8fa;
 }
@@ -265,8 +267,6 @@ input::-moz-focus-inner {
 
 
 .welcome-wrapper {    
-    --gold: #c4a129;
-    --orange: #f06500;
     position: fixed;
     display: flex;
     width: 100%;
