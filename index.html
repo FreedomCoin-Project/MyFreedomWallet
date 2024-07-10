@@ -579,7 +579,7 @@
     <div class="alertPositioning"></div>
     <footer id="foot">
         <div class="footer">
-          <div id='dcfooter'>© MIT 2022 - Built with 💜 by PIVX Labs - <b style='cursor:pointer' onclick='openDonatePage()'>Donate to FreedomCoin!</b></div>
+          <div id='dcfooter'>© MIT 2022 - <b style='cursor:pointer' onclick='openDonatePage()'>Donate to FreedomCoin!</b></div>
         </div>
     </footer>
     
@@ -713,20 +713,11 @@ Experience a non-custodial wallet that provides a full suite of DeFi services, a
       // We have our payment request info, wait until the page is fully loaded then display the payment request via .onload
     }
 
-    let audio = null;
-    function playMusic() {
-      // On first play: load the audio into memory from the host
-      if (audio === null) audio = new Audio('assets/music.mp3');
-
-      // Play or Pause
-      if (audio.paused || audio.ended) {
-        audio.play();
-        for (const domImg of document.getElementsByTagName('img')) domImg.classList.add("discoFilter");
-      } else {
-        audio.pause();
-        for (const domImg of document.getElementsByTagName('img')) domImg.classList.remove("discoFilter");
-      }
-    }
+    $("#open").click(function(){
+        $(".welcome-wrapper").fadeOut("slow", function(){
+            $("body").removeClass();
+        });
+    });
 
     function toClipboard(source, caller) {
       // Fetch the text/value source
