@@ -286,7 +286,7 @@ input::-moz-focus-inner {
     position: absolute;
     width: 100vw;
     height: 100vh;
-    background: url(../images/wallet_g.png) #000 no-repeat;
+    background: url(../images/wallet_g.png) #020307 no-repeat;
     background-size: 70%;
     background-position: 120% center;
     z-index: -1;
@@ -343,7 +343,7 @@ nav .btn-border {
     bottom: 0%;
     margin: 1px;
     border-radius: 200px;
-    background-color: #000;
+    background-color: #020307;
 }
 .image-section {
     width: 50%;
@@ -819,7 +819,7 @@ nav .btn-border {
 }
 
 .home-hero {
-    background: linear-gradient(#000, #1f1e29 25%)
+    background: linear-gradient(#020307, #1f1e29 25%)
 }
 
 .title-section {
