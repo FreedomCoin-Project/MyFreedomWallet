@@ -1375,6 +1375,10 @@ a {
         align-items: center;
         justify-content: flex-start;
     }
+    .welcome-wrapper:after {
+        background-size: 700px;
+        background-position: center -30%;
+    }
     
     /* Main Wallet page */
     #PrivateTxt {
