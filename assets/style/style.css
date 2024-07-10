@@ -1270,12 +1270,7 @@ a {
     }
 }
 @media screen and (max-width: 992px) {
-    
-    .wlc nav .buttons-section {
-        flex-direction: column;
-        align-items: flex-end;
-        margin: 20px 5px;
-    }
+
     .welcome-wrapper:after {
         background-size: 80%;
         background-position: 170% center;
@@ -1353,7 +1348,13 @@ a {
         padding-bottom: 35px;
     }
 }
-
+@media screen and (max-width: 991px) {
+    .wlc nav .buttons-section {
+        flex-direction: column;
+        align-items: flex-end;
+        margin: 20px 5px;
+    }
+}
 @media screen and (max-width: 770px) {
 
     #pivx-price-box {
