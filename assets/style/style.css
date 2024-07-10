@@ -1268,7 +1268,12 @@ a {
     }
 }
 @media screen and (max-width: 992px) {
-
+    
+    .welcome-wrapper:after {
+        background-size: 80%;
+        background-position: 170% center;
+    }
+    
     /* Dashboard page */
 
     #big-frame-address {
