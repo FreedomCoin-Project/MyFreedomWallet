@@ -317,6 +317,10 @@ input::-moz-focus-inner {
 nav .btn-border {
     padding: 11px;
 }
+.btn-border:hover {
+    color: #fff;
+    text-decoration: none;
+}
 .btn-border img {
     position: relative;
     top: -1px;
@@ -814,7 +818,7 @@ nav .btn-border {
 }
 
 .home-hero {
-  /*  background: radial-gradient(45vw 80% at 90% 40%, rgba(162, 50, 255, .3), rgba(44, 11, 76, 0) 95%), linear-gradient(90deg, rgba(44, 11, 76, .9), rgba(80, 15, 131, .5) 60%, rgba(44, 11, 76, .9)), linear-gradient(35deg, rgba(44, 11, 76, .3), rgba(80, 15, 131, .3) 37%, rgba(44, 11, 76, .3) 0, rgba(80, 15, 131, .3) 76%, rgba(44, 11, 76, .3) 0, rgba(80, 15, 131, .3)), linear-gradient(90deg, #2c0b4c, #500f83 60%, #2c0b4c);*/
+    background: linear-gradient(#000, #1f1e29 25%)
 }
 
 .title-section {
