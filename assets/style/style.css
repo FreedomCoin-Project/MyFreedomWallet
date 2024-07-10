@@ -1603,7 +1603,7 @@ a {
 
 @media screen and (max-width: 480px) {
 
-    .buttons-section {
+    .welcome-wrapper .buttons-section {
         flex-direction: column;
         align-items: flex-start;
     }
