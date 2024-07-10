@@ -26,7 +26,9 @@ body {
     background-color: #1f1e29;
     color: #f2f8fa;
 }
-
+body.wlc {
+    overflow: hidden;
+}
 pre {
     display: block;
     font-size: 87.5%;
