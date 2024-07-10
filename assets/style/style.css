@@ -1045,14 +1045,14 @@ a {
 
 /*PIVX DASHBOARD*/
 .dashboard-item {
-    background: rgba(43, 9, 80, .75);
+    background: #1f1e29;
     border-radius: 6px;
     padding: 0 15% 10px 15%;
-    /*padding-right: 15%;
-    padding-left: 15%;*/
     text-align: center;
     float: left;
     margin-bottom: 15px;
+    border: 1px solid hsla(0, 0%, 100%, .1);
+    box-shadow: 0 4px 20px 0 rgb(0 0 0 / 30%);
 }
 
 .send-eligibility-section .container .column-padded-around .coinstat-icon,
