@@ -102,10 +102,9 @@ button:active {
 
 .nav-logo {
     display: flex;
-    width: 250px;
     margin-right: 1rem;
     color: #fff !important;
-    font-size: 22px;
+    font-size: 21px;
     font-weight: 800;
     white-space: nowrap;
     flex-direction: row;
@@ -118,6 +117,7 @@ button:active {
 .nav-link {
     font-weight: 500;
     font-size: 16px;
+    transition: .5s;
 }
 
 .nav-item {
@@ -302,6 +302,7 @@ input::-moz-focus-inner {
     font-weight: 700;
     text-decoration: none;
     border-radius: 200px;
+    cursor: pointer;
 }
 nav .btn-border {
     padding: 11px;
