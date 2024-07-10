@@ -1369,7 +1369,13 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-
+    
+    .welcome-wrapper { 
+        flex-direction: column-reverse;
+        align-items: center;
+        justify-content: flex-start;
+    }
+    
     /* Main Wallet page */
     #PrivateTxt {
         font-size: 17px;
