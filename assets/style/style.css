@@ -1602,7 +1602,12 @@ a {
 }
 
 @media screen and (max-width: 480px) {
-
+    .brand-logo {
+        width: 35px; 
+    }
+    .nav-logo {
+        font-size: 19px;
+    }
     .welcome-wrapper .buttons-section {
         flex-direction: column;
         align-items: flex-start;
