@@ -1391,14 +1391,15 @@ a {
     }
     .welcome-section h1 {
         font-size: 30px;
-        font-weight: 600;
+        font-weight: 300;
     }
     .welcome-section h5 {
         font-size: 17px;
+        font-weight: 100;
     }
     .btn_txt {
-        font-size: 15px;
-        font-weight: 500;
+        font-size: 12px;
+        font-weight: 400;
     }
 
     
