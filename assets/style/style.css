@@ -94,6 +94,7 @@ button:active {
 }
 
 .ptr {
+    width: 82%;
     cursor: pointer;
 }
 .wlc .ptr {
@@ -1366,6 +1367,9 @@ a {
     }
     nav .buttons-section:not(.wlc .buttons-section){
         border-left: 1px solid hsla(0, 0%, 100%, .1);
+    }
+    .nav-item:not(:first-child) { 
+        border-top: 1px solid hsla(0, 0%, 100%, .1);
     }
 }
 @media screen and (max-width: 770px) {
