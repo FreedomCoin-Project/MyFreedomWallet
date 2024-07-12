@@ -1356,7 +1356,7 @@ a {
         border-radius: 9px;
     }
     nav .navbar-collapse:not(.wlc .navbar-collapse){
-        border-left: 1px solid hsla(0, 0%, 100%, .1);
+        background: linear-gradient(transparent, #05060b);
     }
     nav .buttons-section {
         flex-direction: column;
