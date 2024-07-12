@@ -78,10 +78,12 @@
             <img class="brand-logo" src="./assets/images/freed-op.png" loading="lazy" alt="FreedomCoin Logo"> 
             <span class="brand-txt noselect">MyFreedWallet</span> 
           </a> 
-          <button id="navbarToggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+        <button id="navbarToggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </button>
           <div class="collapse navbar-collapse noselect" id="navbarNav">
 
             <!-- MAIN NAVBAR -->
@@ -615,6 +617,7 @@ Experience a non-custodial wallet that provides a full suite of DeFi services, a
 
     // Cached DOM elements
     const domStart = document.getElementById("start");
+    const navbarNav = document.getElementById("navbarNav");
     const domNavbarToggler = document.getElementById("navbarToggler");
     const domGuiStaking = document.getElementById('guiStaking');
     const domGuiWallet = document.getElementById('guiWallet');
@@ -1134,7 +1137,16 @@ Experience a non-custodial wallet that provides a full suite of DeFi services, a
       const wif = document.getElementById("wif").value;
       document.getElementById("rawTrx").value = cTx.sign(wif, 1); //SIGHASH_ALL DEFAULT 1
     }
-
+    
+    domNavbarToggler.addEventListener('click', () => {
+      domNavbarToggler.classList.toggle('collapsed');
+      if (navbarNav.classList.contains('show')) {
+        domNavbarToggler.classList.add('collapsed');
+      } else {
+        domNavbarToggler.classList.remove('collapsed');
+      }
+    });
+    
     function openTab(evt, tabName) {
       // Hide all screens and deactivate link highlights
       for (const domScreen of arrDomScreens) domScreen.style.display = "none";
