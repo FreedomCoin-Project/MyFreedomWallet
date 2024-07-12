@@ -78,12 +78,11 @@
             <img class="brand-logo" src="./assets/images/freed-op.png" loading="lazy" alt="FreedomCoin Logo"> 
             <span class="brand-txt noselect">MyFreedWallet</span> 
           </a> 
-        <button id="navbarToggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
-                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="line"></span>
-          <span class="line"></span>
-          <span class="line"></span>
-        </button>
+          <button id="navbarToggler" class="navbar-toggler collapsed" type="button" aria-label="Toggle navigation">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </button>
           <div class="collapse navbar-collapse noselect" id="navbarNav">
 
             <!-- MAIN NAVBAR -->
@@ -1140,25 +1139,23 @@ Experience a non-custodial wallet that provides a full suite of DeFi services, a
     
     domNavbarToggler.addEventListener('click', () => {
       domNavbarToggler.classList.toggle('collapsed');
-      if (navbarNav.classList.contains('show')) {
-        domNavbarToggler.classList.add('collapsed');
-      } else {
-        domNavbarToggler.classList.remove('collapsed');
-      }
+      navbarNav.classList.toggle('show');
     });
     
     function openTab(evt, tabName) {
       // Hide all screens and deactivate link highlights
       for (const domScreen of arrDomScreens) domScreen.style.display = "none";
       for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
-
+    
       // Show and activate the given screen
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
-
+    
       // Close the navbar if it's not already closed
-      if (!domNavbarToggler.className.includes("collapsed"))
-        domNavbarToggler.click();
+      if (navbarNav.classList.contains('show')) {
+        domNavbarToggler.classList.toggle('collapsed');
+        navbarNav.classList.toggle('show');
+      }
     }
     domStart.click();
 
