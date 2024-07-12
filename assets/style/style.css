@@ -1353,13 +1353,19 @@ a {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
+        border-radius: 9px;
+    }
+    nav .navbar-collapse:not(.wlc .navbar-collapse){
+        border-left: 1px solid hsla(0, 0%, 100%, .1);
     }
     nav .buttons-section {
         flex-direction: column;
         align-items: flex-end;
         padding: 20px 5px;
-        border-left: 1px solid hsla(0, 0%, 100%, .1);
         border-radius: 10px;
+    }
+    nav .buttons-section:not(.wlc .buttons-section){
+        border-left: 1px solid hsla(0, 0%, 100%, .1);
     }
 }
 @media screen and (max-width: 770px) {
