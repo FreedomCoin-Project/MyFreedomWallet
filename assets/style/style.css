@@ -1349,7 +1349,7 @@ a {
     }
 }
 @media screen and (max-width: 991px) {
-    .wlc nav .buttons-section {
+    nav .buttons-section {
         flex-direction: column;
         align-items: flex-end;
         margin: 20px 5px;
