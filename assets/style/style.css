@@ -1403,8 +1403,8 @@ a {
         justify-content: flex-start;
     }
     .welcome-wrapper:after {
-        background-size: 700px;
-        background-position: center -30%;
+        background-size: 150%;
+        background-position: center 10%;
     }
     .welcome-section h1 {
         font-size: 30px;
