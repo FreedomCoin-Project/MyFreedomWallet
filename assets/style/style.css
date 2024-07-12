@@ -1404,7 +1404,7 @@ a {
     }
     .welcome-wrapper:after {
         background-size: 150%;
-        background-position: center 10%;
+        background-position: center 9%;
     }
     .welcome-section h1 {
         font-size: 30px;
