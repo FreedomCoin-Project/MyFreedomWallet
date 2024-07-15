@@ -78,7 +78,7 @@
             <img class="brand-logo" src="./assets/images/freed-op.png" loading="lazy" alt="FreedomCoin Logo"> 
             <span class="brand-txt noselect">MyFreedWallet</span> 
           </a> 
-          <button id="navbarToggler" class="navbar-toggler collapsed" type="button" aria-label="Toggle navigation">
+          <button id="navbarToggler" class="navbar-toggler collapse show" type="button" aria-label="Toggle navigation">
             <span class="line"></span>
             <span class="line"></span>
             <span class="line"></span>
@@ -1149,6 +1149,11 @@ Experience a non-custodial wallet that provides a full suite of DeFi services, a
       // Close the navbar if it's not already closed
       if (!domNavbarToggler.className.includes("collapsed"))
         domNavbarToggler.click();
+      //$("#toggle-btn").click(function(){
+    	 	$("nav .navbar-collapse").slideToggle(500);
+		    $("#navbarToggler").toggleClass("collapsed collapse");
+      //});
+      
     }
     domStart.click();
 
