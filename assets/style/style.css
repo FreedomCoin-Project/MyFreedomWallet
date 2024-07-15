@@ -1298,9 +1298,7 @@ a {
     .navbar-toggler.collapsed .line:nth-child(3) {
       transform: rotate(-45deg)   translate(6px, -6px);
     }
-    .navbar-collapse {
-        flex-basis: unset;
-        flex-grow: unset;
+    .navbar-collapse { 
         max-height: 0;
         overflow: hidden;
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
