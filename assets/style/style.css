@@ -1374,13 +1374,13 @@ a {
 @media screen and (max-width: 991px) {
     nav .navbar-collapse > div {
         display: flex;
-        border-radius: 9px;
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
     }
     nav .navbar-collapse:not(.wlc .navbar-collapse){
         background: linear-gradient(transparent, #05060b);
+        border-radius: 9px;
     }
     nav .buttons-section {
         flex-direction: column;
