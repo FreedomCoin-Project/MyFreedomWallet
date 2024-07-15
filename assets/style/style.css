@@ -119,6 +119,46 @@ button:active {
     width: 40px;
     margin-right: 10px;
 }
+
+
+.navbar-toggler {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  outline: none;
+}
+
+.navbar-toggler .line {
+  width: 30px;
+  height: 3px;
+  background-color: #fff;
+  display: block;
+  margin: 6px auto;
+  transition: all 0.3s ease-in-out;
+}
+
+.navbar-toggler.collapsed .line:nth-child(1) {
+  transform: rotate(45deg)   translate(6px, 6px);
+}
+
+.navbar-toggler.collapsed .line:nth-child(2) {
+  opacity: 0;
+}
+
+.navbar-toggler.collapsed .line:nth-child(3) {
+  transform: rotate(-45deg)   translate(6px, -6px);
+}
+
+.navbar-collapse {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
+  opacity: 0;
+}
+
+
+
+
 .nav-link {
     font-weight: 500;
     font-size: 16px;
