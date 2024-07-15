@@ -616,7 +616,6 @@ Experience a non-custodial wallet that provides a full suite of DeFi services, a
 
     // Cached DOM elements
     const domStart = document.getElementById("start");
-    const navbarNav = document.getElementById("navbarNav");
     const domNavbarToggler = document.getElementById("navbarToggler");
     const domGuiStaking = document.getElementById('guiStaking');
     const domGuiWallet = document.getElementById('guiWallet');
@@ -1137,25 +1136,18 @@ Experience a non-custodial wallet that provides a full suite of DeFi services, a
       document.getElementById("rawTrx").value = cTx.sign(wif, 1); //SIGHASH_ALL DEFAULT 1
     }
     
-    domNavbarToggler.addEventListener('click', () => {
-      domNavbarToggler.classList.toggle('collapsed');
-      navbarNav.classList.toggle('show');
-    });
-    
     function openTab(evt, tabName) {
       // Hide all screens and deactivate link highlights
       for (const domScreen of arrDomScreens) domScreen.style.display = "none";
       for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
-    
+
       // Show and activate the given screen
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
-    
+
       // Close the navbar if it's not already closed
-      if (navbarNav.classList.contains('show')) {
-        domNavbarToggler.classList.toggle('collapsed');
-        navbarNav.classList.toggle('show');
-      }
+      if (!domNavbarToggler.className.includes("collapsed"))
+        domNavbarToggler.click();
     }
     domStart.click();
 
