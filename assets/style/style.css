@@ -68,19 +68,12 @@ button {
 
 button:hover {
     color: rgba(255, 255, 255, 0.95);
-    background-color: #380c6a;
-    border-color: #380c6a;
-    border-width: 1px;
-    border-style: solid;
 }
 
 button:focus,
 button:active {
     outline: none !important;
     box-shadow: none;
-    border-color: #7300ff;
-    border-width: 1px;
-    border-style: solid;
 }
 
 .hide-element {
@@ -1289,20 +1282,17 @@ a {
       margin: 6px auto;
       transition: all 0.3s ease-in-out;
     }
-    .navbar-toggler.collapsed .line:nth-child(1) {
+    .navbar-toggler.collapse .line:nth-child(1) {
       transform: rotate(45deg)   translate(6px, 6px);
     }
-    .navbar-toggler.collapsed .line:nth-child(2) {
+    .navbar-toggler.collapse .line:nth-child(2) {
       opacity: 0;
     }
-    .navbar-toggler.collapsed .line:nth-child(3) {
+    .navbar-toggler.collapse .line:nth-child(3) {
       transform: rotate(-45deg)   translate(6px, -6px);
     }
     .navbar-collapse { 
-        max-height: 0;
-        overflow: hidden;
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
-        opacity: 0;
     }
     .welcome-wrapper:after {
         background-size: 80%;
