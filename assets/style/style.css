@@ -1265,6 +1265,16 @@ a {
     }
 }
 @media screen and (min-width: 992px) {
+    .navbar-collapse {
+        flex-basis: unset;
+        flex-grow: unset; 
+    }
+    .navbar-collapse > div {
+        display: flex;
+        gap: 50px;
+    }
+}
+@media screen and (max-width: 992px) {
     .navbar-toggler {
       border: none;
       background: transparent;
@@ -1295,14 +1305,7 @@ a {
         overflow: hidden;
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         opacity: 0;
-    }
-    .navbar-collapse > div {
-        display: flex;
-        gap: 50px;
-    }
-}
-@media screen and (max-width: 992px) {
-
+    
     .welcome-wrapper:after {
         background-size: 80%;
         background-position: 170% center;
