@@ -1267,6 +1267,9 @@ a {
     .navbar-collapse {
         flex-basis: unset;
         flex-grow: unset;
+    }
+    .navbar-collapse > div {
+        display: flex;
         gap: 50px;
     }
 }
