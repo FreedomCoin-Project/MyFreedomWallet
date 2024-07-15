@@ -1305,7 +1305,7 @@ a {
         overflow: hidden;
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         opacity: 0;
-    
+    }
     .welcome-wrapper:after {
         background-size: 80%;
         background-position: 170% center;
