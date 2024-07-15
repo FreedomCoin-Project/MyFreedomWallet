@@ -44,7 +44,7 @@
   <link href="assets/fontawesome/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/style/style.css">
   <script type="text/javascript" src="assets/bootstrap-4.5.0/js/jquery.js"></script>
-  <script type="text/javascript" src="assets/bootstrap-4.5.0/js/bootstrap.js"></script>
+  <!--<script type="text/javascript" src="assets/bootstrap-4.5.0/js/bootstrap.js"></script>-->
   <script type="text/javascript" src="scripts/libs/jdenticon.min.js"></script>
 
   <!--- IMPORTANT: CHAIN PARAMS BELOW, DO NOT EDIT UNLESS YOU'RE ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING  --->
@@ -78,31 +78,33 @@
             <img class="brand-logo" src="./assets/images/freed-op.png" loading="lazy" alt="FreedomCoin Logo"> 
             <span class="brand-txt noselect">MyFreedWallet</span> 
           </a> 
-          <button id="navbarToggler" class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarNav"
-            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+          <button id="navbarToggler" class="navbar-toggler collapsed show" type="button" aria-label="Toggle navigation">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
           </button>
           <div class="collapse navbar-collapse noselect" id="navbarNav">
-
-            <!-- MAIN NAVBAR -->
-            <ul class="navbar-nav mr-auto ptr">
-              
-              <li class="nav-item"><a id='start' class="nav-link tablinks active" onclick="openTab(event, 'keypair')">Dashboard</a></li>
-              <li class="nav-item"><a id="txTab" class="nav-link tablinks" onclick="openTab(event, 'Transaction')">Send</a></li>
-              <li class="nav-item"><a id="stakeTab" class="nav-link tablinks" onclick="openTab(event, 'StakingTab')">Stake</a></li>
-            </ul>
-
-            <!-- SIDE NAVBAR -->
-            <div class="form-inline my-2 my-lg-0" style="display:none;">
+            <div>
+              <!-- MAIN NAVBAR -->
               <ul class="navbar-nav mr-auto ptr">
-                <li class="nav-item"><a class="nav-link tablinks active" id="Network" onclick="toggleNetwork()"></a></li>
-                <li class="nav-item"><a class="nav-link tablinks active" id="Debug" onclick="toggleDebug()"></a></li>
+                
+                <li class="nav-item"><a id='start' class="nav-link tablinks active" onclick="openTab(event, 'keypair')">Dashboard</a></li>
+                <li class="nav-item"><a id="txTab" class="nav-link tablinks" onclick="openTab(event, 'Transaction')">Send</a></li>
+                <li class="nav-item"><a id="stakeTab" class="nav-link tablinks" onclick="openTab(event, 'StakingTab')">Stake</a></li>
               </ul>
-            </div>
-            <div class="buttons-section">
-                <a href="https://freedomcoin.global" class="btn-border"><img src="./assets/icons/home.svg" loading="eager" alt="FreedomCoin"></a>
-                <a class="btn-border"><img src="./assets/icons/game.svg" loading="eager" alt="Games"></a>
-                <a class="btn-border"><img src="./assets/icons/swap.svg" loading="eager" alt="Swap"></a>
+  
+              <!-- SIDE NAVBAR -->
+              <div class="form-inline my-2 my-lg-0" style="display:none;">
+                <ul class="navbar-nav mr-auto ptr">
+                  <li class="nav-item"><a class="nav-link tablinks active" id="Network" onclick="toggleNetwork()"></a></li>
+                  <li class="nav-item"><a class="nav-link tablinks active" id="Debug" onclick="toggleDebug()"></a></li>
+                </ul>
+              </div>
+              <div class="buttons-section">
+                  <a href="https://freedomcoin.global" class="btn-border"><img src="./assets/icons/home.svg" loading="eager" alt="FreedomCoin"></a>
+                  <a class="btn-border"><img src="./assets/icons/game.svg" loading="eager" alt="Games"></a>
+                  <a class="btn-border"><img src="./assets/icons/swap.svg" loading="eager" alt="Swap"></a>
+              </div>
             </div>
           </div>
         </div>
@@ -1134,7 +1136,12 @@ Experience a non-custodial wallet that provides a full suite of DeFi services, a
       const wif = document.getElementById("wif").value;
       document.getElementById("rawTrx").value = cTx.sign(wif, 1); //SIGHASH_ALL DEFAULT 1
     }
-
+	function toggleNavigation() {
+	    $("nav .navbar-collapse").slideToggle(500);
+	    $("#navbarToggler").toggleClass("collapsed collapse");
+	}
+	$("#navbarToggler").click(toggleNavigation);
+	  
     function openTab(evt, tabName) {
       // Hide all screens and deactivate link highlights
       for (const domScreen of arrDomScreens) domScreen.style.display = "none";
@@ -1146,7 +1153,7 @@ Experience a non-custodial wallet that provides a full suite of DeFi services, a
 
       // Close the navbar if it's not already closed
       if (!domNavbarToggler.className.includes("collapsed"))
-        domNavbarToggler.click();
+    	 toggleNavigation();
     }
     domStart.click();
 
