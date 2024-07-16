@@ -11,32 +11,27 @@
   <title>My Freedom Wallet</title>
   <meta name="title" content="My Freedom Wallet">
   <meta name="description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened Freedom wallet.">
-  <meta name="keywords" content="web,wallet,webwallet,crypto,cryptocurrency,opensource,oss,pivx,staking,masternodes,exchange,swap,decentralized">
-
+  <meta name="keywords" content="web,wallet,webwallet,crypto,cryptocurrency,opensource,oss,freed,staking,masternodes,exchange,swap,decentralized">
   <meta name="mobile-web-app-capable" content="yes">
-
   <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:locale" content="en_GB">
   <meta property="og:url" content="https://wallet.freedomcoin.global">
   <meta property="og:title" content="My Freed wallet">
-  <meta property="og:description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened Freed wallet.">
+  <meta property="og:description"
+    content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened Freed wallet.">
   <meta property="og:image" content="https://wallet.freedomcoin.global/assets/images/wallet_g.png">
-
   <!-- Twitter -->
   <meta property="twitter:card" content="summary_large_image">
   <meta property="twitter:url" content="https://twitter.com/FreedomcoinWW">
   <meta property="twitter:title" content="My Freed wallet">
   <meta property="twitter:description" content="The wallet of the future - Receive, Send, Stake and Exchange using a completely decentralized, open-source, battle-hardened Freedom wallet.">
   <meta property="twitter:image" content="https://wallet.freedomcoin.global/assets/images/wallet_g.png">
-
   <!-- Colour Theme -->
   <meta name="msapplication-TileColor" content="#470e75">
   <meta name="theme-color" content="#470e75">
-
   <link rel="icon" type="image/png" href="https://wallet.freedomcoin.global/assets/images/freed-op.png">
   <link rel="canonical" href="https://wallet.freedomcoin.global">
-
   <link rel="preconnect" href="https://fonts.gstatic.com">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
@@ -44,8 +39,8 @@
   <link href="assets/fontawesome/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/style/style.css">
   <script type="text/javascript" src="assets/bootstrap-4.5.0/js/jquery.js"></script>
-  <!--<script type="text/javascript" src="assets/bootstrap-4.5.0/js/bootstrap.js"></script>-->
   <script type="text/javascript" src="scripts/libs/jdenticon.min.js"></script>
+
 
   <!--- IMPORTANT: CHAIN PARAMS BELOW, DO NOT EDIT UNLESS YOU'RE ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING  --->
   <script>
@@ -74,10 +69,10 @@
       <!-- NAVBAR -->
       <nav class="navbar navbar-expand-lg sticky-top navbar-dark navbarSpecial">
         <div class="container">
-          <a href="./" class="nav-logo"> 
-            <img class="brand-logo" src="./assets/images/freed-op.png" loading="lazy" alt="FreedomCoin Logo"> 
-            <span class="brand-txt noselect">MyFreedWallet</span> 
-          </a> 
+          <a href="./" class="nav-logo">
+            <img class="brand-logo" src="./assets/images/freed-op.png" loading="lazy" alt="FreedomCoin Logo">
+            <span class="brand-txt noselect">MyFreedWallet</span>
+          </a>
           <button id="navbarToggler" class="navbar-toggler collapsed show" type="button" aria-label="Toggle navigation">
             <span class="line"></span>
             <span class="line"></span>
@@ -87,23 +82,28 @@
             <div>
               <!-- MAIN NAVBAR -->
               <ul class="navbar-nav mr-auto ptr">
-                
-                <li class="nav-item"><a id='start' class="nav-link tablinks active" onclick="openTab(event, 'keypair')">Dashboard</a></li>
-                <li class="nav-item"><a id="txTab" class="nav-link tablinks" onclick="openTab(event, 'Transaction')">Send</a></li>
-                <li class="nav-item"><a id="stakeTab" class="nav-link tablinks" onclick="openTab(event, 'StakingTab')">Stake</a></li>
+
+                <li class="nav-item"><a id='start' class="nav-link tablinks active"
+                    onclick="openTab(event, 'keypair')">Dashboard</a></li>
+                <li class="nav-item"><a id="txTab" class="nav-link tablinks"
+                    onclick="openTab(event, 'Transaction')">Send</a></li>
+                <li class="nav-item"><a id="stakeTab" class="nav-link tablinks"
+                    onclick="openTab(event, 'StakingTab')">Stake</a></li>
               </ul>
-  
+
               <!-- SIDE NAVBAR -->
               <div class="form-inline my-2 my-lg-0" style="display:none;">
                 <ul class="navbar-nav mr-auto ptr">
-                  <li class="nav-item"><a class="nav-link tablinks active" id="Network" onclick="toggleNetwork()"></a></li>
+                  <li class="nav-item"><a class="nav-link tablinks active" id="Network" onclick="toggleNetwork()"></a>
+                  </li>
                   <li class="nav-item"><a class="nav-link tablinks active" id="Debug" onclick="toggleDebug()"></a></li>
                 </ul>
               </div>
               <div class="buttons-section">
-                  <a href="https://freedomcoin.global" class="btn-border"><img src="./assets/icons/home.svg" loading="eager" alt="FreedomCoin"></a>
-                  <a class="btn-border"><img src="./assets/icons/game.svg" loading="eager" alt="Games"></a>
-                  <a class="btn-border"><img src="./assets/icons/swap.svg" loading="eager" alt="Swap"></a>
+                <a href="https://freedomcoin.global" class="btn-border" target="_blank"><img src="./assets/icons/home.svg"
+                    loading="eager" alt="FreedomCoin"></a>
+                <a class="btn-border"><img src="./assets/icons/game.svg" loading="eager" alt="Games"></a>
+                <a class="btn-border"><img src="./assets/icons/swap.svg" loading="eager" alt="Swap"></a>
               </div>
             </div>
           </div>
@@ -116,7 +116,8 @@
       <div class="warning-message" id='outdated'>
         <div class="container">
           <p>WARNING: your version is outdated,
-          please update to the newest stable version at the <a href='https://github.com/PIVX-Labs/MyPIVXWallet/releases'>MyPIVXWallet Github</a>
+            please update to the newest stable version at the <a
+              href='https://github.com/FreedomCoin-Project/MyFreedomWallet'>MyFreedWallet Github</a>
           </p>
         </div>
       </div>
@@ -124,7 +125,8 @@
 
 
       <!-- // QR MODAL -->
-      <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel" aria-hidden="true">
+      <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
             <div class="modal-header">
@@ -146,158 +148,66 @@
       <div class="container">
         <div class="row no-gutters">
           <div class='col-md-12 rm-pd'>
-            <div id="home" class="tabcontent">
-
-              <!-- PIVX TITLE SECTION -->
-              <div class="col-md-12 title-section float-left rm-pd">
-                  <h1 class="pivx-bold-title center-text"><span>Welcome to</span> My Freedom wallet!</h1>
-              </div>
-              <!-- // PIVX TITLE SECTION -->
-
-              <!-- PIVX FEATURE SECTION -->
-              <div class="col-md-12 features-section float-left rm-pd intro-page">
-
-                <!-- PIVX FEATURE -->
-                <div class="col-md-6 float-left pivx-feature-father">
-                  <div class="col-md-11 pivx-feature-interior">
-
-                    <div class="col-md-12 feature-icon">
-                      <img src="https://pivx.org/build/images/content/img_governance.png" alt="PIVX Governance">
-                    </div>
-
-                    <h4>Be your own Bank!</h4>
-                    <h5>
-                      MFW has <b>no custody</b> over your funds. You are in full ownership of your keys and your FreedomCoin.
-                    </h5>
-                    <span onclick="window.location.href='https://forum.pivx.org/threads/mypivxwallet-an-easy-open-source-self-sovereign-pivx-wallet.873/'" class="purple-icon-link ptr">
-                      Know more<span class="link-icon link-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                    </span>
-                  </div>
-                </div>
-                <!-- // PIVX FEATURE -->
-
-                <!-- PIVX FEATURE -->
-                <div class="col-md-6 float-left pivx-feature-father">
-                  <div class="col-md-11 pivx-feature-interior">
-
-                    <div class="col-md-12 feature-icon">
-                      <img src="https://pivx.org/build/images/content/img_pos.png" alt="PIVX Proof of Stake (PoS)">
-                    </div>
-
-                    <h4>Universal and Portable</h4>
-                    <h5>
-                      You can generate cryptographically-secure addresses with your browser and hardware.
-                    </h5>
-                    <span onclick="window.location.href='https://forum.pivx.org/threads/mypivxwallet-an-easy-open-source-self-sovereign-pivx-wallet.873/'" class="purple-icon-link ptr">
-                      Know more<span class="link-icon link-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                    </span>
-                  </div>
-                </div>
-                <!-- // PIVX FEATURE -->
-
-                <!-- PIVX FEATURE -->
-                <div class="col-md-6 float-left pivx-feature-father">
-                  <div class="col-md-11 pivx-feature-interior">
-
-                    <div class="col-md-12 feature-icon">
-                      <img src="https://pivx.org/build/images/content/img_privacy.png" alt="PIVX Privacy" class="smaller-feature">
-                    </div>
-
-                    <h4>Don't trust, verify!</h4>
-                    <h5>
-                      MyFreedomWallet (MFW) is completely open-source, available on the FreedomCoin github.
-                    </h5>
-                    <span onclick="window.location.href='https://forum.pivx.org/threads/mypivxwallet-an-easy-open-source-self-sovereign-pivx-wallet.873/'" class="purple-icon-link ptr">
-                      Know more<span class="link-icon link-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                    </span>
-                  </div>
-                </div>
-                <!-- // PIVX FEATURE -->
-
-                <!-- PIVX FEATURE -->
-                <div class="col-md-6 float-left pivx-feature-father">
-                  <div class="col-md-11 pivx-feature-interior">
-
-                    <div class="col-md-12 feature-icon">
-                      <img src="https://pivx.org/build/images/content/img_slider_bars.png" alt="PIVX Bar Chart" class="smaller-feature">
-                    </div>
-
-                    <h4>For the community</h4>
-                    <h5>
-                      MFW is built with integrity without any development fees, no privacy intrusions or advertising. Just a simple way to manage your funds.
-                    </h5>
-                    <span onclick="window.location.href='https://forum.pivx.org/threads/mypivxwallet-an-easy-open-source-self-sovereign-pivx-wallet.873/'" class="purple-icon-link ptr">
-                      Know more<span class="link-icon link-icon-suffix"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                    </span>
-                  </div>
-                </div>
-                <!-- // PIVX FEATURE -->
-
-              </div>
-              <!-- // PIVX FEATURE SECTION -->
-
-              <!-- PIVX DONATION SECTION -->
-              <div class="col-md-12 donation-section float-left rm-pd text-center">
-                  <button class="pivx-button-big" onclick="openDonatePage()">
-                            <span class="buttoni-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 70"><path d="M3.497 25.717C1.401 25.588 0 23.847 0 21.753v-2.535c0-.775.149-1.593.925-1.593h22.719c2.173 0 3.941 1.861 3.941 4.034 0 2.174-1.769 3.988-3.941 3.988l-20.207.048c-.02 0 .08.023.06.022z"></path><path d="M5.229 69.625C4.455 69.625 4 68.494 4 67.719V38.661c0-1.911 1.447-3.731 3.258-3.989.175-.029.285-.047.483-.047h21.525c7.137 0 12.751-5.86 12.751-13.027 0-7.096-5.528-12.841-12.586-13.177-.002 0-.671.016-1.41.016l-20.335.066C5.529 8.373 4 6.652 4 4.558V2.023C4 1.247 4.407.625 5.183.625h24.059c11.57 0 20.654 9.546 20.706 21.104 0 9.378-6.307 17.727-15.337 20.311-1.622.445-3.122.705-4.735.778L12 42.842v22.485c0 2.156-2.141 4.298-4.235 4.298H5.229z"></path></svg></span>
-                            <span class="buttoni-text">Donate - Pay with FreedomCoin</span>
-                            <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                  </button>
-
-              </div>
-              <!-- // PIVX DONATION SECTION -->
-
-            </div>
-
 
             <!-- KEYPAIR SECTION -->
             <div id="keypair" class="tabcontent">
 
               <!-- PIVX TITLE SECTION -->
               <div class="col-md-12 title-section rm-pd">
-                  <h3 class="pivx-bold-title center-text">Dashboard</h3>
+                <h3 class="pivx-bold-title center-text">Dashboard</h3>
               </div>
               <!-- // PIVX TITLE SECTION -->
 
 
-           <!-- ACCESS WALLET -->
-           <div id="accessWallet" class="dashboard-item" >
-            <div class="container">
+              <!-- ACCESS WALLET -->
+              <div id="accessWallet" class="dashboard-item">
+                <div class="container">
 
-              <div class="col-md-12 dashboard-title">
-                <h3 class="pivx-bold-title-smaller">My Wallet</h3>
-                <p>This will import a Freedom wallet that you hold via it's private key, loading the address and pulling your existing wallet balance from the patriot node network.
-                  <br>
-                  <span style="opacity: 0.75; font-size: small;">Warning : This (MFW) web wallet is run as a single page application and there is no record of your private key.  <u>Private key can not be recovered.</u></span>
-                </p>
-              </div>
+                  <div class="col-md-12 dashboard-title">
+                    <h3 class="pivx-bold-title-smaller">My Wallet</h3>
+                    <p>This will import a Freedom wallet that you hold via it's private key, loading the address and
+                      pulling your existing wallet balance from the patriot node network.
+                      <br>
+                      <span style="opacity: 0.75; font-size: small;">Warning : This (MFW) web wallet is run as a single
+                        page application and there is no record of your private key. <u>Private key can not be
+                          recovered.</u></span>
+                    </p>
+                  </div>
 
-              <!-- IMPORT WALLET -->
-              <input class="hide-element" type="text" id="clipboard">
-              <div id='importWallet' style='display: none;'>
-                <input type="password" id='privateKey' placeholder="Private Key">
-                <button class="pivx-button-big" onclick="guiImportWallet()">
-                              <span class="buttoni-icon"><i class="fas fa-file-upload fa-tiny-margin"></i></span>
-                              <span class="buttoni-text" id="importWalletText">Import Wallet</span>
-                              <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
+                  <!-- IMPORT WALLET -->
+                  <input class="hide-element" type="text" id="clipboard">
+                  <div id='importWallet' style='display: none;'>
+                    <input type="password" id='privateKey' placeholder="Private Key">
+                    <button class="pivx-button-big btn-border" onclick="guiImportWallet()">
+                      <span class="buttoni-icon"><i class="fas fa-file-upload fa-tiny-margin"></i></span>
+                      <span class="buttoni-text btn_txt" id="importWalletText">Import Wallet</span>
+                      <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                          <path
+                            d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                          </path>
+                        </svg></span>
                     </button>
-              </div>
-              <!-- // IMPORT WALLET -->
+                  </div>
+                  <!-- // IMPORT WALLET -->
 
-              <button class="pivx-button-big" id="accessWalletBtn" onclick="accessOrImportWallet()">
-                          <span class="buttoni-text" id='wToggle'>Access My Wallet</span>
-                          <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                </button>
-            </div>
-          </div>
-          <!-- // ACESSS WALLET -->
+                  <button class="pivx-button-big btn-border" id="accessWalletBtn" onclick="accessOrImportWallet()">
+                    <span class="buttoni-text btn_txt" id='wToggle'>Access My Wallet</span>
+                    <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path
+                          d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                        </path>
+                      </svg></span>
+                  </button>
+                </div>
+              </div>
+              <!-- // ACESSS WALLET -->
 
               <br>
 
               <!-- WALLET FUNCTIONALITIES -->
 
               <!-- WARNING -->
-             <div id='genKeyWarning' style='display: none;' class="alert alert-danger col-md-12" role="alert">
+              <div id='genKeyWarning' style='display: none;' class="alert alert-danger col-md-12" role="alert">
                 <div style="max-width: 100% !important;">
                   <p id="encryptWarningText" class="center-text">
                     <b>WARNING</b><br>
@@ -305,15 +215,27 @@
                     Would you like to encrypt & save your wallet in your browser?
                   </p>
                 </div>
-                <div id="encryptPassword" style="display: none !important; max-width: 100% !important; max-width: 100% !important;">
-                  <input class="center-text" style="width: 100%; font-family: monospace;" type="password" id="newPassword" placeholder="Enter Password">
-                  <input class="center-text" style="width: 100%; font-family: monospace;" type="password" id="newPasswordRetype" placeholder="Re-type Password">
+                <div id="encryptPassword"
+                  style="display: none !important; max-width: 100% !important; max-width: 100% !important;">
+                  <input class="center-text" style="width: 100%; font-family: monospace;" type="password"
+                    id="newPassword" placeholder="Enter Password">
+                  <input class="center-text" style="width: 100%; font-family: monospace;" type="password"
+                    id="newPasswordRetype" placeholder="Re-type Password">
                 </div>
-                  <button class="pivx-button-big" onclick="guiEncryptWallet()" style="float: none;margin: 0 auto;display: block;">
-                    <span class="buttoni-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path d="M85.967 10.65l-32.15-9.481a13.466 13.466 0 00-7.632 0l-32.15 9.48C11.661 11.351 10 13.567 10 16.042v26.623c0 12.321 3.67 24.186 10.609 34.31 6.774 9.885 16.204 17.49 27.264 21.99a5.612 5.612 0 004.251 0c11.061-4.5 20.491-12.104 27.266-21.99C86.329 66.85 90 54.985 90 42.664V16.042a5.656 5.656 0 00-4.033-5.392zM69 68.522C69 70.907 67.03 72 64.584 72H34.092C31.646 72 30 70.907 30 68.522v-23.49C30 42.647 31.646 41 34.092 41H37v-9.828C37 24.524 41.354 18.5 49.406 18.5 57.37 18.5 62 24.066 62 31.172V41h2.584C67.03 41 69 42.647 69 45.032v23.49zM58 41v-9.828c0-4.671-3.708-8.472-8.5-8.472-4.791 0-8.5 3.8-8.5 8.472V41h17z"></path></svg></span>
-                    <span class="buttoni-text" id="encryptButton">Set Password</span>
-                    <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                  </button>
+                <button class="pivx-button-big btn-border" onclick="guiEncryptWallet()"
+                  style="float: none;margin: 0 auto;display: block;">
+                  <span class="buttoni-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+                      <path
+                        d="M85.967 10.65l-32.15-9.481a13.466 13.466 0 00-7.632 0l-32.15 9.48C11.661 11.351 10 13.567 10 16.042v26.623c0 12.321 3.67 24.186 10.609 34.31 6.774 9.885 16.204 17.49 27.264 21.99a5.612 5.612 0 004.251 0c11.061-4.5 20.491-12.104 27.266-21.99C86.329 66.85 90 54.985 90 42.664V16.042a5.656 5.656 0 00-4.033-5.392zM69 68.522C69 70.907 67.03 72 64.584 72H34.092C31.646 72 30 70.907 30 68.522v-23.49C30 42.647 31.646 41 34.092 41H37v-9.828C37 24.524 41.354 18.5 49.406 18.5 57.37 18.5 62 24.066 62 31.172V41h2.584C67.03 41 69 42.647 69 45.032v23.49zM58 41v-9.828c0-4.671-3.708-8.472-8.5-8.472-4.791 0-8.5 3.8-8.5 8.472V41h17z">
+                      </path>
+                    </svg></span>
+                  <span class="buttoni-text btn_txt" id="encryptButton">Set Password</span>
+                  <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                      <path
+                        d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                      </path>
+                    </svg></span>
+                </button>
               </div>
               <!-- // WARNING -->
               <br>
@@ -321,51 +243,62 @@
               <!-- WALLET FEATURES -->
               <div id="guiWallet" style="display: none;">
                 <div id="bcg-wallet-box">
-                    <div id="headline-balance">
-                        <div id="balance-box" class="large-box">
-                            <div id="window-icon-piv">
-                                <div id="piv-ring"></div>
-                                <div id="number-piv">
-                                    <p id="guiBalanceBox"><b id="guiBalance">~</b> FREED</p>
-                                </div>
-                            </div>
-                            <div id="bal-title">
-                                <h3 class="noselect balance-title">Balance &nbsp;&nbsp;<span id="balanceReload" class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
-                            </div>
+                  <div id="headline-balance">
+                    <div id="balance-box" class="large-box">
+                      <div id="window-icon-piv">
+                        <div id="piv-ring"></div>
+                        <div id="number-piv">
+                          <p id="guiBalanceBox"><b id="guiBalance">~</b> FREED</p>
                         </div>
+                      </div>
+                      <div id="bal-title">
+                        <h3 class="noselect balance-title">Balance &nbsp;&nbsp;<span id="balanceReload"
+                            class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
+                      </div>
                     </div>
-                      <!-- WALLET FEATURE -->
-                    <div id="big-frame-address">
-                        <div id="address-box" class="large-box">
-                            <div id="title-address-box">
-                                <h3 class="noselect addr-title">Address</h3>
-                            </div>
-                            <div id="box-info-address">
-                                <div id="ring">
-                                    <canvas id="identicon" class="innerShadow" width="65" height="65" data-jdenticon-value=""></canvas>
-                                </div>
-                                <div id="address-info">
-                                    <b id="guiAddress">~</b>
-                                    <b id="guiQRButton">
-                                        <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>
-                                        <i onclick="toClipboard('guiAddress', this)" id="guiAddressCopy" class="fas fa-clipboard fa-stacked-ptr"></i>
-                                    </b>
-                                </div>
-                            </div>
-                            <div id="pubkey-padd">
-                                <div id="pubkey-box" class="col-md-4 desktop-pubkey">
-                                  <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82" height="82"></div>
-                                  <div id="PublicQR" class="margin-padded-qr" style="display: block;"><img src="" width="82" height="82"></div>
-                                  <textarea id="PrivateTxt" style="display: none;" disabled="" class="form-control private-key-area"></textarea>
-                                  <button class="pivx-button-big" onclick="toggleKeyView()">
-                                      <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                                      <span class="buttoni-text" id="guiViewKey">Pubkey QR</span>
-                                      <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                                  </button>
-                                </div>
-                            </div>
+                  </div>
+                  <!-- WALLET FEATURE -->
+                  <div id="big-frame-address">
+                    <div id="address-box" class="large-box">
+                      <div id="title-address-box">
+                        <h3 class="noselect addr-title">Address</h3>
+                      </div>
+                      <div id="box-info-address">
+                        <div id="ring">
+                          <canvas id="identicon" class="innerShadow" width="65" height="65"
+                            data-jdenticon-value=""></canvas>
                         </div>
+                        <div id="address-info">
+                          <b id="guiAddress">~</b>
+                          <b id="guiQRButton">
+                            <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>
+                            <i onclick="toClipboard('guiAddress', this)" id="guiAddressCopy"
+                              class="fas fa-clipboard fa-stacked-ptr"></i>
+                          </b>
+                        </div>
+                      </div>
+                      <div id="pubkey-padd">
+                        <div id="pubkey-box" class="col-md-4 desktop-pubkey">
+                          <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82"
+                              height="82"></div>
+                          <div id="PublicQR" class="margin-padded-qr" style="display: block;"><img src="" width="82"
+                              height="82"></div>
+                          <textarea id="PrivateTxt" style="display: none;" disabled=""
+                            class="form-control private-key-area"></textarea>
+                          <button class="pivx-button-big btn-border" onclick="toggleKeyView()">
+                            <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
+                            <span class="buttoni-text btn_txt" id="guiViewKey">Pubkey QR</span>
+                            <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg"
+                                viewBox="0 0 32 32">
+                                <path
+                                  d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                                </path>
+                              </svg></span>
+                          </button>
+                        </div>
+                      </div>
                     </div>
+                  </div>
                 </div>
               </div>
               <!-- WALLET FEATURES -->
@@ -379,39 +312,51 @@
                   <div class="col-md-12 dashboard-title">
                     <h3 class="pivx-bold-title" style="font-size:28px;">Vanity Wallet</h3>
                     <span class="badge badge-warning">Experimental</span>
-                    <p>This will create a new FreedomCoin wallet with a customized prefix that you choose, Enter a few characters after the initial letter "T" and we will find a custom wallet address for you if available.</p>
+                    <p>This will create a new FreedomCoin wallet with a customized prefix that you choose, Enter a few
+                      characters after the initial letter "T" and we will find a custom wallet address for you if
+                      available.</p>
                   </div>
 
 
-                  <input style="display:none;" type="text" id='prefix' placeholder="Address Prefix" onkeyup="checkVanity()">
+                  <input style="display:none;" type="text" id='prefix' placeholder="Address Prefix"
+                    onkeyup="checkVanity()">
 
-                  <button class="pivx-button-big" onclick="generateVanityWallet()">
-                              <span class="buttoni-text" id="vanButtonText">Create A Vanity Wallet</span>
-                              <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                    </button>
+                  <button class="pivx-button-big btn-border" onclick="generateVanityWallet()">
+                    <span class="buttoni-text btn_txt" id="vanButtonText">Create A Vanity Wallet</span>
+                    <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path
+                          d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                        </path>
+                      </svg></span>
+                  </button>
                 </div>
               </div>
               <!-- // GENERATE VANITY WALLET -->
               <br>
 
-                <!-- GENERATE WALLET -->
-                <div id='generateWallet' class="dashboard-item">
-                  <div class="container">
+              <!-- GENERATE WALLET -->
+              <div id='generateWallet' class="dashboard-item">
+                <div class="container">
 
-  
-                    <div class="col-md-12 dashboard-title">
-                      <h3 class="pivx-bold-title-smaller">New Wallet</h3>
-                      <p>This will create a new, random Freedom wallet that will contain no initial funds, you may transfer to-and-from this wallet with ease.</p>
-                    </div>
-  
-  
-                    <button class="pivx-button-big" onclick="generateWallet()">                              
-                                <span class="buttoni-text">Create A New Wallet</span>
-                                <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                      </button>
+
+                  <div class="col-md-12 dashboard-title">
+                    <h3 class="pivx-bold-title-smaller">New Wallet</h3>
+                    <p>This will create a new, random Freedom wallet that will contain no initial funds, you may
+                      transfer to-and-from this wallet with ease.</p>
                   </div>
+
+
+                  <button class="pivx-button-big btn-border" onclick="generateWallet()">
+                    <span class="buttoni-text btn_txt">Create A New Wallet</span>
+                    <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path
+                          d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                        </path>
+                      </svg></span>
+                  </button>
                 </div>
-                <!-- // GENERATE WALLET -->
+              </div>
+              <!-- // GENERATE WALLET -->
               <br>
 
 
@@ -422,49 +367,61 @@
 
             <div id="StakingTab" class="tabcontent">
               <!-- STAKING FEATURES -->
-              <p id="info" class="minor-notif-subtext"><b>New Feature!</b><br>Please be aware MPW Cold Staking is a new, slightly experimental feature, it may be unstable, and is currently slow. Please have patience when using this feature, and wait for block confirmations before actions and balances are shown on-screen.</p>
+              <p id="info" class="minor-notif-subtext"><b>New Feature!</b><br>Please be aware MPW Cold Staking is a new,
+                slightly experimental feature, it may be unstable, and is currently slow. Please have patience when
+                using this feature, and wait for block confirmations before actions and balances are shown on-screen.
+              </p>
               <div class="add-frame">
-              <div class="staking-banner-top">
-                <div id="staking-rectangle" class="col-md-4">
+                <div class="staking-banner-top">
+                  <div id="staking-rectangle" class="col-md-4">
                     <div id="pivx-price-box">
-                        <div id="icon-box-piv">
-                            <div id="piv-price" class="staking-piv-icon"></div>
-                        </div>
-                        <div id="piv-price-amount">
-                            <p id="guiBalanceBoxStaking"><b id="guiBalanceStaking">~</b> FREED</p>
-                        </div>
+                      <div id="icon-box-piv">
+                        <div id="piv-price" class="staking-piv-icon"></div>
+                      </div>
+                      <div id="piv-price-amount">
+                        <p id="guiBalanceBoxStaking"><b id="guiBalanceStaking">~</b> FREED</p>
+                      </div>
                     </div>
                     <div id="staking-box">
-                      <h3 id="stake-title" class="noselect">Staking &nbsp;&nbsp;<span id="balanceReloadStaking" class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
+                      <h3 id="stake-title" class="noselect">Staking &nbsp;&nbsp;<span id="balanceReloadStaking"
+                          class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
                     </div>
+                  </div>
                 </div>
-            </div>
-              <br>
-              <div class="staking-banner-bottom">
-                <div class="stake-box large-box col-md-4">
-                  <h5 id="availToDelegate" class="stake-balances">Available: 0 FREED</h5>
-                  <textarea id="delegateAmount" class="stake-input form-control private-key-area"></textarea>
-                  <div class="button-padd">
-                      <button class="pivx-button-big" onclick="delegateGUI()">
-                                  <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                                  <span class="buttoni-text">Delegate</span>
-                                  <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                        </button>
-                 </div>
+                <br>
+                <div class="staking-banner-bottom">
+                  <div class="stake-box large-box col-md-4">
+                    <h5 id="availToDelegate" class="stake-balances">Available: 0 FREED</h5>
+                    <textarea id="delegateAmount" class="stake-input form-control private-key-area"></textarea>
+                    <div class="button-padd">
+                      <button class="pivx-button-big btn-border" onclick="delegateGUI()">
+                        <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
+                        <span class="buttoni-text btn_txt">Delegate</span>
+                        <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                            <path
+                              d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                            </path>
+                          </svg></span>
+                      </button>
+                    </div>
+                  </div>
+                  <div class="stake-box large-box col-md-4">
+                    <h5 id="availToUndelegate" class="stake-balances">Staking: 0 FREED</h5>
+                    <textarea id="undelegateAmount" class="stake-input form-control private-key-area"></textarea>
+                    <div class="button-padd">
+                      <button class="pivx-button-big btn-border" onclick="undelegateGUI()">
+                        <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
+                        <span class="buttoni-text btn_txt">Undelegate</span>
+                        <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                            <path
+                              d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                            </path>
+                          </svg></span>
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <div class="stake-box large-box col-md-4">
-                  <h5 id="availToUndelegate" class="stake-balances">Staking: 0 FREED</h5>
-                  <textarea id="undelegateAmount" class="stake-input form-control private-key-area"></textarea>
-                  <div class="button-padd">
-                      <button class="pivx-button-big" onclick="undelegateGUI()">
-                                  <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                                  <span class="buttoni-text">Undelegate</span>
-                                  <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                        </button>
-                 </div>
-                </div>
-              </div>
-              <!-- STAKING FEATURES -->
+                <!-- STAKING FEATURES -->
               </div>
             </div>
 
@@ -474,18 +431,19 @@
 
               <!-- PIVX TITLE SECTION -->
               <div class="col-md-12 title-section float-left rm-pd">
-                  <h3 class="pivx-bold-title center-text"><span>Create a</span> Transaction</h3>
+                <h3 class="pivx-bold-title center-text"><span>Create a</span> Transaction</h3>
               </div>
               <br>
               <!-- // PIVX TITLE SECTION -->
 
               <div id='sendNotice' class="col-md-12 float-left"></div>
               <div class="col-md-12">
-                <p id="communication" class="center-text">Please <b>AVOID</b> sending to Shielded addresses using this wallet - this functionality is currently unsupported.</p>
+                <p id="communication" class="center-text">Please <b>AVOID</b> sending to Shielded addresses using this
+                  wallet - this functionality is currently unsupported.</p>
               </div>
               <div class='max-width' style='clear:both;'>
-                <div id="simpleTransactionsDropdown" class="bold-trans" onclick='toggleDropDown("simpleTransactions")'>Send Freedom Coin<span
-                    style='float:right;'>▼</span></div>
+                <div id="simpleTransactionsDropdown" class="bold-trans" onclick='toggleDropDown("simpleTransactions")'>
+                  Send Freedom Coin<span style='float:right;'>▼</span></div>
                 <div id='simpleTransactions' style='display: block'>
                   <br>
                   <label>Recipient Wallet Address</label><br>
@@ -500,11 +458,15 @@
                   <br>
                   <div id='HumanReadable'></div>
                   <br>
-                  <button class="pivx-button-big" onclick="createTxGUI()">
-                              <span class="buttoni-icon"><i class="fas fa-paper-plane fa-tiny-margin"></i></span>
-                              <span class="buttoni-text" id="genIt">Send Transaction</span>
-                              <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                    </button>
+                  <button class="pivx-button-big btn-border" onclick="createTxGUI()">
+                    <span class="buttoni-icon"><i class="fas fa-paper-plane fa-tiny-margin"></i></span>
+                    <span class="buttoni-text btn_txt" id="genIt">Send Transaction</span>
+                    <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path
+                          d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                        </path>
+                      </svg></span>
+                  </button>
                 </div>
                 <div id='transactionFinal'></div>
               </div>
@@ -536,18 +498,22 @@
                   <input type="text" id="wif">
                   <br /><br />
                   <p style="padding: 5px 0 15px;"><b>WARNING:</b> ANY FUNDS NOT ALLOCATED WILL BE USED AS FEES</p>
-                  <button class="pivx-button-big" onclick="createRawTransaction()">
-                              <span class="buttoni-icon"><i class="fas fa-paper-plane fa-tiny-margin"></i></span>
-                              <span class="buttoni-text">Create Raw Signed Transction</span>
-                              <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
-                    </button>
+                  <button class="pivx-button-big btn-border" onclick="createRawTransaction()">
+                    <span class="buttoni-icon"><i class="fas fa-paper-plane fa-tiny-margin"></i></span>
+                    <span class="buttoni-text btn_txt">Create Raw Signed Transction</span>
+                    <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                        <path
+                          d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                        </path>
+                      </svg></span>
+                  </button>
                   <br /><br /><br />
                   <h4 id="signed-raw">Signed Raw Transaction</h4>
                   <textarea rows="15" cols="70" id="rawTrx"></textarea>
                   <p>Don't understand how this works? <a target='_blank'
-                      href='https://github.com/PIVX-Labs/MyPIVXWallet#transaction'>Tutorial Here</a></p>
+                      href='https://github.com/FreedomCoin-Project/MyFreedomWallet'>Tutorial Here</a></p>
                   <p>Advanced Details: <br>locktime is set to 0, sequence is set to max. SIGHASH_ALL option is chosen
-                      for signing raw Transaction.</p>
+                    for signing raw Transaction.</p>
                 </div>
               </div>
             </div>
@@ -559,15 +525,23 @@
               </select>
               <br>
 
-              <button class="pivx-button-big" onclick="toggleDebug()">
-                              <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
-                              <span class="buttoni-text">Toggle Debug Mode</span>
-                              <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
+              <button class="pivx-button-big btn-border" onclick="toggleDebug()">
+                <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
+                <span class="buttoni-text btn_txt">Toggle Debug Mode</span>
+                <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                    <path
+                      d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                    </path>
+                  </svg></span>
               </button>
-              <button class="pivx-button-big" onclick="toggleNetwork()">
-                              <span class="buttoni-icon"><i class="fas fa-network-wired fa-tiny-margin"></i></span>
-                              <span class="buttoni-text">Toggle Networking Mode</span>
-                              <span class="buttoni-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32"><path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z"></path></svg></span>
+              <button class="pivx-button-big btn-border" onclick="toggleNetwork()">
+                <span class="buttoni-icon"><i class="fas fa-network-wired fa-tiny-margin"></i></span>
+                <span class="buttoni-text btn_txt">Toggle Networking Mode</span>
+                <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                    <path
+                      d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                    </path>
+                  </svg></span>
               </button>
 
             </div>
@@ -580,25 +554,29 @@
     -->
     <div class="alertPositioning"></div>
     <footer id="foot">
-        <div class="footer">
-          <div id='dcfooter'>© MIT 2022 - <b style='cursor:pointer' onclick='openDonatePage()'>Donate to FreedomCoin!</b></div>
+      <div class="footer">
+        <div id='dcfooter'>© MIT 2022 - <b style='cursor:pointer' onclick='openDonatePage()'>Donate to FreedomCoin!</b>
         </div>
+      </div>
     </footer>
-    
-       <div class="welcome-wrapper container">
-        <div class="welcome-section">
-            <div class="text-section">
-                <h1>Your Keys, Your Freed</h1>
-                <h5>
-Experience a non-custodial wallet that provides a full suite of DeFi services, allowing you to buy, sell, trade, and invest in FreedomCoin—all within a safe and simple app.</span>
-            </h5>
-          </div>
-            <div class="buttons-section">
-                <a id="open" class="btn-border"><span class="btn_txt">Get Started</span></a>
-                <a class="btn-border" href="https://github.com/FreedomCoin-Project/FreedomCoin-Core/releases/"><span class="btn_txt">Download PC Wallet</span></a>
-            </div>
+
+    <!-- Freed Welcome Section -->
+    <div class="welcome-wrapper container">
+      <div class="welcome-section">
+        <div class="text-section">
+          <h1>Your Keys, Your Freed</h1>
+          <h5>
+            Experience a non-custodial wallet that provides a full suite of DeFi services, allowing you to buy, sell,
+            trade, and invest in FreedomCoin—all within a safe and simple app.</span>
+          </h5>
         </div>
-        <div class="image-section"></div>
+        <div class="buttons-section">
+          <a id="open" class="btn-border"><span class="btn_txt">Get Started</span></a>
+          <a class="btn-border" href="https://github.com/FreedomCoin-Project/FreedomCoin-Core/releases/"><span
+              class="btn_txt">Download PC Wallet</span></a>
+        </div>
+      </div>
+      <div class="image-section"></div>
     </div>
   </div>
 
