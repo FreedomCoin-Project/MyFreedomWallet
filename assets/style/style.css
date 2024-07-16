@@ -56,14 +56,11 @@ button {
     color: rgba(255, 255, 255, 0.65);
     border-radius: 15px;
     padding: 12px 25px 12px;
-    background-color: #380c6a;
-    border-style: solid;
-    border-width: 1px;
     margin: 1px;
-    border-color: #7300ff;
     text-align: center;
     font-size: 16px;
     outline: 0;
+    border-width: 1px;
 }
 
 button:hover {
@@ -275,6 +272,7 @@ input::-moz-focus-inner {
     right: 0;
     flex-direction: row;
     justify-content: center;
+    z-index: 2;
 }
 .welcome-wrapper:after {
     content: '';
@@ -342,14 +340,12 @@ nav .btn-border {
     border-radius: 200px;
     background-color: #020307;
 }
+.no-gutters .btn-border:after {
+    background-color: #1f1e29;
+}
 .image-section {
     width: 50%;
     max-width: 644px;
-}
-
-
-#content-wrap {
-    padding-bottom: 4rem; 
 }
 
 .rm-pd {
@@ -416,17 +412,14 @@ nav .btn-border {
 /* DASHBOARD */
 
 #guiWallet {
-    width: 100%;
-    height: 700px;
+    width: 100%; 
 }
 
 #bcg-wallet-box {
     display: block;
     width: 100%;
-    height: 87%;
     border: 1px hsla(0, 0%, 100%, .1) solid;
     border-radius: 8px;
-    margin: 0 0 280px 0;
     background: #18171f;
 }
 
@@ -491,11 +484,10 @@ nav .btn-border {
     width: 90%;
     height: auto;
     margin: 0 auto;
-    padding-top: 40px;
+    padding: 40px 0;
 }
 
 #address-box {
-    height: 320px;
     padding: 30px 25px;
 }
 
@@ -641,8 +633,6 @@ nav .btn-border {
     display: block;
     margin: 0 auto;
     width: 85% !important;
-    height: 460px !important;
-    ;
     background: rgba(72, 2, 125, 0.60);
     border: 1px solid #a366ff;
     border-radius: 8px;
@@ -746,12 +736,12 @@ nav .btn-border {
 /* FOOTER */
 
 #foot {
-    display: block;
-    position: absolute;
+    display: block; 
     left: 0;
     bottom: 0;
     width: 100%;
     padding: 10px;
+    margin-top: 10px;
     border-top: solid #521186 1px;
     background-color: #2b09508c;
 }
@@ -777,6 +767,9 @@ nav .btn-border {
     width: 100%;
     padding: 20px 48px;
 }
+.wlc .navbarSpecial {
+    position: fixed;
+}
 
 /* New styling */
 
@@ -788,24 +781,11 @@ nav .btn-border {
     font-family: Montserrat, sans-serif;
     height: auto;
     padding: 14px 30px;
-    background: linear-gradient(183deg, #9621ff, #7d21ff);
     line-height: 1.25em;
     font: 15px Montserrat, sans-serif !important;
     letter-spacing: .025em;
-    font-family: Montserrat, sans-serif;
-    color: #fffeff;
     text-transform: uppercase;
-    -webkit-border-radius: 35px;
-    -moz-border-radius: 35px;
-    -ms-border-radius: 35px;
-    border-radius: 35px;
-    -webkit-box-shadow: 3px 3px 25px 2px rgb(26 14 42 / 50%);
-    -moz-box-shadow: 3px 3px 25px 2px rgba(26, 14, 42, .5);
     box-shadow: 3px 3px 25px 2px rgb(26 14 42 / 50%);
-    -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
-    transition: all .2s ease-out;
 }
 
 .button-padd {
@@ -1056,10 +1036,10 @@ a {
 /*PIVX DASHBOARD*/
 .dashboard-item {
     background: #1f1e29;
-    border-radius: 6px;
+    border-radius: 15px;
     padding: 0 15% 10px 15%;
     text-align: center;
-    float: left;
+    /* float: left; */
     margin-bottom: 15px;
     border: 1px solid hsla(0, 0%, 100%, .1);
     box-shadow: 0 4px 20px 0 rgb(0 0 0 / 30%);
@@ -1275,15 +1255,15 @@ a {
       outline: none;
     }
     .navbar-toggler .line {
-      width: 30px;
-      height: 3px;
+      width: 29px;
+      height: 2px;
       background-color: #fff;
       display: block;
       margin: 6px auto;
       transition: all 0.3s ease-in-out;
     }
     .navbar-toggler.collapse .line:nth-child(1) {
-      transform: rotate(45deg)   translate(6px, 6px);
+      transform: rotate(45deg)   translate(5px, 5px);
     }
     .navbar-toggler.collapse .line:nth-child(2) {
       opacity: 0;
@@ -1300,9 +1280,9 @@ a {
     }
     
     /* Dashboard page */
-
+ 
     #big-frame-address {
-        padding-top: 20px;
+        padding: 20px 0;
     }
 
     #genKeyWarning div {
@@ -1321,12 +1301,7 @@ a {
         margin: 0 auto;
     }
 
-    #bcg-wallet-box {
-        height: 98%;
-    }
-
     #address-box.large-box {
-        height: 260px;
         background: none;
     }
 
@@ -1469,11 +1444,6 @@ a {
         margin: 0;
     }
 
-    #address-box.large-box {
-        height: 240px;
-        background: none;
-    }
-
     #address-info {
         width: 65%;
     }
@@ -1513,10 +1483,6 @@ a {
     }
 
     /* Stake page */
-
-    .add-frame {
-        height: 720px !important;
-    }
 
     .stake-box.large-box.col-md-4 {
         padding: 10px 20px;
@@ -1567,10 +1533,6 @@ a {
 
     /* Dashboard page */
 
-    #bcg-wallet-box {
-        height: 100%;
-    }
-
     #ring {
         padding: 5px 5px 30px 40px;
         vertical-align: top;
@@ -1586,7 +1548,6 @@ a {
 
     #address-box.large-box {
         padding-top: 20px;
-        height: 250px;
         /*background: linear-gradient(217deg, rgb(51, 0, 153, 0.1), rgb(34, 0, 102, 0.3) 70.71%);*/
         border-color: #763acf;
     }
@@ -1644,10 +1605,10 @@ a {
 
 @media screen and (max-width: 480px) {
     .brand-logo {
-        width: 35px; 
+        width: 33px; 
     }
     .nav-logo {
-        font-size: 19px;
+        font-size: 18px;
     }
     .welcome-wrapper .buttons-section {
         flex-direction: column;
@@ -1753,7 +1714,6 @@ a {
 
     #address-box.large-box {
         padding-top: 15px;
-        height: 255px;
     }
 
     #title-address-box {
