@@ -768,7 +768,7 @@ nav .btn-border {
     padding: 20px 48px;
 }
 .wlc .navbarSpecial {
-    position: fixed;
+    position: sticky;
 }
 
 /* New styling */
