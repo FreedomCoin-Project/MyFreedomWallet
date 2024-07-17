@@ -1707,7 +1707,9 @@ a {
 @media screen and (max-width: 393px) {
 
     /* Dashboard */
-
+    .dashboard-item .container {
+        padding: 0;
+    }
     #piv-price-amount {
         padding: 30px 15px;
     }
@@ -1770,7 +1772,10 @@ a {
 @media screen and (max-width: 360px) {
 
     /* Dashboard */
-
+    .pivx-button-big {
+        margin-right: 0;
+        margin-left: 0;
+    }
     #address-info {
         width: 90%;
         padding-left: 35px;
