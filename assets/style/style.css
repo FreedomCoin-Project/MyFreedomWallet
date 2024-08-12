@@ -1420,9 +1420,8 @@ a {
     .welcome-section {
         flex-basis: unset;
     }
-    .image-section {        
+    .image-section {       
         background-size: 100%;
-        background-position: center 80%;
     }
     .welcome-section h1 {
         font-size: 30px;
@@ -1630,11 +1629,17 @@ a {
     .nav-logo {
         font-size: 18px;
     }
+    .welcome-wrapper {
+        gap: 20px;
+    }
     .welcome-wrapper .buttons-section {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+    .image-section { 
+        max-height: 300px; 
+        background-position: center 80%;
+    }
     /* Main Wallet page */
     #PrivateTxt {
         font-size: 8px;
