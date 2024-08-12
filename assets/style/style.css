@@ -19,13 +19,29 @@ label,
 button {
     font-family: Montserrat, sans-serif !important;
 }
-
-body {
+:root {
+    --color: #bbbbbe;
+    --bg-color1: #1c1b24;
+    --bg-color2: #1a1921;
+    --bg-color3: rgb(11 10 14 / 20%);
+    --txtlink: #fff;
     --gold: #c4a129;
     --orange: #f06500;
+}
+
+.light { 
+   --color: #000; 
+    --bg-color1: #fff; 
+    --bg-color2: #f1f1f1;
+    --bg-color3: rgb(184 184 184 / 20%);
+    --txtlink: #363636;
+}
+
+body {
     background-color: #1f1e29;
     color: #f2f8fa;
 }
+
 body.wlc {
     overflow: hidden;
 }
@@ -280,10 +296,8 @@ input::-moz-focus-inner {
     width: 100vw;
     height: 100vh;
     min-width: 100%;
-    min-height: 100%;
-    background: url(../images/wallet_g.png) #020307 no-repeat;
-    background-size: 70%;
-    background-position: 120% center;
+    min-height: 100%; 
+    background: var(--bg-color2);
     z-index: -1;
 }
 .welcome-section {
@@ -338,14 +352,18 @@ nav .btn-border {
     bottom: 0%;
     margin: 1px;
     border-radius: 200px;
-    background-color: #020307;
+    background-color: var(--bg-color2);
 }
 .no-gutters .btn-border:after {
     background-color: #1f1e29;
 }
 .image-section {
     width: 50%;
+    flex-basis: 50%;
     max-width: 644px;
+    background: url(../images/bg-wallet.png) no-repeat;
+    background-size: 55%;
+    background-position: center;
 }
 
 .rm-pd {
@@ -1274,9 +1292,9 @@ a {
     .navbar-collapse { 
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
     }
-    .welcome-wrapper:after {
-        background-size: 80%;
-        background-position: 170% center;
+    .image-section {
+        background-size: 85%;
+        background-position: right;
     }
     
     /* Dashboard page */
@@ -1398,11 +1416,13 @@ a {
     .welcome-wrapper { 
         flex-direction: column-reverse;
         align-items: center;
-        justify-content: flex-start;
     }
-    .welcome-wrapper:after {
-        background-size: 150%;
-        background-position: center 9%;
+    .welcome-section {
+        flex-basis: unset;
+    }
+    .image-section {       
+        background-size: 100%;
+        background-position: center;
     }
     .welcome-section h1 {
         font-size: 30px;
@@ -1610,11 +1630,17 @@ a {
     .nav-logo {
         font-size: 18px;
     }
+    .welcome-wrapper {
+        gap: 10px;
+    }
     .welcome-wrapper .buttons-section {
         flex-direction: column;
         align-items: flex-start;
     }
-    
+    .image-section { 
+        max-height: 300px; 
+        background-position: center 80%;
+    }
     /* Main Wallet page */
     #PrivateTxt {
         font-size: 8px;
