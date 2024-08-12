@@ -21,19 +21,20 @@ button {
 }
 :root {
     --color: #bbbbbe;
-    --bg-color1: #fff; 
-    --bg-color2: #f1f1f1;
-    --bg-color3: rgb(184 184 184 / 20%);
+    --bg-color1: #1c1b24;
+    --bg-color2: #1a1921;
+    --bg-color3: rgb(11 10 14 / 20%);
+    --txtlink: #fff;
     --gold: #c4a129;
     --orange: #f06500;
 }
 
 .light { 
-	--color: #000; 
-    --bg-color1: #1c1b24;
-    --bg-color2: #1a1921;
-    --bg-color3: rgb(11 10 14 / 20%);
-	--txtlink: #363636;
+   --color: #000; 
+    --bg-color1: #fff; 
+    --bg-color2: #f1f1f1;
+    --bg-color3: rgb(184 184 184 / 20%);
+    --txtlink: #363636;
 }
 
 body {
@@ -296,7 +297,7 @@ input::-moz-focus-inner {
     height: 100vh;
     min-width: 100%;
     min-height: 100%; 
-    background: #020307;
+    background: var(--bg-color2);
     z-index: -1;
 }
 .welcome-section {
