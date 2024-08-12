@@ -19,13 +19,28 @@ label,
 button {
     font-family: Montserrat, sans-serif !important;
 }
-
-body {
+:root {
+    --color: #bbbbbe;
+    --bg-color1: #fff; 
+    --bg-color2: #f1f1f1;
+    --bg-color3: rgb(184 184 184 / 20%);
     --gold: #c4a129;
     --orange: #f06500;
+}
+
+.light { 
+	--color: #000; 
+    --bg-color1: #1c1b24;
+    --bg-color2: #1a1921;
+    --bg-color3: rgb(11 10 14 / 20%);
+	--txtlink: #363636;
+}
+
+body {
     background-color: #1f1e29;
     color: #f2f8fa;
 }
+
 body.wlc {
     overflow: hidden;
 }
@@ -1405,10 +1420,9 @@ a {
     .welcome-section {
         flex-basis: unset;
     }
-    .image-section {
-        margin-top: 70px;
+    .image-section {        
         background-size: 100%;
-        background-position: center;
+        background-position: center 80%;
     }
     .welcome-section h1 {
         font-size: 30px;
