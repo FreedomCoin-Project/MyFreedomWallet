@@ -1422,6 +1422,7 @@ a {
     }
     .image-section {       
         background-size: 100%;
+        background-position: center;
     }
     .welcome-section h1 {
         font-size: 30px;
@@ -1630,7 +1631,7 @@ a {
         font-size: 18px;
     }
     .welcome-wrapper {
-        gap: 20px;
+        gap: 10px;
     }
     .welcome-wrapper .buttons-section {
         flex-direction: column;
