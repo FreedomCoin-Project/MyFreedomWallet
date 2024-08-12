@@ -352,14 +352,14 @@ nav .btn-border {
     bottom: 0%;
     margin: 1px;
     border-radius: 200px;
-    background-color: #020307;
+    background-color: var(--bg-color2);
 }
 .no-gutters .btn-border:after {
     background-color: #1f1e29;
 }
 .image-section {
     width: 50%;
-    flex-grow: 1;
+    flex-basis: 50%;
     max-width: 644px;
     background: url(../images/bg-wallet.png) no-repeat;
     background-size: 55%;
@@ -1416,7 +1416,6 @@ a {
     .welcome-wrapper { 
         flex-direction: column-reverse;
         align-items: center;
-        justify-content: flex-start;
     }
     .welcome-section {
         flex-basis: unset;
