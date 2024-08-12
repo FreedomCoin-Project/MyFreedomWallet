@@ -281,6 +281,7 @@ input::-moz-focus-inner {
     height: 100vh;
     min-width: 100%;
     min-height: 100%; 
+    background: #020307;
     z-index: -1;
 }
 .welcome-section {
