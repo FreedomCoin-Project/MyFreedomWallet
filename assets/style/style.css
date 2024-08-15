@@ -300,7 +300,7 @@ input::-moz-focus-inner {
     min-height: 100%; 
 }
 .welcome-wrapper:before {
-    background: url(./assets/images/map.webp) no-repeat;
+    background: url(../assets/images/map.webp) no-repeat;
     background-size: contain;
     background-position: center;
     opacity: 0.08;
@@ -1428,7 +1428,7 @@ a {
         align-items: center;
     }
     .welcome-wrapper:before {
-        background-image : url(./assets/images/abstract.webp);
+        background-image : url(../assets/images/abstract.webp);
         background-size: cover;
         opacity: 0.1;
     }
