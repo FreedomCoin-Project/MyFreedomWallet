@@ -1428,7 +1428,7 @@ a {
         align-items: center;
     }
     .welcome-wrapper:before {
-        background-image : url(../assets/abstract.webp);
+        background-image : url(../images/abstract.webp);
         background-size: cover;
         opacity: 0.1;
     }
