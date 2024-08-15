@@ -290,6 +290,7 @@ input::-moz-focus-inner {
     justify-content: center;
     z-index: 2;
 }
+.welcome-wrapper:before, 
 .welcome-wrapper:after {
     content: '';
     position: absolute;
@@ -297,6 +298,14 @@ input::-moz-focus-inner {
     height: 100vh;
     min-width: 100%;
     min-height: 100%; 
+}
+.welcome-wrapper:before {
+    background: url(assets/images/map.webp) no-repeat;
+    background-size: contain;
+    background-position: center;
+    opacity: 0.08;
+}
+.welcome-wrapper:after {
     background: var(--bg-color2);
     z-index: -1;
 }
@@ -357,7 +366,8 @@ nav .btn-border {
 .no-gutters .btn-border:after {
     background-color: #1f1e29;
 }
-.image-section {
+.image-section {    
+    position: relative;
     width: 50%;
     flex-basis: 50%;
     max-width: 644px;
@@ -1416,6 +1426,11 @@ a {
     .welcome-wrapper { 
         flex-direction: column-reverse;
         align-items: center;
+    }
+    .welcome-wrapper:before {
+        background-image : url(assets/images/abstract.webp);
+        background-size: cover;
+        opacity: 0.1;
     }
     .welcome-section {
         flex-basis: unset;
