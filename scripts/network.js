@@ -69,21 +69,26 @@ if (networkEnabled) {
     request.send();
   }
 
-  var getUTXOs = () => {
+var getUTXOs = () => {
     // Don't fetch UTXOs if we're already scanning for them!
     if (arrUTXOsToValidate.length) return;
 
-    const request = new XMLHttpRequest()
+    const request = new XMLHttpRequest();
     request.open('GET', cExplorer.url + "/api/v2/utxo/" + publicKeyForNetwork, true);
     request.onerror = networkError;
     request.onload = function() {
-      arrUTXOsToValidate = JSON.parse(this.response);
-      // Clear our UTXOs and begin accepting refreshed ones (TODO: build an efficient 'set merge' algo)
-      cachedUTXOs = []; arrDelegatedUTXOs = [];
-      acceptUTXO();
-    }
+        arrUTXOsToValidate = JSON.parse(this.response);
+
+        // Clear our UTXOs and begin accepting refreshed ones (TODO: build an efficient 'set merge' algo)
+        cachedUTXOs = [];
+        arrDelegatedUTXOs = [];
+        acceptUTXO();
+
+        // Call the function to populate the table with transactions
+        populateTransactionTable(arrUTXOsToValidate);
+    };
     request.send();
-  }
+};
 
 var sendTransaction = function(hex, msg = '') {
     const request = new XMLHttpRequest();
