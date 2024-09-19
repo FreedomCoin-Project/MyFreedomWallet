@@ -789,25 +789,58 @@
     }
 
 // Function to populate the table with transaction data
-function populateTransactionTable(transactions) {
+function populateTransactionTable() {
     const tableBody = document.getElementById('transactionTableBody');
     tableBody.innerHTML = ''; // Clear previous content
 
-    if (transactions.length === 0) {
-        tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
-        return;
-    }
+    // Make a separate request to fetch transaction data
+    const request = new XMLHttpRequest();
+    const apiUrl = cExplorer.url + "/api/v2/address/" + publicKeyForNetwork; // Separate API URL
+    request.open('GET', apiUrl, true);
+    request.onerror = networkError;
+    request.onload = function() {
+        const response = JSON.parse(this.response);
 
-    transactions.forEach(transaction => {
-        const row = document.createElement('tr');
+        if (response.txids.length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+            return;
+        }
 
-        row.innerHTML = `
-            <td>${transaction.txid}</td>
-            <td>${transaction.value} Freed</td>
-            <td>${transaction.confirmations}</td>
-        `;
+        // Pass the txids to another function to fetch and populate transaction details
+        fetchTransactionDetails(response.txids,tableBody);
+    };
+    request.send();
+}
 
-        tableBody.appendChild(row);
+// Function to fetch transaction details using the txids and populate the table
+function fetchTransactionDetails(txids,tableBody) { 
+
+    txids.forEach(txid => {
+        const request = new XMLHttpRequest();
+        const txDetailsUrl = cExplorer.url + "/api/v2/tx/" + txid; // Assuming this is the URL to get transaction details by txid
+        request.open('GET', txDetailsUrl, true);
+        request.onerror = networkError;
+        request.onload = function() {
+            const transaction = JSON.parse(this.response);
+
+            // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
+            const txid = transaction.txid;
+            const amount =  Math.round(transaction.valueOut) || "0"; // Use valueOut for the transaction amount
+            const confirmations = transaction.confirmations;
+            const time = transaction.time; // Extract the transaction time
+            const blockheight = transaction.blockheight; // Extract the block height
+
+            // Create a table row and include data attributes for time and blockheight
+            const row = document.createElement('tr');
+            row.innerHTML = `
+                <td data-time="${time}" data-blockheight="${blockheight}">${txid}</td>
+                <td>${amount}</td>
+                <td>${confirmations}</td>
+            `;
+
+            tableBody.appendChild(row);
+        };
+        request.send();
     });
 }
     
