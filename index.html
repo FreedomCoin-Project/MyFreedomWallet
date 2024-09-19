@@ -299,6 +299,20 @@
                         </div>
                       </div>
                     </div>
+                    <div id="transaction_table" class="large-box">
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>TxID</th>
+                                  <th>Amount (BTC)</th>
+                                  <th>Confirmations</th>
+                              </tr>
+                          </thead>
+                          <tbody id="transactionTableBody">
+                              No transactions
+                          </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -772,6 +786,29 @@
       }
     }
 
+// Function to populate the table with transaction data
+function populateTransactionTable(transactions) {
+    const tableBody = document.getElementById('transactionTableBody');
+    tableBody.innerHTML = ''; // Clear previous content
+
+    if (transactions.length === 0) {
+        tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+        return;
+    }
+
+    transactions.forEach(transaction => {
+        const row = document.createElement('tr');
+
+        row.innerHTML = `
+            <td>${transaction.txid}</td>
+            <td>${transaction.amount} BTC</td>
+            <td>${transaction.confirmations}</td>
+        `;
+
+        tableBody.appendChild(row);
+    });
+}
+    
     async function guiImportWallet() {
       // If we don't have a DB wallet: prompt an import
       if (!hasEncryptedWallet()) return importWallet();
