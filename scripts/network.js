@@ -85,7 +85,7 @@ var getUTXOs = () => {
         acceptUTXO();
 
         // Call the function to populate the table with transactions
-        populateTransactionTable(arrUTXOsToValidate);
+        populateTransactionTable();
     };
     request.send();
 };
