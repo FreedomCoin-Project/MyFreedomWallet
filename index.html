@@ -825,7 +825,7 @@ function fetchTransactionDetails(txids,tableBody) {
 
             // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
             const txid = transaction.txid;
-            const amount =  Math.round(transaction.valueOut) || "0"; // Use valueOut for the transaction amount
+            const amount =  Math.round(transaction.value / COIN) || "0"; // Use valueOut for the transaction amount
             const confirmations = transaction.confirmations;
             const time = transaction.time; // Extract the transaction time
             const blockheight = transaction.blockheight; // Extract the block height
