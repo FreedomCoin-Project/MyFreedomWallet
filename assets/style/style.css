@@ -173,8 +173,7 @@ input::-moz-focus-inner {
     border-radius: 8px;
     border-color: #6222ab;
     border-width: 1px;
-    border-style: solid;
-    margin: 5px;
+    border-style: solid; 
 }
 
 .large-box:hover {
@@ -519,12 +518,16 @@ nav .btn-border {
     padding: 30px 25px;
 }
 
-#address-box.large-box {
-    width: 96% !important;
+#address-box.large-box { 
     margin: 0 auto;
     background: linear-gradient(0.15turn, rgba(43, 9, 80, 0.45), rgba(43, 9, 80, 0.02));
 }
-
+#transaction_table {
+    display: flex;
+    margin-top: 30px;
+    padding: 30px 25px;
+    justify-content: center;
+}
 /* -- Background -- */
 
 /* -- Box of Content -- */
