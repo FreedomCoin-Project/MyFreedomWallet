@@ -813,7 +813,8 @@ function populateTransactionTable() {
 }
 
 // Function to fetch transaction details using the txids and populate the table
-function fetchTransactionDetails(txids,tableBody) { 
+function fetchTransactionDetails(txids, tableBody) { 
+    let tableRows = ''; // Initialize a variable to hold all the rows
 
     txids.forEach(txid => {
         const request = new XMLHttpRequest();
@@ -825,24 +826,29 @@ function fetchTransactionDetails(txids,tableBody) {
 
             // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
             const txid = transaction.txid;
-            const amount =  Math.round(transaction.value / COIN) || "0"; // Use valueOut for the transaction amount
+            const amount = Math.round(transaction.value / COIN) || "0"; // Use valueOut for the transaction amount
             const confirmations = transaction.confirmations;
             const time = transaction.blockTime; // Extract the transaction time
             const blockheight = transaction.blockHeight; // Extract the block height
 
-            // Create a table row and include data attributes for time and blockheight
-            const row = document.createElement('tr');
-            row.innerHTML = `
-                <td data-time="${time}" data-bheight="${blockheight}">${txid}</td>
-                <td>${amount}</td>
-                <td>${confirmations}</td>
+            // Create a table row and append it to the variable
+            tableRows += `
+                <tr>
+                    <td data-time="${time}" data-bheight="${blockheight}">${txid}</td>
+                    <td>${amount}</td>
+                    <td>${confirmations}</td>
+                </tr>
             `;
 
-            tableBody.appendChild(row);
+            // Once all requests are complete, insert all rows into the table at once
+            if (tableRows && txids.indexOf(txid) === txids.length - 1) {
+                tableBody.innerHTML = tableRows;
+            }
         };
         request.send();
     });
 }
+
     
     async function guiImportWallet() {
       // If we don't have a DB wallet: prompt an import
