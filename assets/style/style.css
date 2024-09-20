@@ -518,16 +518,42 @@ nav .btn-border {
     padding: 30px 25px;
 }
 
-#address-box.large-box { 
+#address-box.large-box, #transaction_table { 
     margin: 0 auto;
     background: linear-gradient(0.15turn, rgba(43, 9, 80, 0.45), rgba(43, 9, 80, 0.02));
 }
-#transaction_table {
-    display: flex;
+
+#transaction_table { 
     margin-top: 30px;
-    padding: 30px 25px;
-    justify-content: center;
+    padding: 30px 25px; 
 }
+#transaction_table td:first-child {
+      display: grid;
+      min-width: 70px; 
+}
+#transaction_table td:first-child a {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#transaction_table table {
+  display: table;
+  width: 100%; 
+}
+
+#transaction_table th,
+#transaction_table td {
+  padding: 8px;
+  text-align: left;
+}
+
+#transaction_table th:not(:first-child), #transaction_table td:not(:first-child) {
+    text-align: center;
+}
+#transactionTableBody tr {
+    border-top: 1px solid #763acf;
+}
+
 /* -- Background -- */
 
 /* -- Box of Content -- */
