@@ -812,9 +812,20 @@ function populateTransactionTable() {
     request.send();
 }
 
+    
+let isFetching = false; // Global flag to track if fetching is in progress
+
 // Function to fetch transaction details using the txids and populate the table
 function fetchTransactionDetails(txids, tableBody) {
+    if (isFetching) {
+        console.log('Fetch in progress, rejecting new call');
+        return; // Exit if a fetch is already in progress
+    }
+
+    isFetching = true; // Lock: set fetching in progress
+
     let rowsHTML = ''; // Variable to accumulate all rows
+    let completedRequests = 0; // Counter to track completed requests
 
     txids.forEach(txid => {
         const request = new XMLHttpRequest();
@@ -840,14 +851,19 @@ function fetchTransactionDetails(txids, tableBody) {
                 </tr>
             `;
 
-            // Once all requests are done, append the rows to the table
-            if (txids.indexOf(txid) === txids.length - 1) {
+            // Increase completed request count
+            completedRequests++;
+
+            // Once all requests are done, append the rows to the table and unlock
+            if (completedRequests === txids.length) {
                 tableBody.innerHTML = rowsHTML;
+                isFetching = false; // Unlock: set fetching to false
             }
         };
         request.send();
     });
 }
+
 
 
     
