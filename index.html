@@ -794,7 +794,8 @@ let lastTxids = [];
 
 // Function to populate the table with transaction data
 function populateTransactionTable() {
-    const tableBody = document.getElementById('transactionTableBody'); 
+    const tableBody = document.getElementById('transactionTableBody');
+    tableBody.innerHTML = ''; // Clear previous content
 
     // Make a separate request to fetch transaction data
     const request = new XMLHttpRequest();
@@ -803,25 +804,27 @@ function populateTransactionTable() {
     request.onerror = networkError;
     request.onload = function() {
         const response = JSON.parse(this.response);
+        const txids = response.txids.slice(0, 5); // Get a maximum of 5 txids
 
         // Check if the txids are the same as the last stored txids
-        if (JSON.stringify(response.txids) === JSON.stringify(lastTxids)) {
+        if (JSON.stringify(txids) === JSON.stringify(lastTxids)) {
             console.log('Same txids, skipping fetchTransactionDetails');
             return;
         }
 
         // Store the current txids in the global variable
-        lastTxids = response.txids;
+        lastTxids = txids;
 
         // Call fetchTransactionDetails if txids are different
-        if (response.txids.length > 0) {
-            fetchTransactionDetails(response.txids, tableBody);
+        if (txids.length > 0) {
+            fetchTransactionDetails(txids, tableBody);
         } else {
             tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
         }
     };
     request.send();
 }
+
     
 // Global flag to track if fetching is in progress
 let isFetching = false;
