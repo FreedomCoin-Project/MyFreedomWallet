@@ -788,10 +788,13 @@
       }
     }
 
+    
+// Global variable to store the last txids
+let lastTxids = [];
+
 // Function to populate the table with transaction data
 function populateTransactionTable() {
-    const tableBody = document.getElementById('transactionTableBody');
-    tableBody.innerHTML = ''; // Clear previous content
+    const tableBody = document.getElementById('transactionTableBody'); 
 
     // Make a separate request to fetch transaction data
     const request = new XMLHttpRequest();
@@ -801,19 +804,27 @@ function populateTransactionTable() {
     request.onload = function() {
         const response = JSON.parse(this.response);
 
-        if (response.txids.length === 0) {
-            tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+        // Check if the txids are the same as the last stored txids
+        if (JSON.stringify(response.txids) === JSON.stringify(lastTxids)) {
+            console.log('Same txids, skipping fetchTransactionDetails');
             return;
         }
 
-        // Pass the txids to another function to fetch and populate transaction details
-        fetchTransactionDetails(response.txids,tableBody);
+        // Store the current txids in the global variable
+        lastTxids = response.txids;
+
+        // Call fetchTransactionDetails if txids are different
+        if (response.txids.length > 0) {
+            fetchTransactionDetails(response.txids, tableBody);
+        } else {
+            tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+        }
     };
     request.send();
 }
-
     
-let isFetching = false; // Global flag to track if fetching is in progress
+// Global flag to track if fetching is in progress
+let isFetching = false;
 
 // Function to fetch transaction details using the txids and populate the table
 function fetchTransactionDetails(txids, tableBody) {
