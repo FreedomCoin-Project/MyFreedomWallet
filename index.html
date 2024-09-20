@@ -856,7 +856,9 @@ function fetchTransactionDetails(txids, tableBody) {
             // Create the row for this txid and store it in the correct position in rowsArray
             rowsArray[index] = `
                 <tr>
-                    <td data-time="${time}" data-bheight="${blockheight}">${txid}</td>
+                    <td data-time="${time}" data-bheight="${blockheight}">
+                        <a href="${cExplorer.url}/tx/${txid}" target="_blank">${txid}</a>
+                    </td>
                     <td>${amount}</td>
                     <td>${confirmations}</td>
                 </tr>
