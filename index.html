@@ -299,6 +299,22 @@
                         </div>
                       </div>
                     </div>
+                    <div id="transaction_table" class="large-box">
+                      <table>
+                          <thead>
+                              <tr>
+                                  <th>TxID</th>
+                                  <th>Amount</th>
+                                  <th>Confirmations</th>
+                              </tr>
+                          </thead>
+                          <tbody id="transactionTableBody">
+                            <tr>
+                                <td colspan="3">No transactions</td>
+                            </tr>
+                          </tbody>
+                      </table>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -772,6 +788,97 @@
       }
     }
 
+    
+// Global variable to store the last txids
+let lastTxids = [];
+
+// Function to populate the table with transaction data
+function populateTransactionTable() {
+    const tableBody = document.getElementById('transactionTableBody'); 
+
+    // Make a separate request to fetch transaction data
+    const request = new XMLHttpRequest();
+    const apiUrl = cExplorer.url + "/api/v2/address/" + publicKeyForNetwork; // Separate API URL
+    request.open('GET', apiUrl, true);
+    request.onerror = networkError;
+    request.onload = function() {
+        const response = JSON.parse(this.response);
+        const txids = response.txids.slice(0, 5); // Get a maximum of 5 txids
+
+        // Check if the txids are the same as the last stored txids
+        if (JSON.stringify(txids) === JSON.stringify(lastTxids)) {
+            console.log('Same txids, skipping fetchTransactionDetails');
+            return;
+        }
+
+        // Store the current txids in the global variable
+        lastTxids = txids;
+
+        // Call fetchTransactionDetails if txids are different
+        if (txids.length > 0) {
+            fetchTransactionDetails(txids, tableBody);
+        } else {
+            tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+        }
+    };
+    request.send();
+}
+
+    
+// Global flag to track if fetching is in progress
+let isFetching = false;
+
+// Function to fetch transaction details using the txids and populate the table
+function fetchTransactionDetails(txids, tableBody) {
+    if (isFetching) {
+        console.log('Fetch in progress, rejecting new call');
+        return; // Exit if a fetch is already in progress
+    }
+
+    isFetching = true; // Lock: set fetching in progress
+
+    const rowsArray = new Array(txids.length); // Array to store rows in correct order
+    let completedRequests = 0; // Counter to track completed requests
+
+    txids.forEach((txid, index) => {
+        const request = new XMLHttpRequest();
+        const txDetailsUrl = cExplorer.url + "/api/v2/tx/" + txid; // Assuming this is the URL to get transaction details by txid
+        request.open('GET', txDetailsUrl, true);
+        request.onerror = networkError;
+        request.onload = function() {
+            const transaction = JSON.parse(this.response);
+
+            // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
+            const txid = transaction.txid;
+            const amount = Math.round(transaction.value / COIN) || "0"; // Use valueOut for the transaction amount
+            const confirmations = transaction.confirmations;
+            const time = transaction.blockTime; // Extract the transaction time
+            const blockheight = transaction.blockHeight; // Extract the block height
+
+            // Create the row for this txid and store it in the correct position in rowsArray
+            rowsArray[index] = `
+                <tr>
+                    <td data-time="${time}" data-bheight="${blockheight}">
+                        <a href="${cExplorer.url}/tx/${txid}" target="_blank">${txid}</a>
+                    </td>
+                    <td>${amount}</td>
+                    <td>${confirmations}</td>
+                </tr>
+            `;
+
+            completedRequests++;
+
+            // Once all requests are completed, append the rows in order
+            if (completedRequests === txids.length) {
+                tableBody.innerHTML = rowsArray.join(''); // Append all rows at once
+                isFetching = false; // Unlock: set fetching to false
+            }
+        };
+        request.send();
+    });
+}
+
+    
     async function guiImportWallet() {
       // If we don't have a DB wallet: prompt an import
       if (!hasEncryptedWallet()) return importWallet();
@@ -843,7 +950,7 @@
           if (!MAP_B58.includes(char)) return alert("The character '" + char + "' is unsupported in addresses! (Not Base58 compatible)");
         }
         // We also don't want users to be mining addresses for years... so cap the letters to four until the generator is more optimized
-        if (domPrefix.value.length > 6) return alert("This is a long name! This would take a LONG time to find, please choose a shorter name!");
+        if (typeof qqd === 'undefined' && domPrefix.value.length > 6) return alert("This is a long name! This would take a LONG time to find, please choose a shorter name!");
         isVanityGenerating = true;
         domPrefix.disabled = true;
         // Cache a lowercase equivilent for lower-entropy comparisons (a case-insensitive search is ALOT faster!) and strip accidental spaces

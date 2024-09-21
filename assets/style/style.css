@@ -173,8 +173,7 @@ input::-moz-focus-inner {
     border-radius: 8px;
     border-color: #6222ab;
     border-width: 1px;
-    border-style: solid;
-    margin: 5px;
+    border-style: solid; 
 }
 
 .large-box:hover {
@@ -493,7 +492,7 @@ nav .btn-border {
 #balance-box {
     display: block !important;
     margin: 20px auto 0 auto !important;
-    width: 95%;
+    width: 90%;
     height: 125px;
     background: linear-gradient(0.25turn, rgba(122, 122, 122, 0.5), rgba(115, 0, 255, 0.4));
 }
@@ -519,10 +518,40 @@ nav .btn-border {
     padding: 30px 25px;
 }
 
-#address-box.large-box {
-    width: 96% !important;
+#address-box.large-box, #transaction_table { 
     margin: 0 auto;
     background: linear-gradient(0.15turn, rgba(43, 9, 80, 0.45), rgba(43, 9, 80, 0.02));
+}
+
+#transaction_table { 
+    margin-top: 30px;
+    padding: 30px 25px; 
+}
+#transaction_table td:first-child {
+      display: grid;
+      min-width: 70px; 
+}
+#transaction_table td:first-child a {
+    width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+#transaction_table table {
+  display: table;
+  width: 100%; 
+}
+
+#transaction_table th,
+#transaction_table td {
+  padding: 8px;
+  text-align: left;
+}
+
+#transaction_table th:not(:first-child), #transaction_table td:not(:first-child) {
+    text-align: center;
+}
+#transactionTableBody tr {
+    border-top: 1px solid #763acf;
 }
 
 /* -- Background -- */
@@ -1742,6 +1771,15 @@ a {
 
     #pubkey-box.col-md-4 {
         padding-top: 20px;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    #transaction_table th:last-child {
+        display: block;
+        overflow: hidden;
+        width: 80px;
+        text-overflow: ellipsis;
     }
 }
 
