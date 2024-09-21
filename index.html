@@ -105,8 +105,8 @@
                 </ul>
               </div>
               <div class="buttons-section">
-                <a href="https://freedomcoin.global" class="btn-border" target="_blank"><img src="./assets/icons/home.svg"
-                    loading="eager" alt="FreedomCoin"></a>
+                <a href="https://freedomcoin.global" class="btn-border" target="_blank"><img
+                    src="./assets/icons/home.svg" loading="eager" alt="FreedomCoin"></a>
                 <a class="btn-border"><img src="./assets/icons/game.svg" loading="eager" alt="Games"></a>
                 <a class="btn-border"><img src="./assets/icons/swap.svg" loading="eager" alt="Swap"></a>
               </div>
@@ -203,8 +203,8 @@
                   </button>
                 </div>
               </div>
-              <!-- // ACESSS WALLET --> 
-              
+              <!-- // ACESSS WALLET -->
+
               <!-- WALLET FUNCTIONALITIES -->
 
               <!-- WARNING -->
@@ -253,8 +253,8 @@
                         </div>
                       </div>
                       <div id="bal-title">
-                        <h3 class="noselect balance-title">Balance &nbsp;&nbsp;<span id="balanceReload"
-                            class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
+                        <h3 class="noselect balance-title"><span class="bal-text">Balance &nbsp;&nbsp;</span><span
+                            id="balanceReload" class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
                       </div>
                     </div>
                   </div>
@@ -301,18 +301,19 @@
                     </div>
                     <div id="transaction_table" class="large-box">
                       <table>
-                          <thead>
-                              <tr>
-                                  <th>TxID</th>
-                                  <th>Amount</th>
-                                  <th>Confirmations</th>
-                              </tr>
-                          </thead>
-                          <tbody id="transactionTableBody">
-                            <tr>
-                                <td colspan="3">No transactions</td>
-                            </tr>
-                          </tbody>
+                        <thead>
+                          <tr>
+                            <th>Date</th>
+                            <th>TxID</th>
+                            <th>Amount</th>
+                            <th>Confirmations</th>
+                          </tr>
+                        </thead>
+                        <tbody id="transactionTableBody">
+                          <tr>
+                            <td colspan="3">No transactions</td>
+                          </tr>
+                        </tbody>
                       </table>
                     </div>
                   </div>
@@ -583,7 +584,8 @@
         <div class="text-section">
           <h1>Your Keys, Your Freed</h1>
           <h5>
-            <span>Experience a non-custodial wallet that provides a full suite of services, allowing you to buy, sell, trade, and stake FreedomCoin—all within a safe and simple app.</span>
+            <span>Experience a non-custodial wallet that provides a full suite of services, allowing you to buy, sell,
+              trade, and stake FreedomCoin—all within a safe and simple app.</span>
           </h5>
         </div>
         <div class="buttons-section">
@@ -788,27 +790,27 @@
       }
     }
 
-    
-// Global variable to store the last txids
-let lastTxids = [];
 
-// Function to populate the table with transaction data
-function populateTransactionTable() {
-    const tableBody = document.getElementById('transactionTableBody'); 
+    // Global variable to store the last txids
+    let lastTxids = [];
 
-    // Make a separate request to fetch transaction data
-    const request = new XMLHttpRequest();
-    const apiUrl = cExplorer.url + "/api/v2/address/" + publicKeyForNetwork; // Separate API URL
-    request.open('GET', apiUrl, true);
-    request.onerror = networkError;
-    request.onload = function() {
+    // Function to populate the table with transaction data
+    function populateTransactionTable() {
+      const tableBody = document.getElementById('transactionTableBody');
+
+      // Make a separate request to fetch transaction data
+      const request = new XMLHttpRequest();
+      const apiUrl = cExplorer.url + "/api/v2/address/" + publicKeyForNetwork; // Separate API URL
+      request.open('GET', apiUrl, true);
+      request.onerror = networkError;
+      request.onload = function () {
         const response = JSON.parse(this.response);
         const txids = response.txids.slice(0, 5); // Get a maximum of 5 txids
 
         // Check if the txids are the same as the last stored txids
         if (JSON.stringify(txids) === JSON.stringify(lastTxids)) {
-            console.log('Same txids, skipping fetchTransactionDetails');
-            return;
+          console.log('Same txids, skipping fetchTransactionDetails');
+          return;
         }
 
         // Store the current txids in the global variable
@@ -816,48 +818,63 @@ function populateTransactionTable() {
 
         // Call fetchTransactionDetails if txids are different
         if (txids.length > 0) {
-            fetchTransactionDetails(txids, tableBody);
+          fetchTransactionDetails(txids, tableBody);
         } else {
-            tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+          tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
         }
-    };
-    request.send();
-}
-
-    
-// Global flag to track if fetching is in progress
-let isFetching = false;
-
-// Function to fetch transaction details using the txids and populate the table
-function fetchTransactionDetails(txids, tableBody) {
-    if (isFetching) {
-        console.log('Fetch in progress, rejecting new call');
-        return; // Exit if a fetch is already in progress
+      };
+      request.send();
     }
 
-    isFetching = true; // Lock: set fetching in progress
 
-    const rowsArray = new Array(txids.length); // Array to store rows in correct order
-    let completedRequests = 0; // Counter to track completed requests
+    // Global flag to track if fetching is in progress
+    let isFetching = false;
 
-    txids.forEach((txid, index) => {
+    // Function to fetch transaction details using the txids and populate the table
+    function fetchTransactionDetails(txids, tableBody) {
+      if (isFetching) {
+        console.log('Fetch in progress, rejecting new call');
+        return; // Exit if a fetch is already in progress
+      }
+
+      isFetching = true; // Lock: set fetching in progress
+
+      const rowsArray = new Array(txids.length); // Array to store rows in correct order
+      let completedRequests = 0; // Counter to track completed requests
+
+      txids.forEach((txid, index) => {
         const request = new XMLHttpRequest();
         const txDetailsUrl = cExplorer.url + "/api/v2/tx/" + txid; // Assuming this is the URL to get transaction details by txid
         request.open('GET', txDetailsUrl, true);
         request.onerror = networkError;
-        request.onload = function() {
-            const transaction = JSON.parse(this.response);
+        request.onload = function () {
+          const transaction = JSON.parse(this.response);
 
-            // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
-            const txid = transaction.txid;
-            const amount = Math.round(transaction.value / COIN) || "0"; // Use valueOut for the transaction amount
-            const confirmations = transaction.confirmations;
-            const time = transaction.blockTime; // Extract the transaction time
-            const blockheight = transaction.blockHeight; // Extract the block height
+          // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
+          const txid = transaction.txid;
+          const amount = Math.round(transaction.value / COIN) || "0"; // Use valueOut for the transaction amount
+          let confirmations = transaction.confirmations;
+          const time = transaction.blockTime; // Extract the transaction time (UNIX timestamp)
+          const blockheight = transaction.blockHeight; // Extract the block height
 
-            // Create the row for this txid and store it in the correct position in rowsArray
-            rowsArray[index] = `
+          // If confirmations are greater than 100, display "100+"
+          confirmations = confirmations > 100 ? "100+" : confirmations;
+
+          // Convert the UNIX timestamp to a JavaScript Date object
+          const date = new Date(time * 1000); // Multiply by 1000 to convert to milliseconds
+          const formattedDate = date.toLocaleString(undefined, {
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            // Omit seconds by not including `second: '2-digit'`
+          });
+
+          // Create the row for this txid and store it in the correct position in rowsArray
+          rowsArray[index] = `
                 <tr>
+                    <td>${formattedDate}</td> <!-- Add the formatted time here -->
                     <td data-time="${time}" data-bheight="${blockheight}">
                         <a href="${cExplorer.url}/tx/${txid}" target="_blank">${txid}</a>
                     </td>
@@ -866,19 +883,21 @@ function fetchTransactionDetails(txids, tableBody) {
                 </tr>
             `;
 
-            completedRequests++;
+          completedRequests++;
 
-            // Once all requests are completed, append the rows in order
-            if (completedRequests === txids.length) {
-                tableBody.innerHTML = rowsArray.join(''); // Append all rows at once
-                isFetching = false; // Unlock: set fetching to false
-            }
+          // Once all requests are completed, append the rows in order
+          if (completedRequests === txids.length) {
+            tableBody.innerHTML = rowsArray.join(''); // Append all rows at once
+            isFetching = false; // Unlock: set fetching to false
+          }
         };
         request.send();
-    });
-}
+      });
+    }
 
-    
+
+
+
     async function guiImportWallet() {
       // If we don't have a DB wallet: prompt an import
       if (!hasEncryptedWallet()) return importWallet();

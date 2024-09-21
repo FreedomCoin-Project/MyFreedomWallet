@@ -19,6 +19,7 @@ label,
 button {
     font-family: Montserrat, sans-serif !important;
 }
+
 :root {
     --color: #bbbbbe;
     --bg-color1: #1c1b24;
@@ -29,9 +30,9 @@ button {
     --orange: #f06500;
 }
 
-.light { 
-   --color: #000; 
-    --bg-color1: #fff; 
+.light {
+    --color: #000;
+    --bg-color1: #fff;
     --bg-color2: #f1f1f1;
     --bg-color3: rgb(184 184 184 / 20%);
     --txtlink: #363636;
@@ -45,6 +46,7 @@ body {
 body.wlc {
     overflow: hidden;
 }
+
 pre {
     display: block;
     font-size: 87.5%;
@@ -103,9 +105,11 @@ button:active {
     width: 82%;
     cursor: pointer;
 }
+
 .wlc .ptr {
     display: none;
 }
+
 .fa-stacked-ptr {
     cursor: pointer;
     margin-right: 15px;
@@ -121,6 +125,7 @@ button:active {
     flex-direction: row;
     align-items: center;
 }
+
 .brand-logo {
     width: 40px;
     margin-right: 10px;
@@ -173,7 +178,7 @@ input::-moz-focus-inner {
     border-radius: 8px;
     border-color: #6222ab;
     border-width: 1px;
-    border-style: solid; 
+    border-style: solid;
 }
 
 .large-box:hover {
@@ -277,7 +282,7 @@ input::-moz-focus-inner {
 }
 
 
-.welcome-wrapper {    
+.welcome-wrapper {
     position: fixed;
     display: flex;
     width: 100%;
@@ -289,25 +294,29 @@ input::-moz-focus-inner {
     justify-content: center;
     z-index: 2;
 }
-.welcome-wrapper:before, 
+
+.welcome-wrapper:before,
 .welcome-wrapper:after {
     content: '';
     position: absolute;
     width: 100vw;
     height: 100vh;
     min-width: 100%;
-    min-height: 100%; 
+    min-height: 100%;
 }
+
 .welcome-wrapper:before {
     background: url(../images/map.webp) no-repeat;
     background-size: contain;
     background-position: center;
     opacity: 0.08;
 }
+
 .welcome-wrapper:after {
     background: var(--bg-color2);
     z-index: -1;
 }
+
 .welcome-section {
     flex-basis: 55%;
     display: flex;
@@ -316,11 +325,13 @@ input::-moz-focus-inner {
     flex-direction: column;
     justify-content: center;
 }
+
 .buttons-section {
     display: flex;
     gap: 15px;
     flex-direction: row;
 }
+
 .btn-border {
     position: relative;
     padding: 15px 30px;
@@ -331,13 +342,16 @@ input::-moz-focus-inner {
     border-radius: 200px;
     cursor: pointer;
 }
+
 nav .btn-border {
     padding: 11px;
 }
+
 .btn-border:hover {
     color: #fff;
     text-decoration: none;
 }
+
 .btn-border img {
     position: relative;
     top: -1px;
@@ -345,6 +359,7 @@ nav .btn-border {
     width: 23px;
     height: 23px;
 }
+
 .btn_txt {
     position: relative;
     text-wrap: nowrap;
@@ -362,10 +377,12 @@ nav .btn-border {
     border-radius: 200px;
     background-color: var(--bg-color2);
 }
+
 .no-gutters .btn-border:after {
     background-color: #1f1e29;
 }
-.image-section {    
+
+.image-section {
     position: relative;
     width: 50%;
     flex-basis: 50%;
@@ -439,7 +456,7 @@ nav .btn-border {
 /* DASHBOARD */
 
 #guiWallet {
-    width: 100%; 
+    width: 100%;
 }
 
 #bcg-wallet-box {
@@ -451,19 +468,6 @@ nav .btn-border {
 }
 
 /* -- Headline dashboard -- */
-
-#headline-balance {
-    display: block;
-    width: 100%;
-    height: 150px;
-}
-
-#window-icon-piv {
-    display: inline-block;
-    padding: 30px 50px;
-    height: 150px;
-    width: auto;
-}
 
 #piv-ring {
     display: inline-block;
@@ -481,25 +485,23 @@ nav .btn-border {
     vertical-align: top;
     width: auto;
     height: 60px;
-    padding: 15px 10px 15px 60px;
+    padding: 15px 10px 15px;
 }
 
 #guiBalanceBox {
     display: inline-block;
     font-size: x-large;
+    margin: 0;
 }
 
 #balance-box {
-    display: block !important;
-    margin: 20px auto 0 auto !important;
+    display: flex;
+    margin: 20px auto 0;
     width: 90%;
     height: 125px;
     background: linear-gradient(0.25turn, rgba(122, 122, 122, 0.5), rgba(115, 0, 255, 0.4));
-}
-
-#bal-title {
-    float: right;
-    padding: 45px 50px;
+    align-items: center;
+    justify-content: space-around;
 }
 
 /* -- Headline -- */
@@ -514,42 +516,57 @@ nav .btn-border {
     padding: 40px 0;
 }
 
+#bal-title h3 {
+    margin: 0;
+}
+
 #address-box {
     padding: 30px 25px;
 }
 
-#address-box.large-box, #transaction_table { 
+#address-box.large-box,
+#transaction_table {
     margin: 0 auto;
     background: linear-gradient(0.15turn, rgba(43, 9, 80, 0.45), rgba(43, 9, 80, 0.02));
 }
 
-#transaction_table { 
+#transaction_table {
     margin-top: 30px;
-    padding: 30px 25px; 
+    padding: 30px 25px;
 }
-#transaction_table td:first-child {
-      display: grid;
-      min-width: 70px; 
+
+#transaction_table th:not(:nth-child(-n+2)),
+#transaction_table td:not(:nth-child(-n+2)) {
+    text-align: center;
 }
-#transaction_table td:first-child a {
+
+#transaction_table td[data-bheight] {
+    display: grid;
+    min-width: 70px;
+}
+
+#transaction_table td[data-bheight] a {
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
 }
+
 #transaction_table table {
-  display: table;
-  width: 100%; 
+    display: table;
+    width: 100%;
 }
 
 #transaction_table th,
 #transaction_table td {
-  padding: 8px;
-  text-align: left;
+    padding: 8px;
+    text-align: left;
 }
 
-#transaction_table th:not(:first-child), #transaction_table td:not(:first-child) {
-    text-align: center;
+#transaction_table td:first-child {
+    text-wrap: balance;
+    font-size: 14px;
 }
+
 #transactionTableBody tr {
     border-top: 1px solid #763acf;
 }
@@ -793,7 +810,7 @@ nav .btn-border {
 /* FOOTER */
 
 #foot {
-    display: block; 
+    display: block;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -824,6 +841,7 @@ nav .btn-border {
     width: 100%;
     padding: 20px 48px;
 }
+
 .wlc .navbarSpecial {
     position: sticky;
 }
@@ -1185,7 +1203,10 @@ a {
     padding: 14px 90px;
 }
 
-#CreateManualTransactions, #communication {display: none;}
+#CreateManualTransactions,
+#communication {
+    display: none;
+}
 
 /* BREAKPOINTS */
 
@@ -1294,50 +1315,59 @@ a {
         padding-right: 0;
     }
 }
+
 @media screen and (min-width: 992px) {
     .navbar-collapse {
         flex-basis: unset;
-        flex-grow: unset; 
+        flex-grow: unset;
     }
-    .navbar-collapse > div {
+
+    .navbar-collapse>div {
         display: flex;
         gap: 50px;
     }
 }
+
 @media screen and (max-width: 992px) {
     .navbar-toggler {
-      border: none;
-      background: transparent;
-      cursor: pointer;
-      outline: none;
+        border: none;
+        background: transparent;
+        cursor: pointer;
+        outline: none;
     }
+
     .navbar-toggler .line {
-      width: 29px;
-      height: 2px;
-      background-color: #fff;
-      display: block;
-      margin: 6px auto;
-      transition: all 0.3s ease-in-out;
+        width: 29px;
+        height: 2px;
+        background-color: #fff;
+        display: block;
+        margin: 6px auto;
+        transition: all 0.3s ease-in-out;
     }
+
     .navbar-toggler.collapse .line:nth-child(1) {
-      transform: rotate(45deg)   translate(5px, 5px);
+        transform: rotate(45deg) translate(5px, 5px);
     }
+
     .navbar-toggler.collapse .line:nth-child(2) {
-      opacity: 0;
+        opacity: 0;
     }
+
     .navbar-toggler.collapse .line:nth-child(3) {
-      transform: rotate(-45deg)   translate(6px, -6px);
+        transform: rotate(-45deg) translate(6px, -6px);
     }
-    .navbar-collapse { 
+
+    .navbar-collapse {
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
     }
+
     .image-section {
         background-size: 85%;
         background-position: right;
     }
-    
+
     /* Dashboard page */
- 
+
     #big-frame-address {
         padding: 20px 0;
     }
@@ -1403,30 +1433,40 @@ a {
         padding-bottom: 35px;
     }
 }
+
 @media screen and (max-width: 991px) {
-    nav .navbar-collapse > div {
+    nav .navbar-collapse>div {
         display: flex;
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
     }
-    nav .navbar-collapse:not(.wlc .navbar-collapse){
+
+    nav .navbar-collapse:not(.wlc .navbar-collapse) {
         background: linear-gradient(transparent, #05060b);
         border-radius: 9px;
     }
+
     nav .buttons-section {
         flex-direction: column;
         align-items: flex-end;
         padding: 20px 5px;
         border-radius: 10px;
     }
-    nav .buttons-section:not(.wlc .buttons-section){
+
+    nav .buttons-section:not(.wlc .buttons-section) {
         border-left: 1px solid hsla(0, 0%, 100%, .1);
     }
-    .nav-item:not(:first-child) { 
+
+    .nav-item:not(:first-child) {
         border-top: 1px solid hsla(0, 0%, 100%, .1);
     }
+
+    .bal-text {
+        display: none;
+    }
 }
+
 @media screen and (max-width: 770px) {
 
     #pivx-price-box {
@@ -1449,39 +1489,46 @@ a {
 }
 
 @media screen and (max-width: 768px) {
-    .navbarSpecial { 
+    .navbarSpecial {
         padding: 20px 15px;
     }
-    .welcome-wrapper { 
+
+    .welcome-wrapper {
         flex-direction: column-reverse;
         align-items: center;
     }
+
     .welcome-wrapper:before {
-        background-image : url(../images/abstract.webp);
+        background-image: url(../images/abstract.webp);
         background-position: 0 30%;
         opacity: 0.15;
     }
+
     .welcome-section {
         flex-basis: unset;
     }
-    .image-section {       
+
+    .image-section {
         background-size: 100%;
         background-position: center;
     }
+
     .welcome-section h1 {
         font-size: 30px;
         font-weight: 300;
     }
+
     .welcome-section h5 {
         font-size: 17px;
         font-weight: 100;
     }
+
     .btn_txt {
         font-size: 13px;
         font-weight: 400;
     }
 
-    
+
     /* Main Wallet page */
     #PrivateTxt {
         font-size: 17px;
@@ -1498,11 +1545,6 @@ a {
     }
 
     /* Dashboard page */
-
-    #balance-box {
-        width: 92%;
-        height: 120px;
-    }
 
     #guiBalanceBox {
         margin: 0;
@@ -1531,10 +1573,6 @@ a {
 
     #piv-ring {
         display: none;
-    }
-
-    #window-icon-piv {
-        padding: 30px 0 30px 30px;
     }
 
     #ring {
@@ -1602,13 +1640,6 @@ a {
         vertical-align: top;
     }
 
-    #bal-title {
-        padding: 45px 40px 45px 20px;
-    }
-
-    #window-icon-piv {
-        padding: 30px 0;
-    }
 
     #address-box.large-box {
         padding-top: 20px;
@@ -1643,6 +1674,11 @@ a {
     #pubkey-box .pivx-button-big {
         width: 200px !important;
     }
+
+    #transaction_table th:last-child,
+    #transaction_table td:last-child {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 510px) {
@@ -1669,22 +1705,27 @@ a {
 
 @media screen and (max-width: 480px) {
     .brand-logo {
-        width: 33px; 
+        width: 33px;
     }
+
     .nav-logo {
         font-size: 18px;
     }
+
     .welcome-wrapper {
         gap: 10px;
     }
+
     .welcome-wrapper .buttons-section {
         flex-direction: column;
         align-items: flex-start;
     }
-    .image-section { 
-        max-height: 300px; 
+
+    .image-section {
+        max-height: 300px;
         background-position: center 80%;
     }
+
     /* Main Wallet page */
     #PrivateTxt {
         font-size: 8px;
@@ -1704,7 +1745,7 @@ a {
     /* Dashboard */
 
     #number-piv {
-        padding: 15px 5px 15px 40px;
+        padding: 15px 5px 15px;
     }
 
     #ring {
@@ -1774,21 +1815,13 @@ a {
     }
 }
 
-@media screen and (max-width: 400px) {
-    #transaction_table th:last-child {
-        display: block;
-        overflow: hidden;
-        width: 80px;
-        text-overflow: ellipsis;
-    }
-}
-
 @media screen and (max-width: 393px) {
 
     /* Dashboard */
     .dashboard-item .container {
         padding: 0;
     }
+
     #piv-price-amount {
         padding: 30px 15px;
     }
@@ -1821,6 +1854,10 @@ a {
         left: 180px;
     }
 
+    .tabcontent {
+        padding: 0;
+    }
+
     /* Stake */
 
     #staking-box {
@@ -1832,11 +1869,7 @@ a {
     /* Dashboard */
 
     #number-piv {
-        padding: 15px 5px 15px 35px;
-    }
-
-    #bal-title {
-        padding: 45px 30px 45px 10px;
+        padding: 15px 5px 15px;
     }
 
     #balance-box h3 {
@@ -1855,6 +1888,7 @@ a {
         margin-right: 0;
         margin-left: 0;
     }
+
     #address-info {
         width: 90%;
         padding-left: 35px;
@@ -1871,10 +1905,6 @@ a {
 
     #piv-price-amount {
         padding: 30px 5px 30px 20px;
-    }
-
-    #bal-title {
-        padding: 47px 25px 47px 10px;
     }
 
     #balance-box h3 {
@@ -1901,21 +1931,7 @@ a {
 
     /* Dashboard */
 
-    #balance-box {
-        width: 92%;
-        height: 140px;
-    }
 
-    #window-icon-piv {
-        padding: 5px 10px;
-        height: auto;
-    }
-
-    #bal-title {
-        float: none;
-        clear: both;
-        padding: 10px 10px 10px 50px;
-    }
 }
 
 @media screen and (max-width: 320px) {
