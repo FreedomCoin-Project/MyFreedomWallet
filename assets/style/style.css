@@ -530,11 +530,11 @@ nav .btn-border {
 #transaction_table th:not(:nth-child(-n+2)), #transaction_table td:not(:nth-child(-n+2)) {
     text-align: center;
 }
-#transaction_table td::nth-child(2) {
+#transaction_table td[data-bheight] {
       display: grid;
       min-width: 70px; 
 }
-#transaction_table td::nth-child(2) a {
+#transaction_table td[data-bheight] a {
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
