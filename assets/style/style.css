@@ -1774,6 +1774,15 @@ a {
     }
 }
 
+@media screen and (max-width: 400px) {
+    #transaction_table th:last-child {
+        display: block;
+        overflow: hidden;
+        width: 80px;
+        text-overflow: ellipsis;
+    }
+}
+
 @media screen and (max-width: 393px) {
 
     /* Dashboard */
