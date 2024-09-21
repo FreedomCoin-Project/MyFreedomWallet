@@ -1615,6 +1615,11 @@ a {
     #pubkey-box .pivx-button-big {
         width: 200px !important;
     }
+    
+    #transaction_table th:last-child, 
+    #transaction_table td:last-child {
+        display: none; 
+    }
 }
 
 @media screen and (max-width: 510px) {
@@ -1743,10 +1748,6 @@ a {
 
     #pubkey-box.col-md-4 {
         padding-top: 20px;
-    }
-    #transaction_table th:last-child, 
-    #transaction_table td:last-child {
-        display: none; 
     }
 }
 
