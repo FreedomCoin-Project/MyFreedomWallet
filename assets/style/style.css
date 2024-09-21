@@ -1792,7 +1792,9 @@ a {
     #navbarToggler {
         left: 180px;
     }
-
+    .tabcontent {
+        padding: 0;
+    }
     /* Stake */
 
     #staking-box {
