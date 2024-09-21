@@ -527,11 +527,14 @@ nav .btn-border {
     margin-top: 30px;
     padding: 30px 25px; 
 }
-#transaction_table td:first-child {
+#transaction_table th:not(:nth-child(-n+2)), #transaction_table td:not(:nth-child(-n+2)) {
+    text-align: center;
+}
+#transaction_table td::nth-child(2) {
       display: grid;
       min-width: 70px; 
 }
-#transaction_table td:first-child a {
+#transaction_table td::nth-child(2) a {
     width: 100%;
     overflow: hidden;
     text-overflow: ellipsis;
@@ -540,15 +543,14 @@ nav .btn-border {
   display: table;
   width: 100%; 
 }
-
 #transaction_table th,
 #transaction_table td {
   padding: 8px;
   text-align: left;
 }
-
-#transaction_table th:not(:first-child), #transaction_table td:not(:first-child) {
-    text-align: center;
+#transaction_table td:first-child {
+    text-wrap: balance;
+    font-size: 14px;
 }
 #transactionTableBody tr {
     border-top: 1px solid #763acf;
