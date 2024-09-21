@@ -452,19 +452,6 @@ nav .btn-border {
 
 /* -- Headline dashboard -- */
 
-#headline-balance {
-    display: block;
-    width: 100%;
-    height: 150px;
-}
-
-#window-icon-piv {
-    display: inline-block;
-    padding: 30px 50px;
-    height: 150px;
-    width: auto;
-}
-
 #piv-ring {
     display: inline-block;
     width: 65px;
@@ -481,7 +468,7 @@ nav .btn-border {
     vertical-align: top;
     width: auto;
     height: 60px;
-    padding: 15px 10px 15px 60px;
+    padding: 15px 10px 15px;
 }
 
 #guiBalanceBox {
@@ -490,17 +477,14 @@ nav .btn-border {
 }
 
 #balance-box {
-    display: block !important;
-    margin: 20px auto 0 auto !important;
+    display: flex;
+    margin: 20px auto 0;
     width: 90%;
     height: 125px;
     background: linear-gradient(0.25turn, rgba(122, 122, 122, 0.5), rgba(115, 0, 255, 0.4));
-}
-
-#bal-title {
-    float: right;
-    padding: 45px 50px;
-}
+    align-items: center;
+    justify-content: space-around;
+} 
 
 /* -- Headline -- */
 
@@ -513,7 +497,9 @@ nav .btn-border {
     margin: 0 auto;
     padding: 40px 0;
 }
-
+#bal-title h3 {
+    margin: 0;
+}
 #address-box {
     padding: 30px 25px;
 }
@@ -1501,11 +1487,6 @@ a {
 
     /* Dashboard page */
 
-    #balance-box {
-        width: 92%;
-        height: 120px;
-    }
-
     #guiBalanceBox {
         margin: 0;
     }
@@ -1533,10 +1514,6 @@ a {
 
     #piv-ring {
         display: none;
-    }
-
-    #window-icon-piv {
-        padding: 30px 0 30px 30px;
     }
 
     #ring {
@@ -1604,13 +1581,6 @@ a {
         vertical-align: top;
     }
 
-    #bal-title {
-        padding: 45px 40px 45px 20px;
-    }
-
-    #window-icon-piv {
-        padding: 30px 0;
-    }
 
     #address-box.large-box {
         padding-top: 20px;
@@ -1706,7 +1676,7 @@ a {
     /* Dashboard */
 
     #number-piv {
-        padding: 15px 5px 15px 40px;
+        padding: 15px 5px 15px;
     }
 
     #ring {
@@ -1829,11 +1799,7 @@ a {
     /* Dashboard */
 
     #number-piv {
-        padding: 15px 5px 15px 35px;
-    }
-
-    #bal-title {
-        padding: 45px 30px 45px 10px;
+        padding: 15px 5px 15px;
     }
 
     #balance-box h3 {
@@ -1870,10 +1836,6 @@ a {
         padding: 30px 5px 30px 20px;
     }
 
-    #bal-title {
-        padding: 47px 25px 47px 10px;
-    }
-
     #balance-box h3 {
         font-size: 22px;
     }
@@ -1898,21 +1860,7 @@ a {
 
     /* Dashboard */
 
-    #balance-box {
-        width: 92%;
-        height: 140px;
-    }
 
-    #window-icon-piv {
-        padding: 5px 10px;
-        height: auto;
-    }
-
-    #bal-title {
-        float: none;
-        clear: both;
-        padding: 10px 10px 10px 50px;
-    }
 }
 
 @media screen and (max-width: 320px) {
