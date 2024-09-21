@@ -1415,6 +1415,9 @@ a {
     .nav-item:not(:first-child) { 
         border-top: 1px solid hsla(0, 0%, 100%, .1);
     }
+    .bal-text {
+        display: none;
+    }
 }
 @media screen and (max-width: 770px) {
 
