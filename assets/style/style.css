@@ -474,6 +474,7 @@ nav .btn-border {
 #guiBalanceBox {
     display: inline-block;
     font-size: x-large;
+    margin: 0;
 }
 
 #balance-box {
