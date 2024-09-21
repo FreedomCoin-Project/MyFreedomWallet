@@ -794,8 +794,7 @@ let lastTxids = [];
 
 // Function to populate the table with transaction data
 function populateTransactionTable() {
-    const tableBody = document.getElementById('transactionTableBody');
-    tableBody.innerHTML = ''; // Clear previous content
+    const tableBody = document.getElementById('transactionTableBody'); 
 
     // Make a separate request to fetch transaction data
     const request = new XMLHttpRequest();
