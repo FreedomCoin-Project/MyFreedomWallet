@@ -852,9 +852,12 @@ function fetchTransactionDetails(txids, tableBody) {
             // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
             const txid = transaction.txid;
             const amount = Math.round(transaction.value / COIN) || "0"; // Use valueOut for the transaction amount
-            const confirmations = transaction.confirmations;
+            let confirmations = transaction.confirmations;
             const time = transaction.blockTime; // Extract the transaction time (UNIX timestamp)
             const blockheight = transaction.blockHeight; // Extract the block height
+
+            // If confirmations are greater than 100, display "100+"
+            confirmations = confirmations > 100 ? "100+" : confirmations;
 
             // Convert the UNIX timestamp to a JavaScript Date object
             const date = new Date(time * 1000); // Multiply by 1000 to convert to milliseconds
@@ -890,6 +893,7 @@ function fetchTransactionDetails(txids, tableBody) {
         request.send();
     });
 }
+
 
 
     
