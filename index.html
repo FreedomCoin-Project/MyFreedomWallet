@@ -852,7 +852,7 @@
 
           // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
           const txid = transaction.txid;
-          const amount = Math.round((transaction.vout[1].value + transaction.fees) / COIN) || "0"; // Use valueOut for the transaction amount
+          const amount = Math.round(transaction.vout[1].value / COIN) || "0"; // Use valueOut for the transaction amount
           let confirmations = transaction.confirmations;
           const time = transaction.blockTime; // Extract the transaction time (UNIX timestamp)
           const blockheight = transaction.blockHeight; // Extract the block height
