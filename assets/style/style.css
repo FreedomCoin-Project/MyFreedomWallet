@@ -230,7 +230,7 @@ input::-moz-focus-inner {
 
 .reload {
     position: relative;
-    top: 16px;
+    top: 10px;
     left: 10px;
     display: inline-block;
     font-family: Lucida Sans Unicode;
@@ -469,8 +469,13 @@ nav .btn-border {
 
 /* -- Headline dashboard -- */
 
+#window-icon-piv {
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
 #piv-ring {
-    display: inline-block;
+    display: none;
     width: 65px;
     height: 65px;
     /*border-style: solid;*/
@@ -479,13 +484,12 @@ nav .btn-border {
     background-size: cover;
     background-image: url(../Spinning_Freedomcoin.gif);
 }
-
-#number-piv {
-    display: inline-block;
+#bal-title {
+    font-size: 15px;
+}
+#number-piv { 
     vertical-align: top;
-    width: auto;
-    height: 60px;
-    padding: 15px 10px 15px;
+    width: auto; 
 }
 
 #guiBalanceBox {
@@ -515,11 +519,7 @@ nav .btn-border {
     margin: 0 auto;
     padding: 40px 0;
 }
-
-#bal-title h3 {
-    margin: 0;
-}
-
+ 
 #address-box {
     padding: 30px 25px;
 }
