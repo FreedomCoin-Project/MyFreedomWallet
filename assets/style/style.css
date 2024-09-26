@@ -198,7 +198,13 @@ input::-moz-focus-inner {
     font-family: monospace;
     font-size: small;
 }
-
+#dismiss-modal span {
+    font-size: 3rem;
+    line-height: 0;
+    font-weight: 500;
+    color: #ffffff;
+    text-shadow: none;
+}
 .auto-fit {
     width: 100%;
     height: auto;
@@ -533,9 +539,8 @@ nav .btn-border {
     background: var(--bg-color1) !important;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
-    box-shadow: 1px 0px 0px 0px var(--orange), 0 0px 0px 1px var(--gold);
-    border: 0;
+    transform: translate(-50%, -50%); 
+    border: 1px solid #763acf;
 }
 
 #address-box.large-box,
