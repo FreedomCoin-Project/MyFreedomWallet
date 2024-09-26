@@ -89,9 +89,7 @@
               <ul class="navbar-nav mr-auto ptr">
 
                 <li class="nav-item"><a id='start' class="nav-link tablinks active"
-                    onclick="openTab(event, 'keypair')">Dashboard</a></li>
-               <!-- <li class="nav-item"><a id="txTab" class="nav-link tablinks"
-                    onclick="openTab(event, 'Transaction')">Send</a></li>-->
+                    onclick="openTab(event, 'keypair')">Dashboard</a></li> 
                 <li class="nav-item"><a id="stakeTab" class="nav-link tablinks"
                     onclick="openTab(event, 'StakingTab')">Stake</a></li>
               </ul>
@@ -1271,9 +1269,7 @@
     $("#navbarToggler").click(toggleNavigation);
     
     function openModal(evt, modalName) { 
-      $(qrModal, modalName).fadeToggle(500);
-      if(qrModal.is(':visible')) 
-        $(close).removeClass("active"); 
+      $(qrModal, modalName).fadeToggle(500); 
     }
 
     function openTab(evt, tabName) {
@@ -1283,8 +1279,9 @@
       
       // Show and activate the given screen
       document.getElementById(tabName).style.display = "block";
-      evt.currentTarget.classList.add("active");
-
+      if (tabName != 'Transaction'){
+       evt.currentTarget.classList.add("active");
+      }
       // Close the navbar if it's not already closed
       if (!domNavbarToggler.className.includes("collapsed"))
         toggleNavigation();
