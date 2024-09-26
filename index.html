@@ -911,7 +911,7 @@
           // Once all requests are completed, append the rows in order
           if (completedRequests === txids.length) {
             tableBody.innerHTML = rowsArray.join(''); // Append all rows at once
-            moreLink.innerHTML = `<a href="${cExplorer.url}/address/${publicKeyForNetwork}" target="_blank">More ></a>`
+            moreLink.innerHTML = `<a href="${cExplorer.url}/address/${publicKeyForNetwork}" target="_blank">More</a>`
             isFetching = false; // Unlock: set fetching to false
           }
         };
