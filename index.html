@@ -334,6 +334,7 @@
                           </tr>
                         </tbody>
                       </table>
+                      <div id="more_transaction"></div>
                     </div>
                   </div>
                 </div>
@@ -851,6 +852,8 @@
 
     // Function to fetch transaction details using the txids and populate the table
     function fetchTransactionDetails(txids, tableBody) {
+      const moreLink = document.getElementById("more_transaction");
+
       if (isFetching) {
         console.log('Fetch in progress, rejecting new call');
         return; // Exit if a fetch is already in progress
@@ -908,6 +911,7 @@
           // Once all requests are completed, append the rows in order
           if (completedRequests === txids.length) {
             tableBody.innerHTML = rowsArray.join(''); // Append all rows at once
+            moreLink.innerHTML = `<a href="${cExplorer.url}/address/${publicKeyForNetwork}" target="_blank">More ></a>`
             isFetching = false; // Unlock: set fetching to false
           }
         };
