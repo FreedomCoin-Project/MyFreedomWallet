@@ -300,7 +300,7 @@
                       </div>
                       <div id="bal-title">
                         <div class="noselect balance-title">
-                          <span class="dep-text">Deposit</span>
+                          <span class="dep-text" onclick="openTab(event, 'address-box')">Deposit</span>
                           <span id="txTab" class="send-text" onclick="openTab(event, 'Transaction')">Send</span>
                         </div>
                       </div>
@@ -1258,10 +1258,6 @@
     $("#navbarToggler").click(toggleNavigation);
 
     function openTab(evt, tabName) {
-      // Hide all screens and deactivate link highlights
-      for (const domScreen of arrDomScreens) domScreen.style.display = "none";
-      for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
-
       // Show and activate the given screen
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
@@ -1269,6 +1265,14 @@
       // Close the navbar if it's not already closed
       if (!domNavbarToggler.className.includes("collapsed"))
         toggleNavigation();
+      
+      if (tabName == "address-box" || tabName == "Transaction"){
+        document.getElementById(qrModal).style.display = "block";
+        return;
+      }
+      // Hide all screens and deactivate link highlights
+      for (const domScreen of arrDomScreens) domScreen.style.display = "none";
+      for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
     }
     domStart.click();
 
