@@ -144,7 +144,7 @@
           </div>
         </div>
               <div id="address-box" class="large-box">
-                <button type="button" class="close" aria-label="Close" id="dismiss-modal">
+                <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'address-box')">
                   <span aria-hidden="true">×</span>
                 </button>
                 <div id="title-address-box">
@@ -1259,12 +1259,13 @@
     }
     $("#navbarToggler").click(toggleNavigation);
     
-    function openModal(evt, modalName) { 
-      if(qrModal.is(':visible')){
-        $(qrModal+ "> *").hide();
-      }
+    function openModal(evt, modalName, close) { 
+      $(qrModal, modalName).fadeToggle(500);
+      if(qrModal.is(':visible')){  
+        $(close).removeClass("active");
+        return;
+      } 
       evt.currentTarget.classList.add("active");  
-      $(qrModal, modalName).fadeToggle(700);
     }
 
     function openTab(evt, tabName) {
