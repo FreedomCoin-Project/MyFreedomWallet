@@ -517,6 +517,7 @@ nav .btn-border {
 #address-box {    
     position: absolute;
     width: 60%;
+    min-width: 300px;
     padding: 30px 25px;
     background: var(--bg-color1) !important;
     top: 50%;

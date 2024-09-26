@@ -1260,6 +1260,9 @@
     $("#navbarToggler").click(toggleNavigation);
     
     function openModal(evt, modalName) { 
+      if(qrModal.is(':visible')){
+        $(qrModal+ "> *").hide();
+      }
       evt.currentTarget.classList.add("active");  
       $(qrModal, modalName).fadeToggle(700);
     }
