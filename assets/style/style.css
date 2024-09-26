@@ -229,11 +229,7 @@ input::-moz-focus-inner {
 }
 
 .reload {
-    position: relative;
-    top: 10px;
-    left: 10px;
-    display: inline-block;
-    font-family: Lucida Sans Unicode;
+    position: relative; 
     cursor: pointer;
     animation-name: spinner;
     animation-duration: 0.75s;
@@ -248,11 +244,10 @@ input::-moz-focus-inner {
 
 @keyframes spinner {
     0% {
-        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+        transform: rotate(0deg);
     }
-
     100% {
-        transform: translate3d(-50%, -50%, 0) rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -442,10 +437,6 @@ nav .btn-border {
     border-radius: 8px;
 }
 
-#Transaction.tabcontent {
-    padding-bottom: 100px;
-}
-
 
 .frame {
     display: block;
@@ -486,6 +477,7 @@ nav .btn-border {
 }
 #bal-title {
     font-size: 15px;
+    font-weight: 100;
 }
 .balance-title {
     display: flex;
@@ -512,7 +504,9 @@ nav .btn-border {
     align-items: center;
     justify-content: space-around;
 }
-
+#bal-wrapper {
+    font-size: 15px; 
+}
 .balance-transaction {
     display: flex;
     gap: 20px;
@@ -535,9 +529,10 @@ nav .btn-border {
     margin: 0 auto;
     padding: 40px 0;
 }
- 
-#address-box {    
+
+#address-box, #Transaction {    
     position: absolute;
+    display: none;
     width: 60%;
     min-width: 300px;
     padding: 30px 25px;
@@ -594,6 +589,20 @@ nav .btn-border {
 #transactionTableBody tr {
     border-top: 1px solid #763acf;
 }
+
+#more_transaction {
+    text-align: center;
+}
+
+#more_transaction a {
+    font-weight: 200;
+    padding-right: 20px;
+    color: #fff;
+    background: url(../images/icons/arrow.svg) right no-repeat;
+    background-size: 25%;
+    opacity: 0.7;
+}
+
 
 /* -- Background -- */
 
@@ -1613,6 +1622,9 @@ a {
     .balance-transaction span {
         display: none;
     }
+    #address-box, #Transaction { 
+        width: 85%;
+    }
 }
 
 @media screen and (max-width: 600px) {
@@ -1786,10 +1798,6 @@ a {
 
     .max-width {
         width: 98%;
-    }
-
-    #Transaction.tabcontent {
-        padding: 10px 15px 110px 15px;
     }
 
     /* Settings page */
