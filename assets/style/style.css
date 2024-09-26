@@ -442,10 +442,6 @@ nav .btn-border {
     border-radius: 8px;
 }
 
-#Transaction.tabcontent {
-    padding-bottom: 100px;
-}
-
 
 .frame {
     display: block;
@@ -538,8 +534,8 @@ nav .btn-border {
     margin: 0 auto;
     padding: 40px 0;
 }
- 
-#address-box {    
+
+#address-box, #Transaction {    
     position: absolute;
     display: none;
     width: 60%;
@@ -1803,10 +1799,6 @@ a {
 
     .max-width {
         width: 98%;
-    }
-
-    #Transaction.tabcontent {
-        padding: 10px 15px 110px 15px;
     }
 
     /* Settings page */

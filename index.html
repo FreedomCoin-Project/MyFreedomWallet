@@ -182,7 +182,9 @@
           </div>
         </div>
         <div id="Transaction" class="tabcontent">
-
+          <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'Transaction')">
+            <span aria-hidden="true">×</span>
+          </button>
           <!-- PIVX TITLE SECTION -->
           <div class="col-md-12 title-section float-left rm-pd">
             <h3 class="pivx-bold-title center-text"><span>Create a</span> Transaction</h3>
@@ -1270,7 +1272,7 @@
 
     function openModal(evt, modalName) {
       $(qrModal).fadeToggle(500);
-      $(modalName).fadeToggle(500);
+      $('#'+modalName).fadeToggle(500);
     }
 
     function openTab(evt, tabName) {
