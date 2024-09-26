@@ -192,8 +192,7 @@ input::-moz-focus-inner {
     backdrop-filter: blur(2px);
 }
 
-.modal-label {    
-    display: none;
+.modal-label {     
     position: relative;
     top: 20px;
     font-family: monospace;
