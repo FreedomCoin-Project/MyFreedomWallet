@@ -487,7 +487,11 @@ nav .btn-border {
 #bal-title {
     font-size: 15px;
 }
-
+.balance-title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 #number-piv { 
     vertical-align: top;
     width: auto; 
@@ -1479,11 +1483,7 @@ a {
 
     .nav-item:not(:first-child) {
         border-top: 1px solid hsla(0, 0%, 100%, .1);
-    }
-
-    .bal-text {
-        display: none;
-    }
+    } 
 }
 
 @media screen and (max-width: 770px) {
@@ -1608,6 +1608,9 @@ a {
     .stake-box.large-box.col-md-4 {
         padding: 10px 20px;
         width: 85% !important;
+    }
+    .balance-transaction span {
+        display: none;
     }
 }
 
