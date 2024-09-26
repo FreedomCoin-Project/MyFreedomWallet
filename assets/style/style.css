@@ -186,19 +186,14 @@ input::-moz-focus-inner {
     border-color: #763acf;
 
 }
-
-#qrModal.modal {
-    width: auto;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+ 
+.modal {    
+    background: rgb(0 0 0 / 34%);
+    backdrop-filter: blur(2px);
 }
 
-.modal {
-    color: black;
-}
-
-.modal-label {
+.modal-label {    
+    display: none;
     position: relative;
     top: 20px;
     font-family: monospace;
@@ -520,8 +515,16 @@ nav .btn-border {
     padding: 40px 0;
 }
  
-#address-box {
+#address-box {    
+    position: absolute;
+    width: 60%;
     padding: 30px 25px;
+    background: var(--bg-color1) !important;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 1px 0px 0px 0px var(--orange), 0 0px 0px 1px var(--gold);
+    border: 0;
 }
 
 #address-box.large-box,
