@@ -1258,6 +1258,10 @@
     $("#navbarToggler").click(toggleNavigation);
 
     function openTab(evt, tabName) {
+      // Hide all screens and deactivate link highlights
+      for (const domScreen of arrDomScreens) domScreen.style.display = "none";
+      for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
+      
       // Show and activate the given screen
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
@@ -1270,9 +1274,6 @@
         document.getElementById(qrModal).style.display = "block";
         return;
       }
-      // Hide all screens and deactivate link highlights
-      for (const domScreen of arrDomScreens) domScreen.style.display = "none";
-      for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
     }
     domStart.click();
 
