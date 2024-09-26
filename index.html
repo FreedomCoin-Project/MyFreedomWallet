@@ -90,8 +90,8 @@
 
                 <li class="nav-item"><a id='start' class="nav-link tablinks active"
                     onclick="openTab(event, 'keypair')">Dashboard</a></li>
-                <li class="nav-item"><a id="txTab" class="nav-link tablinks"
-                    onclick="openTab(event, 'Transaction')">Send</a></li>
+               <!-- <li class="nav-item"><a id="txTab" class="nav-link tablinks"
+                    onclick="openTab(event, 'Transaction')">Send</a></li>-->
                 <li class="nav-item"><a id="stakeTab" class="nav-link tablinks"
                     onclick="openTab(event, 'StakingTab')">Stake</a></li>
               </ul>
@@ -128,9 +128,8 @@
 
 
       <!-- // QR MODAL -->
-      <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel"
-        aria-hidden="true">
-        <div class="modal-dialog" role="document">
+      <div class="modal" id="qrModal">
+        <div class="modal-dialog" role="document" style="display:none">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="qrModalLabel">Address QR</h5>
@@ -144,6 +143,49 @@
             </div>
           </div>
         </div>
+              <div id="address-box" class="large-box">
+                <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'address-box')">
+                  <span aria-hidden="true">×</span>
+                </button>
+                <div id="title-address-box">
+                  <h3 class="noselect addr-title">Address</h3>
+                </div>
+                <div id="box-info-address">
+                  <div id="ring">
+                    <canvas id="identicon" class="innerShadow" width="65" height="65"
+                      data-jdenticon-value=""></canvas>
+                  </div>
+                  <div id="address-info">
+                    <b id="guiAddress">~</b>
+                    <b id="guiQRButton">
+                      <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>
+                      <i onclick="toClipboard('guiAddress', this)" id="guiAddressCopy"
+                        class="fas fa-clipboard fa-stacked-ptr"></i>
+                    </b>
+                  </div>
+                </div>
+                <div id="pubkey-padd">
+                  <div id="pubkey-box" class="col-md-4 desktop-pubkey">
+                    <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82"
+                        height="82"></div>
+                    <div id="PublicQR" class="margin-padded-qr" style="display: block;"><img src="" width="82"
+                        height="82"></div>
+                    <textarea id="PrivateTxt" style="display: none;" disabled=""
+                      class="form-control private-key-area"></textarea>
+                    <button class="pivx-button-big btn-border" onclick="toggleKeyView()">
+                      <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
+                      <span class="buttoni-text btn_txt" id="guiViewKey">Pubkey QR</span>
+                      <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 32 32">
+                          <path
+                            d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                          </path>
+                        </svg></span>
+                    </button>
+                  </div>
+                </div>
+              </div>  
+        
       </div>
       <br>
       <!-- // QR MODAL -->
@@ -248,59 +290,36 @@
                     <div id="balance-box" class="large-box">
                       <div id="window-icon-piv">
                         <div id="piv-ring"></div>
+                        <div id="bal-title">
+                          <div class="noselect balance-title">
+                            <span class="bal-text">Current Balance &nbsp;&nbsp;</span>
+                            <span id="balanceReload" class="reload noselect" onclick="refreshChainData()">&#x21bb;</span>
+                          </div>
+                        </div>
                         <div id="number-piv">
                           <p id="guiBalanceBox"><b id="guiBalance">~</b> FREED</p>
                         </div>
                       </div>
                       <div id="bal-title">
-                        <h3 class="noselect balance-title"><span class="bal-text">Balance &nbsp;&nbsp;</span><span
-                            id="balanceReload" class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
+                        <div class="noselect balance-transaction">
+                          <div class="dep-text" onclick="openModal(event, 'address-box')">
+                              <img src="./assets/images/icons/deposit.svg" alt="Deposit"> 
+                              <span>Deposit</span>
+                          </div>
+                          <div id="txTab" class="send-text" onclick="openTab(event, 'Transaction')">
+                              <img src="./assets/images/icons/send.svg" alt="Send"> 
+                              <span>Send</span>
+                          </div>
+                      </div>
                       </div>
                     </div>
                   </div>
                   <!-- WALLET FEATURE -->
                   <div id="big-frame-address">
-                    <div id="address-box" class="large-box">
-                      <div id="title-address-box">
-                        <h3 class="noselect addr-title">Address</h3>
-                      </div>
-                      <div id="box-info-address">
-                        <div id="ring">
-                          <canvas id="identicon" class="innerShadow" width="65" height="65"
-                            data-jdenticon-value=""></canvas>
-                        </div>
-                        <div id="address-info">
-                          <b id="guiAddress">~</b>
-                          <b id="guiQRButton">
-                            <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>
-                            <i onclick="toClipboard('guiAddress', this)" id="guiAddressCopy"
-                              class="fas fa-clipboard fa-stacked-ptr"></i>
-                          </b>
-                        </div>
-                      </div>
-                      <div id="pubkey-padd">
-                        <div id="pubkey-box" class="col-md-4 desktop-pubkey">
-                          <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82"
-                              height="82"></div>
-                          <div id="PublicQR" class="margin-padded-qr" style="display: block;"><img src="" width="82"
-                              height="82"></div>
-                          <textarea id="PrivateTxt" style="display: none;" disabled=""
-                            class="form-control private-key-area"></textarea>
-                          <button class="pivx-button-big btn-border" onclick="toggleKeyView()">
-                            <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                            <span class="buttoni-text btn_txt" id="guiViewKey">Pubkey QR</span>
-                            <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 32 32">
-                                <path
-                                  d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                                </path>
-                              </svg></span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                    
                     <div id="transaction_table" class="large-box">
                       <table>
+                        <h6 style=" font-weight: 100; padding-bottom: 15px; text-align: center; ">Recent Transactions</h6>
                         <thead>
                           <tr>
                             <th>Date</th>
@@ -315,6 +334,7 @@
                           </tr>
                         </tbody>
                       </table>
+                      <div id="more_transaction"></div>
                     </div>
                   </div>
                 </div>
@@ -832,6 +852,8 @@
 
     // Function to fetch transaction details using the txids and populate the table
     function fetchTransactionDetails(txids, tableBody) {
+      const moreLink = document.getElementById("more_transaction");
+
       if (isFetching) {
         console.log('Fetch in progress, rejecting new call');
         return; // Exit if a fetch is already in progress
@@ -852,7 +874,8 @@
 
           // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
           const txid = transaction.txid;
-          const amount = Math.round(transaction.value / COIN) || "0"; // Use valueOut for the transaction amount
+          let totalTx = (Number(transaction.vout[1].value) + Number(transaction.fees)) / COIN;
+          const amount = totalTx.toFixed(2) || "0"; // Use valueOut for the transaction amount
           let confirmations = transaction.confirmations;
           const time = transaction.blockTime; // Extract the transaction time (UNIX timestamp)
           const blockheight = transaction.blockHeight; // Extract the block height
@@ -888,6 +911,7 @@
           // Once all requests are completed, append the rows in order
           if (completedRequests === txids.length) {
             tableBody.innerHTML = rowsArray.join(''); // Append all rows at once
+            moreLink.innerHTML = `<a href="${cExplorer.url}/address/${publicKeyForNetwork}" target="_blank">More</a>`
             isFetching = false; // Unlock: set fetching to false
           }
         };
@@ -1245,12 +1269,18 @@
       $("#navbarToggler").toggleClass("collapsed collapse");
     }
     $("#navbarToggler").click(toggleNavigation);
+    
+    function openModal(evt, modalName) { 
+      $(qrModal, modalName).fadeToggle(500);
+      if(qrModal.is(':visible')) 
+        $(close).removeClass("active"); 
+    }
 
     function openTab(evt, tabName) {
       // Hide all screens and deactivate link highlights
       for (const domScreen of arrDomScreens) domScreen.style.display = "none";
       for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
-
+      
       // Show and activate the given screen
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
