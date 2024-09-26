@@ -144,6 +144,46 @@
             </div>
           </div>
         </div>
+              <div id="address-box" class="large-box">
+                <div id="title-address-box">
+                  <h3 class="noselect addr-title">Address</h3>
+                </div>
+                <div id="box-info-address">
+                  <div id="ring">
+                    <canvas id="identicon" class="innerShadow" width="65" height="65"
+                      data-jdenticon-value=""></canvas>
+                  </div>
+                  <div id="address-info">
+                    <b id="guiAddress">~</b>
+                    <b id="guiQRButton">
+                      <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>
+                      <i onclick="toClipboard('guiAddress', this)" id="guiAddressCopy"
+                        class="fas fa-clipboard fa-stacked-ptr"></i>
+                    </b>
+                  </div>
+                </div>
+                <div id="pubkey-padd">
+                  <div id="pubkey-box" class="col-md-4 desktop-pubkey">
+                    <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82"
+                        height="82"></div>
+                    <div id="PublicQR" class="margin-padded-qr" style="display: block;"><img src="" width="82"
+                        height="82"></div>
+                    <textarea id="PrivateTxt" style="display: none;" disabled=""
+                      class="form-control private-key-area"></textarea>
+                    <button class="pivx-button-big btn-border" onclick="toggleKeyView()">
+                      <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
+                      <span class="buttoni-text btn_txt" id="guiViewKey">Pubkey QR</span>
+                      <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg"
+                          viewBox="0 0 32 32">
+                          <path
+                            d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                          </path>
+                        </svg></span>
+                    </button>
+                  </div>
+                </div>
+              </div>  
+        
       </div>
       <br>
       <!-- // QR MODAL -->
@@ -268,45 +308,7 @@
                   </div>
                   <!-- WALLET FEATURE -->
                   <div id="big-frame-address">
-                    <div id="address-box" class="large-box">
-                      <div id="title-address-box">
-                        <h3 class="noselect addr-title">Address</h3>
-                      </div>
-                      <div id="box-info-address">
-                        <div id="ring">
-                          <canvas id="identicon" class="innerShadow" width="65" height="65"
-                            data-jdenticon-value=""></canvas>
-                        </div>
-                        <div id="address-info">
-                          <b id="guiAddress">~</b>
-                          <b id="guiQRButton">
-                            <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>
-                            <i onclick="toClipboard('guiAddress', this)" id="guiAddressCopy"
-                              class="fas fa-clipboard fa-stacked-ptr"></i>
-                          </b>
-                        </div>
-                      </div>
-                      <div id="pubkey-padd">
-                        <div id="pubkey-box" class="col-md-4 desktop-pubkey">
-                          <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82"
-                              height="82"></div>
-                          <div id="PublicQR" class="margin-padded-qr" style="display: block;"><img src="" width="82"
-                              height="82"></div>
-                          <textarea id="PrivateTxt" style="display: none;" disabled=""
-                            class="form-control private-key-area"></textarea>
-                          <button class="pivx-button-big btn-border" onclick="toggleKeyView()">
-                            <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                            <span class="buttoni-text btn_txt" id="guiViewKey">Pubkey QR</span>
-                            <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg"
-                                viewBox="0 0 32 32">
-                                <path
-                                  d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                                </path>
-                              </svg></span>
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+                    
                     <div id="transaction_table" class="large-box">
                       <table>
                         <thead>
