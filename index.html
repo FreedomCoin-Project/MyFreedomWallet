@@ -388,11 +388,11 @@
                       </div>
                       <div id="bal-wrapper">
                         <div class="noselect balance-transaction">
-                          <div class="dep-text" onclick="openModal(event, '#address-box')">
+                          <div class="dep-text" onclick="openModal(event, 'address-box')">
                             <img src="./assets/images/icons/deposit.svg" alt="Deposit">
                             <span>Deposit</span>
                           </div>
-                          <div id="txTab" class="send-text" onclick="openModal(event, '#Transaction')">
+                          <div id="txTab" class="send-text" onclick="openModal(event, 'Transaction')">
                             <img src="./assets/images/icons/send.svg" alt="Send">
                             <span>Send</span>
                           </div>
@@ -1269,7 +1269,8 @@
     $("#navbarToggler").click(toggleNavigation);
 
     function openModal(evt, modalName) {
-      $(qrModal, modalName).fadeToggle(500);
+      $(qrModal).fadeToggle(500);
+      $(modalName).fadeToggle(500);
     }
 
     function openTab(evt, tabName) {
@@ -1278,10 +1279,8 @@
       for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
 
       // Show and activate the given screen
-      document.getElementById(tabName).style.display = "block";
-      if (tabName != 'Transaction') {
-        evt.currentTarget.classList.add("active");
-      }
+      document.getElementById(tabName).style.display = "block"; 
+      evt.currentTarget.classList.add("active"); 
       // Close the navbar if it's not already closed
       if (!domNavbarToggler.className.includes("collapsed"))
         toggleNavigation();
