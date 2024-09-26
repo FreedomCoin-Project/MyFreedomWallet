@@ -481,6 +481,7 @@ nav .btn-border {
 #bal-title {
     font-size: 15px;
 }
+
 #number-piv { 
     vertical-align: top;
     width: auto; 
@@ -500,6 +501,16 @@ nav .btn-border {
     background: linear-gradient(0.25turn, rgba(122, 122, 122, 0.5), rgba(115, 0, 255, 0.4));
     align-items: center;
     justify-content: space-around;
+}
+
+.balance-transaction {
+    display: flex;
+    gap: 20px;
+}
+.dep-text img, .send-text img {
+    width: 30px;
+    height: auto;
+    margin-right: 5px;
 }
 
 /* -- Headline -- */
