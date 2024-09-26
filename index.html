@@ -128,8 +128,7 @@
 
 
       <!-- // QR MODAL -->
-      <div class="modal fade" id="qrModal" tabindex="-1" role="dialog" aria-labelledby="qrModalLabel"
-        aria-hidden="true">
+      <div class="modal" id="qrModal">
         <div class="modal-dialog" role="document" style="display:none">
           <div class="modal-content">
             <div class="modal-header">
@@ -145,6 +144,9 @@
           </div>
         </div>
               <div id="address-box" class="large-box">
+                <button type="button" class="close" aria-label="Close" id="dismiss-modal">
+                  <span aria-hidden="true">×</span>
+                </button>
                 <div id="title-address-box">
                   <h3 class="noselect addr-title">Address</h3>
                 </div>
@@ -1258,8 +1260,8 @@
     $("#navbarToggler").click(toggleNavigation);
     
     function openModal(evt, modalName) { 
-      evt.currentTarget.classList.add("active"); 
-      $(qrModal, modalName).css("display", "block");
+      evt.currentTarget.classList.add("active");  
+      $(qrModal, modalName).fadeToggle(700);
     }
 
     function openTab(evt, tabName) {
