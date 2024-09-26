@@ -229,11 +229,7 @@ input::-moz-focus-inner {
 }
 
 .reload {
-    position: relative;
-    top: 10px;
-    left: 10px;
-    display: inline-block;
-    font-family: Lucida Sans Unicode;
+    position: relative; 
     cursor: pointer;
     animation-name: spinner;
     animation-duration: 0.75s;
@@ -248,11 +244,11 @@ input::-moz-focus-inner {
 
 @keyframes spinner {
     0% {
-        transform: translate3d(-50%, -50%, 0) rotate(0deg);
+        transform: rotate(0deg);
     }
 
     100% {
-        transform: translate3d(-50%, -50%, 0) rotate(360deg);
+        transform: rotate(360deg);
     }
 }
 
@@ -600,10 +596,11 @@ nav .btn-border {
 }
 
 #more_transaction a {
-    font-weight: 100;
-    padding-right: 30px;
+    font-weight: 200;
+    padding-right: 20px;
     color: #fff;
-    background: url(/assets/images/icons/arrow.svg) right no-repeat; 
+    background: url(../images/icons/arrow.svg) right no-repeat;
+    background-size: 25%;
     opacity: 0.7;
 }
 
