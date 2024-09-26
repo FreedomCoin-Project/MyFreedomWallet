@@ -486,6 +486,7 @@ nav .btn-border {
 }
 #bal-title {
     font-size: 15px;
+    font-weight: 100;
 }
 .balance-title {
     display: flex;
@@ -512,7 +513,9 @@ nav .btn-border {
     align-items: center;
     justify-content: space-around;
 }
-
+#bal-wrapper {
+    font-size: 15px; 
+}
 .balance-transaction {
     display: flex;
     gap: 20px;
@@ -594,6 +597,19 @@ nav .btn-border {
 #transactionTableBody tr {
     border-top: 1px solid #763acf;
 }
+
+#more_transaction {
+    text-align: center;
+}
+
+#more_transaction a {
+    font-weight: 100;
+    padding-right: 30px;
+    color: #fff;
+    background: url(./assets/images/icons/arrow.svg) right no-repeat; 
+    opacity: 0.7;
+}
+
 
 /* -- Background -- */
 
