@@ -780,8 +780,8 @@
       domGuiViewKey.innerHTML = viewPrivKey ? 'Privkey QR' : 'Pubkey QR';
       domPrivateTxt.style.display = domPrivateQr.style.display = viewPrivKey ? 'block' : 'none';
      // domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
-     if (domEncryptPasswordBox.style.display === 'block') { 
-      domEncryptPasswordBox.style.display = '';
+     if (domEncryptPasswordBox.style.display === '') { 
+      domEncryptPasswordBox.style.display = 'none';
       domEncryptBtnTxt.innerText = 'Set Password';
      }
     }
