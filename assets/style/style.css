@@ -664,6 +664,7 @@ nav .btn-border {
     margin: 0;
     text-align: center;
     padding: 0 0 20px 0;
+    margin: auto;
 }
 
 #PrivateQR img,
@@ -1425,11 +1426,7 @@ a {
         width: auto;
         display: block;
         padding-top: 60px;
-    } 
-
-    #pubkey-box .pivx-button-big {
-        width: 230px !important;
-    }
+    }  
 
     #PrivateQR img,
     #PublicQR img {
@@ -1562,11 +1559,7 @@ a {
 
     #pubkey-box {
         padding-top: 40px;
-    }
-
-    #pubkey-box .pivx-button-big {
-        width: 225px !important;
-    }
+    } 
 }
 
 @media screen and (max-width: 767px) {
@@ -1676,11 +1669,7 @@ a {
 
 @media screen and (max-width: 535px) {
 
-    /* Dashboard */
-
-    #pubkey-box .pivx-button-big {
-        width: 200px !important;
-    }
+    /* Dashboard */ 
 
     #transaction_table th:last-child,
     #transaction_table td:last-child {
@@ -1902,11 +1891,7 @@ a {
 
     #balance-box h3 {
         font-size: 22px;
-    }
-
-    #pubkey-box .pivx-button-big {
-        width: 150px !important;
-    }
+    } 
 
     /* Stake */
 

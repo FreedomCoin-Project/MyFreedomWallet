@@ -772,7 +772,7 @@
     let viewPrivKey = false;
     function toggleKeyView() {
       viewPrivKey = !viewPrivKey;
-      domGuiViewKey.innerHTML = viewPrivKey ? 'Show Private key' : 'Hide Private key';
+      domGuiViewKey.innerHTML = viewPrivKey ? 'Hide Private key' : 'Show Private key';
       domPrivateTxt.style.display = domPrivateQr.style.display = viewPrivKey ? 'block' : 'none';
      // domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
      if (domEncryptPasswordBox.style.display === '') { 
@@ -939,6 +939,10 @@
         // Return the display to it's class form
         domEncryptPasswordBox.style.display = '';
         domEncryptBtnTxt.innerText = 'Finish Encryption';
+        if (domPrivateTxt.style.display === 'block') { 
+          domPrivateTxt.style.display = domPrivateQr.style.display = viewPrivKey ? 'block' : 'none';
+          domEncryptBtnTxt.innerText = 'Show Private key';
+        }
       } else {
         // Fetch our inputs, ensure they're of decent entropy + match eachother
         const strPass = domEncryptPasswordFirst.value,
