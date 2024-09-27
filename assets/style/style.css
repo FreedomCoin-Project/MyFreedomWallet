@@ -458,7 +458,9 @@ nav .btn-border {
     display: flex;
     gap: 10px;
     flex-direction: column;
+    align-items: flex-start;
 }
+
 #piv-ring {
     display: none;
     width: 65px;
@@ -1395,8 +1397,7 @@ a {
     }
 
     #genKeyWarning p {
-        width: 100% !important;
-        padding-bottom: 15px;
+        width: 100% !important; 
     }
 
     #genKeyWarning .pivx-button-big {
