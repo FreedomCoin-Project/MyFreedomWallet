@@ -661,8 +661,7 @@ nav .btn-border {
     display: block !important;
     width: 100% !important;
     margin: 0;
-    text-align: center;
-    padding: 0 0 20px 0;
+    text-align: center; 
     margin: auto;
 }
 
@@ -696,6 +695,7 @@ nav .btn-border {
 #genKeyWarning {
     position: relative;
     padding: 20px;
+    padding-bottom: 35px;
 }
 
 #genKeyWarning > div {
@@ -1557,10 +1557,6 @@ a {
 
     #address-info {
         width: 65%;
-    }
-
-    #pubkey-box {
-        padding-top: 40px;
     } 
 }
 
@@ -1798,10 +1794,7 @@ a {
     #pubkey-box .pivx-button-big {
         padding: 11px 10px;
     }
-
-    #pubkey-box.col-md-4 {
-        padding-top: 20px;
-    }
+ 
 }
 
 @media screen and (max-width: 393px) {
