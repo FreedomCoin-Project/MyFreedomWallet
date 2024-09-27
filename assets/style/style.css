@@ -1567,6 +1567,10 @@ a {
 @media screen and (max-width: 767px) {
 
     /* Dashboard */
+    #genKeyWarning { 
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 
     #genKeyWarning .pivx-button-big {
         padding: 13px 20px;
@@ -1682,11 +1686,7 @@ a {
 @media screen and (max-width: 510px) {
 
     /* Dashboard page */
-
-    #pubkey-box .pivx-button-big {
-        padding: 12px 10px;
-    }
-
+ 
     /* Settings page */
     #Settings {
         text-align: center;
