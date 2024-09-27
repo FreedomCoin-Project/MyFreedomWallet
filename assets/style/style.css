@@ -621,6 +621,8 @@ nav .btn-border {
 #address-info {
     display: flex;
     gap: 15px;
+    min-width: 240px;
+    max-width: 400px;
     margin: auto;
     padding: 0 0 20px 40px;
     flex-direction: row;
@@ -926,9 +928,9 @@ nav .btn-border {
 }
 
 /*PIVX TEXT CUSTOMS*/
-.pivx-bold-title {
+.pivx-bold-title, .addr-title {
     line-height: 1.35em;
-    font-size: calc(27.88235px + .70588vw);
+    font-size: calc(22px + .7vw);
     font-weight: 700;
     font-family: Montserrat, sans-serif;
 }
@@ -940,6 +942,7 @@ nav .btn-border {
     font-family: Montserrat, sans-serif;
 }
 
+.addr-title span,
 .pivx-bold-title span,
 .pivx-bold-title-smaller span {
     font-size: .6em;
@@ -947,7 +950,9 @@ nav .btn-border {
     line-height: 1.2em;
     font-weight: 300;
 }
-
+.addr-title span {
+    display: unset;
+}
 .center-text {
     text-align: center;
 }
@@ -1666,6 +1671,12 @@ a {
     #transaction_table td:last-child {
         display: none;
     }
+    .alertPositioning { 
+        width: 95%;
+        right: 0;
+        left: 0;
+        margin: auto;
+    }
 }
 
 @media screen and (max-width: 510px) {
@@ -1855,10 +1866,7 @@ a {
         margin-right: 0;
         margin-left: 0;
     }
-
-    #guiQRButton {
-        padding: 15px 10px;
-    }
+ 
 
     #piv-price-amount {
         padding: 30px 5px 30px 20px;
@@ -2012,7 +2020,7 @@ a {
 /* Alert */
 .alertPositioning {
     position: fixed;
-    z-index: 100;
+    z-index: 1100;
     right: 10px;
     bottom: 10px;
 }
