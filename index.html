@@ -1310,9 +1310,7 @@
       return evt.returnValue = "Please ENCRYPT and/or BACKUP your keys before leaving, or you may lose them!";
     };
 
-    window.onload = (() => {
-      // Configure Identicon
-      jdenticon.configure();
+    window.onload = (() => { 
 
       // Configure payment processor
       if (requestTo && requestAmount) {

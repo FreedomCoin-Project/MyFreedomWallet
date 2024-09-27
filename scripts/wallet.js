@@ -124,10 +124,6 @@ importWallet = function (newWif = false, fRaw = false) {
     viewPrivKey = true;
     toggleKeyView();
 
-    // Update identicon
-    domIdenticon.dataset.jdenticonValue = publicKeyForNetwork;
-    jdenticon();
-
     // Hide the encryption warning if the user pasted the private key
     if (!newWif) domGenKeyWarning.style.display = 'block';
 
@@ -174,9 +170,6 @@ generateWallet = async function (noUI = false) {
       // Set the address clipboard value
       document.getElementById('clipboard').value = publicKeyForNetwork;
 
-      // Update identicon
-      domIdenticon.dataset.jdenticonValue = publicKeyForNetwork;
-      jdenticon();
 
       // Display the dashboard
       domGuiWallet.style.display = 'block';
