@@ -537,6 +537,7 @@ nav .btn-border {
     left: 50%;
     transform: translate(-50%, -50%); 
     border: 1px solid #763acf;
+    text-align: center;
 }
 
 #address-box.large-box,
@@ -604,8 +605,7 @@ nav .btn-border {
 
 /* -- Box of Content -- */
 
-#title-address-box {
-    width: 30%;
+#title-address-box { 
     padding: 10px 20px 0 30px;
     margin: 0 !important;
 }
@@ -613,15 +613,19 @@ nav .btn-border {
 #box-info-address {
     display: inline-block;
     width: 69%;
-    padding-top: 40px;
+    padding-top: 30px;
 }
 
 /* -- Into -- */
 
 #address-info {
-    display: inline-block;
-    width: 75%;
+    display: flex;
+    gap: 15px;
+    margin: auto;
     padding: 0 0 20px 40px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #guiAddress {
@@ -636,8 +640,7 @@ nav .btn-border {
 
 #guiQRButton {
     display: inline-block;
-    width: auto;
-    padding: 10px 0;
+    width: auto; 
     font-size: large;
 }
 
@@ -1259,10 +1262,6 @@ a {
         width: 64%;
     }
 
-    #address-info {
-        width: 60%;
-    }
-
     #pubkey-padd {
         width: 33%;
     }
@@ -1415,10 +1414,6 @@ a {
         display: block;
         width: 100%;
         padding-top: 20px;
-    }
-
-    #address-info {
-        width: 69%;
     }
 
     .margin-padded-qr {
@@ -1629,9 +1624,6 @@ a {
 
     /* Dashboard */
 
-    #address-info {
-        width: 55%;
-    }
 }
 
 @media screen and (max-width: 550px) {
@@ -1657,10 +1649,6 @@ a {
 
     #box-info-address {
         padding-top: 25px;
-    }
-
-    #address-info {
-        width: 59%;
     }
 
     /* STAKE page */
@@ -1821,10 +1809,6 @@ a {
         padding: 5px 5px 30px 20px;
     }
 
-    #address-info {
-        padding-left: 15px;
-    }
-
     #pubkey-padd {
         padding-top: 30px;
     }
@@ -1870,11 +1854,6 @@ a {
     .pivx-button-big {
         margin-right: 0;
         margin-left: 0;
-    }
-
-    #address-info {
-        width: 90%;
-        padding-left: 35px;
     }
 
     #guiQRButton {
