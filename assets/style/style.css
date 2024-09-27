@@ -61,7 +61,6 @@ pre {
 textarea,
 input {
     background-color: #fff;
-    border-style: dashed;
     border-width: 2px;
     border-radius: 8px;
     margin-bottom: 5px;
