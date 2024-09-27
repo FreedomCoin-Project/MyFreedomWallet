@@ -331,6 +331,7 @@
                 </div>
                 <div id="encryptPassword"
                   style="display: none; max-width: 100% !important; max-width: 100% !important;">
+                  <span style="color:red;">Note: Your key will be lost if you clear your browser cookies. Make sure to copy and store your private key in a safe place to secure your wallet.</span>
                   <input class="center-text" style="width: 100%; font-family: monospace;" type="password"
                     id="newPassword" placeholder="Enter Password">
                   <input class="center-text" style="width: 100%; font-family: monospace;" type="password"
@@ -940,8 +941,8 @@
         domEncryptPasswordBox.style.display = '';
         domEncryptBtnTxt.innerText = 'Finish Encryption';
         if (domPrivateTxt.style.display === 'block') { 
-          domPrivateTxt.style.display = domPrivateQr.style.display = viewPrivKey ? 'block' : 'none';
-          domEncryptBtnTxt.innerText = 'Show Private key';
+          domPrivateTxt.style.display = domPrivateQr.style.display = 'none';
+          domGuiViewKey.innerText = 'Show Private key';
         }
       } else {
         // Fetch our inputs, ensure they're of decent entropy + match eachother

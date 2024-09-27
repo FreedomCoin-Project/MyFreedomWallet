@@ -706,7 +706,13 @@ nav .btn-border {
     padding-top: 5px;
 
 }
-
+#encryptPassword {
+    display: flex;
+    gap: 14px;
+    padding: 0 20px;
+    text-align: center;
+    flex-direction: column;
+}
 #genKeyWarning .pivx-button-big {
     float: right;
 }
