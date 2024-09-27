@@ -658,19 +658,12 @@ nav .btn-border {
     width: 30%;
 }
 
-#pubkey-box.col-md-4 {
-    float: none;
-    clear: both;
-    display: block !important;
-    max-width: 100%;
-    padding: 0 0 20px 0;
-}
-
 #pubkey-box {
-    display: block;
+    display: block !important;
     width: 100% !important;
     margin: 0;
     text-align: center;
+    padding: 0 0 20px 0;
 }
 
 #PrivateQR img,
@@ -686,6 +679,16 @@ nav .btn-border {
     line-height: 20px;
 }
 
+#pubkey-box .pivx-button-big {
+    position: absolute;
+    font-size: 13px !important;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 15px;
+    box-shadow: none;
+    text-transform: capitalize;
+}
 /* -- Pubkey QR -- */
 
 /*-- Warning --*/
@@ -695,7 +698,7 @@ nav .btn-border {
     padding: 20px;
 }
 
-#genKeyWarning div {
+#genKeyWarning > div {
     display: inline-block;
     width: 100%;
     max-width: calc(100% - 304px) !important;
@@ -710,8 +713,7 @@ nav .btn-border {
 /* -- Warning -- */
 
 .margin-padded-qr {
-    margin-bottom: 10px;
-    padding: 5px 10px 10px 10px;
+    margin-bottom: 20px; 
 }
 
 /* STAKE */
@@ -1385,7 +1387,7 @@ a {
         padding: 20px 0;
     }
 
-    #genKeyWarning div {
+    #genKeyWarning > div {
         max-width: 100% !important;
     }
 
@@ -1416,19 +1418,14 @@ a {
     }
 
     .margin-padded-qr {
-        margin-bottom: 10px;
-        padding: 10px;
+        margin-bottom: 20px; 
     }
 
     #pubkey-padd {
         width: auto;
         display: block;
         padding-top: 60px;
-    }
-
-    #pubkey-box {
-        display: block;
-    }
+    } 
 
     #pubkey-box .pivx-button-big {
         width: 230px !important;
