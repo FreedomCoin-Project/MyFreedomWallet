@@ -1281,6 +1281,9 @@
     function openModal(evt, modalName) {
       $(qrModal).fadeToggle(500);
       $('#' + modalName).fadeToggle(500);
+      if (domGenIt.innerHTML === 'Continue') {
+        createTxGUI();
+      }
     }
 
     function openTab(evt, tabName) {
