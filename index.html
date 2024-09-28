@@ -44,7 +44,6 @@
   <link href="assets/fontawesome/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/style/style.css">
   <script type="text/javascript" src="assets/bootstrap-4.5.0/js/jquery.js"></script>
-  <script type="text/javascript" src="scripts/libs/jdenticon.min.js"></script>
 
 
   <!--- IMPORTANT: CHAIN PARAMS BELOW, DO NOT EDIT UNLESS YOU'RE ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING  --->
@@ -146,40 +145,25 @@
             <span aria-hidden="true">×</span>
           </button>
           <div id="title-address-box">
-            <h3 class="noselect addr-title">Address</h3>
+            <h3 class="noselect addr-title">
+              <span>Your</span> FREED <span>Address</span>
+            </h3>
           </div>
           <div id="box-info-address">
-            <div id="ring">
-              <canvas id="identicon" class="innerShadow" width="65" height="65" data-jdenticon-value=""></canvas>
+            <div id="pubkey-padd">
+              <div id="PublicQR" class="margin-padded-qr" style="display: block;"><img src="" width="82" height="82">
+              </div>
             </div>
             <div id="address-info">
               <b id="guiAddress">~</b>
               <b id="guiQRButton">
-                <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>
+               <!-- <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>-->
                 <i onclick="toClipboard('guiAddress', this)" id="guiAddressCopy"
                   class="fas fa-clipboard fa-stacked-ptr"></i>
               </b>
             </div>
           </div>
-          <div id="pubkey-padd">
-            <div id="pubkey-box" class="col-md-4 desktop-pubkey">
-              <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82" height="82">
-              </div>
-              <div id="PublicQR" class="margin-padded-qr" style="display: block;"><img src="" width="82" height="82">
-              </div>
-              <textarea id="PrivateTxt" style="display: none;" disabled=""
-                class="form-control private-key-area"></textarea>
-              <button class="pivx-button-big btn-border" onclick="toggleKeyView()">
-                <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                <span class="buttoni-text btn_txt" id="guiViewKey">Pubkey QR</span>
-                <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                    <path
-                      d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                    </path>
-                  </svg></span>
-              </button>
-            </div>
-          </div>
+            
         </div>
         <div id="Transaction" class="tabcontent">
           <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'Transaction')">
@@ -198,8 +182,8 @@
               wallet - this functionality is currently unsupported.</p>
           </div>
           <div class='max-width' style='clear:both;'>
-            <div id="simpleTransactionsDropdown" class="bold-trans" onclick='toggleDropDown("simpleTransactions")'>
-              Send Freedom Coin<span style='float:right;'>▼</span></div>
+            <!--<div id="simpleTransactionsDropdown" class="bold-trans" onclick='toggleDropDown("simpleTransactions")'>
+              Send Freedom Coin<span style='float:right;'>▼</span></div>-->
             <div id='simpleTransactions' style='display: block'>
               <br>
               <label>Recipient Wallet Address</label><br>
@@ -266,7 +250,8 @@
               <br /><br /><br />
               <h4 id="signed-raw">Signed Raw Transaction</h4>
               <textarea rows="15" cols="70" id="rawTrx"></textarea>
-              <p>Don't understand how this works? <a target='_blank' href='https://github.com/FreedomCoin-Project/MyFreedomWallet'>Tutorial Here</a></p>
+              <p>Don't understand how this works? <a target='_blank'
+                  href='https://github.com/FreedomCoin-Project/MyFreedomWallet'>Tutorial Here</a></p>
               <p>Advanced Details: <br>locktime is set to 0, sequence is set to max. SIGHASH_ALL option is chosen
                 for signing raw Transaction.</p>
             </div>
@@ -346,12 +331,25 @@
                   </p>
                 </div>
                 <div id="encryptPassword"
-                  style="display: none !important; max-width: 100% !important; max-width: 100% !important;">
-                  <input class="center-text" style="width: 100%; font-family: monospace;" type="password"
+                  style="display: none; max-width: 100% !important; max-width: 100% !important;">
+                  <span style="color:red;">Note: Your key will be lost if you clear your browser cookies. Make sure to copy and store your private key in a safe place to secure your wallet.</span>
+                  <input class="center-text" style="width: 100%; margin-top: 10px; font-family: monospace;" type="password"
                     id="newPassword" placeholder="Enter Password">
                   <input class="center-text" style="width: 100%; font-family: monospace;" type="password"
                     id="newPasswordRetype" placeholder="Re-type Password">
                 </div>
+
+                <div id="pubkey-box" class="desktop-pubkey">
+                  <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82" height="82">
+                  </div>
+                  <textarea id="PrivateTxt" style="display: none;" disabled=""
+                    class="form-control private-key-area"></textarea>
+                  <div class="pivx-button-big" onclick="toggleKeyView()">
+                    <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
+                    <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span> 
+                  </div>
+                </div>
+
                 <button class="pivx-button-big btn-border" onclick="guiEncryptWallet()"
                   style="float: none;margin: 0 auto;display: block;">
                   <span class="buttoni-icon"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
@@ -385,7 +383,7 @@
                           </div>
                         </div>
                         <div id="number-piv">
-                          <p id="guiBalanceBox"><b id="guiBalance">~</b> FREED</p>
+                          <p id="guiBalanceBox"><b id="guiBalance">~</b> <span style=" font-size: 15px; ">FREED</span></p>
                         </div>
                       </div>
                       <div id="bal-wrapper">
@@ -776,9 +774,13 @@
     let viewPrivKey = false;
     function toggleKeyView() {
       viewPrivKey = !viewPrivKey;
-      domGuiViewKey.innerHTML = viewPrivKey ? 'Privkey QR' : 'Pubkey QR';
+      domGuiViewKey.innerHTML = viewPrivKey ? 'Hide Private key' : 'Show Private key';
       domPrivateTxt.style.display = domPrivateQr.style.display = viewPrivKey ? 'block' : 'none';
-      domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
+     // domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
+     if (domEncryptPasswordBox.style.display === '') { 
+      domEncryptPasswordBox.style.display = 'none';
+      domEncryptBtnTxt.innerText = 'Set Password';
+     }
     }
 
     function hideAllWalletOptions() {
@@ -939,6 +941,10 @@
         // Return the display to it's class form
         domEncryptPasswordBox.style.display = '';
         domEncryptBtnTxt.innerText = 'Finish Encryption';
+        if (domPrivateTxt.style.display === 'block') { 
+          domPrivateTxt.style.display = domPrivateQr.style.display = 'none';
+          domGuiViewKey.innerText = 'Show Private key';
+        }
       } else {
         // Fetch our inputs, ensure they're of decent entropy + match eachother
         const strPass = domEncryptPasswordFirst.value,
@@ -1272,7 +1278,7 @@
 
     function openModal(evt, modalName) {
       $(qrModal).fadeToggle(500);
-      $('#'+modalName).fadeToggle(500);
+      $('#' + modalName).fadeToggle(500);
     }
 
     function openTab(evt, tabName) {
@@ -1281,8 +1287,8 @@
       for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
 
       // Show and activate the given screen
-      document.getElementById(tabName).style.display = "block"; 
-      evt.currentTarget.classList.add("active"); 
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.classList.add("active");
       // Close the navbar if it's not already closed
       if (!domNavbarToggler.className.includes("collapsed"))
         toggleNavigation();
@@ -1311,8 +1317,6 @@
     };
 
     window.onload = (() => {
-      // Configure Identicon
-      jdenticon.configure();
 
       // Configure payment processor
       if (requestTo && requestAmount) {

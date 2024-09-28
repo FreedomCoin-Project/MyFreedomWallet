@@ -61,7 +61,6 @@ pre {
 textarea,
 input {
     background-color: #fff;
-    border-style: dashed;
     border-width: 2px;
     border-radius: 8px;
     margin-bottom: 5px;
@@ -265,12 +264,7 @@ input::-moz-focus-inner {
     user-select: none;
     /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
-
-.innerShadow {
-    -webkit-box-shadow: inset hsla(0, 0%, 100%, .25) 0 2px 2px, inset rgba(0, 0, 0, .6) 0 -1px 8px;
-    box-shadow: inset 0 2px 2px hsla(0, 0%, 100%, .25), inset 0 -1px 8px rgba(0, 0, 0, .6);
-}
-
+ 
 #page-container {
     position: relative;
     min-height: calc(100vh - 75px);
@@ -464,7 +458,9 @@ nav .btn-border {
     display: flex;
     gap: 10px;
     flex-direction: column;
+    align-items: flex-start;
 }
+
 #piv-ring {
     display: none;
     width: 65px;
@@ -541,6 +537,7 @@ nav .btn-border {
     left: 50%;
     transform: translate(-50%, -50%); 
     border: 1px solid #763acf;
+    text-align: center;
 }
 
 #address-box.large-box,
@@ -608,8 +605,7 @@ nav .btn-border {
 
 /* -- Box of Content -- */
 
-#title-address-box {
-    width: 30%;
+#title-address-box { 
     padding: 10px 20px 0 30px;
     margin: 0 !important;
 }
@@ -617,15 +613,21 @@ nav .btn-border {
 #box-info-address {
     display: inline-block;
     width: 69%;
-    padding-top: 40px;
+    padding-top: 30px;
 }
 
 /* -- Into -- */
 
 #address-info {
-    display: inline-block;
-    width: 75%;
+    display: flex;
+    gap: 15px;
+    min-width: 240px;
+    max-width: 400px;
+    margin: auto;
     padding: 0 0 20px 40px;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
 #guiAddress {
@@ -640,24 +642,8 @@ nav .btn-border {
 
 #guiQRButton {
     display: inline-block;
-    width: auto;
-    padding: 10px 0;
+    width: auto; 
     font-size: large;
-}
-
-/* -- Into -- */
-
-#ring {
-    display: inline-block;
-    padding: 10px 10px 20px 50px;
-}
-
-#identicon {
-    background-color: white;
-    border-color: white;
-    border-width: 3px;
-    border-style: solid;
-    border-radius: 1000px;
 }
 
 /* -- Box of Content -- */
@@ -678,19 +664,12 @@ nav .btn-border {
     width: 30%;
 }
 
-#pubkey-box.col-md-4 {
-    float: none;
-    clear: both;
-    display: block !important;
-    max-width: 100%;
-    padding: 0 0 20px 0;
-}
-
 #pubkey-box {
-    display: block;
+    display: block !important;
     width: 100% !important;
     margin: 0;
-    text-align: center;
+    text-align: center; 
+    margin: auto;
 }
 
 #PrivateQR img,
@@ -706,6 +685,16 @@ nav .btn-border {
     line-height: 20px;
 }
 
+#pubkey-box .pivx-button-big {
+    position: absolute;
+    font-size: 13px !important;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    padding: 15px;
+    box-shadow: none;
+    text-transform: capitalize;
+}
 /* -- Pubkey QR -- */
 
 /*-- Warning --*/
@@ -713,16 +702,20 @@ nav .btn-border {
 #genKeyWarning {
     position: relative;
     padding: 20px;
+    padding-bottom: 35px;
 }
 
-#genKeyWarning div {
-    display: inline-block !important;
+#genKeyWarning > div {
+    display: inline-block;
     width: 100%;
     max-width: calc(100% - 304px) !important;
     padding-top: 5px;
 
 }
-
+#encryptPassword { 
+    padding: 0 20px;
+    text-align: center; 
+}
 #genKeyWarning .pivx-button-big {
     float: right;
 }
@@ -730,8 +723,7 @@ nav .btn-border {
 /* -- Warning -- */
 
 .margin-padded-qr {
-    margin-bottom: 10px;
-    padding: 5px 10px 10px 10px;
+    margin-bottom: 20px; 
 }
 
 /* STAKE */
@@ -936,9 +928,9 @@ nav .btn-border {
 }
 
 /*PIVX TEXT CUSTOMS*/
-.pivx-bold-title {
+.pivx-bold-title, .addr-title {
     line-height: 1.35em;
-    font-size: calc(27.88235px + .70588vw);
+    font-size: calc(22px + .7vw);
     font-weight: 700;
     font-family: Montserrat, sans-serif;
 }
@@ -950,6 +942,7 @@ nav .btn-border {
     font-family: Montserrat, sans-serif;
 }
 
+.addr-title span,
 .pivx-bold-title span,
 .pivx-bold-title-smaller span {
     font-size: .6em;
@@ -957,7 +950,9 @@ nav .btn-border {
     line-height: 1.2em;
     font-weight: 300;
 }
-
+.addr-title span {
+    display: unset;
+}
 .center-text {
     text-align: center;
 }
@@ -1272,10 +1267,6 @@ a {
         width: 64%;
     }
 
-    #address-info {
-        width: 60%;
-    }
-
     #pubkey-padd {
         width: 33%;
     }
@@ -1405,13 +1396,12 @@ a {
         padding: 20px 0;
     }
 
-    #genKeyWarning div {
+    #genKeyWarning > div {
         max-width: 100% !important;
     }
 
     #genKeyWarning p {
-        width: 100% !important;
-        padding-bottom: 15px;
+        width: 100% !important; 
     }
 
     #genKeyWarning .pivx-button-big {
@@ -1431,28 +1421,15 @@ a {
         padding-top: 20px;
     }
 
-    #address-info {
-        width: 69%;
-    }
-
     .margin-padded-qr {
-        margin-bottom: 10px;
-        padding: 10px;
+        margin-bottom: 20px; 
     }
 
     #pubkey-padd {
         width: auto;
         display: block;
         padding-top: 60px;
-    }
-
-    #pubkey-box {
-        display: block;
-    }
-
-    #pubkey-box .pivx-button-big {
-        width: 230px !important;
-    }
+    }  
 
     #PrivateQR img,
     #PublicQR img {
@@ -1581,20 +1558,16 @@ a {
 
     #address-info {
         width: 65%;
-    }
-
-    #pubkey-box {
-        padding-top: 40px;
-    }
-
-    #pubkey-box .pivx-button-big {
-        width: 225px !important;
-    }
+    } 
 }
 
 @media screen and (max-width: 767px) {
 
     /* Dashboard */
+    #genKeyWarning { 
+        padding-top: 40px;
+        padding-bottom: 40px;
+    }
 
     #genKeyWarning .pivx-button-big {
         padding: 13px 20px;
@@ -1606,11 +1579,6 @@ a {
 
     #ring {
         padding: 0 5px 20px 50px;
-    }
-
-    #identicon {
-        height: 60px;
-        width: 60px;
     }
 
     /* Stake page */
@@ -1661,9 +1629,6 @@ a {
 
     /* Dashboard */
 
-    #address-info {
-        width: 55%;
-    }
 }
 
 @media screen and (max-width: 550px) {
@@ -1691,10 +1656,6 @@ a {
         padding-top: 25px;
     }
 
-    #address-info {
-        width: 59%;
-    }
-
     /* STAKE page */
 
     #info {
@@ -1704,26 +1665,24 @@ a {
 
 @media screen and (max-width: 535px) {
 
-    /* Dashboard */
-
-    #pubkey-box .pivx-button-big {
-        width: 200px !important;
-    }
+    /* Dashboard */ 
 
     #transaction_table th:last-child,
     #transaction_table td:last-child {
         display: none;
+    }
+    .alertPositioning { 
+        width: 95%;
+        right: 0;
+        left: 0;
+        margin: auto;
     }
 }
 
 @media screen and (max-width: 510px) {
 
     /* Dashboard page */
-
-    #pubkey-box .pivx-button-big {
-        padding: 12px 10px;
-    }
-
+ 
     /* Settings page */
     #Settings {
         text-align: center;
@@ -1832,18 +1791,10 @@ a {
         font-size: 20px;
     }
 
-    #identicon {
-        width: 55px;
-        height: 55px;
-    }
-
     #pubkey-box .pivx-button-big {
         padding: 11px 10px;
     }
-
-    #pubkey-box.col-md-4 {
-        padding-top: 20px;
-    }
+ 
 }
 
 @media screen and (max-width: 393px) {
@@ -1867,10 +1818,6 @@ a {
 
     #ring {
         padding: 5px 5px 30px 20px;
-    }
-
-    #address-info {
-        padding-left: 15px;
     }
 
     #pubkey-padd {
@@ -1919,20 +1866,7 @@ a {
         margin-right: 0;
         margin-left: 0;
     }
-
-    #address-info {
-        width: 90%;
-        padding-left: 35px;
-    }
-
-    #guiQRButton {
-        padding: 15px 10px;
-    }
-
-    #identicon,
-    #ring {
-        display: none;
-    }
+ 
 
     #piv-price-amount {
         padding: 30px 5px 30px 20px;
@@ -1940,11 +1874,7 @@ a {
 
     #balance-box h3 {
         font-size: 22px;
-    }
-
-    #pubkey-box .pivx-button-big {
-        width: 150px !important;
-    }
+    } 
 
     /* Stake */
 
@@ -2090,7 +2020,7 @@ a {
 /* Alert */
 .alertPositioning {
     position: fixed;
-    z-index: 100;
+    z-index: 1100;
     right: 10px;
     bottom: 10px;
 }
