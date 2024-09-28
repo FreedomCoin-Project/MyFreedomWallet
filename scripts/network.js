@@ -100,13 +100,13 @@ var sendTransaction = function(hex, msg = '') {
         const data = JSON.parse(this.response);
         if (data.result && data.result.length === 64) {
             console.log('Transaction sent! ' + data.result);
-            if (domAddress1s.value !== donationAddress)
-                domTxOutput.innerHTML = (`<a href="${cExplorer.url}/tx/${data.result}" target="_blank" style="width: 100%;overflow: hidden;text-overflow: ellipsis;color:green;">${data.result}</a>`);
-            else
-                domTxOutput.innerHTML = ('<h4 style="color:green">Thank you for supporting MyFREEDWallet! 💜💜💜<br><a href="${cExplorer.url}/tx/${data.result}" target="_blank" style="width: 100%;overflow: hidden;text-overflow: ellipsis;">${data.result}</a></h4>');
+            if (domAddress1s.value !== donationAddress) {
+                domTxOutput.innerHTML = `<a href="${cExplorer.url}/tx/${data.result}" target="_blank" style="width: 100%;overflow: hidden;text-overflow: ellipsis;color:green;">${data.result}</a>`;
+            } else {
+                domTxOutput.innerHTML = `<h4 style="color:green">Thank you for supporting MyFREEDWallet! 💜💜💜<br><a href="${cExplorer.url}/tx/${data.result}" target="_blank" style="width: 100%;overflow: hidden;text-overflow: ellipsis;">${data.result}</a></h4>`;
+            }
            // domSimpleTXs.style.display = 'none';
-            domAddress1s.value = '';
-            domValue1s.innerHTML = '';
+            domAddress1s.value = domValue1s.value = '';
             createAlert('success', msg || 'Transaction sent!', msg ? (1250 + (msg.length * 50)) : 1500);
         } else {
             console.log('Error sending transaction: ' + data.result);
