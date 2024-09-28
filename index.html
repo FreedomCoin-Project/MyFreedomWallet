@@ -579,6 +579,17 @@
                     </path>
                   </svg></span>
               </button>
+              
+              <div id="pubkey-box" class="desktop-pubkey">
+                <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82" height="82">
+                </div>
+                <textarea id="PrivateTxt" style="display: none;" disabled=""
+                  class="form-control private-key-area"></textarea>
+                <div class="pivx-button-big" onclick="toggleKeyView()">
+                  <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
+                  <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span> 
+                </div>
+              </div>
 
             </div>
           </div>
