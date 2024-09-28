@@ -112,7 +112,8 @@ var sendTransaction = function(hex, msg = '') {
                        ${data.result}
                     </a>
                 </span>`;
-            
+            domSimpleTXsTitleSpan.innerHTML = "Created a"
+            domSimpleTXs.style.display = 'none';
             domAddress1s.value = domValue1s.value = '';
             createAlert('success', msg || 'Transaction sent!', msg ? (1250 + (msg.length * 50)) : 1500);
         } else {
