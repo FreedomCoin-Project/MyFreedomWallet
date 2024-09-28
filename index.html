@@ -1282,7 +1282,7 @@
       $(qrModal).fadeToggle(500);
       $('#' + modalName).fadeToggle(500);
       if (domGenIt.innerHTML === 'Continue') {
-        setInterval(function() {
+        setTimeout(function() {
           createTxGUI();
           toggleDropDown("simpleTransactions");
         }, 1000);  
