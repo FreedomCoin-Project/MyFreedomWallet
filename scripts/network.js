@@ -101,10 +101,10 @@ var sendTransaction = function(hex, msg = '') {
         if (data.result && data.result.length === 64) {
             console.log('Transaction sent! ' + data.result);
             if (domAddress1s.value !== donationAddress)
-                domTxOutput.innerHTML = ('<h4 style="color:green; font-family:mono !important;">' + data.result + '</h4>');
+                domTxOutput.innerHTML = (`<a href="${cExplorer.url}/tx/${data.result}" target="_blank" style="width: 100%;overflow: hidden;text-overflow: ellipsis;color:green;">${data.result}</a>`);
             else
-                domTxOutput.innerHTML = ('<h4 style="color:green">Thank you for supporting MyPIVXWallet! 💜💜💜<br><span style="font-family:mono !important">' + data.result + '</span></h4>');
-            domSimpleTXs.style.display = 'none';
+                domTxOutput.innerHTML = ('<h4 style="color:green">Thank you for supporting MyFREEDWallet! 💜💜💜<br><a href="${cExplorer.url}/tx/${data.result}" target="_blank" style="width: 100%;overflow: hidden;text-overflow: ellipsis;">${data.result}</a></h4>');
+           // domSimpleTXs.style.display = 'none';
             domAddress1s.value = '';
             domValue1s.innerHTML = '';
             createAlert('success', msg || 'Transaction sent!', msg ? (1250 + (msg.length * 50)) : 1500);
