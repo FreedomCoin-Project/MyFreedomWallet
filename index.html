@@ -171,7 +171,7 @@
           </button>
           <!-- PIVX TITLE SECTION -->
           <div class="col-md-12 title-section float-left rm-pd">
-            <h3 class="pivx-bold-title center-text"><span>Create a</span> Transaction</h3>
+            <h3 class="pivx-bold-title center-text"><span id="simpleTransactionsTitle">Create a</span> Transaction</h3>
           </div>
           <br>
           <!-- // PIVX TITLE SECTION -->
@@ -643,6 +643,7 @@
     const domTxTab = document.getElementById("txTab");
     const domStakeTab = document.getElementById("stakeTab");
     const domsendNotice = document.getElementById("sendNotice");
+    const domSimpleTXsTitleSpan = document.getElementById("simpleTransactionsTitle");
     const domSimpleTXs = document.getElementById("simpleTransactions");
     const domSimpleTXsDropdown = document.getElementById("simpleTransactionsDropdown");
     const domAddress1s = document.getElementById("address1s");
@@ -1191,6 +1192,7 @@
 
       // Clear the inputs on 'Continue'
       if (domGenIt.innerHTML === 'Continue') {
+        domSimpleTXsTitleSpan.innerHTML = "Create a"
         domGenIt.innerHTML = 'Send Transaction';
         domTxOutput.innerHTML = '';
         domHumanReadable.innerHTML = "";
