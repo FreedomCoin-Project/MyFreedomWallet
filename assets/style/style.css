@@ -324,11 +324,11 @@ input::-moz-focus-inner {
 .btn-border {
     position: relative;
     padding: 15px 30px;
-    color: #fff;
-    background-image: linear-gradient(84deg, var(--gold), var(--orange));
+    color: #fff; 
     font-weight: 700;
     text-decoration: none;
     border-radius: 200px;
+    box-shadow: 1px 0px 0px 0px var(--orange), 0 0px 0px 1px var(--gold);
     cursor: pointer;
 }
 
@@ -354,19 +354,7 @@ nav .btn-border {
     text-wrap: nowrap;
     z-index: 1;
 }
-
-.btn-border:after {
-    position: absolute;
-    content: '';
-    left: 0%;
-    top: 0%;
-    right: 0%;
-    bottom: 0%;
-    margin: 1px;
-    border-radius: 200px;
-    background-color: var(--bg-color2);
-}
-
+ 
 .no-gutters .btn-border:after {
     background-color: #1f1e29;
 }
