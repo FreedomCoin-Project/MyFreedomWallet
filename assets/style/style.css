@@ -664,13 +664,13 @@ nav .btn-border {
     margin: auto;
 }
 
-#PrivateQR img,
+.PrivateQR img,
 #PublicQR img {
     width: 95px !important;
     height: 95px !important;
 }
 
-#PrivateTxt {
+.PrivateTxt {
     color: black;
     font-size: 12px !important;
     text-align: center;
@@ -1249,7 +1249,7 @@ a {
         margin-top: 20px;
     }
 
-    #PrivateQR img,
+    .PrivateQR img,
     #PublicQR img {
         width: 90px !important;
         height: 90px !important;
@@ -1267,7 +1267,7 @@ a {
 @media screen and (min-width: 1025px) {
 
     /*Main Wallet page */
-    #PrivateTxt {
+    .PrivateTxt {
         font-size: 25px;
     }
 
@@ -1279,7 +1279,7 @@ a {
 @media screen and (max-width: 1024px) {
 
     /*Main Wallet page */
-    #PrivateTxt {
+    .PrivateTxt {
         font-size: 18px;
     }
 
@@ -1423,7 +1423,7 @@ a {
         padding-top: 60px;
     }  
 
-    #PrivateQR img,
+    .PrivateQR img,
     #PublicQR img {
         width: 75px !important;
         height: 75px !important;
@@ -1528,7 +1528,7 @@ a {
 
 
     /* Main Wallet page */
-    #PrivateTxt {
+    .PrivateTxt {
         font-size: 17px;
     }
 
@@ -1596,7 +1596,7 @@ a {
     }
 
     /* Main Wallet page */
-    #PrivateTxt {
+    .PrivateTxt {
         font-size: 13px;
     }
 
@@ -1713,7 +1713,7 @@ a {
     }
 
     /* Main Wallet page */
-    #PrivateTxt {
+    .PrivateTxt {
         font-size: 8px;
     }
 
