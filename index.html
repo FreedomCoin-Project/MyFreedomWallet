@@ -954,8 +954,7 @@
         domEncryptPasswordBox.style.display = '';
         domEncryptBtnTxt.innerText = 'Finish Encryption';
         if (domPrivateTxt.style.display === 'block') { 
-          domPrivateTxt.style.display = domPrivateQr.style.display = 'none';
-          domGuiViewKey.innerText = 'Show Private key';
+          toggleKeyView();
         }
       } else {
         // Fetch our inputs, ensure they're of decent entropy + match eachother
