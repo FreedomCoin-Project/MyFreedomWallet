@@ -784,12 +784,12 @@
     }
 
     let viewPrivKey = false;
-    function toggleKeyView() {
+    function toggleKeyView(c) {
       viewPrivKey = !viewPrivKey;
       domGuiViewKey.innerHTML = viewPrivKey ? 'Hide Private key' : 'Show Private key';
       domPrivateTxt.style.display = domPrivateQr.style.display = viewPrivKey ? 'block' : 'none';
      // domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
-     if (domEncryptPasswordBox.style.display === '') { 
+     if (c && domEncryptPasswordBox.style.display === '') { 
       domEncryptPasswordBox.style.display = 'none';
       domEncryptBtnTxt.innerText = 'Set Password';
      }
@@ -954,7 +954,7 @@
         domEncryptPasswordBox.style.display = '';
         domEncryptBtnTxt.innerText = 'Finish Encryption';
         if (domPrivateTxt.style.display === 'block') { 
-          toggleKeyView();
+          toggleKeyView(1);
         }
       } else {
         // Fetch our inputs, ensure they're of decent entropy + match eachother
