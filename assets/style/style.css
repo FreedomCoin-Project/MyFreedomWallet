@@ -640,6 +640,10 @@ nav .btn-border {
 
 /* -- Box of Content -- */
 
+#Settings > div {
+    margin-bottom: 20px;
+}
+
 /* -- Pubkey QR -- */
 
 .mobile-pubkey {
@@ -1190,8 +1194,7 @@ a {
     padding-bottom: 4px;
     background: #521685;
     border: none;
-    resize: none;
-    color: white;
+    resize: none; 
 }
 
 /* SEND */
