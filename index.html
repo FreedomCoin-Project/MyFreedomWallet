@@ -1216,8 +1216,8 @@
       return ccSuccess(cCoinControl);
     }
 
-    function createTxGUI() {
-      if (!hasWalletUnlocked(true)) return;
+    function createTxGUI(call) {
+      if (!hasWalletUnlocked(true) && call != 'modal') return;
 
       // Clear the inputs on 'Continue'
       if (domGenIt.innerHTML === 'Continue') {
@@ -1312,7 +1312,7 @@
       $('#' + modalName).fadeToggle(500);
       if (domGenIt.innerHTML === 'Continue') {
         setTimeout(function () {
-          createTxGUI();
+          createTxGUI('modal');
           toggleDropDown("simpleTransactions");
         }, 1000);
       }
