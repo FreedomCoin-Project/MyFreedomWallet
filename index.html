@@ -168,7 +168,7 @@
 
         </div>
         <div id="Transaction" class="tabcontent">
-          <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'Transaction')">
+          <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'Transaction', 'T')">
             <span aria-hidden="true">×</span>
           </button>
           <!-- PIVX TITLE SECTION -->
@@ -1216,11 +1216,11 @@
       return ccSuccess(cCoinControl);
     }
 
-    function createTxGUI() {
-      if (!hasWalletUnlocked(true)) return;
+    function createTxGUI(call) {
+      if (!hasWalletUnlocked(true) && call != 'modal') return;
 
       // Clear the inputs on 'Continue'
-      if (domGenIt.innerHTML === 'Continue') {
+      if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
         domSimpleTXsTitleSpan.innerHTML = "Create a"
         domGenIt.innerHTML = 'Send Transaction';
         domTxOutput.innerHTML = '';
@@ -1307,10 +1307,10 @@
     }
     $("#navbarToggler").click(toggleNavigation);
 
-    function openModal(evt, modalName) {
+    function openModal(evt, modalName, close) {
       $(qrModal).fadeToggle(500);
       $('#' + modalName).fadeToggle(500);
-      if (domGenIt.innerHTML === 'Continue') {
+      if (close === 'T' && !$('#simpleTransactions').is(':visible')) {
         setTimeout(function () {
           createTxGUI('modal');
           toggleDropDown("simpleTransactions");
@@ -1377,7 +1377,7 @@
       }
     });
 
-    setInterval(refreshChainData, 20000);
+    setInterval(refreshChainData, 15000);
     domPrefix.value = PUBKEY_PREFIX;
   </script>
 
