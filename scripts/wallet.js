@@ -98,14 +98,15 @@ importWallet = function (newWif = false, fRaw = false) {
     // Reaching here: the deserialisation was a full cryptographic success, so a wallet is now imported!
     fWalletLoaded = true;
 
-    // Display Text
-    domGuiAddress.innerHTML = publicKeyForNetwork;
+    // Display Text 
     domGuiWallet.style.display = 'block';
     domPrivateTxt.value = privateKeyForTransactions;
+    keyTxt.value = privateKeyForTransactions;
     domGuiAddress.innerHTML = publicKeyForNetwork;
 
     // Private Key QR
     createQR(privateKeyForTransactions, domPrivateQr);
+    createQR(privateKeyForTransactions, keyQR);
 
     // Address QR
     createQR('freedomcoin:' + publicKeyForNetwork, domPublicQr);
