@@ -168,7 +168,7 @@
 
         </div>
         <div id="Transaction" class="tabcontent">
-          <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'Transaction', 'T')">
+          <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'Transaction')">
             <span aria-hidden="true">×</span>
           </button>
           <!-- PIVX TITLE SECTION -->
@@ -1216,11 +1216,11 @@
       return ccSuccess(cCoinControl);
     }
 
-    function createTxGUI(call) {
-      if (!hasWalletUnlocked(true) && call != 'modal') return;
+    function createTxGUI() {
+      if (!hasWalletUnlocked(true)) return;
 
       // Clear the inputs on 'Continue'
-      if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
+      if (domGenIt.innerHTML === 'Continue') {
         domSimpleTXsTitleSpan.innerHTML = "Create a"
         domGenIt.innerHTML = 'Send Transaction';
         domTxOutput.innerHTML = '';
@@ -1307,10 +1307,10 @@
     }
     $("#navbarToggler").click(toggleNavigation);
 
-    function openModal(evt, modalName, close) {
+    function openModal(evt, modalName) {
       $(qrModal).fadeToggle(500);
       $('#' + modalName).fadeToggle(500);
-      if (close === 'T' ) {
+      if (domGenIt.innerHTML === 'Continue') {
         setTimeout(function () {
           createTxGUI('modal');
           toggleDropDown("simpleTransactions");
