@@ -801,21 +801,13 @@
       }
     }
 
+    const keyQR = document.getElementById('keyQR');
+    const keyTxt = document.getElementById('keyTxt');
+    const btnTxt = document.getElementById('guiPrivKey');
+
     function toggleKey() {
-      const $keyQR = $('#keyQR');
-      const $keyTxt = $('#keyTxt');
-      const $btnTxt = $('#guiPrivKey');
-
-      // Toggle visibility
-      $keyQR.toggle();
-      $keyTxt.toggle();
-
-      // Change button text
-      if ($keyQR.is(':visible') || $keyTxt.is(':visible')) {
-        $btnTxt.text('Hide Private Key');
-      } else {
-        $btnTxt.text('Show Private Key');
-      }
+      [keyQR, keyTxt].forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+      btnTxt.textContent = keyQR.style.display === 'block' ? 'Hide Private Key' : 'Show Private Key';
     }
 
     function hideAllWalletOptions() {

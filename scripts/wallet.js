@@ -152,15 +152,15 @@ generateWallet = async function (noUI = false) {
       // Display Text
       domGenKeyWarning.style.display = 'block';
       domPrivateTxt.value = privateKeyForTransactions;
-      $('#keyTxt').val(privateKeyForTransactions);
+      keyTxt.value(privateKeyForTransactions);
       domGuiAddress.innerHTML = publicKeyForNetwork;
 
       // Private Key QR
       createQR(privateKeyForTransactions, domPrivateQr);
+      createQR(privateKeyForTransactions, keyQR);
 
       // Address QR
       createQR('freedomcoin:' + publicKeyForNetwork, domPublicQr);
-      createQR('freedomcoin:' + publicKeyForNetwork, $('#keyQR'));
 
       // Address Modal QR
       createQR('freedomcoin:' + publicKeyForNetwork, domModalQR);
