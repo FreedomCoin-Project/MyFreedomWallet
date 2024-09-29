@@ -339,14 +339,14 @@
                     id="newPasswordRetype" placeholder="Re-type Password">
                 </div>
 
-                <div class="pubkey-box desktop-pubkey">
-                  <div class="PrivateQR margin-padded-qr" style="display: none;">
-                    <img src="" width="82" height="82">
+                <div id="pubkey-box" class="desktop-pubkey">
+                  <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82" height="82">
                   </div>
-                  <textarea class="PrivateTxt form-control private-key-area" style="display: none;" disabled=""></textarea>
-                  <div class="pivx-button-big" onclick="toggleKeyView(0)">
+                  <textarea id="PrivateTxt" style="display: none;" disabled=""
+                    class="form-control private-key-area"></textarea>
+                  <div class="pivx-button-big" onclick="toggleKeyView()">
                     <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                    <span class="buttoni-text btn_txt guiViewKey">Show Private key</span> 
+                    <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span> 
                   </div>
                 </div>
 
@@ -580,14 +580,14 @@
                   </svg></span>
               </button>
               
-              <div class="pubkey-box desktop-pubkey">
-                <div class="PrivateQR margin-padded-qr" style="display: none;">
-                  <img src="" width="82" height="82">
+              <div id="pubkey-box" class="desktop-pubkey">
+                <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82" height="82">
                 </div>
-                <textarea class="PrivateTxt form-control private-key-area" style="display: none;" disabled=""></textarea>
-                <div class="pivx-button-big" onclick="toggleKeyView(1)">
+                <textarea id="PrivateTxt" style="display: none;" disabled=""
+                  class="form-control private-key-area"></textarea>
+                <div class="pivx-button-big" onclick="toggleKeyView()">
                   <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                  <span class="buttoni-text btn_txt guiViewKey">Show Private key</span> 
+                  <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span> 
                 </div>
               </div>
 
@@ -659,9 +659,9 @@
     const domSimpleTXsDropdown = document.getElementById("simpleTransactionsDropdown");
     const domAddress1s = document.getElementById("address1s");
     const domValue1s = document.getElementById("value1s");
-    const guiViewKeys = document.querySelectorAll('.guiViewKey');
-    const privateTxts = document.querySelectorAll('.PrivateTxt');
-    const privateQrs = document.querySelectorAll('.PrivateQR');
+    const domGuiViewKey = document.getElementById('guiViewKey');
+    const domPrivateTxt = document.getElementById('PrivateTxt');
+    const domPrivateQr = document.getElementById('PrivateQR');
     const domPublicQr = document.getElementById('PublicQR');
     const domModalQR = document.getElementById('ModalQR');
     const domModalQrLabel = document.getElementById('ModalQRLabel');
@@ -782,7 +782,7 @@
       domAddress1s.value = donationAddress;
       domValue1s.focus();
     }
-/*
+
     let viewPrivKey = false;
     function toggleKeyView() {
       viewPrivKey = !viewPrivKey;
@@ -792,22 +792,6 @@
      if (domEncryptPasswordBox.style.display === '') { 
       domEncryptPasswordBox.style.display = 'none';
       domEncryptBtnTxt.innerText = 'Set Password';
-     }
-    }*/
-
-    let viewPrivKeys = Array(guiViewKeys.length).fill(false);
- 
-    function toggleKeyView(index) {
-      // Toggle the view state for the given index
-      viewPrivKeys[index] = !viewPrivKeys[index];
-      
-      // Update the DOM elements based on the current state
-      guiViewKeys[index].innerHTML = viewPrivKeys[index] ? 'Hide Private key' : 'Show Private key';
-      privateTxts[index].style.display = privateQrs[index].style.display = viewPrivKeys[index] ? 'block' : 'none';
-
-      if (domEncryptPasswordBox.style.display === '') { 
-        domEncryptPasswordBox.style.display = 'none';
-        domEncryptBtnTxt.innerText = 'Set Password';
      }
     }
 
@@ -970,9 +954,8 @@
         domEncryptPasswordBox.style.display = '';
         domEncryptBtnTxt.innerText = 'Finish Encryption';
         if (domPrivateTxt.style.display === 'block') { 
-          /*domPrivateTxt.style.display = domPrivateQr.style.display = 'none';
-          domGuiViewKey.innerText = 'Show Private key';*/
-          toggleKeyView(0);
+          domPrivateTxt.style.display = domPrivateQr.style.display = 'none';
+          domGuiViewKey.innerText = 'Show Private key';
         }
       } else {
         // Fetch our inputs, ensure they're of decent entropy + match eachother
