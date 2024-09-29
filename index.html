@@ -1220,7 +1220,7 @@
       if (!hasWalletUnlocked(true) && call != 'modal') return;
 
       // Clear the inputs on 'Continue'
-      if (domGenIt.innerHTML === 'Continue') {
+      if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
         domSimpleTXsTitleSpan.innerHTML = "Create a"
         domGenIt.innerHTML = 'Send Transaction';
         domTxOutput.innerHTML = '';
@@ -1309,13 +1309,11 @@
 
     function openModal(evt, modalName) {
       $(qrModal).fadeToggle(500);
-      $('#' + modalName).fadeToggle(500);
-      if (domGenIt.innerHTML === 'Continue') {
+      $('#' + modalName).fadeToggle(500); 
         setTimeout(function () {
           createTxGUI('modal');
           toggleDropDown("simpleTransactions");
-        }, 1000);
-      }
+        }, 1000); 
     }
 
 
