@@ -1309,11 +1309,13 @@
 
     function openModal(evt, modalName) {
       $(qrModal).fadeToggle(500);
-      $('#' + modalName).fadeToggle(500); 
+      $('#' + modalName).fadeToggle(500);
+      if (domGenIt.innerHTML === 'Continue') {
         setTimeout(function () {
           createTxGUI('modal');
           toggleDropDown("simpleTransactions");
-        }, 1000); 
+        }, 1000);
+      }
     }
 
 
