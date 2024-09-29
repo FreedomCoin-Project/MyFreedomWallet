@@ -789,7 +789,7 @@
       domGuiViewKey.innerHTML = viewPrivKey ? 'Hide Private key' : 'Show Private key';
       domPrivateTxt.style.display = domPrivateQr.style.display = viewPrivKey ? 'block' : 'none';
      // domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
-     if (c && domEncryptPasswordBox.style.display === '') { 
+     if (c != 1 && domEncryptPasswordBox.style.display === '') { 
       domEncryptPasswordBox.style.display = 'none';
       domEncryptBtnTxt.innerText = 'Set Password';
      }
