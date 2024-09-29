@@ -566,32 +566,33 @@
                   <!-- Populated via JS at DOM load (settings.js) -->
                 </select>
                 <br>
-
-                <button class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
-                  <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
-                  <span class="buttoni-text btn_txt">Toggle Debug Mode</span>
+                <button class="pivx-button-big btn-border" onclick="toggleNetwork()">
+                  <span class="buttoni-icon"><i class="fas fa-network-wired fa-tiny-margin"></i></span>
+                  <span class="buttoni-text btn_txt">Toggle Networking Mode</span>
                   <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                       <path
                         d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
                       </path>
-                    </svg></span>
-                </button>
+                    </svg>
+                  </span>
+                </button> 
               </div>
-              <button class="pivx-button-big btn-border" onclick="toggleNetwork()">
-                <span class="buttoni-icon"><i class="fas fa-network-wired fa-tiny-margin"></i></span>
-                <span class="buttoni-text btn_txt">Toggle Networking Mode</span>
+              <button class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
+                <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
+                <span class="buttoni-text btn_txt">Toggle Debug Mode</span>
                 <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                     <path
                       d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
                     </path>
-                  </svg>
-                </span>
+                  </svg></span>
               </button>
+
               <div class="priv-key">
                 <div id="keyQR" class="margin-padded-qr" style="display: none;">
                   <img src="" width="82" height="82">
                 </div>
-                <textarea id="keyTxt" style="display: none;" disabled="" class="form-control private-key-area"></textarea>
+                <textarea id="keyTxt" style="display: none;" disabled=""
+                  class="form-control private-key-area"></textarea>
                 <div class="pivx-button-big btn-border" onclick="toggleKey()">
                   <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
                   <span class="buttoni-text btn_txt" id="guiPrivKey">Show Private key</span>
