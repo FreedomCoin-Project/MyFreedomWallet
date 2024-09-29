@@ -152,7 +152,7 @@ generateWallet = async function (noUI = false) {
       // Display Text
       domGenKeyWarning.style.display = 'block';
       domPrivateTxt.value = privateKeyForTransactions;
-      keyTxt.value(privateKeyForTransactions);
+      keyTxt.value = privateKeyForTransactions;
       domGuiAddress.innerHTML = publicKeyForNetwork;
 
       // Private Key QR
