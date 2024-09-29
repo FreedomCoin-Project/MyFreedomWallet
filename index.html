@@ -1310,7 +1310,7 @@
     function openModal(evt, modalName, close) {
       $(qrModal).fadeToggle(500);
       $('#' + modalName).fadeToggle(500);
-      if (close === 'T' && !$('#simpleTransactions').is(':visible')) {
+      if (close === 'T' ) {
         setTimeout(function () {
           createTxGUI('modal');
           toggleDropDown("simpleTransactions");
