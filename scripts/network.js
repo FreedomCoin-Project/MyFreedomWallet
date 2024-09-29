@@ -100,13 +100,21 @@ var sendTransaction = function(hex, msg = '') {
         const data = JSON.parse(this.response);
         if (data.result && data.result.length === 64) {
             console.log('Transaction sent! ' + data.result);
-            if (domAddress1s.value !== donationAddress)
-                domTxOutput.innerHTML = ('<h4 style="color:green; font-family:mono !important;">' + data.result + '</h4>');
-            else
-                domTxOutput.innerHTML = ('<h4 style="color:green">Thank you for supporting MyPIVXWallet! 💜💜💜<br><span style="font-family:mono !important">' + data.result + '</span></h4>');
+            let msg = (domAddress1s.value !== donationAddress) 
+                ? "Your transaction was successful!" 
+                : "Thank you for supporting MyFREEDWallet!💕";
+            
+            domTxOutput.innerHTML = `
+                <span style="color:green">
+                    ${msg}<br>
+                    <a href="${cExplorer.url}/tx/${data.result}" target="_blank" 
+                       style="width: 100%; overflow: hidden; text-overflow: ellipsis;">
+                       ${data.result}
+                    </a>
+                </span>`;
+            domSimpleTXsTitleSpan.innerHTML = "Created a"
             domSimpleTXs.style.display = 'none';
-            domAddress1s.value = '';
-            domValue1s.innerHTML = '';
+            domAddress1s.value = domValue1s.value = '';
             createAlert('success', msg || 'Transaction sent!', msg ? (1250 + (msg.length * 50)) : 1500);
         } else {
             console.log('Error sending transaction: ' + data.result);

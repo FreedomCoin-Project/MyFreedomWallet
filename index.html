@@ -102,8 +102,10 @@
                 </ul>
               </div>
               <div class="buttons-section">
-                <a href="https://freedomcoin.global" class="btn-border" target="_blank"><img
-                    src="./assets/icons/home.svg" loading="eager" alt="FreedomCoin"></a>
+                <a id='start' class="btn-border" onclick="openTab(event, 'keypair')"><img src="./assets/icons/home.svg"
+                    loading="eager" alt="Dashboard"></a>
+                <a id='settingsTab' class="btn-border" onclick="openTab(event, 'Settings')" style="display: none"><img
+                    src="./assets/icons/setting.svg" loading="eager" alt="settings"></a>
                 <a class="btn-border"><img src="./assets/icons/game.svg" loading="eager" alt="Games"></a>
                 <a class="btn-border"><img src="./assets/icons/swap.svg" loading="eager" alt="Swap"></a>
               </div>
@@ -157,21 +159,21 @@
             <div id="address-info">
               <b id="guiAddress">~</b>
               <b id="guiQRButton">
-               <!-- <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>-->
+                <!-- <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>-->
                 <i onclick="toClipboard('guiAddress', this)" id="guiAddressCopy"
                   class="fas fa-clipboard fa-stacked-ptr"></i>
               </b>
             </div>
           </div>
-            
+
         </div>
         <div id="Transaction" class="tabcontent">
-          <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'Transaction')">
+          <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'Transaction', 'T')">
             <span aria-hidden="true">×</span>
           </button>
           <!-- PIVX TITLE SECTION -->
           <div class="col-md-12 title-section float-left rm-pd">
-            <h3 class="pivx-bold-title center-text"><span>Create a</span> Transaction</h3>
+            <h3 class="pivx-bold-title center-text"><span id="simpleTransactionsTitle">Create a</span> Transaction</h3>
           </div>
           <br>
           <!-- // PIVX TITLE SECTION -->
@@ -332,21 +334,23 @@
                 </div>
                 <div id="encryptPassword"
                   style="display: none; max-width: 100% !important; max-width: 100% !important;">
-                  <span style="color:red;">Note: Your key will be lost if you clear your browser cookies. Make sure to copy and store your private key in a safe place to secure your wallet.</span>
-                  <input class="center-text" style="width: 100%; margin-top: 10px; font-family: monospace;" type="password"
-                    id="newPassword" placeholder="Enter Password">
+                  <span style="color:red;">Note: Your key will be lost if you clear your browser cookies. Make sure to
+                    copy and store your private key in a safe place to secure your wallet.</span>
+                  <input class="center-text" style="width: 100%; margin-top: 10px; font-family: monospace;"
+                    type="password" id="newPassword" placeholder="Enter Password">
                   <input class="center-text" style="width: 100%; font-family: monospace;" type="password"
                     id="newPasswordRetype" placeholder="Re-type Password">
                 </div>
 
                 <div id="pubkey-box" class="desktop-pubkey">
-                  <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82" height="82">
+                  <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82"
+                      height="82">
                   </div>
                   <textarea id="PrivateTxt" style="display: none;" disabled=""
                     class="form-control private-key-area"></textarea>
                   <div class="pivx-button-big" onclick="toggleKeyView()">
                     <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                    <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span> 
+                    <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span>
                   </div>
                 </div>
 
@@ -383,7 +387,8 @@
                           </div>
                         </div>
                         <div id="number-piv">
-                          <p id="guiBalanceBox"><b id="guiBalance">~</b> <span style=" font-size: 15px; ">FREED</span></p>
+                          <p id="guiBalanceBox"><b id="guiBalance">~</b> <span style=" font-size: 15px; ">FREED</span>
+                          </p>
                         </div>
                       </div>
                       <div id="bal-wrapper">
@@ -554,14 +559,25 @@
 
 
             <div id="Settings" class="tabcontent">
-              <label for="explorer">Choose an explorer:</label>
-              <br>
-              <select id="explorer" class="form-control" name="explorer">
-                <!-- Populated via JS at DOM load (settings.js) -->
-              </select>
-              <br>
-
-              <button class="pivx-button-big btn-border" onclick="toggleDebug()">
+              <div class="explorer-type">
+                <label for="explorer">Choose an explorer:</label>
+                <br>
+                <select id="explorer" class="form-control" name="explorer">
+                  <!-- Populated via JS at DOM load (settings.js) -->
+                </select>
+                <br>
+                <button class="pivx-button-big btn-border" onclick="toggleNetwork()">
+                  <span class="buttoni-icon"><i class="fas fa-network-wired fa-tiny-margin"></i></span>
+                  <span class="buttoni-text btn_txt">Toggle Networking Mode</span>
+                  <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                      <path
+                        d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                      </path>
+                    </svg>
+                  </span>
+                </button> 
+              </div>
+              <button class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
                 <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
                 <span class="buttoni-text btn_txt">Toggle Debug Mode</span>
                 <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -570,15 +586,18 @@
                     </path>
                   </svg></span>
               </button>
-              <button class="pivx-button-big btn-border" onclick="toggleNetwork()">
-                <span class="buttoni-icon"><i class="fas fa-network-wired fa-tiny-margin"></i></span>
-                <span class="buttoni-text btn_txt">Toggle Networking Mode</span>
-                <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                    <path
-                      d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                    </path>
-                  </svg></span>
-              </button>
+
+              <div class="priv-key">
+                <div id="keyQR" class="margin-padded-qr" style="display: none;">
+                  <img src="" width="82" height="82">
+                </div>
+                <textarea id="keyTxt" style="display: none;" disabled=""
+                  class="form-control private-key-area"></textarea>
+                <div class="pivx-button-big btn-border" onclick="toggleKey()">
+                  <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
+                  <span class="buttoni-text btn_txt" id="guiPrivKey">Show Private key</span>
+                </div>
+              </div>
 
             </div>
           </div>
@@ -631,6 +650,7 @@
 
     // Cached DOM elements
     const domStart = document.getElementById("start");
+    const domSettings = document.getElementById("settingsTab");
     const domNavbarToggler = document.getElementById("navbarToggler");
     const domGuiStaking = document.getElementById('guiStaking');
     const domGuiWallet = document.getElementById('guiWallet');
@@ -643,6 +663,7 @@
     const domTxTab = document.getElementById("txTab");
     const domStakeTab = document.getElementById("stakeTab");
     const domsendNotice = document.getElementById("sendNotice");
+    const domSimpleTXsTitleSpan = document.getElementById("simpleTransactionsTitle");
     const domSimpleTXs = document.getElementById("simpleTransactions");
     const domSimpleTXsDropdown = document.getElementById("simpleTransactionsDropdown");
     const domAddress1s = document.getElementById("address1s");
@@ -772,15 +793,24 @@
     }
 
     let viewPrivKey = false;
-    function toggleKeyView() {
+    function toggleKeyView(c) {
       viewPrivKey = !viewPrivKey;
       domGuiViewKey.innerHTML = viewPrivKey ? 'Hide Private key' : 'Show Private key';
       domPrivateTxt.style.display = domPrivateQr.style.display = viewPrivKey ? 'block' : 'none';
-     // domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
-     if (domEncryptPasswordBox.style.display === '') { 
-      domEncryptPasswordBox.style.display = 'none';
-      domEncryptBtnTxt.innerText = 'Set Password';
-     }
+      // domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
+      if (c != 1 && domEncryptPasswordBox.style.display === '') {
+        domEncryptPasswordBox.style.display = 'none';
+        domEncryptBtnTxt.innerText = 'Set Password';
+      }
+    }
+
+    const keyQR = document.getElementById('keyQR');
+    const keyTxt = document.getElementById('keyTxt');
+    const btnTxt = document.getElementById('guiPrivKey');
+
+    function toggleKey() {
+      [keyQR, keyTxt].forEach(el => el.style.display = el.style.display === 'none' ? 'block' : 'none');
+      btnTxt.textContent = keyQR.style.display === 'block' ? 'Hide Private Key' : 'Show Private Key';
     }
 
     function hideAllWalletOptions() {
@@ -793,6 +823,7 @@
       domImportWallet.style.display = 'none';
       domGenVanityWallet.style.display = 'none';
       domAccessWallet.style.display = 'none';
+      domSettings.style.display = 'block';
     }
 
     function accessOrImportWallet() {
@@ -941,9 +972,8 @@
         // Return the display to it's class form
         domEncryptPasswordBox.style.display = '';
         domEncryptBtnTxt.innerText = 'Finish Encryption';
-        if (domPrivateTxt.style.display === 'block') { 
-          domPrivateTxt.style.display = domPrivateQr.style.display = 'none';
-          domGuiViewKey.innerText = 'Show Private key';
+        if (domPrivateTxt.style.display === 'block') {
+          toggleKeyView(1);
         }
       } else {
         // Fetch our inputs, ensure they're of decent entropy + match eachother
@@ -1186,11 +1216,12 @@
       return ccSuccess(cCoinControl);
     }
 
-    function createTxGUI() {
-      if (!hasWalletUnlocked(true)) return;
+    function createTxGUI(call) {
+      if (!hasWalletUnlocked(true) && call != 'modal') return;
 
       // Clear the inputs on 'Continue'
-      if (domGenIt.innerHTML === 'Continue') {
+      if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
+        domSimpleTXsTitleSpan.innerHTML = "Create a"
         domGenIt.innerHTML = 'Send Transaction';
         domTxOutput.innerHTML = '';
         domHumanReadable.innerHTML = "";
@@ -1276,10 +1307,17 @@
     }
     $("#navbarToggler").click(toggleNavigation);
 
-    function openModal(evt, modalName) {
+    function openModal(evt, modalName, close) {
       $(qrModal).fadeToggle(500);
       $('#' + modalName).fadeToggle(500);
+      if (close === 'T' && !$('#simpleTransactions').is(':visible')) {
+        setTimeout(function () {
+          createTxGUI('modal');
+          toggleDropDown("simpleTransactions");
+        }, 1000);
+      }
     }
+
 
     function openTab(evt, tabName) {
       // Hide all screens and deactivate link highlights
@@ -1339,7 +1377,7 @@
       }
     });
 
-    setInterval(refreshChainData, 20000);
+    setInterval(refreshChainData, 15000);
     domPrefix.value = PUBKEY_PREFIX;
   </script>
 
