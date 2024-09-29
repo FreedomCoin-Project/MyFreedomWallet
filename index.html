@@ -102,8 +102,10 @@
                 </ul>
               </div>
               <div class="buttons-section">
-                <a class="btn-border" onclick="openTab(event, 'keypair')"><img src="./assets/icons/home.svg" loading="eager" alt="Dashboard"></a>
-                <a class="btn-border" onclick="openTab(event, 'Settings')"><img src="./assets/icons/setting.svg" loading="eager" alt="settings"></a>
+                <a id='start' class="btn-border" onclick="openTab(event, 'keypair')"><img src="./assets/icons/home.svg"
+                    loading="eager" alt="Dashboard"></a>
+                <a id='settingsTab' class="btn-border" onclick="openTab(event, 'Settings')" style="display: none"><img
+                    src="./assets/icons/setting.svg" loading="eager" alt="settings"></a>
                 <a class="btn-border"><img src="./assets/icons/game.svg" loading="eager" alt="Games"></a>
                 <a class="btn-border"><img src="./assets/icons/swap.svg" loading="eager" alt="Swap"></a>
               </div>
@@ -157,13 +159,13 @@
             <div id="address-info">
               <b id="guiAddress">~</b>
               <b id="guiQRButton">
-               <!-- <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>-->
+                <!-- <i data-toggle="modal" data-target="#qrModal" class="fas fa-qrcode fa-stacked-ptr"></i>-->
                 <i onclick="toClipboard('guiAddress', this)" id="guiAddressCopy"
                   class="fas fa-clipboard fa-stacked-ptr"></i>
               </b>
             </div>
           </div>
-            
+
         </div>
         <div id="Transaction" class="tabcontent">
           <button type="button" id="dismiss-modal" class="close" onclick="openModal(event, 'Transaction')">
@@ -332,21 +334,23 @@
                 </div>
                 <div id="encryptPassword"
                   style="display: none; max-width: 100% !important; max-width: 100% !important;">
-                  <span style="color:red;">Note: Your key will be lost if you clear your browser cookies. Make sure to copy and store your private key in a safe place to secure your wallet.</span>
-                  <input class="center-text" style="width: 100%; margin-top: 10px; font-family: monospace;" type="password"
-                    id="newPassword" placeholder="Enter Password">
+                  <span style="color:red;">Note: Your key will be lost if you clear your browser cookies. Make sure to
+                    copy and store your private key in a safe place to secure your wallet.</span>
+                  <input class="center-text" style="width: 100%; margin-top: 10px; font-family: monospace;"
+                    type="password" id="newPassword" placeholder="Enter Password">
                   <input class="center-text" style="width: 100%; font-family: monospace;" type="password"
                     id="newPasswordRetype" placeholder="Re-type Password">
                 </div>
 
                 <div id="pubkey-box" class="desktop-pubkey">
-                  <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82" height="82">
+                  <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82"
+                      height="82">
                   </div>
                   <textarea id="PrivateTxt" style="display: none;" disabled=""
                     class="form-control private-key-area"></textarea>
                   <div class="pivx-button-big" onclick="toggleKeyView()">
                     <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                    <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span> 
+                    <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span>
                   </div>
                 </div>
 
@@ -383,7 +387,8 @@
                           </div>
                         </div>
                         <div id="number-piv">
-                          <p id="guiBalanceBox"><b id="guiBalance">~</b> <span style=" font-size: 15px; ">FREED</span></p>
+                          <p id="guiBalanceBox"><b id="guiBalance">~</b> <span style=" font-size: 15px; ">FREED</span>
+                          </p>
                         </div>
                       </div>
                       <div id="bal-wrapper">
@@ -579,7 +584,7 @@
                     </path>
                   </svg></span>
               </button>
-              
+
               <div id="pubkey-box" class="desktop-pubkey">
                 <div id="PrivateQR" class="margin-padded-qr" style="display: none;"><img src="" width="82" height="82">
                 </div>
@@ -587,7 +592,7 @@
                   class="form-control private-key-area"></textarea>
                 <div class="pivx-button-big" onclick="toggleKeyView()">
                   <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                  <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span> 
+                  <span class="buttoni-text btn_txt" id="guiViewKey">Show Private key</span>
                 </div>
               </div>
 
@@ -642,6 +647,7 @@
 
     // Cached DOM elements
     const domStart = document.getElementById("start");
+    const domSettings = document.getElementById("settingsTab");
     const domNavbarToggler = document.getElementById("navbarToggler");
     const domGuiStaking = document.getElementById('guiStaking');
     const domGuiWallet = document.getElementById('guiWallet');
@@ -788,11 +794,11 @@
       viewPrivKey = !viewPrivKey;
       domGuiViewKey.innerHTML = viewPrivKey ? 'Hide Private key' : 'Show Private key';
       domPrivateTxt.style.display = domPrivateQr.style.display = viewPrivKey ? 'block' : 'none';
-     // domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
-     if (c != 1 && domEncryptPasswordBox.style.display === '') { 
-      domEncryptPasswordBox.style.display = 'none';
-      domEncryptBtnTxt.innerText = 'Set Password';
-     }
+      // domPublicQr.style.display = !viewPrivKey ? 'block' : 'none';
+      if (c != 1 && domEncryptPasswordBox.style.display === '') {
+        domEncryptPasswordBox.style.display = 'none';
+        domEncryptBtnTxt.innerText = 'Set Password';
+      }
     }
 
     function hideAllWalletOptions() {
@@ -805,6 +811,7 @@
       domImportWallet.style.display = 'none';
       domGenVanityWallet.style.display = 'none';
       domAccessWallet.style.display = 'none';
+      domSettings.style.display = 'block';
     }
 
     function accessOrImportWallet() {
@@ -953,7 +960,7 @@
         // Return the display to it's class form
         domEncryptPasswordBox.style.display = '';
         domEncryptBtnTxt.innerText = 'Finish Encryption';
-        if (domPrivateTxt.style.display === 'block') { 
+        if (domPrivateTxt.style.display === 'block') {
           toggleKeyView(1);
         }
       } else {
@@ -1292,10 +1299,10 @@
       $(qrModal).fadeToggle(500);
       $('#' + modalName).fadeToggle(500);
       if (domGenIt.innerHTML === 'Continue') {
-        setTimeout(function() {
+        setTimeout(function () {
           createTxGUI();
           toggleDropDown("simpleTransactions");
-        }, 1000);  
+        }, 1000);
       }
     }
 
