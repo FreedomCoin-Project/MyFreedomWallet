@@ -882,7 +882,7 @@
 
     // Global flag to track if fetching is in progress
     let isFetching = false;
-
+let ff=1;
     // Function to fetch transaction details using the txids and populate the table
     function fetchTransactionDetails(txids, tableBody) {
       const moreLink = document.getElementById("more_transaction");
@@ -907,7 +907,8 @@
 
           // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
           const txid = transaction.txid;
-          console.log(transaction.vout[1].value);
+
+          console.log(transaction.txid+'  '+transaction.vout[1].value);ff++
           let totalTx = (Number(transaction.vout[1].value) + Number(transaction.fees)) / COIN;
           const amount = totalTx.toFixed(2) || "0"; // Use valueOut for the transaction amount
           let confirmations = transaction.confirmations;
