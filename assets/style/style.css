@@ -100,15 +100,6 @@ button:active {
     margin-top: 4px;
 }
 
-.ptr {
-    width: 82%;
-    cursor: pointer;
-}
-
-.wlc .ptr {
-    display: none;
-}
-
 .fa-stacked-ptr {
     cursor: pointer;
     margin-right: 15px;
@@ -130,16 +121,6 @@ button:active {
     margin-right: 10px;
 }
 
-.nav-link {
-    font-weight: 500;
-    font-size: 16px;
-    transition: .5s;
-}
-
-.nav-item {
-    margin-left: 15px;
-}
-
 .navButton {
     color: #999;
 }
@@ -153,14 +134,7 @@ button:active {
     background-color: #ffabb361;
     border-color: #ba0014;
 }
-
-.nav-link {
-    color: rgb(255, 255, 255) !important;
-}
-
-.nav-link:hover {
-    color: rgba(255, 255, 255, 0.75) !important;
-}
+ 
 
 .minor-notif-subtext {
     opacity: 0.5;
@@ -1445,12 +1419,7 @@ a {
         flex-direction: row;
         justify-content: flex-end;
         align-items: center;
-    }
-
-    nav .navbar-collapse:not(.wlc .navbar-collapse) {
-        background: linear-gradient(transparent, #05060b);
-        border-radius: 9px;
-    }
+    } 
 
     nav .buttons-section {
         flex-direction: column;
@@ -1459,13 +1428,6 @@ a {
         border-radius: 10px;
     }
 
-    nav .buttons-section:not(.wlc .buttons-section) {
-        border-left: 1px solid hsla(0, 0%, 100%, .1);
-    }
-
-    .nav-item:not(:first-child) {
-        border-top: 1px solid hsla(0, 0%, 100%, .1);
-    } 
 }
 
 @media screen and (max-width: 770px) {
