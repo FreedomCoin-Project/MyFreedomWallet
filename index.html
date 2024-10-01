@@ -907,6 +907,7 @@
 
           // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
           const txid = transaction.txid;
+          console.log(transaction.vout[1].value);
           let totalTx = (Number(transaction.vout[1].value) + Number(transaction.fees)) / COIN;
           const amount = totalTx.toFixed(2) || "0"; // Use valueOut for the transaction amount
           let confirmations = transaction.confirmations;
