@@ -869,7 +869,7 @@ nav .btn-border:hover span {
 .wlc .navbarSpecial {
     position: sticky;
 }
-.container {
+nav > .container {
     position: relative; 
 }
 /* New styling */
@@ -1341,8 +1341,12 @@ a {
 }
 
 @media screen and (min-width: 992px) { 
-
-    .navbar-collapse>div {
+    .navbar-expand-lg .navbar-collapse { 
+        top: 0;
+        flex-direction: row;
+        justify-content: flex-end;
+    }
+    .navbar-collapse > div {
         display: flex;
         gap: 50px;
     }
