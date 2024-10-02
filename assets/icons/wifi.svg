@@ -1,8 +1,8 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="24" height="20" viewBox="0 0 24 20">
-  <g id="_592822608">
-   <path fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" d="M0.76 5.69c2.11-2.71 6.02-4.53 10.4-4.53 4.38 0 8.28 1.81 10.4 4.48"/>
-   <path fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" d="M3.45 8.44c1.71-1.68 4.52-2.83 7.64-2.83 3.11 0 5.82 1.1 7.64 2.83"/>
-   <path fill="none" stroke="#fff" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" d="M6.27 11.23c0.91-1.18 2.56-2.03 4.44-2.03 1.88 0 3.61 0.8 4.53 2.03"/>
-   <path fill="#fff" d="M11.13 12.58c0.79 0 1.42 0.64 1.42 1.42s-0.64 1.42-1.42 1.42c-0.79 0-1.42-0.64-1.42-1.42s0.64-1.42 1.42-1.42z"/>
+<svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g>
+    <path d="M2 9c2.11-2.71 6.02-4.53 10.4-4.53s8.28 1.81 10.4 4.53" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M4.7 11.75c1.71-1.68 4.52-2.83 7.64-2.83s5.82 1.1 7.64 2.83" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M7.5 14.5c0.91-1.18 2.56-2.03 4.44-2.03s3.61 0.8 4.53 2.03" stroke="#fff" stroke-linecap="round" stroke-linejoin="round"/>
+    <circle cx="12" cy="16.5" r="1.42" fill="#fff"/>
   </g>
 </svg>
