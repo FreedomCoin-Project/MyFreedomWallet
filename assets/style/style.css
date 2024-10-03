@@ -336,7 +336,7 @@ nav .btn-border {
     transition-delay: .2s;
 }
 
-nav .btn-border:hover img {
+nav .btn-border:hover img:not(:last-child) {
     margin-right: 10px; /* Only add margin when span is visible */
 }
 nav .btn-border span {
