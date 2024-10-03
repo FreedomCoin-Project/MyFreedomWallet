@@ -1250,8 +1250,8 @@ let ff=1;
         createAlert('warning', 'Here, use the <b>Stake</b> screen, not the Send screen!', 7500);
         return domStakeTab.click();
       }
-      if (address.length !== 34) return createAlert('warning', '<b>Invalid PIVX address!<b><br>Bad length (' + address.length + ')', 2500);
-      if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', '<b>Invalid PIVX address!<b><br>Bad prefix ' + address[0] + ' (Should start with ' + PUBKEY_PREFIX + ')', 3500);
+      if (address.length !== 34) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad length (' + address.length + ')', 2500);
+      if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad prefix ' + address[0] + ' (Should start with ' + PUBKEY_PREFIX + ')', 3500);
 
       // Sanity check the amount
       let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
