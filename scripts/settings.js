@@ -45,7 +45,12 @@ function toggleDebug() {
 
 function toggleNetwork() {
     networkEnabled = !networkEnabled;
-    domNetwork.innerHTML = '<b> Network:</b> ' + (networkEnabled ? 'Enabled' : 'Disabled');
+    //domNetwork.innerHTML = '<b> Network:</b> ' + (networkEnabled ? 'Enabled' : 'Disabled');
+    
+    // Select the image element inside the anchor tag
+    const networkIcon = document.querySelector('#Network img');  
+    networkIcon.src = networkEnabled ? './assets/icons/wifi.svg' : './assets/icons/no-wifi.svg';
+
     return networkEnabled;
 }
 
