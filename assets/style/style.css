@@ -21,6 +21,7 @@ button {
 }
 
 :root {
+    --primary: #000000;
     --color: #bbbbbe;
     --bg-color1: #1c1b24;
     --bg-color2: #1a1921;
@@ -320,6 +321,7 @@ input::-moz-focus-inner {
 
 nav .btn-border {
     padding: 11px;
+    background: var(--primary);
 }
 
 .btn-border:hover {
@@ -897,7 +899,7 @@ nav > .container {
 }
 
 .home-hero {
-    background: linear-gradient(#020307, #1f1e29 25%)
+    background: linear-gradient(var(--primary), var(--bg-color2) 25%);
 }
 
 .title-section {
