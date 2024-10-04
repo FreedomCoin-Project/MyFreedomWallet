@@ -87,7 +87,7 @@
               <!-- MAIN NAVBAR & SIDE NAVBAR -->
          
               <div class="buttons-section">
-                <a id='start' class="btn-border tablinks" onclick="openTab(event, 'keypair')">
+                <a id='start' class="btn-border tablinks" onclick="openTab(event, 'keypair')" style="display: none">
                   <img src="./assets/icons/home.svg" loading="eager" alt="Dashboard">
                   <span>Dashboard</span>
                 </a>
@@ -99,7 +99,7 @@
                   <img src="./assets/icons/setting.svg" loading="eager" alt="settings">
                   <span>Settings</span>
                 </a>
-                <a class="btn-border tablinks">
+                <a class="btn-border tablinks" style="display: none">
                   <img src="./assets/icons/swap.svg" loading="eager" alt="Swap">
                   <span>Swap</span>
                 </a>
@@ -107,9 +107,9 @@
                   <img src="./assets/icons/game.svg" loading="eager" alt="Games">
                   <span>Games</span>
                 </a>
-                <a  id="Network" class="btn-border tablinks" onclick="toggleNetwork()">
+                <a  id="Network" class="btn-border tablinks" onclick="toggleNetwork()" style="display: none">
                   <img src="./assets/icons/wifi.svg" loading="eager" alt="Network"> 
-                  <span>On</span>
+                  <span></span>
                 </a>
               </div>
             </div>
@@ -826,7 +826,7 @@
       domImportWallet.style.display = 'none';
       domGenVanityWallet.style.display = 'none';
       domAccessWallet.style.display = 'none';
-      domSettings.style.display = '';
+      $(".tablinks").css("display","")
     }
 
     function accessOrImportWallet() {

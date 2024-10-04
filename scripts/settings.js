@@ -21,10 +21,12 @@ var fWalletLoaded = false;
 
 // --- DOM Cache
 const domNetwork = document.getElementById('Network');
+const networkIcon = document.querySelectorAll('#Network img');
+const networkText = document.querySelector('#Network span');
 const domDebug = document.getElementById('Debug');
 
 // Display the default settings directly in the UI
-domNetwork.innerHTML = '<b> Network:</b> ' + (networkEnabled ? 'Enabled' : 'Disabled');
+networkText.innerHTML = (networkEnabled ? 'On' : 'Off');
 domDebug.innerText = debug ? '<b>DEBUG MODE ON</b>' : '';
 
 // --- Settings Functions
@@ -44,12 +46,20 @@ function toggleDebug() {
 }
 
 function toggleNetwork() {
-    networkEnabled = !networkEnabled;
-    //domNetwork.innerHTML = '<b> Network:</b> ' + (networkEnabled ? 'Enabled' : 'Disabled');
-    
-    // Select the image element inside the anchor tag
-    const networkIcon = document.querySelector('#Network img');  
-    networkIcon.src = networkEnabled ? './assets/icons/wifi.svg' : './assets/icons/no-wifi.svg';
+    networkEnabled = !networkEnabled; 
+
+    // Toggle the display of the images
+    networkIcon[0].style.display = networkEnabled ? '' : 'none';
+    networkIcon[1].style.display = networkEnabled ? 'none' : '';
+
+    // Toggle the text content between "On" and "Off"
+    networkText.textContent = networkEnabled ? 'On' : 'Off';
+
+    // Trigger the hover effect for 2 seconds
+    domNetwork.classList.add('hover-effect');
+    setTimeout(() => {
+        domNetwork.classList.remove('hover-effect');
+    }, 2000);
 
     return networkEnabled;
 }

@@ -338,7 +338,7 @@ nav .btn-border {
     transition-delay: .2s;
 }
 
-nav .btn-border:hover img:not(:last-child) {
+nav .btn-border:hover img, #Network.hover img  {
     margin-right: 10px; /* Only add margin when span is visible */
 }
 nav .btn-border span {
@@ -353,7 +353,7 @@ nav .btn-border span {
     overflow: hidden;
 }
 
-nav .btn-border:hover span {
+nav .btn-border:hover span, #Network.hover span {
     max-width: 200px; /* Set a maximum width large enough to fit the text */
     opacity: 1;
 }
