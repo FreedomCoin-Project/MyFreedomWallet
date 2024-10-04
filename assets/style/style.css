@@ -353,6 +353,10 @@ nav .btn-border span {
     overflow: hidden;
 }
 
+nav .btn-border span:last-child {
+    transition: max-width 0.8s ease, opacity 0.5s ease; 
+}
+
 nav .btn-border:hover span, #Network.hover span {
     max-width: 200px; /* Set a maximum width large enough to fit the text */
     opacity: 1;
