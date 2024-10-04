@@ -85,38 +85,36 @@
           <div class="collapse navbar-collapse noselect" id="navbarNav">
             <div>
               <!-- MAIN NAVBAR & SIDE NAVBAR -->
-              <div class="form-inline my-2 my-lg-0" style="display:none;">
-                <ul class="navbar-nav mr-auto ptr">
-                  <li class="nav-item">
-                    <a class="nav-link tablinks active" id="Network" onclick="toggleNetwork()"></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link tablinks active" id="Debug" onclick="toggleDebug()"></a></li>
-                </ul>
-              </div>
+         
               <div class="buttons-section">
-                <a id='start' class="btn-border tablinks" onclick="openTab(event, 'keypair')">
+                <a id='start' class="btn-border tablinks" onclick="openTab(event, 'keypair')" style="display: none">
                   <img src="./assets/icons/home.svg" loading="eager" alt="Dashboard">
                   <span>Dashboard</span>
                 </a>
-                <a id="stakeTab" class="btn-border tablinks" onclick="openTab(event, 'StakingTab')">
+                <a id="stakeTab" class="btn-border tablinks" onclick="openTab(event, 'StakingTab')" style="display: none">
                   <img src="./assets/icons/stake.svg" loading="eager" alt="Stake">
                   <span>Stake</span>
+                </a>
+                <a class="btn-border tablinks" style="display: none">
+                  <img src="./assets/icons/swap.svg" loading="eager" alt="Swap">
+                  <span>Swap</span>
                 </a>
                 <a id='settingsTab' class="btn-border tablinks" onclick="openTab(event, 'Settings')" style="display: none">
                   <img src="./assets/icons/setting.svg" loading="eager" alt="settings">
                   <span>Settings</span>
                 </a>
                 <a class="btn-border tablinks">
-                  <img src="./assets/icons/swap.svg" loading="eager" alt="Swap">
-                  <span>Swap</span>
-                </a>
-                <a class="btn-border tablinks">
                   <img src="./assets/icons/game.svg" loading="eager" alt="Games">
                   <span>Games</span>
                 </a>
-                <a  id="Network" class="btn-border tablinks" onclick="toggleNetwork()">
+                <a class="btn-border tablinks">
+                  <img src="./assets/icons/store.svg" loading="eager" alt="Store">
+                  <span>Store</span>
+                </a>
+                <a  id="Network" class="btn-border tablinks" onclick="toggleNetwork()" style="display: none">
                   <img src="./assets/icons/wifi.svg" loading="eager" alt="Network"> 
+                  <img src="./assets/icons/no-wifi.svg" loading="eager" alt="Network" style="display: none"> 
+                  <span></span>
                 </a>
               </div>
             </div>
@@ -405,7 +403,7 @@
                         <div class="noselect balance-transaction">
                           <div class="dep-text" onclick="openModal(event, 'address-box')">
                             <img src="./assets/images/icons/deposit.svg" alt="Deposit">
-                            <span>Deposit</span>
+                            <span>Receive</span>
                           </div>
                           <div id="txTab" class="send-text" onclick="openModal(event, 'Transaction')">
                             <img src="./assets/images/icons/send.svg" alt="Send">
@@ -587,7 +585,7 @@
                   </span>
                 </button> 
               </div>
-              <button class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
+              <button id="Debug" class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
                 <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
                 <span class="buttoni-text btn_txt">Toggle Debug Mode</span>
                 <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -833,7 +831,7 @@
       domImportWallet.style.display = 'none';
       domGenVanityWallet.style.display = 'none';
       domAccessWallet.style.display = 'none';
-      domSettings.style.display = '';
+      $(".tablinks").css("display","")
     }
 
     function accessOrImportWallet() {
@@ -918,7 +916,10 @@ let ff=1;
           // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
           const txid = transaction.txid;
 
-          let totalTx = (Number(transaction.value) /*+ Number(transaction.fees)*/) / COIN;
+          let totalTx = transaction.vout && transaction.vout[1] && transaction.vout[1].value !== undefined 
+          ? (Number(transaction.vout[1].value) + Number(transaction.fees)) / COIN 
+          : Number(transaction.value) / COIN;
+
           const amount = totalTx.toFixed(2) || "0"; // Use valueOut for the transaction amount
           let confirmations = transaction.confirmations;
           const time = transaction.blockTime; // Extract the transaction time (UNIX timestamp)

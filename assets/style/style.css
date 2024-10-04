@@ -21,6 +21,7 @@ button {
 }
 
 :root {
+    --primary: #000000;
     --color: #bbbbbe;
     --bg-color1: #1c1b24;
     --bg-color2: #1a1921;
@@ -320,6 +321,7 @@ input::-moz-focus-inner {
 
 nav .btn-border {
     padding: 11px;
+    background: var(--primary);
 }
 
 .btn-border:hover {
@@ -335,8 +337,10 @@ nav .btn-border {
     transition: margin-right 0.5s ease; /* Add smooth transition */
     transition-delay: .2s;
 }
-
-nav .btn-border:hover img:not(:last-child) {
+.btn-border:last-child img { 
+    transition-delay: .1s;
+}
+nav .btn-border:hover img, #Network.hover img  {
     margin-right: 10px; /* Only add margin when span is visible */
 }
 nav .btn-border span {
@@ -351,7 +355,11 @@ nav .btn-border span {
     overflow: hidden;
 }
 
-nav .btn-border:hover span {
+nav .btn-border:last-child span {
+    transition: max-width 0.8s ease, opacity 0.5s ease-out; 
+}
+
+nav .btn-border:hover span, #Network.hover span {
     max-width: 200px; /* Set a maximum width large enough to fit the text */
     opacity: 1;
 }
@@ -897,7 +905,7 @@ nav > .container {
 }
 
 .home-hero {
-    background: linear-gradient(#020307, #1f1e29 25%)
+    background: linear-gradient(var(--primary), var(--bg-color2) 25%);
 }
 
 .title-section {
