@@ -85,15 +85,7 @@
           <div class="collapse navbar-collapse noselect" id="navbarNav">
             <div>
               <!-- MAIN NAVBAR & SIDE NAVBAR -->
-              <div class="form-inline my-2 my-lg-0" style="display:none;">
-                <ul class="navbar-nav mr-auto ptr">
-                  <li class="nav-item">
-                    <a class="nav-link tablinks active" id="Network" onclick="toggleNetwork()"></a>
-                  </li>
-                  <li class="nav-item">
-                    <a class="nav-link tablinks active" id="Debug" onclick="toggleDebug()"></a></li>
-                </ul>
-              </div>
+         
               <div class="buttons-section">
                 <a id='start' class="btn-border tablinks" onclick="openTab(event, 'keypair')">
                   <img src="./assets/icons/home.svg" loading="eager" alt="Dashboard">
@@ -588,7 +580,7 @@
                   </span>
                 </button> 
               </div>
-              <button class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
+              <button id="Debug" class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
                 <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
                 <span class="buttoni-text btn_txt">Toggle Debug Mode</span>
                 <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
