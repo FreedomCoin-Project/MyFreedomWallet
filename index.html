@@ -109,6 +109,7 @@
                 </a>
                 <a  id="Network" class="btn-border tablinks" onclick="toggleNetwork()">
                   <img src="./assets/icons/wifi.svg" loading="eager" alt="Network"> 
+                  <span>On</span>
                 </a>
               </div>
             </div>
@@ -397,7 +398,7 @@
                         <div class="noselect balance-transaction">
                           <div class="dep-text" onclick="openModal(event, 'address-box')">
                             <img src="./assets/images/icons/deposit.svg" alt="Deposit">
-                            <span>Deposit</span>
+                            <span>Receive</span>
                           </div>
                           <div id="txTab" class="send-text" onclick="openModal(event, 'Transaction')">
                             <img src="./assets/images/icons/send.svg" alt="Send">
@@ -910,7 +911,10 @@ let ff=1;
           // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
           const txid = transaction.txid;
 
-          let totalTx = (Number(transaction.value) /*+ Number(transaction.fees)*/) / COIN;
+          let totalTx = transaction.vout && transaction.vout[1] && transaction.vout[1].value !== undefined 
+          ? (Number(transaction.vout[1].value) + Number(transaction.fees)) / COIN 
+          : Number(transaction.value) / COIN;
+
           const amount = totalTx.toFixed(2) || "0"; // Use valueOut for the transaction amount
           let confirmations = transaction.confirmations;
           const time = transaction.blockTime; // Extract the transaction time (UNIX timestamp)
