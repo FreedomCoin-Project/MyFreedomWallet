@@ -58,7 +58,7 @@ function toggleNetwork() {
     // Trigger the hover effect for 2 seconds
     domNetwork.classList.add('hover');
     setTimeout(() => {
-        domNetwork.classList.remove('hover-effect');
+        domNetwork.classList.remove('hover');
     }, 2000);
 
     return networkEnabled;
