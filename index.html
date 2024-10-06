@@ -1332,24 +1332,18 @@ let ff=1;
 
 
     function openTab(evt, tabName) {
-      // Delay the execution of the tab switching logic by 1 second
-      setTimeout(() => {
-        // Hide all screens and deactivate link highlights
-        for (const domScreen of arrDomScreens) domScreen.style.display = "none";
-        for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
+      // Hide all screens and deactivate link highlights
+      for (const domScreen of arrDomScreens) domScreen.style.display = "none";
+      for (const domLink of arrDomScreenLinks) domLink.classList.remove("active");
 
-        // Show and activate the given screen
-        document.getElementById(tabName).style.display = "block";
-        evt.currentTarget.classList.add("active");
-
-        // Close the navbar if it's not already closed
-        if (!domNavbarToggler.className.includes("collapsed"))
-          toggleNavigation();
-      }, 1000);
+      // Show and activate the given screen
+      document.getElementById(tabName).style.display = "block";
+      evt.currentTarget.classList.add("active");
+      // Close the navbar if it's not already closed
+      if (!domNavbarToggler.className.includes("collapsed"))
+        toggleNavigation();
     }
- 
     domStart.click();
-
 
     function refreshChainData() {
       // If in offline mode: don't sync ANY data or connect to the internet
