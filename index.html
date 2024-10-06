@@ -1345,9 +1345,9 @@ let ff=1;
     }
     domStart.click();
 
-    function redirect(functionRef, e, id, delay) { 
+    function redirect(functionRef, evt, id, delay) { 
         setTimeout(function() {
-            functionRef(e, id);
+            functionRef(evt, id);
         }, delay);
     }
 
