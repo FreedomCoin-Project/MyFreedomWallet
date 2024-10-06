@@ -87,11 +87,11 @@
               <!-- MAIN NAVBAR & SIDE NAVBAR -->
          
               <div class="buttons-section">
-                <a id='start' class="btn-border tablinks" onclick="openTab(event, 'keypair')" style="display: none">
+                <a id='start' class="btn-border tablinks" onclick="redirect(openTab,event,'keypair',1000)" style="display: none">
                   <img src="./assets/icons/home.svg" loading="eager" alt="Dashboard">
                   <span>Dashboard</span>
                 </a>
-                <a id="stakeTab" class="btn-border tablinks" onclick="openTab(event, 'StakingTab')" style="display: none">
+                <a id="stakeTab" class="btn-border tablinks" onclick="redirect(openTab,event,'StakingTab',1000)" style="display: none">
                   <img src="./assets/icons/stake.svg" loading="eager" alt="Stake">
                   <span>Stake</span>
                 </a>
@@ -99,7 +99,7 @@
                   <img src="./assets/icons/swap.svg" loading="eager" alt="Swap">
                   <span>Swap</span>
                 </a>
-                <a id='settingsTab' class="btn-border tablinks" onclick="openTab(event, 'Settings')" style="display: none">
+                <a id='settingsTab' class="btn-border tablinks" onclick="redirect(openTab,event,'Settings',1000)" style="display: none">
                   <img src="./assets/icons/setting.svg" loading="eager" alt="settings">
                   <span>Settings</span>
                 </a>
@@ -1344,6 +1344,12 @@ let ff=1;
         toggleNavigation();
     }
     domStart.click();
+
+    function redirect(functionRef, e, id, delay) { 
+        setTimeout(function() {
+            functionRef(e, id);
+        }, delay);
+    }
 
     function refreshChainData() {
       // If in offline mode: don't sync ANY data or connect to the internet
