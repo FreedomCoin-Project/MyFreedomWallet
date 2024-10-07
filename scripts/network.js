@@ -90,7 +90,28 @@ var getUTXOs = () => {
     request.send();
 };
 
-var sendTransaction = function(hex, msg = '') {
+function sendTransaction(hex) {
+  const request = new XMLHttpRequest();
+  request.open('POST', 'https://chainz.cryptoid.info/freed/api.dws?q=pushtx', true);
+  request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+  request.onerror = networkError;
+  request.onreadystatechange = function () {
+    if (this.readyState !== 4) return;
+    if (this.status === 200) {
+      const data = JSON.parse(this.response);
+      if (data.result && data.result.length === 64) {
+        createAlert('success', 'Transaction sent! TXID: ' + data.result, 1250);
+      } else {
+        createAlert('warning', 'Transaction Failed!', 1250);
+      }
+    } else {
+      createAlert('warning', 'Network Error', 1250);
+    }
+  };
+  request.send(`tx=${hex}`);
+}
+
+var sendTransactiona = function(hex, msg = '') {
     const request = new XMLHttpRequest();
     request.open('GET', cExplorer.url + "/api/v2/sendtx/" + hex, true);
     request.onerror = networkError;
