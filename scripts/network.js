@@ -90,66 +90,43 @@ var getUTXOs = () => {
     request.send();
 };
 
-function sendTransaction(hex) {
+var sendTransaction = function(hex, msg = '') {
   const request = new XMLHttpRequest();
   request.open('POST', 'https://chainz.cryptoid.info/freed/api.dws?q=pushtx', true);
   request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   request.onerror = networkError;
   request.onreadystatechange = function () {
+    if (!this.response || (!this.status === 200 && !this.status === 400)) return;
     if (this.readyState !== 4) return;
-    if (this.status === 200) {
-      const data = JSON.parse(this.response);
-      if (data.result && data.result.length === 64) {
-        createAlert('success', 'Transaction sent! TXID: ' + data.result, 1250);
-      } else {
-        createAlert('warning', 'Transaction Failed!', 1250);
-      }
-    } else {
-      createAlert('warning', 'Network Error', 1250);
-    }
-  };
-  request.send(`tx=${hex}`);
-}
 
-var sendTransactiona = function(hex, msg = '') {
-    const request = new XMLHttpRequest();
-    request.open('GET', cExplorer.url + "/api/v2/sendtx/" + hex, true);
-    request.onerror = networkError;
-    request.onreadystatechange = function () {
-        if (!this.response || (!this.status === 200 && !this.status === 400)) return;
-        if (this.readyState !== 4) return;
-        const data = JSON.parse(this.response);
-        if (data.result && data.result.length === 64) {
-            console.log('Transaction sent! ' + data.result);
-            let msg = (domAddress1s.value !== donationAddress) 
-                ? "Your transaction was successful!" 
-                : "Thank you for supporting MyFREEDWallet!💕";
-            
-            domTxOutput.innerHTML = `
-                <span style="color:green">
-                    ${msg}<br>
-                    <a href="${cExplorer.url}/tx/${data.result}" target="_blank" 
-                       style="width: 100%; overflow: hidden; text-overflow: ellipsis;">
-                       ${data.result}
-                    </a>
-                </span>`;
-            domSimpleTXsTitleSpan.innerHTML = "Created a"
-            domSimpleTXs.style.display = 'none';
-            domAddress1s.value = domValue1s.value = '';
-            createAlert('success', msg || 'Transaction sent!', msg ? (1250 + (msg.length * 50)) : 1500);
-        } else {
-            console.log('Error sending transaction: ' + data.result);
-            createAlert('warning', 'Transaction Failed!', 1250);
-            // Attempt to parse and prettify JSON (if any), otherwise, display the raw output.
-            let strError = data.error;
-            try {
-                strError = JSON.stringify(JSON.parse(data), null, 4);
-                console.log('parsed');
-            } catch(e){console.log('no parse!'); console.log(e);}
-            domTxOutput.innerHTML = '<h4 style="color:red;font-family:mono !important;"><pre style="color: inherit;">' + strError + "</pre></h4>";
-        }
+    const data = JSON.parse(this.response);
+    if (data.result && data.result.length === 64) {
+      console.log('Transaction sent! ' + data.result);
+      const successMsg = (domAddress1s.value !== donationAddress) 
+          ? "Your transaction was successful!" 
+          : "Thank you for supporting MyFREEDWallet!💕";
+      
+      domTxOutput.innerHTML = `
+          <span style="color:green">
+              ${successMsg}<br>
+              <a href="https://chainz.cryptoid.info/freed/tx/${data.result}" target="_blank" 
+                 style="width: 100%; overflow: hidden; text-overflow: ellipsis;">
+                 ${data.result}
+              </a>
+          </span>`;
+      
+      createAlert('success', successMsg || 'Transaction sent!', 1250);
+    } else {
+      console.log('Error sending transaction: ' + data.result);
+      createAlert('warning', 'Transaction Failed!', 1250);
+      let strError = data.error;
+      try {
+        strError = JSON.stringify(JSON.parse(data), null, 4);
+      } catch (e) { console.log('Error parsing response:', e); }
+      domTxOutput.innerHTML = '<h4 style="color:red;font-family:mono !important;"><pre style="color: inherit;">' + strError + "</pre></h4>";
     }
-    request.send();
+  }
+  request.send(`tx=${hex}`);
 }
 
   var getFee = function (bytes) {
