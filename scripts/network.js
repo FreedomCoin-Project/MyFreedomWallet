@@ -92,7 +92,7 @@ var getUTXOs = () => {
 
 var sendTransaction = function(hex, msg = '') {
   const request = new XMLHttpRequest();
-  request.open('POST', 'https://chainz.cryptoid.info/freed/api.dws?q=pushtx&key=6410d7bdac9dUI', true);
+  request.open('POST', 'https://chainz.cryptoid.info/freed/api.dws?q=pushtx&key=6410d7bdac9d', true);
   request.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
   request.onerror = networkError;
   request.onreadystatechange = function () {
