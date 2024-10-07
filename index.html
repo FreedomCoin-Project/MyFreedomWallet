@@ -1228,52 +1228,66 @@ let ff=1;
       return ccSuccess(cCoinControl);
     }
 
-function createTxGUI(call) {
-  if (!hasWalletUnlocked(true) && call != 'modal') return;
+    function createTxGUI(call) {
+      if (!hasWalletUnlocked(true) && call != 'modal') return;
 
-  // Clear inputs on 'Continue'
-  if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
-    domGenIt.innerHTML = 'Send Transaction';
-    domTxOutput.innerHTML = '';
-    domHumanReadable.innerHTML = "";
-    domValue1s.value = "";
-    domAddress1s.value = "";
-    return;
-  }
+      // Clear the inputs on 'Continue'
+      if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
+        domSimpleTXsTitleSpan.innerHTML = "Create a"
+        domGenIt.innerHTML = 'Send Transaction';
+        domTxOutput.innerHTML = '';
+        domHumanReadable.innerHTML = "";
+        domValue1s.value = "";
+        domAddress1s.value = "";
+        domReqDesc.value = '';
+        domReqDisplay.style.display = 'none';
+        return;
+      }
 
-  // Sanity check the address
-  const address = domAddress1s.value.trim();
-  if (address.length !== 34 || !address.startsWith(PUBKEY_PREFIX)) {
-    return createAlert('warning', 'Invalid FREED address!', 2500);
-  }
+      // Sanity check the address
+      const address = domAddress1s.value.trim();
+      // If Staking address: redirect to staking page
+      if (address.startsWith("S")) {
+        createAlert('warning', 'Here, use the <b>Stake</b> screen, not the Send screen!', 7500);
+        return domStakeTab.click();
+      }
+      if (address.length !== 34) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad length (' + address.length + ')', 2500);
+      if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad prefix ' + address[0] + ' (Should start with ' + PUBKEY_PREFIX + ')', 3500);
 
-  // Sanity check the amount
-  let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
-  if (nValue <= 0 || isNaN(nValue)) {
-    return createAlert('warning', 'Invalid amount!', 2500);
-  }
+      // Sanity check the amount
+      let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
+      if (nValue <= 0 || isNaN(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>You can\'t send \'nothing\'!', 2500);
+      if (!Number.isSafeInteger(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
 
-  // Create transaction and choose UTXOs
-  const cTx = bitjs.transaction();
-  const cCoinControl = chooseUTXOs(cTx, nValue, 0, false);
-  if (!cCoinControl.success) return alert(cCoinControl.msg);
+      // Construct a TX and fetch Standard inputs
+      const nBalance = getBalance();
+      const cTx = bitjs.transaction();
+      const cCoinControl = chooseUTXOs(cTx, nValue, 0, false);
+      if (!cCoinControl.success) return alert(cCoinControl.msg);
 
-  // Compute fee and change
-  const nFee = getFee(cTx.serialize().length);
-  const nChange = cCoinControl.nValue - (nFee + nValue);
-  if (nChange > 0) {
-    cTx.addoutput(publicKeyForNetwork, nChange / COIN);  // Add change output
-  } else {
-    nValue -= nFee;  // Deduct fee from send amount if no change
-  }
+      // Compute fee
+      const nFee = getFee(cTx.serialize().length);
 
-  // Primary output (receiver)
-  cTx.addoutput(address, nValue / COIN);
+      // Compute change (or lack thereof)
+      const nChange = cCoinControl.nValue - (nFee + nValue);
+      if (nChange > 0) {
+        // Change output
+        cTx.addoutput(publicKeyForNetwork, nChange / COIN);
+      } else {
+        // We're sending alot! So we deduct the fee from the send amount. There's not enough change to pay it with!
+        nValue -= nFee;
+      }
 
-  // Sign and broadcast
-  sendTransaction(cTx.sign(privateKeyForTransactions, 1));
-  domGenIt.innerHTML = "Continue";
-}
+      // Primary output (receiver)
+      cTx.addoutput(address, nValue / COIN);
+
+      // Debug-only verbose response
+      if (debug) domHumanReadable.innerHTML = "Balance: " + (nBalance / COIN) + "<br>Fee: " + (nFee / COIN) + "<br>To: " + address + "<br>Sent: " + (nValue / COIN) + (nChange > 0 ? "<br>Change Address: " + publicKeyForNetwork + "<br>Change: " + (nChange / COIN) : "");
+
+      // Sign and broadcast!
+      sendTransaction(cTx.sign(privateKeyForTransactions, 1));
+      domGenIt.innerHTML = "Continue";
+    }
 
     function createRawTransaction() {
       // Prepare a TX
