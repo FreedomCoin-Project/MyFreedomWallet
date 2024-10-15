@@ -333,6 +333,9 @@
 
               <!-- WARNING -->
               <div id='genKeyWarning' style='display: none;' class="alert alert-danger col-md-12" role="alert">
+                <button type="button" id="hide-modal" class="close" onclick="hideModal(event, 'genKeyWarning', 'hide')">
+                  <span aria-hidden="true">×</span>
+                </button>
                 <div style="max-width: 100% !important;">
                   <p id="encryptWarningText" class="center-text">
                     <b>WARNING</b><br>
@@ -889,8 +892,7 @@
 
 
     // Global flag to track if fetching is in progress
-    let isFetching = false;
-let ff=1;
+    let isFetching = false; 
     // Function to fetch transaction details using the txids and populate the table
     function fetchTransactionDetails(txids, tableBody) {
       const moreLink = document.getElementById("more_transaction");
@@ -1329,7 +1331,10 @@ let ff=1;
         }, 1000);
       }
     }
-
+    function hideModal(evt, modalName, action) {
+      $(qrModal).fadeToggle(500);
+      $('#' + modalName).toggleClass(action); 
+    }
 
     function openTab(evt, tabName) {
       // Hide all screens and deactivate link highlights
