@@ -719,6 +719,7 @@ nav .btn-border:hover span, #Network.hover span {
     background-color: rgb(217 74 41 / 51%);
     transform: scaleY(1) translate(0, -50%);
     backdrop-filter: blur(10px);
+    border-radius: 10px;
     transition: ease .5s;
     z-index: 1100;
 }
@@ -1584,11 +1585,12 @@ a {
 @media screen and (max-width: 767px) {
 
     /* Dashboard */
-    #genKeyWarning { 
-        padding-top: 40px;
+    #genKeyWarning {  
         padding-bottom: 40px;
     }
-
+    #genKeyWarning.hide { 
+        transform: scaleY(0.8) translate(-92%, 40vh);
+    }
     #genKeyWarning .pivx-button-big {
         padding: 13px 20px;
     }
