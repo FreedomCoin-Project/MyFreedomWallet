@@ -719,14 +719,14 @@ nav .btn-border:hover span, #Network.hover span {
     background-color: rgb(217 74 41 / 51%);
     transform: scaleY(1) translate(0, -50%);
     backdrop-filter: blur(10px);
-    border-radius: 10px;
+    border-radius: 5px;
     transition: ease .5s;
     z-index: 1100;
 }
 #genKeyWarning.hide {
     padding: 20px 10px;
     transform: scaleY(0.8) translate(-100%, 40vh);    
-    z-index: 1080;
+    z-index: 1040;
 }
 #genKeyWarning.hide > *:not(.hide-modal) {
     display: none !important;
