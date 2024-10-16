@@ -725,7 +725,8 @@ nav .btn-border:hover span, #Network.hover span {
 }
 #genKeyWarning.hide {
     padding: 20px 10px;
-    transform: scaleY(0.8) translate(-100%, 40vh);
+    transform: scaleY(0.8) translate(-100%, 40vh);    
+    z-index: 1080;
 }
 #genKeyWarning.hide > *:not(.hide-modal) {
     display: none !important;
