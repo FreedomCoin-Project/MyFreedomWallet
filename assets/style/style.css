@@ -720,7 +720,7 @@ nav .btn-border:hover span, #Network.hover span {
     transform: scaleY(1) translate(0, -50%);
     backdrop-filter: blur(10px);
     border-radius: 5px;
-    transition: ease .5s;
+    transition: ease .3s;
     z-index: 1100;
 }
 #genKeyWarning.hide {
