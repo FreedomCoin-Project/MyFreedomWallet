@@ -716,10 +716,11 @@ nav .btn-border:hover span, #Network.hover span {
     min-width: 300px; 
     padding: 20px;
     padding-bottom: 35px;
-    background-color: #715058;
+    background-color: rgb(217 74 41 / 51%);
     transform: scaleY(1) translate(0, -50%);
-    z-index: 1100;
+    backdrop-filter: blur(10px);
     transition: ease .5s;
+    z-index: 1100;
 }
 #genKeyWarning.hide {
     padding: 20px 10px;
