@@ -126,7 +126,7 @@ importWallet = function (newWif = false, fRaw = false) {
     toggleKeyView();
 
     // Hide the encryption warning if the user pasted the private key
-    if (!newWif) domGenKeyWarning.style.display = 'block';
+    if (!newWif) $([qrModal, domGenKeyWarning]).fadeToggle(500);
 
     // Load UTXOs from explorer
     if (networkEnabled) getUTXOs();
@@ -151,7 +151,7 @@ generateWallet = async function (noUI = false) {
 
     if (!noUI) {
       // Display Text
-      domGenKeyWarning.style.display = 'block';
+      $([qrModal, domGenKeyWarning]).fadeToggle(500);
       domPrivateTxt.value = privateKeyForTransactions;
       keyTxt.value = privateKeyForTransactions;
       domGuiAddress.innerHTML = publicKeyForNetwork;

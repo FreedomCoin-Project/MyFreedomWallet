@@ -333,6 +333,13 @@
 
               <!-- WARNING -->
               <div id='genKeyWarning' style='display: none;' class="alert alert-danger col-md-12" role="alert">
+                <button type="button" class="close hide-modal" onclick="hideModal(event, 'genKeyWarning', 'hide')">
+                  <svg fill="#fff" height=" 23" width=" 23"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                    <path
+                      d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                    </path>
+                  </svg>
+                </button>
                 <div style="max-width: 100% !important;">
                   <p id="encryptWarningText" class="center-text">
                     <b>WARNING</b><br>
@@ -342,7 +349,7 @@
                 </div>
                 <div id="encryptPassword"
                   style="display: none; max-width: 100% !important; max-width: 100% !important;">
-                  <span style="color:red;">Note: Your key will be lost if you clear your browser cookies. Make sure to
+                  <span style="color:var(--warning);">Note: Your key will be lost if you clear your browser cookies. Make sure to
                     copy and store your private key in a safe place to secure your wallet.</span>
                   <input class="center-text" style="width: 100%; margin-top: 10px; font-family: monospace;"
                     type="password" id="newPassword" placeholder="Enter Password">
@@ -889,8 +896,7 @@
 
 
     // Global flag to track if fetching is in progress
-    let isFetching = false;
-let ff=1;
+    let isFetching = false; 
     // Function to fetch transaction details using the txids and populate the table
     function fetchTransactionDetails(txids, tableBody) {
       const moreLink = document.getElementById("more_transaction");
@@ -1329,7 +1335,10 @@ let ff=1;
         }, 1000);
       }
     }
-
+    function hideModal(evt, modalName, action) {
+      $(qrModal).fadeToggle(500);
+      $('#' + modalName).toggleClass(action); 
+    }
 
     function openTab(evt, tabName) {
       // Hide all screens and deactivate link highlights
