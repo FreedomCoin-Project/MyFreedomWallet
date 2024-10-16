@@ -732,7 +732,7 @@ nav .btn-border:hover span, #Network.hover span {
 #genKeyWarning .hide-modal {
     transform: rotate(180deg);
 }
-#genKeyWarning .hide-modal {
+#genKeyWarning.hide .hide-modal {
     transform: rotate(0);
 }
 
