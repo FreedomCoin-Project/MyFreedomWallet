@@ -709,21 +709,30 @@ nav .btn-border:hover span, #Network.hover span {
 #genKeyWarning {
     position: fixed;
     top: 50%;
-    left: 50%;
+    left: 0;
+    right: 0;
+    margin: auto;
     width: 90%;
-    min-width: 300px;
+    min-width: 300px; 
     padding: 20px;
     padding-bottom: 35px;
     background-color: #715058;
-    transform: scaleY(1) translate(-50%, -50%);
+    transform: scaleY(1) translate(0, -50%);
     z-index: 1100;
-    transition: .5s;
+    transition: ease .5s;
 }
 #genKeyWarning.hide {
-    transform: scaleY(0.8) translate(-150%, 40vh);
+    padding: 20px 10px;
+    transform: scaleY(0.8) translate(-100%, 40vh);
 }
 #genKeyWarning.hide > *:not(#hide-modal) {
     display: none !important;
+}
+#genKeyWarning.hide-modal {
+    transform: rotate(180deg);
+}
+#genKeyWarning.hide-modal {
+    transform: rotate(0);
 }
 
 #genKeyWarning > div {
