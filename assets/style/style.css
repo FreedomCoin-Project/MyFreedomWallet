@@ -726,13 +726,13 @@ nav .btn-border:hover span, #Network.hover span {
     padding: 20px 10px;
     transform: scaleY(0.8) translate(-100%, 40vh);
 }
-#genKeyWarning.hide > *:not(#hide-modal) {
+#genKeyWarning.hide > *:not(.hide-modal) {
     display: none !important;
 }
-#genKeyWarning.hide-modal {
+#genKeyWarning .hide-modal {
     transform: rotate(180deg);
 }
-#genKeyWarning.hide-modal {
+#genKeyWarning .hide-modal {
     transform: rotate(0);
 }
 
