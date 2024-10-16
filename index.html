@@ -1000,8 +1000,9 @@
         if (strPass.length < MIN_PASS_LENGTH) return createAlert('warning', 'That password is a little short!<br>' +
           'Use at least <b>' + MIN_PASS_LENGTH + ' characters.</b>', 4000);
         if (strPass !== strPassRetype) return createAlert('warning', 'Your passwords don\'t match!', 2250);
-        encryptWallet(strPass);
-        createAlert('success', '<b>You\'re Secured! 🔐</b><br>Nice stuff, Armoured PIVian!', 5500);
+          encryptWallet(strPass);
+          createAlert('success', '<b>You\'re Secured! 🔐</b><br>Nice stuff, Armoured FREED!', 5500);
+          $(qrModal).fadeToggle(500);
       }
     }
 
