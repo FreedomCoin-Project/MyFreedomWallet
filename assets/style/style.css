@@ -20,9 +20,8 @@ button {
     font-family: Montserrat, sans-serif !important;
 }
 
-:root {
-    --primary: #000000;
-    --color: #bbbbbe;
+:root { 
+    --color: #f2f8fa;
     --gold: #f9b707;
     --orange: #f06500;
     --bg-color1: #1c1b24;
@@ -46,8 +45,8 @@ button {
 }
 
 body {
-    background-color: #1f1e29;
-    color: #f2f8fa;
+    background-color: var(--bg-color1);
+    color: var(--color);
 }
 
 body.wlc {
@@ -871,8 +870,7 @@ nav .btn-border:hover span, #Network.hover span {
     width: 100%;
     padding: 10px;
     margin-top: 10px;
-    border-top: solid #521186 1px;
-    background-color: #2b09508c;
+    border-top: 1px solid var(--border-color); 
 }
 
 .footer {
@@ -928,7 +926,7 @@ nav > .container {
 }
 
 .home-hero {
-    background: linear-gradient(var(--primary), var(--bg-color2) 25%);
+    background: linear-gradient(var(--top-shadow), var(--bg-color2) 25%);
 } 
 
 /*PIVX WARNINGS*/
