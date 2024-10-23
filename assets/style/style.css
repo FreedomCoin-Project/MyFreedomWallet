@@ -504,6 +504,9 @@ nav .btn-border:hover span, #Network.hover span {
     display: flex;
     gap: 20px;
 }
+.balance-transaction > div {
+    cursor: pointer;
+}
 .dep-text img, .send-text img {
     width: 30px;
     height: auto;
@@ -694,6 +697,7 @@ nav .btn-border:hover span, #Network.hover span {
     padding: 15px;
     box-shadow: none;
     text-transform: capitalize;
+    cursor: pointer;
 }
 /* -- Pubkey QR -- */
 
@@ -758,8 +762,8 @@ nav .btn-border:hover span, #Network.hover span {
     display: block;
     margin: 0 auto;
     width: 85% !important;
-    background: rgba(72, 2, 125, 0.60);
-    border: 1px solid #a366ff;
+    background: linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
+    border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 5px;
 }
@@ -788,7 +792,7 @@ nav .btn-border:hover span, #Network.hover span {
     display: block;
     height: 100px;
     max-width: 100% !important;
-    border-bottom: 1px solid #a366ff;
+    border-bottom: 1px solid var(--border-color);
 }
 
 #pivx-price-box {
@@ -925,11 +929,7 @@ nav > .container {
 
 .home-hero {
     background: linear-gradient(var(--primary), var(--bg-color2) 25%);
-}
-
-.title-section {
-    margin-bottom: 20px;
-}
+} 
 
 /*PIVX WARNINGS*/
 .warning-message {
@@ -1231,8 +1231,9 @@ a {
 
 /* SEND */
 
-#sendNotice {
-    margin: 10px 0 20px 0;
+#sendNotice  {
+    font-weight: 100;
+    text-align: center;
 }
 
 #communication {
