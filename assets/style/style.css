@@ -154,9 +154,9 @@ input::-moz-focus-inner {
 }
 
 .large-box {
-    background: rgba(43, 9, 80, 0.55);
+    background: linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
     border-radius: 8px;
-    border-color: #6222ab;
+    border-color: var(--border-color);
     border-width: 1px;
     border-style: solid;
 } 
@@ -492,7 +492,6 @@ nav .btn-border:hover span, #Network.hover span {
     margin: 40px auto 0;
     width: 90%;
     height: 125px;
-    background: linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
     align-items: center;
     justify-content: space-around;
 }
@@ -541,7 +540,6 @@ nav .btn-border:hover span, #Network.hover span {
 #address-box.large-box,
 #transaction_table {
     margin: 0 auto;
-    background: linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
 }
 
 #transaction_table {
@@ -582,7 +580,7 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 #transactionTableBody tr {
-    border-top: 1px solid #763acf;
+    border-top: 1px solid var(--border-color);
 }
 
 #more_transaction {
