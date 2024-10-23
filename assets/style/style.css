@@ -23,20 +23,26 @@ button {
 :root {
     --primary: #000000;
     --color: #bbbbbe;
+    --gold: #f9b707;
+    --orange: #f06500;
     --bg-color1: #1c1b24;
     --bg-color2: #1a1921;
     --bg-color3: rgb(11 10 14 / 20%);
     --txtlink: #fff;
-    --gold: #c4a129;
-    --orange: #f06500;
+    --ripple: #fff;
+    --top-shadow: #111;
+    --border-color: rgb(149 149 149 / 28%);
+    --t-transition: 1s;
 }
 
-.light {
-    --color: #000;
-    --bg-color1: #fff;
+.light { 
+	--color: #000; 
+    --bg-color1: #fff; 
     --bg-color2: #f1f1f1;
     --bg-color3: rgb(184 184 184 / 20%);
-    --txtlink: #363636;
+	--txtlink: #363636;
+	--ripple: #d3b749;
+	--top-shadow: #d3b749;
 }
 
 body {
@@ -153,13 +159,7 @@ input::-moz-focus-inner {
     border-color: #6222ab;
     border-width: 1px;
     border-style: solid;
-}
-
-.large-box:hover {
-    background: linear-gradient(217deg, rgb(51, 0, 153, 0.1), rgb(34, 0, 102, 0.3) 70.71%);
-    border-color: #763acf;
-
-}
+} 
  
 .modal {    
     background: rgb(0 0 0 / 34%);
@@ -392,13 +392,6 @@ nav .btn-border:hover span, #Network.hover span {
     width: 100%;
 }
 
-/* Style the tab */
-.tab {
-    overflow: hidden;
-    border: 1px solid #080808;
-    background-color: #000000;
-}
-
 /* Style the buttons inside the tab */
 .tab button {
     background-color: inherit;
@@ -450,7 +443,7 @@ nav .btn-border:hover span, #Network.hover span {
 #bcg-wallet-box {
     display: block;
     width: 100%;
-    border: 1px hsla(0, 0%, 100%, .1) solid;
+    border: 1px var(--border-color) solid;
     border-radius: 8px;
     background: #18171f;
 }
@@ -499,13 +492,15 @@ nav .btn-border:hover span, #Network.hover span {
     margin: 40px auto 0;
     width: 90%;
     height: 125px;
-    background: linear-gradient(0.25turn, rgba(122, 122, 122, 0.5), rgba(115, 0, 255, 0.4));
+    background: linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
     align-items: center;
     justify-content: space-around;
 }
+
 #bal-wrapper {
     font-size: 15px; 
 }
+
 .balance-transaction {
     display: flex;
     gap: 20px;
@@ -539,14 +534,14 @@ nav .btn-border:hover span, #Network.hover span {
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%); 
-    border: 1px solid #763acf;
+    border: 1px solid var(--border-color);
     text-align: center;
 }
 
 #address-box.large-box,
 #transaction_table {
     margin: 0 auto;
-    background: linear-gradient(0.15turn, rgba(43, 9, 80, 0.45), rgba(43, 9, 80, 0.02));
+    background: linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
 }
 
 #transaction_table {

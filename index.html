@@ -953,7 +953,7 @@
                         <a href="${cExplorer.url}/tx/${txid}" target="_blank">${txid}</a>
                     </td>
                     <td>${amount}</td>
-                    <td>${confirmations}</td>
+                    <td style="color: ${confirmations === 0 ? 'red' : 'green'};">${confirmations}</td>
                 </tr>
             `;
 
