@@ -186,7 +186,10 @@
           <br>
           <!-- // PIVX TITLE SECTION -->
 
-          <div id='sendNotice' class="col-md-12 float-left"></div>
+          <div id='sendNotice' class="col-md-12 float-left">
+            <span id='blocks'></span>
+            <div id='notice'></div>
+          </div>
           <div class="col-md-12">
             <p id="communication" class="center-text">Please <b>AVOID</b> sending to Shielded addresses using this
               wallet - this functionality is currently unsupported.</p>
@@ -277,15 +280,8 @@
           <div class='col-md-12 rm-pd'>
 
             <!-- KEYPAIR SECTION -->
-            <div id="keypair" class="tabcontent">
-
-              <!-- PIVX TITLE SECTION -->
-              <div class="col-md-12 title-section rm-pd">
-                <h3 class="pivx-bold-title center-text">Dashboard</h3>
-              </div>
-              <!-- // PIVX TITLE SECTION -->
-
-
+            <div id="keypair" class="tabcontent"> 
+ 
               <!-- ACCESS WALLET -->
               <div id="accessWallet" class="dashboard-item">
                 <div class="container">
@@ -308,22 +304,12 @@
                     <button class="pivx-button-big btn-border" onclick="guiImportWallet()">
                       <span class="buttoni-icon"><i class="fas fa-file-upload fa-tiny-margin"></i></span>
                       <span class="buttoni-text btn_txt" id="importWalletText">Import Wallet</span>
-                      <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                          <path
-                            d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                          </path>
-                        </svg></span>
                     </button>
                   </div>
                   <!-- // IMPORT WALLET -->
 
                   <button class="pivx-button-big btn-border" id="accessWalletBtn" onclick="accessOrImportWallet()">
                     <span class="buttoni-text btn_txt" id='wToggle'>Access My Wallet</span>
-                    <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                        <path
-                          d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                        </path>
-                      </svg></span>
                   </button>
                 </div>
               </div>
@@ -468,11 +454,6 @@
 
                   <button class="pivx-button-big btn-border" onclick="generateVanityWallet()">
                     <span class="buttoni-text btn_txt" id="vanButtonText">Create A Vanity Wallet</span>
-                    <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                        <path
-                          d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                        </path>
-                      </svg></span>
                   </button>
                 </div>
               </div>
@@ -493,11 +474,6 @@
 
                   <button class="pivx-button-big btn-border" onclick="generateWallet()">
                     <span class="buttoni-text btn_txt">Create A New Wallet</span>
-                    <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                        <path
-                          d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                        </path>
-                      </svg></span>
                   </button>
                 </div>
               </div>
@@ -642,8 +618,13 @@
         </div>
         <div class="buttons-section">
           <a id="open" class="btn-border"><span class="btn_txt">Get Started</span></a>
-          <a class="btn-border" href="https://github.com/FreedomCoin-Project/FreedomCoin-Core/releases/"><span
-              class="btn_txt">Download PC Wallet</span></a>
+          <a class="btn-border" href="https://github.com/FreedomCoin-Project/FreedomCoin-Core/releases/" target="_blank">
+            <span class="btn_txt">Download PC Wallet</span>
+            <svg style="margin: 4px 0 4px 10px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+              <path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+              </path>
+            </svg>
+          </a>
         </div>
       </div>
       <div class="image-section"></div>
@@ -677,7 +658,7 @@
     const domGuiBalanceBoxStaking = document.getElementById("guiBalanceBoxStaking");
     const domTxTab = document.getElementById("txTab");
     const domStakeTab = document.getElementById("stakeTab");
-    const domsendNotice = document.getElementById("sendNotice");
+    const domsendNotice = document.getElementById("notice");
     const domSimpleTXsTitleSpan = document.getElementById("simpleTransactionsTitle");
     const domSimpleTXs = document.getElementById("simpleTransactions");
     const domSimpleTXsDropdown = document.getElementById("simpleTransactionsDropdown");
@@ -953,7 +934,7 @@
                         <a href="${cExplorer.url}/tx/${txid}" target="_blank">${txid}</a>
                     </td>
                     <td>${amount}</td>
-                    <td>${confirmations}</td>
+                    <td style="color: ${confirmations === 0 ? 'red' : 'green'};">${confirmations}</td>
                 </tr>
             `;
 
