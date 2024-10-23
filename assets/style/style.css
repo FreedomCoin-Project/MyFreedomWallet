@@ -445,7 +445,7 @@ nav .btn-border:hover span, #Network.hover span {
     width: 100%;
     border: 1px var(--border-color) solid;
     border-radius: 8px;
-    background: #18171f;
+    background: var(--bg-color1);
 }
 
 /* -- Headline dashboard -- */
