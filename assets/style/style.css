@@ -20,12 +20,13 @@ button {
     font-family: Montserrat, sans-serif !important;
 }
 
-:root { 
+:root {     
+    --primary: #000000;
     --color: #f2f8fa;
     --gold: #f9b707;
     --orange: #f06500;
     --bg-color1: #1c1b24;
-    --bg-color2: #1a1921;
+    --bg-color2: #1f1e29;
     --bg-color3: rgb(11 10 14 / 20%);
     --txtlink: #fff;
     --ripple: #fff;
@@ -1064,7 +1065,7 @@ nav > .container {
     transition: all .2s ease-out;
 }
 
-.buttoni-arrow svg {
+.buttoni-arrow svg, .btn-border svg {
     display: block;
     width: 15px;
     height: auto;
@@ -1164,13 +1165,13 @@ a {
 
 /*PIVX DASHBOARD*/
 .dashboard-item {
-    background: #1f1e29;
+    background: var(--bg-color2);
     border-radius: 15px;
     padding: 0 15% 10px 15%;
     text-align: center;
     /* float: left; */
     margin-bottom: 15px;
-    border: 1px solid hsla(0, 0%, 100%, .1);
+    border: 1px solid var(--border-color);
     box-shadow: 0 4px 20px 0 rgb(0 0 0 / 30%);
 }
 
@@ -1230,6 +1231,7 @@ a {
 /* SEND */
 
 #sendNotice  {
+    font-size: 14px;
     font-weight: 100;
     text-align: center;
 }
