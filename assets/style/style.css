@@ -1065,7 +1065,7 @@ nav > .container {
     transition: all .2s ease-out;
 }
 
-.buttoni-arrow svg, .btn-border svg {
+.buttoni-arrow svg {
     display: block;
     width: 15px;
     height: auto;
