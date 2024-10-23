@@ -19,7 +19,8 @@ if (networkEnabled) {
       domBalanceReload.classList.remove("playAnim");
       domBalanceReloadStaking.classList.remove("playAnim");
       if (data.backend.blocks > cachedBlockCount) {
-        console.log("New block detected! " + cachedBlockCount + " --> " + data.backend.blocks);
+        $("#blocks").text("Last Block: "+ data.backend.blocks);
+        //console.log("New block detected! " + cachedBlockCount + " --> " + data.backend.blocks);
         getUTXOs();
       }
       cachedBlockCount = data.backend.blocks;
