@@ -154,7 +154,7 @@ input::-moz-focus-inner {
 }
 
 .large-box {
-    background: linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
+    background: linear-gradient(0.37turn, var(--bg-color3), var(--bg-color2));
     border-radius: 8px;
     border-color: var(--border-color);
     border-width: 1px;
@@ -335,9 +335,6 @@ nav .btn-border {
     width: 23px;
     height: 23px;
     transition: margin-right 0.5s ease; /* Add smooth transition */
-    transition-delay: .2s;
-}
-.btn-border:last-child img { 
     transition-delay: .1s;
 }
 nav .btn-border:hover img, #Network.hover img  {
@@ -350,14 +347,11 @@ nav .btn-border span {
     font-size: 14px;
     font-weight: 500;
     white-space: nowrap; /* Prevent text wrapping */
-    transition: max-width 0.8s linear(0 0%, 0 2.27%, 0.02 4.53%, 0.04 6.8%, 0.06 9.07%, 0.1 11.33%, 0.14 13.6%, 0.25 18.15%, 0.39 22.7%, 0.56 27.25%, 0.77 31.8%, 1 36.35%, 0.89 40.9%, 0.85 43.18%, 0.81 45.45%, 0.79 47.72%, 0.77 50%, 0.75 52.27%, 0.75 54.55%, 0.75 56.82%, 0.77 59.1%, 0.79 61.38%, 0.81 63.65%, 0.85 65.93%, 0.89 68.2%, 1 72.7%, 0.97 74.98%, 0.95 77.25%, 0.94 79.53%, 0.94 81.8%, 0.94 84.08%, 0.95 86.35%, 0.97 88.63%, 1 90.9%, 0.99 93.18%, 0.98 95.45%, 0.99 97.73%, 1 100%), opacity 0.5s ease; /* Smooth transition */
+    transition: max-width 0.8s ease, opacity 0.5s ease-out; /* Smooth transition */
     transition-delay: .2s;
     overflow: hidden;
 }
 
-nav .btn-border:last-child span {
-    transition: max-width 0.8s ease, opacity 0.5s ease-out; 
-}
 
 nav .btn-border:hover span, #Network.hover span {
     max-width: 200px; /* Set a maximum width large enough to fit the text */
@@ -441,11 +435,8 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 #bcg-wallet-box {
-    display: block;
     width: 100%;
-    border: 1px var(--border-color) solid;
     border-radius: 8px;
-    background: var(--bg-color1);
 }
 
 /* -- Headline dashboard -- */
@@ -1476,11 +1467,7 @@ a {
         clear: both;
         display: block !important;
         margin: 0 auto;
-    }
-
-    #address-box.large-box {
-        background: none;
-    }
+    } 
 
     #box-info-address {
         display: block;
@@ -1492,11 +1479,6 @@ a {
         margin-bottom: 20px; 
     }
 
-    #pubkey-padd {
-        width: auto;
-        display: block;
-        padding-top: 60px;
-    }  
 
     #PrivateQR img,
     #PublicQR img {
@@ -1694,14 +1676,7 @@ a {
     #ring {
         padding: 5px 5px 30px 40px;
         vertical-align: top;
-    }
-
-
-    #address-box.large-box {
-        padding-top: 20px;
-        /*background: linear-gradient(217deg, rgb(51, 0, 153, 0.1), rgb(34, 0, 102, 0.3) 70.71%);*/
-        border-color: #763acf;
-    }
+    } 
 
     #title-address-box {
         width: auto;
@@ -1800,11 +1775,7 @@ a {
 
     #ring {
         padding: 5px 5px 30px 30px;
-    }
-
-    #pubkey-padd {
-        padding-top: 40px;
-    }
+    } 
 }
 
 @media screen and (max-width: 420px) {
@@ -1862,11 +1833,7 @@ a {
 
     #piv-price-amount {
         padding: 30px 15px;
-    }
-
-    #address-box.large-box {
-        padding-top: 15px;
-    }
+    } 
 
     #title-address-box {
         padding: 18px 20px 0 15px;
@@ -1874,11 +1841,7 @@ a {
 
     #ring {
         padding: 5px 5px 30px 20px;
-    }
-
-    #pubkey-padd {
-        padding-top: 30px;
-    }
+    } 
 }
 
 @media screen and (max-width: 380px) {
