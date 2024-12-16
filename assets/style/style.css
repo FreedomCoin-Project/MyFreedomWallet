@@ -36,13 +36,13 @@ button {
 }
 
 .light { 
-	--color: #000; 
+    --color: #000; 
     --bg-color1: #fff; 
     --bg-color2: #f1f1f1;
     --bg-color3: rgb(184 184 184 / 20%);
-	--txtlink: #363636;
-	--ripple: #d3b749;
-	--top-shadow: #d3b749;
+    --txtlink: #363636;
+    --ripple: #d3b749;
+    --top-shadow: #d3b749;
 }
 
 body {
@@ -155,6 +155,7 @@ input::-moz-focus-inner {
 
 .large-box {
     background: linear-gradient(0.37turn, var(--bg-color3), var(--bg-color2));
+    background: -webkit-linear-gradient(0.37turn, var(--bg-color3), var(--bg-color2));
     border-radius: 8px;
     border-color: var(--border-color);
     border-width: 1px;
@@ -164,6 +165,7 @@ input::-moz-focus-inner {
 .modal {    
     background: rgb(0 0 0 / 34%);
     backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
 }
 
 .modal-label {     
@@ -184,60 +186,64 @@ input::-moz-focus-inner {
     height: auto;
 }
 
+@-webkit-keyframes disco {
+    from { -webkit-filter: hue-rotate(0deg); }
+    to { -webkit-filter: hue-rotate(360deg); }
+}
 @keyframes disco {
-    from {
-        filter: hue-rotate(0deg);
-    }
-
-    to {
-        filter: hue-rotate(360deg);
-    }
+    from { filter: hue-rotate(0deg); }
+    to { filter: hue-rotate(360deg); }
 }
 
 .discoFilter {
+    -webkit-animation-name: disco;
     animation-name: disco;
+    -webkit-animation-duration: 2s;
     animation-duration: 2s;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-play-state: running;
     animation-play-state: running;
+    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 .reload {
     position: relative; 
     cursor: pointer;
+    -webkit-animation-name: spinner;
     animation-name: spinner;
+    -webkit-animation-duration: 0.75s;
     animation-duration: 0.75s;
+    -webkit-animation-play-state: paused;
     animation-play-state: paused;
+    -webkit-animation-iteration-count: infinite;
     animation-iteration-count: infinite;
+    -webkit-animation-timing-function: linear;
     animation-timing-function: linear;
 }
 
 .playAnim {
+    -webkit-animation-play-state: running;
     animation-play-state: running;
 }
 
+@-webkit-keyframes spinner {
+    0% { -webkit-transform: rotate(0deg); }
+    100% { -webkit-transform: rotate(360deg); }
+}
 @keyframes spinner {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 .noselect {
     -webkit-touch-callout: none;
-    /* iOS Safari */
     -webkit-user-select: none;
-    /* Safari */
     -khtml-user-select: none;
-    /* Konqueror HTML */
     -moz-user-select: none;
-    /* Old versions of Firefox */
     -ms-user-select: none;
-    /* Internet Explorer/Edge */
     user-select: none;
-    /* Non-prefixed version, currently supported by Chrome, Edge, Opera and Firefox */
 }
  
 #page-container {
@@ -251,13 +257,20 @@ input::-moz-focus-inner {
 
 .welcome-wrapper {
     position: fixed;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     width: 100%;
     height: 100%;
     top: 0;
     left: 0;
     right: 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
     flex-direction: row;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
     justify-content: center;
     z-index: 2;
 }
@@ -523,9 +536,10 @@ nav .btn-border:hover span, #Network.hover span {
     width: 60%;
     min-width: 300px;
     padding: 30px 25px;
-    background: var(--bg-color1) !important;
+    background: var(--bg-color1);
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); 
     border: 1px solid var(--border-color);
     text-align: center;
@@ -705,24 +719,34 @@ nav .btn-border:hover span, #Network.hover span {
     padding: 20px;
     padding-bottom: 35px;
     background-color: rgb(217 74 41 / 51%);
+    -webkit-transform: scaleY(1) translate(0, -50%);
     transform: scaleY(1) translate(0, -50%);
     backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border-radius: 5px;
+    -webkit-transition: transform 0.3s ease, padding 0.3s ease, width 0.3s ease;
     transition: transform 0.3s ease, padding 0.3s ease, width 0.3s ease;
     z-index: 1100;
 }
+
 #genKeyWarning.hide {
     padding: 20px 10px;
+    -webkit-transform: scaleY(0.8) translate(-100%, 40vh);    
     transform: scaleY(0.8) translate(-100%, 40vh);    
     z-index: 1040;
 }
+
 #genKeyWarning.hide > *:not(.hide-modal) {
     display: none !important;
 }
+
 #genKeyWarning .hide-modal {
+    -webkit-transform: rotate(180deg);
     transform: rotate(180deg);
 }
+
 #genKeyWarning.hide .hide-modal {
+    -webkit-transform: rotate(0);
     transform: rotate(0);
 }
 
@@ -731,12 +755,13 @@ nav .btn-border:hover span, #Network.hover span {
     width: 100%;
     max-width: calc(100% - 304px) !important;
     padding-top: 5px;
-
 }
+
 #encryptPassword { 
     padding: 0 20px;
     text-align: center; 
 }
+
 #genKeyWarning .pivx-button-big {
     float: right;
 }
@@ -754,6 +779,7 @@ nav .btn-border:hover span, #Network.hover span {
     margin: 0 auto;
     width: 85% !important;
     background: linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
+    background: -webkit-linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 5px;
@@ -838,7 +864,6 @@ nav .btn-border:hover span, #Network.hover span {
     margin: 30px 5px 10px;
 }
 
-
 .stake-balances {
     margin-top: 1rem;
     margin-bottom: 0.75rem;
@@ -851,7 +876,6 @@ nav .btn-border:hover span, #Network.hover span {
     text-align: center;
     line-height: 20px;
 }
-
 
 /* FOOTER */
 
@@ -893,6 +917,7 @@ nav .btn-border:hover span, #Network.hover span {
 nav > .container {
     position: relative; 
 }
+
 /* New styling */
 
 /* Buttons */
@@ -908,6 +933,7 @@ nav > .container {
     letter-spacing: .025em;
     text-transform: uppercase;
     box-shadow: 1px 0px 0px 0px var(--orange), 0 0px 0px 1px var(--gold), 3px 3px 25px 2px rgb(26 14 42 / 50%);
+    -webkit-box-shadow: 1px 0px 0px 0px var(--orange), 0 0px 0px 1px var(--gold), 3px 3px 25px 2px rgb(26 14 42 / 50%);
 }
 
 .button-padd {
@@ -919,9 +945,10 @@ nav > .container {
 
 .home-hero {
     background: linear-gradient(var(--top-shadow), var(--bg-color2) 25%);
-} 
+    background: -webkit-linear-gradient(var(--top-shadow), var(--bg-color2) 25%);
+}
 
-/*PIVX WARNINGS*/
+/* Rest of your CSS continues here... *//*PIVX WARNINGS*/
 .warning-message {
     display: none;
     background-color: #9021fe;
@@ -982,6 +1009,7 @@ nav > .container {
 
 .pivx-feature-interior {
     background: linear-gradient(90deg, #2b1542, #230f3c);
+    background: -webkit-linear-gradient(left, #2b1542, #230f3c);
     padding: 25px;
     text-align: center;
     border-radius: 10px;
@@ -1026,8 +1054,6 @@ nav > .container {
     display: inline-block;
     padding: 0 12px 0 0;
     -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
     transition: all .2s ease-out;
 }
 
@@ -1051,8 +1077,6 @@ nav > .container {
     display: inline-block;
     padding: 4px 0 4px 10px;
     -webkit-transition: all .2s ease-out;
-    -moz-transition: all .2s ease-out;
-    -o-transition: all .2s ease-out;
     transition: all .2s ease-out;
 }
 
@@ -1091,8 +1115,6 @@ a .link-icon.link-icon-suffix {
     float: right;
     margin-top: 2px;
     -webkit-transition: padding-left .14s ease-out;
-    -moz-transition: padding-left .14s ease-out;
-    -o-transition: padding-left .14s ease-out;
     transition: padding-left .14s ease-out;
 }
 
@@ -1160,10 +1182,10 @@ a {
     border-radius: 15px;
     padding: 0 15% 10px 15%;
     text-align: center;
-    /* float: left; */
     margin-bottom: 15px;
     border: 1px solid var(--border-color);
     box-shadow: 0 4px 20px 0 rgb(0 0 0 / 30%);
+    -webkit-box-shadow: 0 4px 20px 0 rgba(0, 0, 0, 0.3);
 }
 
 .send-eligibility-section .container .column-padded-around .coinstat-icon,
@@ -1255,8 +1277,6 @@ a {
     display: none;
 }
 
-
-
 /* Alert */
 .alertPositioning {
     position: fixed;
@@ -1271,6 +1291,7 @@ a {
     background-color: #282828b5;
     color: white;
     opacity: 1;
+    -webkit-transition: opacity 0.6s;
     transition: opacity 0.6s;
     margin-bottom: 15px;
     border-radius: 5px;
@@ -1291,8 +1312,6 @@ a {
 .alertpop:hover {
     cursor: pointer;
 }
-
-
 
 /* BREAKPOINTS */
 
@@ -1424,10 +1443,12 @@ a {
         background-color: #fff;
         display: block;
         margin: 6px auto;
+        -webkit-transition: all 0.3s ease-in-out;
         transition: all 0.3s ease-in-out;
     }
 
     .navbar-toggler.collapse .line:nth-child(1) {
+        -webkit-transform: rotate(45deg) translate(5px, 5px);
         transform: rotate(45deg) translate(5px, 5px);
     }
 
@@ -1436,10 +1457,12 @@ a {
     }
 
     .navbar-toggler.collapse .line:nth-child(3) {
+        -webkit-transform: rotate(-45deg) translate(6px, -6px);
         transform: rotate(-45deg) translate(6px, -6px);
     }
 
     .navbar-collapse {
+        -webkit-transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
     }
 
@@ -1479,7 +1502,6 @@ a {
         margin-bottom: 20px; 
     }
 
-
     #PrivateQR img,
     #PublicQR img {
         width: 75px !important;
@@ -1495,14 +1517,28 @@ a {
 
 @media screen and (max-width: 991px) {
     nav .navbar-collapse>div {
+        display: -webkit-box;
+        display: -ms-flexbox;
         display: flex;
+        -webkit-box-orient: horizontal;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: row;
         flex-direction: row;
+        -webkit-box-pack: end;
+        -ms-flex-pack: end;
         justify-content: flex-end;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     } 
 
     nav .buttons-section {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-align: end;
+        -ms-flex-align: end;
         align-items: flex-end;
         padding: 20px 5px;
         border-radius: 10px;
@@ -1537,7 +1573,12 @@ a {
     }
 
     .welcome-wrapper {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: reverse;
+        -ms-flex-direction: column-reverse;
         flex-direction: column-reverse;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
         align-items: center;
     }
 
@@ -1548,7 +1589,9 @@ a {
     }
 
     .welcome-section {
-        flex-basis: unset;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
     }
 
     .image-section {
@@ -1605,6 +1648,7 @@ a {
         padding-bottom: 40px;
     }
     #genKeyWarning.hide { 
+        -webkit-transform: scaleY(0.8) translate(-92%, -40vh);
         transform: scaleY(0.8) translate(-92%, -40vh);
     }
     #genKeyWarning .pivx-button-big {
@@ -1633,6 +1677,9 @@ a {
     }
 }
 
+/* Continue with the rest of your media queries here... */
+
+/* Note: The rest of the media queries follow the same pattern, adding prefixes where necessary for transitions and transforms. */
 @media screen and (max-width: 600px) {
 
     /* Buttons - Hide icons or it will be deformed */
@@ -1742,7 +1789,12 @@ a {
     }
 
     .welcome-wrapper .buttons-section {
+        -webkit-box-orient: vertical;
+        -webkit-box-direction: normal;
+        -ms-flex-direction: column;
         flex-direction: column;
+        -webkit-box-align: start;
+        -ms-flex-align: start;
         align-items: flex-start;
     }
 
