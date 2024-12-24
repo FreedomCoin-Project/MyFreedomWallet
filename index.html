@@ -198,7 +198,7 @@
             <!--<div id="simpleTransactionsDropdown" class="bold-trans" onclick='toggleDropDown("simpleTransactions")'>
               Send Freedom Coin<span style='float:right;'>▼</span></div>-->
             <div id='simpleTransactions' style='display: block'>
-              <video id="qr_preview" style="display: none;"></video>
+              <div id="my-qr-reader" style="display: none;"></div>
               <br>
               <label>Recipient Wallet Address</label><br>
               <div class="scan-qr">
@@ -306,6 +306,7 @@
                   </div>
 
                   <!-- IMPORT WALLET -->
+                  <div id="my-qr-reader" style="display: none;"></div>
                   <input class="hide-element" type="text" id="clipboard">
                   <div id='importWallet' style='display: none;'>
                     <div class="scan-qr">
