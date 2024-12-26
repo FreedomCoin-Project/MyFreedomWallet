@@ -1862,11 +1862,7 @@ a {
     }
 
     /* Dashboard */
-
-    #number-piv {
-        padding: 15px 5px 15px;
-    }
-
+  
     #ring {
         padding: 5px 5px 30px 30px;
     } 
@@ -1958,10 +1954,6 @@ a {
     }
 
     /* Dashboard */
-
-    #number-piv {
-        padding: 15px 5px 15px;
-    }
 
     #balance-box h3 {
         font-size: 24px;
