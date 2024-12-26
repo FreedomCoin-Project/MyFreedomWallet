@@ -498,7 +498,7 @@ nav .btn-border:hover span, #Network.hover span {
 
 #window-icon-piv {
     display: flex;
-    gap: 10px;
+    gap: 3px;
     flex-direction: column;
     align-items: flex-start;
 }
@@ -513,7 +513,7 @@ nav .btn-border:hover span, #Network.hover span {
     background-size: cover;
     background-image: url(../Spinning_Freedomcoin.gif);
 }
-#bal-title {
+#bal-title, #bal-usd {
     font-size: 15px;
     font-weight: 100;
 }
