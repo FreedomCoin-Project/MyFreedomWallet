@@ -44,7 +44,7 @@
   <link href="assets/fontawesome/css/all.min.css" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="assets/style/style.css">
   <script type="text/javascript" src="assets/bootstrap-4.5.0/js/jquery.js"></script>
-
+  <script type="text/javascript" src="https://freedomcoin.global/js/instascan-builds/master"></script>
 
   <!--- IMPORTANT: CHAIN PARAMS BELOW, DO NOT EDIT UNLESS YOU'RE ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING  --->
   <script>
@@ -198,12 +198,20 @@
             <!--<div id="simpleTransactionsDropdown" class="bold-trans" onclick='toggleDropDown("simpleTransactions")'>
               Send Freedom Coin<span style='float:right;'>▼</span></div>-->
             <div id='simpleTransactions' style='display: block'>
+              <div id="addr-reader" class="my-qr-reader" style="display: none;"></div>
               <br>
               <label>Recipient Wallet Address</label><br>
-              <input class="center-text" style="width: 100%; font-family: monospace;" type="text" id="address1s">
+              <div class="scan-qr">
+                <input type="text" id="address1s" style="width: 100%;font-family: monospace;" class="center-text">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.61 122.88">
+                  <title>Scan QR Code</title>
+                  <path d="M23.38,0h13V11.15h-13a12.22,12.22,0,0,0-8.64,3.57l0,0a12.22,12.22,0,0,0-3.57,8.64V39.32H0V23.38A23.32,23.32,0,0,1,6.86,6.89l0,0A23.31,23.31,0,0,1,23.38,0ZM3.25,54.91H119.36a3.29,3.29,0,0,1,3.25,3.27V64.7A3.29,3.29,0,0,1,119.36,68H3.25A3.28,3.28,0,0,1,0,64.7V58.18a3.27,3.27,0,0,1,3.25-3.27ZM90.57,0h8.66a23.28,23.28,0,0,1,16.49,6.86v0a23.32,23.32,0,0,1,6.87,16.52V39.32H111.46V23.38a12.2,12.2,0,0,0-3.6-8.63v0a12.21,12.21,0,0,0-8.64-3.58H90.57V0Zm32,81.85V99.5a23.46,23.46,0,0,1-23.38,23.38H90.57V111.73h8.66A12.29,12.29,0,0,0,111.46,99.5V81.85Zm-86.23,41h-13A23.32,23.32,0,0,1,6.86,116l-.32-.35A23.28,23.28,0,0,1,0,99.5V81.85H11.15V99.5a12.25,12.25,0,0,0,3.35,8.41l.25.22a12.2,12.2,0,0,0,8.63,3.6h13v11.15Z"></path>
+                </svg>
+              </div>              
               <br>
-              <label>Amount</label><br>
-              <input class="center-text" type="text" id="value1s">
+              <label>Amount</label>
+              <br>
+              <input class="center-text" type="text" id="value1s" oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
               <div id="reqDescDisplay" style="display: none;">
                 <label>Description (from the merchant)</label><br>
                 <input class="center-text" type="text" disabled id="reqDesc">
@@ -298,9 +306,16 @@
                   </div>
 
                   <!-- IMPORT WALLET -->
+                  <div id="prv-reader" class="my-qr-reader" style="display: none;"></div>
                   <input class="hide-element" type="text" id="clipboard">
                   <div id='importWallet' style='display: none;'>
-                    <input type="password" id='privateKey' placeholder="Private Key">
+                    <div class="scan-qr">
+                      <input type="password" id='privateKey' placeholder="Private Key">
+                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.61 122.88">
+                        <title>Scan QR Code</title>
+                        <path d="M23.38,0h13V11.15h-13a12.22,12.22,0,0,0-8.64,3.57l0,0a12.22,12.22,0,0,0-3.57,8.64V39.32H0V23.38A23.32,23.32,0,0,1,6.86,6.89l0,0A23.31,23.31,0,0,1,23.38,0ZM3.25,54.91H119.36a3.29,3.29,0,0,1,3.25,3.27V64.7A3.29,3.29,0,0,1,119.36,68H3.25A3.28,3.28,0,0,1,0,64.7V58.18a3.27,3.27,0,0,1,3.25-3.27ZM90.57,0h8.66a23.28,23.28,0,0,1,16.49,6.86v0a23.32,23.32,0,0,1,6.87,16.52V39.32H111.46V23.38a12.2,12.2,0,0,0-3.6-8.63v0a12.21,12.21,0,0,0-8.64-3.58H90.57V0Zm32,81.85V99.5a23.46,23.46,0,0,1-23.38,23.38H90.57V111.73h8.66A12.29,12.29,0,0,0,111.46,99.5V81.85Zm-86.23,41h-13A23.32,23.32,0,0,1,6.86,116l-.32-.35A23.28,23.28,0,0,1,0,99.5V81.85H11.15V99.5a12.25,12.25,0,0,0,3.35,8.41l.25.22a12.2,12.2,0,0,0,8.63,3.6h13v11.15Z"></path>
+                      </svg>
+                    </div> 
                     <button class="pivx-button-big btn-border" onclick="guiImportWallet()">
                       <span class="buttoni-icon"><i class="fas fa-file-upload fa-tiny-margin"></i></span>
                       <span class="buttoni-text btn_txt" id="importWalletText">Import Wallet</span>
@@ -836,6 +851,7 @@
         domPrivKey.placeholder = 'Enter your wallet password';
         domImportWalletText.innerText = 'Unlock Wallet';
         domPrivKey.focus();
+        $("#importWallet .scan-qr svg").hide();
       }
     }
 
@@ -1216,6 +1232,24 @@
       return ccSuccess(cCoinControl);
     }
 
+    function formatNumber(value) {
+      // Remove invalid characters
+      value = value.replace(/[^0-9.]/g, '');
+      // Prevent multiple decimal points
+      value = value.replace(/(\..*?)\..*/g, '$1');
+      // Automatically add a decimal if the first character is '0' and there's more input
+      if (value.startsWith('0') && value.length > 1 && !value.startsWith('0.')) {
+        value = '0.' + value.substring(1).replace('.', ''); // Remove existing decimals after auto-add
+      }
+      return value;
+    }
+    function addZeroIfDotEnd(input) {
+      // If the last character is a dot and the input length is more than 1
+      if (input.value.endsWith('.') && input.value.length > 1) {
+        input.value += '0'; // Append '0' after the dot
+      }
+    }
+
     function createTxGUI(call) {
       if (!hasWalletUnlocked(true) && call != 'modal') return;
 
@@ -1385,7 +1419,6 @@
   </script>
 
 </body>
-
 <!-- Load complex backend-level components last -->
 <script type="text/javascript" src="scripts/libs/aes-gcm.js"></script>
 <script type="text/javascript" src="scripts/libs/crypto-min.js"></script>
@@ -1401,7 +1434,6 @@
 <script type="text/javascript" src="scripts/libs/secp256k1.js"></script>
 <script type="text/javascript" src="scripts/libs/noble-secp256k1.js"></script>
 <script type="text/javascript" src="scripts/bitTrx.js"></script>
-
 <script>
   // Throw the Secp256k1 lib as a global after import
   const nSecp256k1 = nobleSecp256k1.default;
