@@ -98,6 +98,7 @@ input, .scan-qr {
     position: relative;
     width: 40%;
     min-width: 250px;
+    max-height: 250px;
     margin: auto;
     font-size: 14px;
     border-radius: 10px;
@@ -120,7 +121,9 @@ button {
     outline: 0;
     border-width: 0;
 }
-
+button:disabled {
+    opacity: 0.7;
+}
 button:hover {
     color: rgba(255, 255, 255, 0.95);
 }
