@@ -743,7 +743,7 @@
     price_update();
     
     function price_tick(amount) {  
-      $(".bal-usd").html("$"+(Number(price) * amount));
+      $("#bal-usd").html("$"+(Number(price) * amount));
     }
 
     function getStakingBalance(updateGUI = false) {
