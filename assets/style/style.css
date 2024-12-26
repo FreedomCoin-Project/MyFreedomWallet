@@ -94,6 +94,18 @@ input, .scan-qr {
     margin: 10px;
     cursor: pointer;
 }
+.my-qr-reader {
+    position: relative;
+    width: 40%;
+    min-width: 250px;
+    margin: auto;
+    border-radius: 10px;
+    overflow: hidden;
+    border-color: var(--border-color) !important;
+}
+.my-qr-reader img {
+    filter: invert(0.6);
+}
 button {
     color: rgba(255, 255, 255, 0.65);
     border-radius: 15px;
