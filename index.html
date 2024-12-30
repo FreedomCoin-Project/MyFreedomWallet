@@ -42,8 +42,7 @@
 
   <link rel="stylesheet" type="text/css" href="assets/bootstrap-4.5.0/css/bootstrap.min.css">
   <link href="assets/fontawesome/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/style/style.css">
-  <link rel="stylesheet" type="text/css" href="https://freedomcoin.global/css/mfw/style.css">
+  <link rel="stylesheet" type="text/css" href="assets/style/style.css"> 
   <script type="text/javascript" src="assets/bootstrap-4.5.0/js/jquery.js"></script>
   <script type="text/javascript" src="https://freedomcoin.global/js/instascan-builds/master"></script>
 
@@ -418,6 +417,36 @@
                             <span>Send</span>
                           </div>
                         </div>
+                      </div>
+                    </div>
+                    <div id="swap-box" class="large-box">
+                      <div class="swap-header">
+                        <h2>Coin Swap</h2>
+                      </div>
+                      <div class="swap-body">
+                        <div class="swap-section">
+                          
+                          <div class="input-group">
+                            <input type="number" id="swap-from" placeholder="Amount">
+                            <select id="from-coin">
+                              <option value="FREED">FREED</option>
+                              <option value="BTC">BTC</option>
+                              <option value="ETH">ETH</option>
+                            </select>
+                          </div>
+                        </div>
+                        <div class="swap-section">
+                          
+                          <div class="input-group">
+                            <input type="number" id="swap-to" placeholder="Amount" disabled="">
+                            <select id="to-coin">
+                              <option value="BTC">BTC</option>
+                              <option value="ETH">ETH</option>
+                              <option value="FREED">FREED</option>
+                            </select>
+                          </div>
+                        </div>
+                        <button id="swap-button" class="btn-border pivx-button-big">Swap</button>
                       </div>
                     </div>
                   </div>
