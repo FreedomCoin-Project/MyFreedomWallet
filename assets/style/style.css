@@ -292,10 +292,14 @@ input::-moz-focus-inner {
     display: flex;
     position: relative;
     min-height: 100vh;
+    flex-direction: column; 
+}
+#content-wrap {
+    display: flex;
+    flex-grow: 1;
     flex-direction: column;
     justify-content: space-between;
 }
-
 
 .welcome-wrapper {
     position: fixed;
