@@ -93,7 +93,7 @@
                   <img src="./assets/icons/stake.svg" loading="eager" alt="Stake">
                   <span>Stake</span>
                 </a>
-                <a class="btn-border tablinks" style="display: none">
+                <a class="btn-border tablinks" style="display: none" onclick="$('#balance-box, #swap-box').toggle()">
                   <img src="./assets/icons/swap.svg" loading="eager" alt="Swap">
                   <span>Swap</span>
                 </a>
@@ -444,7 +444,7 @@
                             </select>
                           </div>
                         </div>
-                        <button id="swap-button" class="btn-border pivx-button-big">Swap</button>
+                        <button id="swap-button" class="btn-border pivx-button-big" onclick="swap()">Swap</button>
                       </div>
                     </div>
                   </div>
@@ -1288,6 +1288,11 @@
         input.value += '0'; // Append '0' after the dot
       }
     }
+
+
+function swap(params) {
+  createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
+}
 
     function createTxGUI(call) {
       if (!hasWalletUnlocked(true) && call != 'modal') return;

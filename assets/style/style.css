@@ -66,8 +66,9 @@ pre {
 }
 
 textarea,
-input, .scan-qr {
-    background-color: #fff;
+input, .scan-qr { 
+    background: #2b2936;
+    color: var(--color);
     border-width: 2px;
     border-radius: 8px;
     margin-bottom: 5px;
@@ -1564,6 +1565,9 @@ a {
         display: flex;
         gap: 50px;
     }
+    #navbarNav a:nth-child(3) {
+        display: none;
+    }
 }
 
 @media screen and (max-width: 992px) {
@@ -1683,6 +1687,9 @@ a {
     #headline-balance {
         gap: 20px;
         flex-direction: column;
+    }
+    #swap-box {
+        display: none; 
     }
 }
 
