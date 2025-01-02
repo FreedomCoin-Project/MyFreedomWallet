@@ -544,7 +544,7 @@ nav .btn-border:hover span, #Network.hover span {
 }
 #balance-box {
     display: flex;
-    flex: 0 0 calc(50% - 10px);    
+    flex: 0 0 calc(60% - 10px);    
     padding: 20px;
     align-items: center;
     justify-content: space-around;
@@ -571,7 +571,7 @@ nav .btn-border:hover span, #Network.hover span {
 
 /* General Styles for the Swap Box */
 #swap-box {
-    flex: 0 0 calc(50% - 10px);
+    flex: 0 0 calc(40% - 10px);
     padding: 20px;
   }
   
@@ -620,18 +620,30 @@ nav .btn-border:hover span, #Network.hover span {
   .input-group select {
     position: absolute;
     right: 5px;
-    height: 40px;
-    font-size: 14px;
+    font-size: 13px;
     border: none;
-    background: transparent;
+    background: none;
     color: #555;
     cursor: pointer;
     outline: none;
   }
   
+  #from-coin {
+    appearance: none;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    padding-right: 7px;
+    pointer-events: none;
+}
+
+
+  
   /* Button */
   #swap-button {
-    flex-basis: 100%; 
+    flex-basis: 40%;
+    margin: 5px auto;
+    padding: 11px 20px;
+    text-transform: capitalize;
   }
   
   #swap-button:hover {

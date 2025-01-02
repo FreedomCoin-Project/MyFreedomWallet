@@ -209,7 +209,7 @@
               <br>
               <label>Amount</label>
               <br>
-              <input class="center-text" type="text" id="value1s" oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
+              <input class="center-text" type="text" id="value1s" maxlength="9" oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
               <div id="reqDescDisplay" style="display: none;">
                 <label>Description (from the merchant)</label><br>
                 <input class="center-text" type="text" disabled id="reqDesc">
@@ -421,28 +421,26 @@
                     </div>
                     <div id="swap-box" class="large-box">
                       <div class="swap-header">
-                        <h2>Coin Swap</h2>
+                        <h2>Swap</h2>
                       </div>
                       <div class="swap-body">
                         <div class="swap-section">
                           
                           <div class="input-group">
-                            <input type="number" id="swap-from" placeholder="Amount">
+                            <input type="text" id="swap-from" placeholder="Amount" maxlength="9" oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
                             <select id="from-coin">
                               <option value="FREED">FREED</option>
-                              <option value="BTC">BTC</option>
-                              <option value="ETH">ETH</option>
                             </select>
                           </div>
                         </div>
                         <div class="swap-section">
                           
                           <div class="input-group">
-                            <input type="number" id="swap-to" placeholder="Amount" disabled="">
+                            <input type="text" id="swap-to" placeholder="Amount" disabled="">
                             <select id="to-coin">
+                              <option value="FREED">LTC</option>
                               <option value="BTC">BTC</option>
-                              <option value="ETH">ETH</option>
-                              <option value="FREED">FREED</option>
+                              <option value="ETH">XRP</option>
                             </select>
                           </div>
                         </div>
