@@ -1582,7 +1582,7 @@ a {
     .navbar-toggler .line {
         width: 29px;
         height: 2px;
-        background-color: #fff;
+        background-color: var(--color);
         display: block;
         margin: 6px auto;
         -webkit-transition: all 0.3s ease-in-out;
