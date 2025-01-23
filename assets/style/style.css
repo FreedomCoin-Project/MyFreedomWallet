@@ -296,6 +296,9 @@ input::-moz-focus-inner {
     min-height: 100vh;
     flex-direction: column; 
 }
+.side_nav #page-container {
+    flex-direction: row; 
+}
 #content-wrap {
     display: flex;
     flex-grow: 1;
@@ -1045,14 +1048,16 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 .navbarSpecial {
-    position: relative;
+    position: sticky;
     width: 100%;
     padding: 20px 48px;
 }
-
-.wlc .navbarSpecial {
-    position: sticky;
+.side_nav .navbarSpecial {
+    position: relative;
+    width: 25%;
+    padding: 20px 10px;
 }
+
 nav > .container {
     position: relative; 
 }
