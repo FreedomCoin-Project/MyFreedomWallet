@@ -392,6 +392,11 @@ nav .btn-border {
     color: #fff;
     text-decoration: none;
 } 
+.side_nav nav .btn-border {
+    background: none;
+    box-shadow: none;
+}
+
 .btn-border img {
     position: relative;
     top: -1px;
@@ -1056,6 +1061,7 @@ nav .btn-border:hover span, #Network.hover span {
     position: relative;
     width: 25%;
     padding: 20px 10px;
+    background: var(--bg-color3);
     flex-direction: column;
     justify-content: flex-start;
 }
