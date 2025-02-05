@@ -300,6 +300,7 @@ input::-moz-focus-inner {
     flex-direction: row; 
 }
 #content-wrap {
+    position: relative; 
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -677,79 +678,21 @@ nav .btn-border:hover span, #Network.hover span {
     padding: 40px 0;
 }
 
-#address-box, #Transaction {    
-    position: absolute;
-    display: none;
-    width: 60%;
-    min-width: 300px;
-    padding: 30px 25px;
-    background: var(--bg-color1);
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%, -50%);
-    transform: translate(-50%, -50%); 
-    border: 1px solid var(--border-color);
-    text-align: center;
-}
 
-#address-box.large-box,
-#transaction_table {
-    margin: 0 auto;
-}
 
-#transaction_table {
-    margin-top: 30px;
-    padding: 30px 25px;
-}
-
-#transaction_table th:not(:nth-child(-n+2)),
-#transaction_table td:not(:nth-child(-n+2)) {
-    text-align: center;
-}
-
-#transaction_table td[data-bheight] {
-    display: grid;
-    min-width: 70px;
-}
-
-#transaction_table td[data-bheight] a {
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
-}
-
-#transaction_table table {
-    display: table;
-    width: 100%;
-}
-
-#transaction_table th,
-#transaction_table td {
-    padding: 8px;
-    text-align: left;
-}
-
-#transaction_table td:first-child {
-    text-wrap: balance;
-    font-size: 14px;
-}
-
-#transactionTableBody tr {
-    border-top: 1px solid var(--border-color);
-}
 
 #more_transaction {
     text-align: center;
-}
-
-#more_transaction a {
+  }
+  
+  #more_transaction a {
     font-weight: 200;
     padding-right: 20px;
     color: #fff;
     background: url(../images/icons/arrow.svg) right no-repeat;
     background-size: 25%;
     opacity: 0.7;
-}
+  }
 
 
 /* -- Background -- */
@@ -1057,9 +1000,9 @@ nav .btn-border:hover span, #Network.hover span {
     width: 100%;
     padding: 20px 48px;
 }
-.side_nav .navbarSpecial {
-    position: relative;
+.side_nav .navbarSpecial { 
     width: 25%;
+    height: 100vh;
     padding: 20px 10px;
     background: var(--bg-color3);
     flex-direction: column;

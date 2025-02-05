@@ -983,14 +983,16 @@
 
           // Create the row for this txid and store it in the correct position in rowsArray
           rowsArray[index] = `
-                <tr>
-                    <td>${formattedDate}</td> <!-- Add the formatted time here -->
-                    <td data-time="${time}" data-bheight="${blockheight}">
-                        <a href="${cExplorer.url}/tx/${txid}" target="_blank">${txid}</a>
-                    </td>
-                    <td>${amount}</td>
-                    <td style="color: ${confirmations === 0 ? 'red' : 'green'};">${confirmations}</td>
-                </tr>
+              <a class="transaction-row" data-bheight="${blockheight}" href="${cExplorer.url}/tx/${txid}" target="_blank">
+                <div class="icon"></div>  
+                <div class="type">
+                  <div class="t-date" data-time="${time}">${formattedDate}</div>
+                </div>
+                <div class="status">
+                  <div class="t-amount">${amount}</div>
+                  <div class="t-status" style="color:  ${confirmations ? 'green' : 'red'};">${confirmations}</div>
+                </div>
+              </a>
             `;
 
           completedRequests++;
