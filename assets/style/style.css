@@ -669,7 +669,26 @@ nav .btn-border:hover span, #Network.hover span {
 /* -- Headline -- */
 
 /* -- Background -- */
+#address-box, #Transaction {    
+    position: absolute;
+    display: none;
+    width: 60%;
+    min-width: 300px;
+    padding: 30px 25px;
+    background: var(--bg-color1);
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%); 
+    border: 1px solid var(--border-color);
+    text-align: center;
+}
 
+#address-box.large-box,
+#transaction_table {
+    margin: 0 auto;
+}
+  
 #big-frame-address {
     display: block;
     width: 90%;
@@ -684,18 +703,47 @@ nav .btn-border:hover span, #Network.hover span {
 }
 .transaction-row {
     display: flex;
+    color: var(--color);
     padding: 10px 20px;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    transition: .5s;
 }
+
+
+
+.transaction-row .icon {
+    margin-right: 20px;
+    padding: 10px; 
+    border-radius: 100px;
+} 
+.transaction-row .icon.in { 
+    background: rgb(40 167 69 / 39%);
+} 
+.transaction-row .icon.out { 
+    background: rgb(255 0 0 / 39%); 
+} 
+.transaction-row .icon::before {
+    content: '';
+    display: block;
+    width: 10px;
+    height: 10px;
+    background: inherit;
+    border-radius: inherit;
+}
+
+.details {
+    display: flex;
+}
+ 
 
 
 #more_transaction {
     text-align: center;
   }
   
-  #more_transaction a {
+#more_transaction a {
     font-weight: 200;
     margin-top: 20px;
     padding-right: 20px;
@@ -703,7 +751,7 @@ nav .btn-border:hover span, #Network.hover span {
     background: url(../images/icons/arrow.svg) right no-repeat;
     background-size: 25%;
     opacity: 0.7;
-  }
+}
 
 
 /* -- Background -- */
