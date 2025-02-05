@@ -882,38 +882,31 @@
     }
 
 
-function checkTransactionType(transaction, userAddress) {
+function checkTransactionType(txid, userAddress) {
     let isSent = false, isReceived = false;
-    let totalSent = 0, totalReceived = 0, changeAmount = 0;
 
-    // Check if userAddress is in vin (inputs)
-    $.each(transaction.vin, function(index, input) {
+    // Check inputs (if userAddress is in vin, it's a sent transaction)
+    $.each(txid.vin, function(index, input) {
         if (input.addresses && input.addresses.includes(userAddress)) {
             isSent = true;
-            totalSent += parseInt(input.value);
         }
     });
 
-    // Check if userAddress is in vout (outputs)
-    $.each(transaction.vout, function(index, output) {
+    // Check outputs (if userAddress is in vout, it's a received transaction)
+    $.each(txid.vout, function(index, output) {
         if (output.addresses && output.addresses.includes(userAddress)) {
-            if (isSent) {
-                // This is likely "change" being returned to the sender
-                changeAmount += parseInt(output.value);
-            } else {
-                isReceived = true;
-                totalReceived += parseInt(output.value);
-            }
+            isReceived = true;
         }
     });
 
-    // Determine transaction type
-    if (isSent && totalSent - changeAmount > 0) {
+    if (isSent && isReceived) {
+        return "Self-Transfer";  // If the sender and receiver are the same, it's a self-transfer
+    } else if (isSent) {
         return "Sent";
     } else if (isReceived) {
         return "Received";
     } else {
-        return "Self-Transfer";
+        return "Unknown";
     }
 }
 
@@ -1015,8 +1008,8 @@ function checkTransactionType(transaction, userAddress) {
                   </div>
                 </div>
                 <div class="status">
-                  <div class="t-amount">${amount} FREED</div>
-                  <div class="t-status" style="color:  ${confirmations ? 'green' : 'red'};">${confirmations}</div>
+                  <div class="t-amount">${amount} Freed</div>
+                  <div class="t-status" style="color:  ${confirmations ? 'green' : 'red'};">${confirmations} confirmations</div>
                 </div>
               </a>
             `;

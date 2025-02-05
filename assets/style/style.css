@@ -711,8 +711,12 @@ nav .btn-border:hover span, #Network.hover span {
     transition: .5s;
 }
 
-
-
+.transaction-row .details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+ 
 .transaction-row .icon {
     margin-right: 20px;
     padding: 10px; 
@@ -730,16 +734,11 @@ nav .btn-border:hover span, #Network.hover span {
 .transaction-row .icon::before {
     content: '';
     display: block;
-    width: 10px;
-    height: 10px;
+    width: 12px;
+    height: 12px;
     background: inherit;
     border-radius: inherit;
 }
-
-.details {
-    display: flex;
-}
- 
 
 
 #more_transaction {
