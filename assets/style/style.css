@@ -677,8 +677,18 @@ nav .btn-border:hover span, #Network.hover span {
     margin: 0 auto;
     padding: 40px 0;
 }
-
-
+#transactionTableBody {
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+.transaction-row {
+    display: flex;
+    padding: 10px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
 
 
 #more_transaction {
@@ -687,6 +697,7 @@ nav .btn-border:hover span, #Network.hover span {
   
   #more_transaction a {
     font-weight: 200;
+    margin-top: 20px;
     padding-right: 20px;
     color: #fff;
     background: url(../images/icons/arrow.svg) right no-repeat;

@@ -451,11 +451,11 @@
                   <!-- WALLET FEATURE -->
                   <div id="big-frame-address">
 
-                    <div id="transaction_table" class="large-box">
+                    <div id="transaction_table">
                       <h6 style=" font-weight: 100; padding-bottom: 15px; text-align: center; ">Recent Transactions</h6>
                       <div id="transactionTableBody"> 
-                          <span>No transactions</span> 
-                        </div> 
+                        <span>No transactions</span> 
+                      </div> 
                       <div id="more_transaction"></div>
                     </div>
                   </div>
@@ -970,10 +970,12 @@
 
           // Create the row for this txid and store it in the correct position in rowsArray
           rowsArray[index] = `
-              <a class="transaction-row" data-bheight="${blockheight}" href="${cExplorer.url}/tx/${txid}" target="_blank">
-                <div class="icon"></div>  
-                <div class="type">
-                  <div class="t-date" data-time="${time}">${formattedDate}</div>
+              <a class="transaction-row large-box" data-bheight="${blockheight}" href="${cExplorer.url}/tx/${txid}" target="_blank">
+                <div class="details">
+                  <div class="icon"></div>  
+                  <div class="type">
+                    <div class="t-date" data-time="${time}">${formattedDate}</div>
+                  </div>
                 </div>
                 <div class="status">
                   <div class="t-amount">${amount}</div>
