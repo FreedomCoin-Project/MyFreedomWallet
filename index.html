@@ -882,18 +882,18 @@
     }
 
 
-function checkTransactionType(transaction, userAddress) {
+function checkTransactionType(txid, userAddress) {
     let isSent = false, isReceived = false;
 
     // Check inputs (if userAddress is in vin, it's a sent transaction)
-    $.each(transaction.vin, function(index, input) {
+    $.each(txid.vin, function(index, input) {
         if (input.addresses && input.addresses.includes(userAddress)) {
             isSent = true;
         }
     });
 
     // Check outputs (if userAddress is in vout, it's a received transaction)
-    $.each(transaction.vout, function(index, output) {
+    $.each(txid.vout, function(index, output) {
         if (output.addresses && output.addresses.includes(userAddress)) {
             isReceived = true;
         }
@@ -995,8 +995,8 @@ function checkTransactionType(transaction, userAddress) {
             hour: '2-digit',
             minute: '2-digit',
             // Omit seconds by not including `second: '2-digit'`
-          });
-          const transactionType = checkTransactionType(transaction, userAddress);
+          }); 
+          const transactionType = checkTransactionType(transaction, $(domGuiAddress).text());
           // Create the row for this txid and store it in the correct position in rowsArray
           rowsArray[index] = `
               <a class="transaction-row large-box" data-bheight="${blockheight}" href="${cExplorer.url}/tx/${txid}" target="_blank">
