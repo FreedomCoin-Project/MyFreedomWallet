@@ -882,6 +882,35 @@
     }
 
 
+function checkTransactionType(transaction, userAddress) {
+    let isSent = false, isReceived = false;
+
+    // Check inputs (if userAddress is in vin, it's a sent transaction)
+    $.each(transaction.vin, function(index, input) {
+        if (input.addresses && input.addresses.includes(userAddress)) {
+            isSent = true;
+        }
+    });
+
+    // Check outputs (if userAddress is in vout, it's a received transaction)
+    $.each(transaction.vout, function(index, output) {
+        if (output.addresses && output.addresses.includes(userAddress)) {
+            isReceived = true;
+        }
+    });
+
+    if (isSent && isReceived) {
+        return "Self-Transfer";  // If the sender and receiver are the same, it's a self-transfer
+    } else if (isSent) {
+        return "Sent";
+    } else if (isReceived) {
+        return "Received";
+    } else {
+        return "Unknown";
+    }
+}
+
+
     // Global variable to store the last txids
     let lastTxids = [];
 
@@ -967,14 +996,14 @@
             minute: '2-digit',
             // Omit seconds by not including `second: '2-digit'`
           });
-
+          const transactionType = checkTransactionType(transaction, userAddress);
           // Create the row for this txid and store it in the correct position in rowsArray
           rowsArray[index] = `
               <a class="transaction-row large-box" data-bheight="${blockheight}" href="${cExplorer.url}/tx/${txid}" target="_blank">
                 <div class="details">
-                  <div class="icon in"></div>  
+                  <div class="icon  ${transactionType.toLowerCase()}"></div>  
                   <div class="type">
-                    <span class="direction"></span> 
+                    <span class="direction">${transactionType}</span> 
                     <div class="t-date" data-time="${time}">${formattedDate}</div>
                   </div>
                 </div>

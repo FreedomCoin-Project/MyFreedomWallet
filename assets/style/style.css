@@ -718,11 +718,14 @@ nav .btn-border:hover span, #Network.hover span {
     padding: 10px; 
     border-radius: 100px;
 } 
-.transaction-row .icon.in { 
+.transaction-row .icon.received { 
     background: rgb(40 167 69 / 39%);
 } 
-.transaction-row .icon.out { 
+.transaction-row .icon.sent { 
     background: rgb(255 0 0 / 39%); 
+} 
+.transaction-row .icon.self-transfer, .transaction-row .icon.unknown { 
+    background: rgba(255, 217, 0, 0.39); 
 } 
 .transaction-row .icon::before {
     content: '';
