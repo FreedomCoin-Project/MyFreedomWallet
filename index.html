@@ -896,6 +896,8 @@ function checkTransactionType(txid, userAddress) {
     $.each(txid.vout, function(index, output) {
         if (output.addresses && output.addresses.includes(userAddress)) {
             isReceived = true;
+        } else {
+            isReceived = false;
         }
     });
 
@@ -996,12 +998,12 @@ function checkTransactionType(txid, userAddress) {
             minute: '2-digit',
             // Omit seconds by not including `second: '2-digit'`
           }); 
-          const transactionType = checkTransactionType(transaction, $(domGuiAddress).text());
+          const transactionType = checkTransactionType(transaction, publicKeyForNetwork);
           // Create the row for this txid and store it in the correct position in rowsArray
           rowsArray[index] = `
               <a class="transaction-row large-box" data-bheight="${blockheight}" href="${cExplorer.url}/tx/${txid}" target="_blank">
                 <div class="details">
-                  <div class="icon  ${transactionType.toLowerCase()}"></div>  
+                  <div class="icon ${transactionType.toLowerCase()}"></div>  
                   <div class="type">
                     <span class="direction">${transactionType}</span> 
                     <div class="t-date" data-time="${time}">${formattedDate}</div>
