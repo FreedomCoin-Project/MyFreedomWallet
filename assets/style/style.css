@@ -160,7 +160,7 @@ button:active {
     display: flex;
     margin-right: 1rem;
     color: #fff !important;
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 800;
     white-space: nowrap;
     flex-direction: row;
@@ -168,7 +168,7 @@ button:active {
 }
 
 .brand-logo {
-    width: 40px;
+    width: 37px;
     margin-right: 10px;
 }
 
@@ -739,6 +739,10 @@ nav .btn-border:hover span, #Network.hover span {
     background: inherit;
     border-radius: inherit;
 }
+.transaction-row .status {
+    min-width: 90px;
+}
+
 
 
 #more_transaction {
@@ -1519,6 +1523,12 @@ a {
 
     #pubkey-padd {
         width: 33%;
+    }
+}
+
+@media (max-width: 1024px) {
+    .your-class {
+        font-size: 18px;
     }
 }
 
