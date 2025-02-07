@@ -1527,17 +1527,20 @@ a {
 }
 
 @media (max-width: 1050px) {
-    .navbar .nav-logo {
+    .side_nav .navbar .navbarSpecial {
+        width: auto;
+    }
+    .side_nav .navbar .nav-logo {
         margin: 0;
     }
-    .navbar .brand-logo {
+    .side_nav .navbar .brand-logo {
         width: 40px; 
         margin-right: 5px;
     }
-    .navbar .brand-txt, .side_nav nav .btn-border span {
+    .side_nav .navbar .brand-txt, .side_nav nav .btn-border span {
         display: none;
     }
-    .navbar .side_nav .navbarSpecial {
+    .side_nav .navbar .side_nav .navbarSpecial {
         flex: 0;
         width: auto;
     }
