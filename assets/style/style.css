@@ -1532,6 +1532,10 @@ a {
 }
 
 @media (max-width: 1050px) {
+    .side_nav .navbar {
+        flex: 0;
+        width: auto;
+    }
     .side_nav .navbar .navbarSpecial {
         width: auto;
     }
@@ -1545,9 +1549,10 @@ a {
     .side_nav .navbar .brand-txt, .side_nav nav .btn-border span {
         display: none;
     }
-    .side_nav .navbar {
-        flex: 0;
-        width: auto;
+    .side_nav nav > .container { 
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
     }
 }
 
