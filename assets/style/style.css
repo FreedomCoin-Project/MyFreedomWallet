@@ -1085,6 +1085,10 @@ nav > .container {
 }
 .side_nav nav .navbar-collapse {
     position: relative;
+    top: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
 }
 .side_nav nav .buttons-section {
     flex-direction: column;
@@ -1614,12 +1618,7 @@ a {
     }
 }
 
-@media screen and (min-width: 992px) { 
-    .navbar-expand-lg .navbar-collapse { 
-        top: 0;
-        flex-direction: row;
-        justify-content: flex-end;
-    }
+@media screen and (min-width: 992px) {  
     .navbar-collapse > div {
         display: flex;
         gap: 50px;
