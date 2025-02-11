@@ -1085,6 +1085,7 @@ nav > .container {
 }
 .side_nav nav .navbar-collapse {
     position: relative;
+    display: flex !important;
     top: 0;
     flex-direction: row;
     align-items: flex-start;
