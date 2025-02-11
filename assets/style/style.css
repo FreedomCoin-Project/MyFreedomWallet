@@ -1546,7 +1546,7 @@ a {
         width: 40px; 
         margin-right: 5px;
     }
-    .side_nav .navbar .brand-txt, .side_nav nav .btn-border span {
+    .side_nav .navbar-toggler, .side_nav .navbar .brand-txt, .side_nav nav .btn-border span {
         display: none;
     }
     .side_nav nav > .container { 
