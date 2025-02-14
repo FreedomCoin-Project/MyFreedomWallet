@@ -407,7 +407,7 @@ nav .btn-border {
     transition: margin-right 0.5s ease; /* Add smooth transition */
     transition-delay: .1s;
 }
-nav .btn-border:hover img, #Network.hover img  {
+nav .btn-border:hover img:not(.side_nav img), #Network.hover img  {
     margin-right: 10px; /* Only add margin when span is visible */
 }
 nav .btn-border span {
@@ -1092,6 +1092,7 @@ nav > .container {
     justify-content: flex-end;
 }
 .side_nav nav .buttons-section {
+    padding: 0;
     flex-direction: column;
 }
 .side_nav nav .btn-border span {
@@ -1546,8 +1547,20 @@ a {
         width: 40px; 
         margin-right: 5px;
     }
-    .side_nav .navbar-toggler, .side_nav .navbar .brand-txt, .side_nav nav .btn-border span {
+    .side_nav .navbar-toggler, .side_nav .navbar .brand-txt {
         display: none;
+    }
+    .side_nav nav .btn-border span { 
+        position: absolute;
+        background: linear-gradient(45deg, transparent, var(--bg-color3));
+        opacity: 0;
+        left: 0;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+    }
+    .side_nav nav .btn-border:hover span { 
+        left: 50px;
+        opacity: 1;
     }
     .side_nav nav > .container { 
         flex-wrap: nowrap;
