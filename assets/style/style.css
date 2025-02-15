@@ -360,7 +360,6 @@ input::-moz-focus-inner {
 .navbar-collapse {
     position: absolute; 
     right: 0;
-    top: 100%;
 }
 
 .buttons-section {
@@ -1567,6 +1566,7 @@ a {
         transition: opacity 0.2s ease-out 0.1s, left 0.3s ease-out;
     }
     .side_nav nav > .container { 
+        padding: 0;
         flex-wrap: nowrap;
         justify-content: center;
         align-items: center;
@@ -1684,6 +1684,7 @@ a {
     }
 
     .navbar-collapse {
+        top: 100%;
         -webkit-transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
     }
@@ -1906,18 +1907,24 @@ a {
 }
 
 @media screen and (max-width: 650px) {
-    .side_nav {
+    .side_nav #page-container {
         overflow-x: hidden;
     }
-    #content-wrap {
+    .side_nav #content-wrap {
         min-width: 100%;
-        left: 0;
+        left: -65px;
         background: inherit;
         transition: cubic-bezier(0.4, 0, 0.2, 1)0.3s;
-    }
-    #content-wrap.left {
-        left: -65px;
         z-index: 1050;
+    }
+    .side_nav #content-wrap.left {
+        left: 0;
+        z-index: 0;
+    }
+    .side_nav .navbar-toggler {
+        display: block;
+        position: fixed;
+        bottom: 0;
     }
 }
 
