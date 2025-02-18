@@ -790,6 +790,9 @@
     $("#open").click(function () {
       $(".welcome-wrapper").fadeOut("slow", function () {
         $("body").removeClass().addClass("side_nav");
+        setTimeout(() => {
+          initializeSideNav();
+        }, 1000);
       });
     });
 
@@ -1402,7 +1405,74 @@ function swap(params) {
       const wif = document.getElementById("wif").value;
       document.getElementById("rawTrx").value = cTx.sign(wif, 1); //SIGHASH_ALL DEFAULT 1
     }
-    function toggleNavigation() {
+
+    function checkMediaQuery(maxWidth) {
+        return window.matchMedia(`(max-width: ${maxWidth})`).matches;
+    }
+
+    let contentWrap;
+    let sideNav;
+
+    function initializeSideNav() {
+        // Make sure elements exist before binding events
+        contentWrap = $(".side_nav #content-wrap");
+        sideNav = $(".side_nav");
+
+        // Only proceed if both elements are found
+        if (contentWrap.length && sideNav.length) {
+            bindSwipeEvents();
+        }
+    }
+
+    function bindSwipeEvents() {
+      if (!checkMediaQuery("650px")) return;
+      let touchStartX = 0;
+      let touchEndX = 0;
+
+      contentWrap.on("touchstart", function (e) {
+          touchStartX = e.originalEvent.touches[0].clientX;
+      });
+
+      contentWrap.on("touchmove", function (e) {
+          touchEndX = e.originalEvent.touches[0].clientX;
+      });
+
+      contentWrap.on("touchend", function () {
+          let swipeDistance = touchEndX - touchStartX;
+
+          if (swipeDistance > 50) {
+              toggleSideNav(true); // Swipe Right (Show)
+          } else if (swipeDistance < -50) {
+              toggleSideNav(false); // Swipe Left (Hide)
+          }
+      });
+    }
+
+    function toggleSideNav(open) {
+      if (checkMediaQuery("650px")) {
+        if (open) {
+            // Show menu (Swipe Right)
+            contentWrap.css({
+                "left": "0",
+                "opacity": "0.7"
+            });
+            contentWrap.find(".container").css("pointer-events", "none");
+            sideNav.css("overflow", "hidden");
+        } else {
+            // Hide menu (Swipe Left)
+            contentWrap.css({
+                "left": "",
+                "opacity": ""
+            });
+            contentWrap.find(".container").css("pointer-events", "");
+            sideNav.css("overflow", "");
+        }
+      }
+    }
+
+
+
+    function toggleNavigation(s) {
       $("nav .navbar-collapse").slideToggle(500);
       $("#navbarToggler").toggleClass("collapsed collapse");
     }
@@ -1431,7 +1501,9 @@ function swap(params) {
       // Show and activate the given screen
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
-      // Close the navbar if it's not already closed
+      // Close the navbar if it's not already closed 
+      toggleSideNav(false);
+      
       if (!domNavbarToggler.className.includes("collapsed"))
         toggleNavigation();
     }
