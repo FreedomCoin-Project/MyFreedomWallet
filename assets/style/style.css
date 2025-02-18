@@ -2098,9 +2098,6 @@ a {
     /* Dashboard */
 
 
-    .side_nav #content-wrap {
-        left: -75px;
-    }
     #piv-ring {
         display: none !important;
     }
