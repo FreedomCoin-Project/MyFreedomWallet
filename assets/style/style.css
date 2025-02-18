@@ -1912,7 +1912,7 @@ a {
     }
     .side_nav #content-wrap {
         min-width: 100%;
-        left: -75px;
+        left: -65px;
         background: inherit;
         transition: cubic-bezier(0.4, 0, 0.2, 1)0.3s;
         z-index: 1050;
@@ -2098,6 +2098,9 @@ a {
     /* Dashboard */
 
 
+    .side_nav #content-wrap {
+        left: -75px;
+    }
     #piv-ring {
         display: none !important;
     }
