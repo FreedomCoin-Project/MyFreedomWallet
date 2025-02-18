@@ -1449,7 +1449,7 @@ function swap(params) {
     }
 
     function toggleSideNav(open) {
-      if (checkMediaQuery("650px")) {
+        if (!checkMediaQuery("650px")) return;
         if (open) {
             // Show menu (Swipe Right)
             contentWrap.css({
@@ -1466,8 +1466,7 @@ function swap(params) {
             });
             contentWrap.find(".container").css("pointer-events", "");
             sideNav.css("overflow", "");
-        }
-      }
+        } 
     }
 
 
@@ -1503,7 +1502,7 @@ function swap(params) {
       evt.currentTarget.classList.add("active");
       // Close the navbar if it's not already closed 
       toggleSideNav(false);
-      
+
       if (!domNavbarToggler.className.includes("collapsed"))
         toggleNavigation();
     }

@@ -1920,12 +1920,7 @@ a {
     .side_nav #content-wrap.left {
         left: 0;
         z-index: 0;
-    }
-    .side_nav .navbar-toggler {
-        display: block;
-        position: fixed;
-        bottom: 0;
-    }
+    } 
 }
 
 /* Note: The rest of the media queries follow the same pattern, adding prefixes where necessary for transitions and transforms. */
