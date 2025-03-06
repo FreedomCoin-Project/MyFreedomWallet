@@ -129,7 +129,7 @@ importWallet = function (newWif = false, fRaw = false) {
     if (!newWif) $([qrModal, domGenKeyWarning]).fadeToggle(500);
 
     // Load UTXOs from explorer
-    if (networkEnabled) getUTXOs();
+   // if (networkEnabled) getUTXOs();
     
     // Hide all wallet starter options
     hideAllWalletOptions();
