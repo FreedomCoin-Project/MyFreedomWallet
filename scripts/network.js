@@ -13,7 +13,7 @@ function networkError() {
   
   // Switch to the backup explorer if not already using it
   if (cExplorer.url !== arrExplorers[1].url) {
-      setExplorer(arrExplorers[1]);
+   //   setExplorer(arrExplorers[1]);
   } else {
       console.error("Both explorers failed. Network requests cannot be completed.");
   }
