@@ -733,22 +733,27 @@
     // Alert DOM element
     const domAlertPos = document.getElementsByClassName("alertPositioning")[0];
 
-    function getBalance(updateGUI = false) { 
-      const nBalance = cachedUTXOs.reduce((a, b) => a + b.sats, 0);
 
-      // Update the GUI too, if chosen
-      if (updateGUI) {
-        // Set the balance, and adjust font-size for large balance strings
-        const nLen = (nBalance / COIN).toFixed(2).length;
-        domGuiBalance.innerText = (nBalance / COIN).toFixed(nLen >= 6 ? 0 : 2);
-        domAvailToDelegate.innerText = "Available: ~" + (nBalance / COIN).toFixed(2) + " FREED";
-        price_tick(Number(domGuiBalance.innerText));
-        // Add a notice to the Send page if balance is lacking
-        domsendNotice.innerHTML = nBalance ? '' : '<div class="alert alert-danger" role="alert"><h4>Note:</h4><h5>You don\'t have any funds, get some coins first!</h5></div>';
+    function getBalance(updateGUI = false) { 
+      const nBalance = cachedUTXOs.reduce((sum, utxo) => sum + utxo.sats, 0);
+
+      // Update the GUI only when all UTXOs are processed
+      if (updateGUI && arrUTXOsToValidate.length === 0) {
+          const formattedBalance = (nBalance / COIN).toFixed((nBalance / COIN).toFixed(2).length >= 6 ? 0 : 2);
+          domGuiBalance.innerText = formattedBalance;
+          domAvailToDelegate.innerText = `Available: ~${formattedBalance} FREED`;
+          price_tick(Number(formattedBalance));
+          
+          domsendNotice.innerHTML = nBalance ? '' : 
+              `<div class="alert alert-danger" role="alert">
+                  <h4>Note:</h4>
+                  <h5>You don't have any funds, get some coins first!</h5>
+              </div>`;
       }
 
       return nBalance;
     }
+
     let price;
     function price_update() {
       $.getJSON("https://api.nonkyc.io/api/v2/ticker/Freed_usdt", data => price = Number(data.last_price).toFixed(5));
@@ -1450,7 +1455,9 @@ function swap(params) {
 
     function toggleSideNav(open) {
         if (!checkMediaQuery("650px")) return;
-        if (open) {
+        
+        $("body").toggleClass("swipe_right");
+      /*  if (open) {
             // Show menu (Swipe Right)
             contentWrap.css({
                 "left": "0",
@@ -1466,7 +1473,7 @@ function swap(params) {
             });
             contentWrap.find(".container").css("pointer-events", "");
             sideNav.css("overflow", "");
-        } 
+        } */
     }
 
 

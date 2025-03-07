@@ -68,45 +68,46 @@ if (networkEnabled) {
   
   var arrUTXOsToValidate = [];
   var acceptUTXO = () => {
-    // Cancel if the queue is empty: no wasting precious bandwidth & CPU cycles!
-    if (!arrUTXOsToValidate.length) return;
+      if (!arrUTXOsToValidate.length) return;
 
-    const request = new XMLHttpRequest();
-    request.open('GET', cExplorer.url + "/api/v2/tx-specific/" + arrUTXOsToValidate[0].txid, true);
-    request.onerror = networkError;
+      const request = new XMLHttpRequest();
+      request.open('GET', `${cExplorer.url}/api/v2/tx-specific/${arrUTXOsToValidate[0].txid}`, true);
+      request.onerror = networkError;
+      request.onload = processUTXO;
+      request.send();
+  };
 
-    request.onload = function() {
-      // Fetch the single output of the UTXO
-      const cVout = JSON.parse(this.response).vout[arrUTXOsToValidate[0].vout];
+  function processUTXO() {
+    const cVout = JSON.parse(this.response).vout[arrUTXOsToValidate[0].vout];
 
-      // Convert to MPW format
-      const cUTXO = {
+    const cUTXO = {
         'id': arrUTXOsToValidate[0].txid,
         'vout': cVout.n,
         'sats': Math.round(cVout.value * COIN),
         'script': cVout.scriptPubKey.hex
-      }
-
-      // Determine the UTXO type, and use it accordingly
-      if (cVout.scriptPubKey.type === 'pubkeyhash') {
-        // P2PKH type (Pay-To-Pub-Key-Hash)
-        cachedUTXOs.push(cUTXO);
-      } else
-      if (cVout.scriptPubKey.type === 'coldstake') {
-        // Cold Stake type
-        arrDelegatedUTXOs.push(cUTXO);
-      }
-
-      // Shift the queue and update the UI
-      getBalance(true);
-      getStakingBalance(true);
-      
-      // Loop validation until queue is empty
-      arrUTXOsToValidate.shift();
-      if (arrUTXOsToValidate.length) acceptUTXO();
     }
-    request.send();
+
+    if (cVout.scriptPubKey.type === 'pubkeyhash') {
+        cachedUTXOs.push(cUTXO);
+    } else if (cVout.scriptPubKey.type === 'coldstake') {
+        arrDelegatedUTXOs.push(cUTXO);
+    }
+
+    // Remove processed UTXO from queue
+    arrUTXOsToValidate.shift();
+
+    // Continue processing until queue is empty
+    if (arrUTXOsToValidate.length) {
+        acceptUTXO();
+    } else {
+        // Update the balance **only after all UTXOs are added**
+        getBalance(true);
+        getStakingBalance(true);
+    }
   }
+
+
+
 
   var getUTXOs = () => {
       // Don't fetch UTXOs if we're already scanning for them!
