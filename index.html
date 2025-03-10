@@ -961,8 +961,6 @@ function checkTransactionType(txid, userAddress) {
     }
 
 
-    // Global flag to track if fetching is in progress
-    let isFetching = false; 
     // Function to fetch transaction details using the txids and populate the table
     function fetchTransactionDetails(txids, tableBody) {
       const moreLink = document.getElementById("more_transaction");

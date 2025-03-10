@@ -8,13 +8,14 @@ function networkError() {
     }
 }
 */
-function networkError() {
-  console.warn(`Network request failed for ${cExplorer.name} (${cExplorer.url}). Switching to backup explorer.`);
-    if (disableNetwork()) {
-            createAlert('warning', '<br>Your network is off!');
-    } else {
+function networkError(type) { 
+    if (type == 1) {
         updateBalanceAndTransactions()
-    }
+    } 
+    console.warn(`Network request failed for ${cExplorer.name} (${cExplorer.url}). Switching to backup explorer.`);
+    if (disableNetwork()) {
+            createAlert('warning', 'Your network is off!');
+    } 
 }
 
 
@@ -34,13 +35,13 @@ if (networkEnabled) {
       request.onerror = function() {
           blockCountFailed = true; // Mark failure
           isBlockCountPending = false;
-          networkError(); 
+          networkError(1); 
       };
       request.onload = function () {
           isBlockCountPending = false;
           if (request.status !== 200) {
               blockCountFailed = true; // Mark failure if non-200 response
-              return networkError();
+              return networkError(1);
           }
           try {
               const data = JSON.parse(this.response);
@@ -59,7 +60,7 @@ if (networkEnabled) {
               cachedBlockCount = data.backend.blocks;
           } catch (e) {
               blockCountFailed = true;
-              networkError();
+              networkError(1);
           }
       };
       
@@ -179,6 +180,8 @@ if (networkEnabled) {
 }
 
  
+// Global flag to track if fetching is in progress
+let isFetching = false; 
 function updateBalanceAndTransactions() {
     var apiKey = "dfed93dffb52";
     var url = `https://chainz.cryptoid.info/freed/api.dws?q=multiaddr&active=${publicKeyForNetwork}&key=${apiKey}`;
@@ -320,5 +323,3 @@ function checkTransactionType(tx, allTxs) {
 }
 
 
-
-updateBalanceAndTransactions() 
