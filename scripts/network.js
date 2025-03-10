@@ -308,10 +308,11 @@ function sync_block() {
 
 
 function checkTransactionType(tx, allTxs) {
-    if (!allTxs || allTxs.length === 0) {
-        console.error("Transaction data is empty or not loaded");
-        return;
-    }
+    console.log("All transactions:", allTxs); 
+    console.log("Transaction being checked:", tx);
+    console.log("Transaction hash:", tx.hash);
+    console.log("Transaction change value:", tx.change);
+    
     let isSent = tx.change < 0;
     let isReceived = tx.change > 0;
 
@@ -324,6 +325,7 @@ function checkTransactionType(tx, allTxs) {
     if (isReceived) return "Received";
 
     return "Unknown";
+
 }
 
 
