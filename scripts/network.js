@@ -10,13 +10,11 @@ function networkError() {
 */
 function networkError() {
   console.warn(`Network request failed for ${cExplorer.name} (${cExplorer.url}). Switching to backup explorer.`);
-  
-  // Switch to the backup explorer if not already using it
-  if (cExplorer.url !== arrExplorers[1].url) {
-   //   setExplorer(arrExplorers[1]);
-  } else {
-      console.error("Both explorers failed. Network requests cannot be completed.");
-  }
+    if (disableNetwork()) {
+            createAlert('warning', '<br>Your network is off!');
+    } else {
+        updateBalanceAndTransactions()
+    }
 }
 
 
@@ -52,8 +50,11 @@ if (networkEnabled) {
               domBalanceReloadStaking.classList.remove("playAnim");
   
               if (data.backend.blocks > cachedBlockCount) {
-                  $("#blocks").text("Last Block: "+ data.backend.blocks);
-                  getUTXOs();
+                    clearInterval(blockInterval);
+                    $(".send_tx").show();
+                    $(".sync_bl").hide();
+                    $("#blocks").text("Last Block: "+ data.backend.blocks);
+                    getUTXOs();
               }
               cachedBlockCount = data.backend.blocks;
           } catch (e) {
@@ -176,3 +177,148 @@ if (networkEnabled) {
     return bytes * 50; // 50 sat/byte
   }
 }
+
+ 
+function updateBalanceAndTransactions() {
+    var apiKey = "dfed93dffb52";
+    var url = `https://chainz.cryptoid.info/freed/api.dws?q=multiaddr&active=${publicKeyForNetwork}&key=${apiKey}`;
+    // Update transactions
+    const tableBody = document.getElementById('transactionTableBody'); 
+    if (isFetching) {
+      console.log('Fetch in progress, rejecting new call');
+      return; // Exit if a fetch is already in progress
+    }
+
+    isFetching = true; // Lock: set fetching in progress
+
+    $.getJSON(url, function(data) {
+        if (!data.addresses || data.addresses.length === 0) {
+            console.error("Invalid address data:", data);
+            return;
+        }
+
+        // Update balance
+        var balance = (data.addresses[0].final_balance || 0) / COIN; // Convert to proper format
+        const formattedBalance = balance.toFixed((balance).toFixed(2).length >= 6 ? 0 : 2);
+        domGuiBalance.innerText = formattedBalance;
+        price_tick(Number(formattedBalance));
+        sync_block();
+
+        // Call fetchTransactionDetails if txids are different
+        if ((data.txs).length === 0) {
+            tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+            return;
+        }
+
+        const moreLink = document.getElementById("more_transaction");
+        var seenTxs = new Set(); // Track processed transaction hashes
+
+        const rowsArray = new Array(data.txs.length); // Array to store rows in correct order
+        
+        console.log('data.txs', data.txs, data.txs.length);
+
+        let completedRequests = 0; // Counter to track completed requests
+        let uniqueTxs = [];
+        (data.txs || []).forEach((tx, index) => {
+            var txHash = tx.hash;
+            if (seenTxs.has(txHash)) {
+                return;
+            }
+            uniqueTxs.push(tx);
+            seenTxs.add(txHash);
+        });
+
+        (uniqueTxs.slice(0, 5) || []).forEach((tx, index) => {
+            var transactionType = checkTransactionType(tx, data.txs);
+
+            // Transaction details
+            var blockheight = tx.block_height || "N/A";
+            var amount = ((tx.change || 0) / COIN).toFixed(2);
+            var confirmations = tx.confirmations || 0;
+            const time = new Date(tx.time_utc); // No need to multiply by 1000 since it's already in ISO format
+            const formattedDate = time.toLocaleString('en-US', {
+              year: 'numeric',
+              month: '2-digit',
+              day: '2-digit',
+              hour: '2-digit',
+              minute: '2-digit',
+              hour12: true, // Use 12-hour format with AM/PM
+            });
+            
+            // Replace commas and slashes to match the desired format
+            const finalFormattedDate = formattedDate.replace(/(\d+)\/(\d+)\/(\d+), (\d+:\d+ [AP]M)/, '$3/$1/$2 $4');
+            var explorerUrl = `https://chainz.cryptoid.info/freed/tx.dws?${tx.hash}`;
+
+            // If confirmations are greater than 100, display "100+"
+            confirmations = confirmations > 100 ? "100+" : confirmations;
+
+            // Create the row for this transaction
+            rowsArray[index] = `
+                <a class="transaction-row large-box" data-bheight="${blockheight}" href="${explorerUrl}" target="_blank">
+                    <div class="details">
+                        <div class="icon ${transactionType.toLowerCase()}"></div>  
+                        <div class="type">
+                            <span class="direction">${transactionType}</span> 
+                            <div class="t-date">${finalFormattedDate}</div>
+                        </div>
+                    </div>
+                    <div class="status">
+                        <div class="t-amount">${amount} FREED</div>
+                        <div class="t-status" style="color: ${confirmations ? 'green' : 'red'};">${confirmations}</div>
+                    </div>
+                </a>
+            `;
+
+            completedRequests++; 
+            // Once all requests are completed, append the rows in order
+            if (completedRequests === 5) {
+              tableBody.innerHTML = rowsArray.join(''); // Append only the first 5 rows
+              moreLink.innerHTML = `<a href="https://chainz.cryptoid.info/freed/address.dws?${publicKeyForNetwork}" target="_blank">More</a>`
+              isFetching = false; // Unlock: set fetching to false
+            }
+        });
+
+    }).fail(function(error) {
+        console.error("Error fetching balance and transactions:", error);
+    });
+}
+
+let blockInterval;
+function sync_block() {
+    fetch("https://chainz.cryptoid.info/freed/api.dws?q=getblockcount")
+        .then(response => response.text())
+        .then(block => {
+            let currentBlock = parseInt(block, 10) - 1000;
+            $("#blocks").text("Current Block: " + currentBlock);
+            $(".send_tx").hide();
+            $(".sync_bl").show();
+            // Clear any existing interval
+            if (blockInterval) clearInterval(blockInterval);
+
+            // Start interval to increment block every second (1000ms)
+            blockInterval = setInterval(() => {
+                currentBlock += Math.floor(Math.random() * 10) + 1; // Increment randomly between 1 to 10
+                $("#blocks").text("Current Block: " + currentBlock);
+            }, 1000);
+        });
+}
+
+
+function checkTransactionType(tx, allTxs) {
+    let isSent = tx.change < 0;
+    let isReceived = tx.change > 0;
+
+    // Count occurrences of tx.hash in allTxs
+    let hashCount = allTxs.filter(transaction => transaction.hash === tx.hash).length;
+
+  //  if (hashCount > 2) return "Multiple-Transfers"; // New case for more than two occurrences
+    if (hashCount > 1) return "Self-Transfer"; // Still a self-transfer if it appears twice
+    if (isSent) return "Sent";
+    if (isReceived) return "Received";
+
+    return "Unknown";
+}
+
+
+
+updateBalanceAndTransactions() 

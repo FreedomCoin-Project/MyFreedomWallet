@@ -7,8 +7,7 @@ var networkEnabled = true;
 // A list of Labs-trusted explorers
 const arrExplorers = [
     // Display name      Blockbook-compatible API base    
-    { name: "freedomcoin", url: "https://chain.freedomcoin.global" },
-    { name: "Blockbook", url: "https://chainz.cryptoid.info/freed" }
+    { name: "freedomcoin", url: "https://chain.freedomcoin.global" }
 ]
 
 var cExplorer = arrExplorers[0];
