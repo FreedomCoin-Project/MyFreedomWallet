@@ -232,7 +232,7 @@ function updateBalanceAndTransactions() {
         });
 
         (uniqueTxs.slice(0, 5) || []).forEach((tx, index) => {
-            var transactionType = checkTransactionType(tx, data.txs);
+            var transactionType = checkTxType(tx, data.txs);
 
             // Transaction details
             var blockheight = tx.block_height || "N/A";
@@ -307,12 +307,7 @@ function sync_block() {
 }
 
 
-function checkTransactionType(tx, allTxs) {
-    console.log("All transactions:", allTxs); 
-    console.log("Transaction being checked:", tx);
-    console.log("Transaction hash:", tx.hash);
-    console.log("Transaction change value:", tx.change);
-    
+function checkTxType(tx, allTxs) {
     let isSent = tx.change < 0;
     let isReceived = tx.change > 0;
 
