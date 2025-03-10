@@ -228,7 +228,7 @@
               </button>
               <button class="pivx-button-big btn-border sync_bl" style="display:none;" disabled>
                 <span class="buttoni-icon"><i class="fas fa-sync fa-spin fa-tiny-margin"></i></span>
-                <span class="buttoni-text btn_txt" id="genIt">Send Transaction</span> 
+                <span class="buttoni-text btn_txt">Synchronizing</span> 
               </button>
             </div>
             <div id='transactionFinal'></div>
@@ -797,12 +797,7 @@
     }
 
     $("#open").click(function () {
-      $(".welcome-wrapper").fadeOut("slow", function () {
-        $("body").removeClass().addClass("side_nav");
-        setTimeout(() => {
-          initializeSideNav();
-        }, 1000);
-      });
+      $(".welcome-wrapper").fadeOut("slow");
     });
 
     function toClipboard(source, caller) {
@@ -873,6 +868,11 @@
       domGenVanityWallet.style.display = 'none';
       domAccessWallet.style.display = 'none';
       $(".tablinks").css("display","")
+
+      $("body").removeClass().addClass("side_nav");
+      setTimeout(() => {
+        initializeSideNav();
+      }, 1000);
     }
 
     function accessOrImportWallet() {
