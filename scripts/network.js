@@ -286,22 +286,6 @@ function updateBalanceAndTransactions() {
     });
 }
 
-
-function checkTransactionType(tx, allTxs) {
-    let isSent = tx.change < 0;
-    let isReceived = tx.change > 0;
-
-    // Count occurrences of tx.hash in allTxs
-    let hashCount = allTxs.filter(transaction => transaction.hash === tx.hash).length;
-
-  //  if (hashCount > 2) return "Multiple-Transfers"; // New case for more than two occurrences
-    if (hashCount > 1) return "Self-Transfer"; // Still a self-transfer if it appears twice
-    if (isSent) return "Sent";
-    if (isReceived) return "Received";
-
-    return "Unknown";
-}
-
 let blockInterval;
 function sync_block() {
     fetch("https://chainz.cryptoid.info/freed/api.dws?q=getblockcount")
@@ -321,3 +305,25 @@ function sync_block() {
             }, 1000);
         });
 }
+
+
+function checkTransactionType(tx, allTxs) {
+    if (!data.txs || data.txs.length === 0) {
+        console.error("Transaction data is empty or not loaded");
+        return;
+    }
+    let isSent = tx.change < 0;
+    let isReceived = tx.change > 0;
+
+    // Count occurrences of tx.hash in allTxs
+    let hashCount = allTxs.filter(transaction => transaction.hash === tx.hash).length;
+
+  //  if (hashCount > 2) return "Multiple-Transfers"; // New case for more than two occurrences
+    if (hashCount > 1) return "Self-Transfer"; // Still a self-transfer if it appears twice
+    if (isSent) return "Sent";
+    if (isReceived) return "Received";
+
+    return "Unknown";
+}
+
+
