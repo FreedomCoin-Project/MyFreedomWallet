@@ -308,7 +308,7 @@ function sync_block() {
 
 
 function checkTransactionType(tx, allTxs) {
-    if (!data.txs || data.txs.length === 0) {
+    if (!allTxs || allTxs.length === 0) {
         console.error("Transaction data is empty or not loaded");
         return;
     }
