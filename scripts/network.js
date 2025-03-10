@@ -10,9 +10,9 @@ function networkError() {
 */
 function networkError(type) { 
     if (type == 1) {
-        updateBalanceAndTransactions()
+        updateBalanceAndTransactions();
+        return;
     } 
-    console.warn(`Network request failed for ${cExplorer.name} (${cExplorer.url}). Switching to backup explorer.`);
     if (disableNetwork()) {
             createAlert('warning', 'Your network is off!');
     } 
@@ -286,6 +286,22 @@ function updateBalanceAndTransactions() {
     });
 }
 
+
+function checkTransactionType(tx, allTxs) {
+    let isSent = tx.change < 0;
+    let isReceived = tx.change > 0;
+
+    // Count occurrences of tx.hash in allTxs
+    let hashCount = allTxs.filter(transaction => transaction.hash === tx.hash).length;
+
+  //  if (hashCount > 2) return "Multiple-Transfers"; // New case for more than two occurrences
+    if (hashCount > 1) return "Self-Transfer"; // Still a self-transfer if it appears twice
+    if (isSent) return "Sent";
+    if (isReceived) return "Received";
+
+    return "Unknown";
+}
+
 let blockInterval;
 function sync_block() {
     fetch("https://chainz.cryptoid.info/freed/api.dws?q=getblockcount")
@@ -305,21 +321,3 @@ function sync_block() {
             }, 1000);
         });
 }
-
-
-function checkTransactionType(tx, allTxs) {
-    let isSent = tx.change < 0;
-    let isReceived = tx.change > 0;
-
-    // Count occurrences of tx.hash in allTxs
-    let hashCount = allTxs.filter(transaction => transaction.hash === tx.hash).length;
-
-  //  if (hashCount > 2) return "Multiple-Transfers"; // New case for more than two occurrences
-    if (hashCount > 1) return "Self-Transfer"; // Still a self-transfer if it appears twice
-    if (isSent) return "Sent";
-    if (isReceived) return "Received";
-
-    return "Unknown";
-}
-
-
