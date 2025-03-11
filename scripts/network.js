@@ -77,8 +77,7 @@ if (networkEnabled) {
       }
       
       request.send();
-  };
-  getBlockCount();
+  }; 
   
   var arrUTXOsToValidate = [];
   var acceptUTXO = () => {
