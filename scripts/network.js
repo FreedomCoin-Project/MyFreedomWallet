@@ -321,7 +321,7 @@ function sync_block() {
 
 
 function checkTxType(tx, allTxs) {
-    let isSent = tx.change < 0;
+    let isSent = tx.change > 0;
     let isReceived = tx.change > 0;
 
     // Count occurrences of tx.hash in allTxs

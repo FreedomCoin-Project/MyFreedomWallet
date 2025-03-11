@@ -1976,7 +1976,14 @@ a {
         border: 1px solid var(--border-color);
         border-radius: 100px;
         backdrop-filter: blur(10px);
+        /*border-width: 0;*/
     }
+    /*.send-text {
+        border-left-width: 1px !important;
+    }
+    .dep-text {
+        border-right-width: 1px !important;
+    }*/
     .dep-text img, .send-text img {
         margin-right: 0;
     }
