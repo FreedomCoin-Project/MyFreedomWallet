@@ -796,8 +796,10 @@
       // We have our payment request info, wait until the page is fully loaded then display the payment request via .onload
     }
 
-    $("#open").click(function () {
-      $(".welcome-wrapper").fadeOut("slow");
+    $("#open").click(function () { 
+      $(".welcome-wrapper").fadeOut("slow", function () {
+        $("body").removeClass(); 
+      });
     });
 
     function toClipboard(source, caller) {
@@ -869,7 +871,7 @@
       domAccessWallet.style.display = 'none';
       $(".tablinks").css("display","")
 
-      $("body").removeClass().addClass("side_nav");
+      $("body").addClass("side_nav");
       setTimeout(() => {
         initializeSideNav();
       }, 1000);
