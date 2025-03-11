@@ -1689,9 +1689,6 @@ a {
         display: flex;
         gap: 50px;
     }
-    #navbarNav a:nth-child(3) {
-        display: none;
-    }
 }
 
 @media screen and (max-width: 992px) {
@@ -1961,7 +1958,8 @@ a {
 
 @media screen and (max-width: 650px) {
     .side_nav #page-container {
-        overflow-x: hidden;
+        overflow-x: hidden; /* Fallback */
+        overflow-x: clip; /* Modern browsers */
     }
     .side_nav #content-wrap {
         min-width: 100%;
