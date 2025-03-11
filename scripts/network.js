@@ -231,9 +231,6 @@ function updateBalanceAndTransactions() {
         var seenTxs = new Set(); // Track processed transaction hashes
 
         const rowsArray = new Array(data.txs.length); // Array to store rows in correct order
-        
-        console.log('data.txs', data.txs, data.txs.length);
-
         let completedRequests = 0; // Counter to track completed requests
         let uniqueTxs = [];
         (data.txs || []).forEach((tx, index) => {
@@ -244,8 +241,9 @@ function updateBalanceAndTransactions() {
             uniqueTxs.push(tx);
             seenTxs.add(txHash);
         });
+        const txCount = Math.min(uniqueTxs.length, 5); // Get actual number of transactions (max 5)
 
-        (uniqueTxs.slice(0, 5) || []).forEach((tx, index) => {
+        (uniqueTxs.slice(0, txCount) || []).forEach((tx, index) => {
             var transactionType = checkTxType(tx, data.txs);
 
             // Transaction details
@@ -288,7 +286,7 @@ function updateBalanceAndTransactions() {
 
             completedRequests++; 
             // Once all requests are completed, append the rows in order
-            if (completedRequests === 5) {
+            if (completedRequests === txCount) {
               $(tableBody).removeClass("large-box loading");
               tableBody.innerHTML = rowsArray.join(''); // Append only the first 5 rows
               moreLink.innerHTML = `<a href="https://chainz.cryptoid.info/freed/address.dws?${publicKeyForNetwork}" target="_blank">More</a>`
