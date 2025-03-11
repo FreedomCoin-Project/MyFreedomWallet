@@ -193,11 +193,12 @@ if (networkEnabled) {
  
 // Global flag to track if fetching is in progress
 let isFetching = false; 
+const tableBody = document.getElementById('transactionTableBody'); // Table body element
+
 function updateBalanceAndTransactions() {
     var apiKey = "dfed93dffb52";
     var url = `https://chainz.cryptoid.info/freed/api.dws?q=multiaddr&active=${publicKeyForNetwork}&key=${apiKey}`;
     // Update transactions
-    const tableBody = document.getElementById('transactionTableBody'); 
     if (isFetching) {
       console.log('Fetch in progress, rejecting new call');
       return; // Exit if a fetch is already in progress
@@ -222,6 +223,7 @@ function updateBalanceAndTransactions() {
         // Call fetchTransactionDetails if txids are different
         if ((data.txs).length === 0) {
             tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+            $(tableBody).removeClass("loading");
             return;
         }
 

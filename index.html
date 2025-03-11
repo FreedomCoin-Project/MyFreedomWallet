@@ -456,8 +456,8 @@
 
                     <div id="transaction_table">
                       <h6 style=" font-weight: 100; padding: 20px 5px;">Recent Transactions</h6>
-                      <div id="transactionTableBody"> 
-                        <span>No transactions</span> 
+                      <div id="transactionTableBody" class="large-box loading"> 
+                        <span>loading transactions!</span> 
                       </div> 
                       <div id="more_transaction"></div>
                     </div>
@@ -927,9 +927,7 @@ function checkTransactionType(txid, userAddress) {
     let lastTxids = [];
 
     // Function to populate the table with transaction data
-    function populateTransactionTable() {
-      const tableBody = document.getElementById('transactionTableBody');
-
+    function populateTransactionTable() { 
       // Make a separate request to fetch transaction data
       const request = new XMLHttpRequest();
       const apiUrl = cExplorer.url + "/api/v2/address/" + publicKeyForNetwork; // Separate API URL
@@ -953,6 +951,7 @@ function checkTransactionType(txid, userAddress) {
           fetchTransactionDetails(txids, tableBody);
         } else {
           tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+          $(tableBody).removeClass("loading");
         }
       };
       request.send();

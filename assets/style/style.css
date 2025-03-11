@@ -725,8 +725,10 @@ nav .btn-border:hover span, #Network.hover span {
     padding: 40px 0;
 }
 #transactionTableBody {
+    position: relative;
     display: flex;
     gap: 15px;
+    padding: 20px;
     flex-direction: column;
 }
 .transaction-row {
