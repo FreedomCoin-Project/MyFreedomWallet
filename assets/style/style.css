@@ -970,6 +970,7 @@ nav .btn-border:hover span, #Network.hover span {
 
 #stake-title {
     display: inline-block;
+    font-size: 20px;
     margin: 0;
     cursor: default;
 }
@@ -1018,7 +1019,7 @@ nav .btn-border:hover span, #Network.hover span {
 #guiBalanceBoxStaking {
     display: inline-block;
     margin: 0;
-    font-size: x-large;
+    font-size: 20px !important;
 }
 
 #staking-box {
@@ -1048,6 +1049,7 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 .stake-balances {
+    font-size: 16px;
     margin-top: 1rem;
     margin-bottom: 0.75rem;
     padding: 5px;
@@ -1058,6 +1060,10 @@ nav .btn-border:hover span, #Network.hover span {
     font-size: 16px !important;
     text-align: center;
     line-height: 20px;
+}
+
+.stake-box .pivx-button-big {
+    text-transform: capitalize;
 }
 
 /* FOOTER */
@@ -1447,7 +1453,7 @@ a {
     font-size: 14px !important;
     padding-top: 4px;
     padding-bottom: 4px;
-    background: #521685;
+    background: #2b2936;
     border: none;
     resize: none; 
 }
