@@ -399,9 +399,7 @@
                         <div id="piv-ring"></div>
                         <div id="bal-title">
                           <div class="noselect balance-title">
-                            <span class="bal-text">Current Balance &nbsp;&nbsp;</span>
-                            <span id="balanceReload" class="reload noselect"
-                              onclick="refreshChainData()">&#x21bb;</span>
+                            <span class="bal-text">Current Balance</span>
                           </div>
                         </div>
                         <div id="number-piv">
@@ -685,8 +683,7 @@
     const domGuiStaking = document.getElementById('guiStaking');
     const domGuiWallet = document.getElementById('guiWallet');
     const domGuiBalance = document.getElementById("guiBalance");
-    const domGuiBalanceBox = document.getElementById("guiBalanceBox");
-    const domBalanceReload = document.getElementById("balanceReload");
+    const domGuiBalanceBox = document.getElementById("guiBalanceBox"); 
     const domBalanceReloadStaking = document.getElementById("balanceReloadStaking");
     const domGuiBalanceStaking = document.getElementById("guiBalanceStaking");
     const domGuiBalanceBoxStaking = document.getElementById("guiBalanceBoxStaking");
@@ -1524,8 +1521,7 @@ function swap(params) {
       if (!networkEnabled) return console.warn("Offline mode active: For your security, the wallet will avoid ALL internet requests.");
       if (!publicKeyForNetwork) return;
 
-      // Play reload anim
-    //  domBalanceReload.classList.add("playAnim");
+      // Play reload anim 
       domBalanceReloadStaking.classList.add("playAnim");
 
       // Fetch block count + UTXOs

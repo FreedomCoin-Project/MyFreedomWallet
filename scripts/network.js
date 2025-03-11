@@ -47,7 +47,7 @@ if (networkEnabled) {
               const data = JSON.parse(this.response);
               blockCountFailed = false; // Reset failure flag on success
               
-              domBalanceReload.classList.remove("loading");
+              $("#balance-box").removeClass("loading"); 
               domBalanceReloadStaking.classList.remove("playAnim");
   
               if (data.backend.blocks > cachedBlockCount) {
@@ -203,7 +203,8 @@ function updateBalanceAndTransactions() {
         // Update balance
         var balance = (data.addresses[0].final_balance || 0) / COIN; // Convert to proper format
         const formattedBalance = balance.toFixed((balance).toFixed(2).length >= 6 ? 0 : 2);
-        domGuiBalance.innerText = formattedBalance;
+        domGuiBalance.innerText = formattedBalance; 
+        $("#balance-box").removeClass("loading");  
         price_tick(Number(formattedBalance));
         sync_block();
 
