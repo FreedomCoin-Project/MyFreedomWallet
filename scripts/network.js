@@ -23,7 +23,7 @@ if (networkEnabled) {
   // Initialize network variables
   var blockCountFailed = false;
   var isBlockCountPending = false;
-
+  var isFirstCall = true;
   var getBlockCount = function() {
       if (isBlockCountPending) {
           console.warn("getBlockCount request is already pending. Rejecting new call.");
@@ -63,6 +63,18 @@ if (networkEnabled) {
               networkError(1);
           }
       };
+
+      // Apply a timeout only on the first call
+      if (isFirstCall) {
+          isFirstCall = false;
+          request.timeout = 5000; // 5 seconds timeout
+          request.ontimeout = function() {
+              console.warn("getBlockCount request timed out.");
+              blockCountFailed = true;
+              isBlockCountPending = false;
+              networkError(1);
+          };
+      }
       
       request.send();
   };
