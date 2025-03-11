@@ -766,6 +766,18 @@
       return nBalance;
     }
 
+    let price;
+    function price_update() {
+      $.getJSON("https://api.nonkyc.io/api/v2/ticker/Freed_usdt", data => price = Number(data.last_price).toFixed(5));
+    }
+    setInterval(price_update, 160000);
+    price_update();
+
+    function price_tick(amount) {
+      balusd = (Number(price) * amount).toFixed(3);
+      $("#bal-usd").html("$ " + balusd);
+    }
+
     function getStakingBalance(updateGUI = false) {
       const nBalance = arrDelegatedUTXOs.reduce((a, b) => a + b.sats, 0);
 

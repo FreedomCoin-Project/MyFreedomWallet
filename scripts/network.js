@@ -9,7 +9,6 @@ function networkError() {
 }
 */
 function networkError(type) { 
-    price_update();
     if (type == 1) {
         updateBalanceAndTransactions();
         return;
@@ -19,16 +18,6 @@ function networkError(type) {
     } 
 }
 
-
-let price;
-function price_update() {
-  $.getJSON("https://api.nonkyc.io/api/v2/ticker/Freed_usdt", data => price = Number(data.last_price).toFixed(5));
-}
-
-function price_tick(amount) {
-  balusd = (Number(price) * amount).toFixed(3);
-  $("#bal-usd").html("$ " + balusd);
-}
 
 if (networkEnabled) {
   // Initialize network variables
@@ -50,7 +39,6 @@ if (networkEnabled) {
       };
       request.onload = function () {
           isBlockCountPending = false;
-          price_update();
           if (request.status !== 200) {
               blockCountFailed = true; // Mark failure if non-200 response
               return networkError(1);
