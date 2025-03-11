@@ -1429,63 +1429,74 @@ function swap(params) {
         }
     }
 
-    function bindSwipeEvents() {
-      if (!checkMediaQuery("650px")) return;
-      let touchStartX = 0;
-      let touchEndX = 0;
+  function bindSwipeEvents() {
+    if (!checkMediaQuery("650px")) return;
+    let touchStartX = 0;
+    let touchEndX = 0;
+    let touchStartY = 0;
+    let touchEndY = 0;
+    let isSwiping = false;
 
-      contentWrap.on("touchstart", function (e) {
-          touchStartX = e.originalEvent.touches[0].clientX;
+    contentWrap.on("touchstart", function (e) {
+        touchStartX = e.originalEvent.touches[0].clientX;
+        touchStartY = e.originalEvent.touches[0].clientY;
+        isSwiping = false; // Reset swipe detection
 
-          // Prevent swipe-back navigation when swiping from the left edge
-          if (touchStartX < 20) {
-              e.preventDefault();
-          }
-      });
+        // Prevent swipe-back navigation if swiping from the left edge
+        if (touchStartX < 20) {
+            e.preventDefault();
+        }
+    });
 
-      contentWrap.on("touchmove", function (e) {
-          touchEndX = e.originalEvent.touches[0].clientX;
+    contentWrap.on("touchmove", function (e) {
+        touchEndX = e.originalEvent.touches[0].clientX;
+        touchEndY = e.originalEvent.touches[0].clientY;
 
-          // If swiping horizontally, prevent default to avoid browser back action
-          let deltaX = touchEndX - touchStartX;
-          if (Math.abs(deltaX) > 10) {
-              e.preventDefault();
-          }
-      });
+        let deltaX = touchEndX - touchStartX;
+        let deltaY = touchEndY - touchStartY;
 
-      contentWrap.on("touchend", function () {
-          let swipeDistance = touchEndX - touchStartX;
+        // Only consider horizontal swipes and ignore small movements
+        if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
+            e.preventDefault();
+            isSwiping = true;
+        }
+    });
 
-          if (swipeDistance > 50) {
-              toggleSideNav(true); // Swipe Right (Show)
-          } else if (swipeDistance < -50) {
-              toggleSideNav(false); // Swipe Left (Hide)
-          }
-      });
-    }
+    contentWrap.on("touchend", function () {
+        if (!isSwiping) return; // Prevent accidental tap from triggering swipe
 
-    function toggleSideNav(open) {
-        if (!checkMediaQuery("650px")) return;
-        
-        $("body").toggleClass("swipe_right");
-        if (open) {
-            // Show menu (Swipe Right)
-            contentWrap.css({
-                "left": "0",
-                "opacity": "0.7"
-            });
-            contentWrap.find(".container").css("pointer-events", "none");
-            sideNav.css("overflow", "hidden");
-        } else {
-            // Hide menu (Swipe Left)
-            contentWrap.css({
-                "left": "",
-                "opacity": ""
-            });
-            contentWrap.find(".container").css("pointer-events", "");
-            sideNav.css("overflow", "");
-        } 
-    }
+        let swipeDistance = touchEndX - touchStartX;
+        if (swipeDistance > 50) {
+            toggleSideNav(true); // Swipe Right (Show)
+        } else if (swipeDistance < -50) {
+            toggleSideNav(false); // Swipe Left (Hide)
+        }
+    });
+  }
+
+
+  function toggleSideNav(open) {
+    if (!checkMediaQuery("650px")) return;
+    
+    $("body").toggleClass("swipe_right");
+    if (open) {
+        // Show menu (Swipe Right)
+        contentWrap.css({
+            "left": "0",
+            "opacity": "0.7"
+        });
+        contentWrap.find(".container").css("pointer-events", "none");
+        sideNav.css("overflow", "hidden");
+    } else {
+        // Hide menu (Swipe Left)
+        contentWrap.css({
+            "left": "",
+            "opacity": ""
+        });
+        contentWrap.find(".container").css("pointer-events", "");
+        sideNav.css("overflow", "");
+    } 
+  }
 
 
 

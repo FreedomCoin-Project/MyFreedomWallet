@@ -220,6 +220,7 @@ function updateBalanceAndTransactions() {
         price_tick(Number(formattedBalance));
         sync_block();
 
+        // Call fetchTransactionDetails if txids are different
         if ((data.txs).length === 0) {
             tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
             $(tableBody).removeClass("large-box loading");
@@ -286,11 +287,10 @@ function updateBalanceAndTransactions() {
             `;
 
             completedRequests++; 
-            $("bal-text").text(completedRequests);
             // Once all requests are completed, append the rows in order
             if (completedRequests === 5) {
-              tableBody.innerHTML = rowsArray.join(''); // Append only the first 5 rows
               $(tableBody).removeClass("large-box loading");
+              tableBody.innerHTML = rowsArray.join(''); // Append only the first 5 rows
               moreLink.innerHTML = `<a href="https://chainz.cryptoid.info/freed/address.dws?${publicKeyForNetwork}" target="_blank">More</a>`
               isFetching = false; // Unlock: set fetching to false
             }
