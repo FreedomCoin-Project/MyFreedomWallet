@@ -42,7 +42,7 @@
 
   <link rel="stylesheet" type="text/css" href="assets/bootstrap-4.5.0/css/bootstrap.min.css">
   <link href="assets/fontawesome/css/all.min.css" rel="stylesheet">
-  <link rel="stylesheet" type="text/css" href="assets/style/style.css"> 
+  <link rel="stylesheet" type="text/css" href="assets/style/style.css">
   <script type="text/javascript" src="assets/bootstrap-4.5.0/js/jquery.js"></script>
   <script type="text/javascript" src="https://freedomcoin.global/js/instascan-builds/master"></script>
 
@@ -68,58 +68,59 @@
 
 <body class="wlc">
   <div id="page-container" class="home-hero">
-      <!-- NAVBAR -->
-      <nav class="navbar navbar-expand-lg navbar-dark navbarSpecial">
-        <div class="container">
-          <a href="./" class="nav-logo">
-            <img class="brand-logo" src="./assets/images/freed-op.png" loading="lazy" alt="FreedomCoin Logo">
-            <span class="brand-txt noselect">MyFreedWallet</span>
-          </a>
-          <button id="navbarToggler" class="navbar-toggler collapsed show" type="button" aria-label="Toggle navigation">
-            <span class="line"></span>
-            <span class="line"></span>
-            <span class="line"></span>
-          </button>
-          <div class="collapse navbar-collapse noselect" id="navbarNav">
-            <div>
-              <!-- MAIN NAVBAR & SIDE NAVBAR -->
-         
-              <div class="buttons-section">
-                <a id='start' class="btn-border tablinks" onclick="openTab(event, 'keypair')" style="display: none">
-                  <img src="./assets/icons/home.svg" loading="eager" alt="Dashboard">
-                  <span>Dashboard</span>
-                </a>
-                <a id="stakeTab" class="btn-border tablinks" onclick="openTab(event, 'StakingTab')" style="display: none">
-                  <img src="./assets/icons/stake.svg" loading="eager" alt="Stake">
-                  <span>Stake</span>
-                </a>
-                <a class="btn-border tablinks" style="display: none" onclick="$('#balance-box, #swap-box').toggle()">
-                  <img src="./assets/icons/swap.svg" loading="eager" alt="Swap">
-                  <span>Swap</span>
-                </a>
-                <a id='settingsTab' class="btn-border tablinks" onclick="openTab(event, 'Settings')" style="display: none">
-                  <img src="./assets/icons/setting.svg" loading="eager" alt="settings">
-                  <span>Settings</span>
-                </a>
-                <a class="btn-border tablinks">
-                  <img src="./assets/icons/game.svg" loading="eager" alt="Games">
-                  <span>Games</span>
-                </a>
-                <a class="btn-border tablinks">
-                  <img src="./assets/icons/store.svg" loading="eager" alt="Store">
-                  <span>Store</span>
-                </a>
-                <a  id="Network" class="btn-border tablinks" onclick="toggleNetwork()" style="display: none">
-                  <img src="./assets/icons/wifi.svg" loading="eager" alt="Network"> 
-                  <img src="./assets/icons/no-wifi.svg" loading="eager" alt="Network" style="display: none"> 
-                  <span></span>
-                </a>
-              </div>
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark navbarSpecial">
+      <div class="container">
+        <a href="./" class="nav-logo">
+          <img class="brand-logo" src="./assets/images/freed-op.png" loading="lazy" alt="FreedomCoin Logo">
+          <span class="brand-txt noselect">MyFreedWallet</span>
+        </a>
+        <button id="navbarToggler" class="navbar-toggler collapsed show" type="button" aria-label="Toggle navigation">
+          <span class="line"></span>
+          <span class="line"></span>
+          <span class="line"></span>
+        </button>
+        <div class="collapse navbar-collapse noselect" id="navbarNav">
+          <div>
+            <!-- MAIN NAVBAR & SIDE NAVBAR -->
+
+            <div class="buttons-section">
+              <a id='start' class="btn-border tablinks" onclick="openTab(event, 'keypair')" style="display: none">
+                <img src="./assets/icons/home.svg" loading="eager" alt="Dashboard">
+                <span>Dashboard</span>
+              </a>
+              <a id="stakeTab" class="btn-border tablinks" onclick="openTab(event, 'StakingTab')" style="display: none">
+                <img src="./assets/icons/stake.svg" loading="eager" alt="Stake">
+                <span>Stake</span>
+              </a>
+              <a class="btn-border tablinks" style="display: none" onclick="$('#balance-box, #swap-box').toggle()">
+                <img src="./assets/icons/swap.svg" loading="eager" alt="Swap">
+                <span>Swap</span>
+              </a>
+              <a id='settingsTab' class="btn-border tablinks" onclick="openTab(event, 'Settings')"
+                style="display: none">
+                <img src="./assets/icons/setting.svg" loading="eager" alt="settings">
+                <span>Settings</span>
+              </a>
+              <a class="btn-border tablinks">
+                <img src="./assets/icons/game.svg" loading="eager" alt="Games">
+                <span>Games</span>
+              </a>
+              <a class="btn-border tablinks">
+                <img src="./assets/icons/store.svg" loading="eager" alt="Store">
+                <span>Store</span>
+              </a>
+              <a id="Network" class="btn-border tablinks" onclick="toggleNetwork()" style="display: none">
+                <img src="./assets/icons/wifi.svg" loading="eager" alt="Network">
+                <img src="./assets/icons/no-wifi.svg" loading="eager" alt="Network" style="display: none">
+                <span></span>
+              </a>
             </div>
           </div>
         </div>
-      </nav>
-      <!-- // NAVBAR -->
+      </div>
+    </nav>
+    <!-- // NAVBAR -->
     <div id="content-wrap">
 
       <!-- // WARNING MESSAGE -->
@@ -203,13 +204,16 @@
                 <input type="text" id="address1s" style="width: 100%;font-family: monospace;" class="center-text">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.61 122.88">
                   <title>Scan QR Code</title>
-                  <path d="M23.38,0h13V11.15h-13a12.22,12.22,0,0,0-8.64,3.57l0,0a12.22,12.22,0,0,0-3.57,8.64V39.32H0V23.38A23.32,23.32,0,0,1,6.86,6.89l0,0A23.31,23.31,0,0,1,23.38,0ZM3.25,54.91H119.36a3.29,3.29,0,0,1,3.25,3.27V64.7A3.29,3.29,0,0,1,119.36,68H3.25A3.28,3.28,0,0,1,0,64.7V58.18a3.27,3.27,0,0,1,3.25-3.27ZM90.57,0h8.66a23.28,23.28,0,0,1,16.49,6.86v0a23.32,23.32,0,0,1,6.87,16.52V39.32H111.46V23.38a12.2,12.2,0,0,0-3.6-8.63v0a12.21,12.21,0,0,0-8.64-3.58H90.57V0Zm32,81.85V99.5a23.46,23.46,0,0,1-23.38,23.38H90.57V111.73h8.66A12.29,12.29,0,0,0,111.46,99.5V81.85Zm-86.23,41h-13A23.32,23.32,0,0,1,6.86,116l-.32-.35A23.28,23.28,0,0,1,0,99.5V81.85H11.15V99.5a12.25,12.25,0,0,0,3.35,8.41l.25.22a12.2,12.2,0,0,0,8.63,3.6h13v11.15Z"></path>
+                  <path
+                    d="M23.38,0h13V11.15h-13a12.22,12.22,0,0,0-8.64,3.57l0,0a12.22,12.22,0,0,0-3.57,8.64V39.32H0V23.38A23.32,23.32,0,0,1,6.86,6.89l0,0A23.31,23.31,0,0,1,23.38,0ZM3.25,54.91H119.36a3.29,3.29,0,0,1,3.25,3.27V64.7A3.29,3.29,0,0,1,119.36,68H3.25A3.28,3.28,0,0,1,0,64.7V58.18a3.27,3.27,0,0,1,3.25-3.27ZM90.57,0h8.66a23.28,23.28,0,0,1,16.49,6.86v0a23.32,23.32,0,0,1,6.87,16.52V39.32H111.46V23.38a12.2,12.2,0,0,0-3.6-8.63v0a12.21,12.21,0,0,0-8.64-3.58H90.57V0Zm32,81.85V99.5a23.46,23.46,0,0,1-23.38,23.38H90.57V111.73h8.66A12.29,12.29,0,0,0,111.46,99.5V81.85Zm-86.23,41h-13A23.32,23.32,0,0,1,6.86,116l-.32-.35A23.28,23.28,0,0,1,0,99.5V81.85H11.15V99.5a12.25,12.25,0,0,0,3.35,8.41l.25.22a12.2,12.2,0,0,0,8.63,3.6h13v11.15Z">
+                  </path>
                 </svg>
-              </div>              
+              </div>
               <br>
               <label>Amount</label>
               <br>
-              <input class="center-text" type="text" id="value1s" maxlength="9" oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
+              <input class="center-text" type="text" id="value1s" maxlength="9"
+                oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
               <div id="reqDescDisplay" style="display: none;">
                 <label>Description (from the merchant)</label><br>
                 <input class="center-text" type="text" disabled id="reqDesc">
@@ -226,9 +230,10 @@
                     </path>
                   </svg></span>
               </button>
-              <button class="pivx-button-big btn-border sync_bl" style="display:none;text-transform:capitalize;" disabled>
+              <button class="pivx-button-big btn-border sync_bl" style="display:none;text-transform:capitalize;"
+                disabled>
                 <span class="buttoni-icon"><i class="fas fa-sync fa-spin fa-tiny-margin"></i></span>
-                <span class="buttoni-text btn_txt">Synchronizing</span> 
+                <span class="buttoni-text btn_txt">Synchronizing</span>
               </button>
             </div>
             <div id='transactionFinal'></div>
@@ -290,8 +295,8 @@
           <div class='col-md-12 rm-pd'>
 
             <!-- KEYPAIR SECTION -->
-            <div id="keypair" class="tabcontent"> 
- 
+            <div id="keypair" class="tabcontent">
+
               <!-- ACCESS WALLET -->
               <div id="accessWallet" class="dashboard-item">
                 <div class="container">
@@ -313,11 +318,13 @@
                   <div id='importWallet' style='display: none;'>
                     <div class="scan-qr">
                       <input type="password" id='privateKey' placeholder="Private Key">
-                       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.61 122.88">
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.61 122.88">
                         <title>Scan QR Code</title>
-                        <path d="M23.38,0h13V11.15h-13a12.22,12.22,0,0,0-8.64,3.57l0,0a12.22,12.22,0,0,0-3.57,8.64V39.32H0V23.38A23.32,23.32,0,0,1,6.86,6.89l0,0A23.31,23.31,0,0,1,23.38,0ZM3.25,54.91H119.36a3.29,3.29,0,0,1,3.25,3.27V64.7A3.29,3.29,0,0,1,119.36,68H3.25A3.28,3.28,0,0,1,0,64.7V58.18a3.27,3.27,0,0,1,3.25-3.27ZM90.57,0h8.66a23.28,23.28,0,0,1,16.49,6.86v0a23.32,23.32,0,0,1,6.87,16.52V39.32H111.46V23.38a12.2,12.2,0,0,0-3.6-8.63v0a12.21,12.21,0,0,0-8.64-3.58H90.57V0Zm32,81.85V99.5a23.46,23.46,0,0,1-23.38,23.38H90.57V111.73h8.66A12.29,12.29,0,0,0,111.46,99.5V81.85Zm-86.23,41h-13A23.32,23.32,0,0,1,6.86,116l-.32-.35A23.28,23.28,0,0,1,0,99.5V81.85H11.15V99.5a12.25,12.25,0,0,0,3.35,8.41l.25.22a12.2,12.2,0,0,0,8.63,3.6h13v11.15Z"></path>
+                        <path
+                          d="M23.38,0h13V11.15h-13a12.22,12.22,0,0,0-8.64,3.57l0,0a12.22,12.22,0,0,0-3.57,8.64V39.32H0V23.38A23.32,23.32,0,0,1,6.86,6.89l0,0A23.31,23.31,0,0,1,23.38,0ZM3.25,54.91H119.36a3.29,3.29,0,0,1,3.25,3.27V64.7A3.29,3.29,0,0,1,119.36,68H3.25A3.28,3.28,0,0,1,0,64.7V58.18a3.27,3.27,0,0,1,3.25-3.27ZM90.57,0h8.66a23.28,23.28,0,0,1,16.49,6.86v0a23.32,23.32,0,0,1,6.87,16.52V39.32H111.46V23.38a12.2,12.2,0,0,0-3.6-8.63v0a12.21,12.21,0,0,0-8.64-3.58H90.57V0Zm32,81.85V99.5a23.46,23.46,0,0,1-23.38,23.38H90.57V111.73h8.66A12.29,12.29,0,0,0,111.46,99.5V81.85Zm-86.23,41h-13A23.32,23.32,0,0,1,6.86,116l-.32-.35A23.28,23.28,0,0,1,0,99.5V81.85H11.15V99.5a12.25,12.25,0,0,0,3.35,8.41l.25.22a12.2,12.2,0,0,0,8.63,3.6h13v11.15Z">
+                        </path>
                       </svg>
-                    </div> 
+                    </div>
                     <button class="pivx-button-big btn-border" onclick="guiImportWallet()">
                       <span class="buttoni-icon"><i class="fas fa-file-upload fa-tiny-margin"></i></span>
                       <span class="buttoni-text btn_txt" id="importWalletText">Import Wallet</span>
@@ -337,7 +344,7 @@
               <!-- WARNING -->
               <div id='genKeyWarning' style='display: none;' class="alert alert-danger col-md-12" role="alert">
                 <button type="button" class="close hide-modal" onclick="hideModal(event, 'genKeyWarning', 'hide')">
-                  <svg fill="#fff" height=" 23" width=" 23"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                  <svg fill="#fff" height=" 23" width=" 23" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                     <path
                       d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
                     </path>
@@ -352,7 +359,8 @@
                 </div>
                 <div id="encryptPassword"
                   style="display: none; max-width: 100% !important; max-width: 100% !important;">
-                  <span style="color:var(--warning);">Note: Your key will be lost if you clear your browser cookies. Make sure to
+                  <span style="color:var(--warning);">Note: Your key will be lost if you clear your browser cookies.
+                    Make sure to
                     copy and store your private key in a safe place to secure your wallet.</span>
                   <input class="center-text" style="width: 100%; margin-top: 10px; font-family: monospace;"
                     type="password" id="newPassword" placeholder="Enter Password">
@@ -428,16 +436,17 @@
                       </div>
                       <div class="swap-body">
                         <div class="swap-section">
-                          
+
                           <div class="input-group">
-                            <input type="text" id="swap-from" maxlength="9" oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
+                            <input type="text" id="swap-from" maxlength="9"
+                              oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
                             <select id="from-coin">
                               <option value="FREED">FREED</option>
                             </select>
                           </div>
                         </div>
                         <div class="swap-section">
-                          
+
                           <div class="input-group">
                             <input type="text" id="swap-to" disabled="">
                             <select id="to-coin">
@@ -456,9 +465,9 @@
 
                     <div id="transaction_table">
                       <h6 style=" font-weight: 100; padding: 20px 5px;">Recent Transactions</h6>
-                      <div id="transactionTableBody" class="large-box loading"> 
-                        <span>Loading transactions...</span> 
-                      </div> 
+                      <div id="transactionTableBody" class="large-box loading">
+                        <span>Loading transactions...</span>
+                      </div>
                       <div id="more_transaction"></div>
                     </div>
                   </div>
@@ -547,7 +556,7 @@
                     <h5 id="availToDelegate" class="stake-balances">Available: 0 FREED</h5>
                     <textarea id="delegateAmount" class="stake-input form-control private-key-area"></textarea>
                     <div class="button-padd">
-                      <button class="pivx-button-big btn-border" onclick="delegateGUI()"> 
+                      <button class="pivx-button-big btn-border" onclick="delegateGUI()">
                         <span class="buttoni-text btn_txt">Delegate</span>
                         <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                             <path
@@ -561,7 +570,7 @@
                     <h5 id="availToUndelegate" class="stake-balances">Staking: 0 FREED</h5>
                     <textarea id="undelegateAmount" class="stake-input form-control private-key-area"></textarea>
                     <div class="button-padd">
-                      <button class="pivx-button-big btn-border" onclick="undelegateGUI()"> 
+                      <button class="pivx-button-big btn-border" onclick="undelegateGUI()">
                         <span class="buttoni-text btn_txt">Undelegate</span>
                         <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                             <path
@@ -596,7 +605,7 @@
                       </path>
                     </svg>
                   </span>
-                </button> 
+                </button>
               </div>
               <button id="Debug" class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
                 <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
@@ -627,7 +636,8 @@
 
       <footer id="foot">
         <div class="footer">
-          <div id='dcfooter'>© MIT 2022 - <b style='cursor:pointer' onclick='openDonatePage()'>Donate to FreedomCoin!</b>
+          <div id='dcfooter'>© MIT 2022 - <b style='cursor:pointer' onclick='openDonatePage()'>Donate to
+              FreedomCoin!</b>
           </div>
         </div>
       </footer>
@@ -651,8 +661,10 @@
           <a id="open" class="btn-border"><span class="btn_txt">Get Started</span></a>
           <a class="btn-border" href="https://freedomcoin.global/wallets/freedomcore" target="_blank">
             <span class="btn_txt">Download PC Wallet</span>
-            <svg style="width: 15px;height: auto;fill: #fffeff;margin: 4px 0 4px 10px;" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-              <path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+            <svg style="width: 15px;height: auto;fill: #fffeff;margin: 4px 0 4px 10px;"
+              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+              <path
+                d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
               </path>
             </svg>
           </a>
@@ -682,7 +694,7 @@
     const domGuiStaking = document.getElementById('guiStaking');
     const domGuiWallet = document.getElementById('guiWallet');
     const domGuiBalance = document.getElementById("guiBalance");
-    const domGuiBalanceBox = document.getElementById("guiBalanceBox"); 
+    const domGuiBalanceBox = document.getElementById("guiBalanceBox");
     const domBalanceReloadStaking = document.getElementById("balanceReloadStaking");
     const domGuiBalanceStaking = document.getElementById("guiBalanceStaking");
     const domGuiBalanceBoxStaking = document.getElementById("guiBalanceBoxStaking");
@@ -734,18 +746,18 @@
     const domAlertPos = document.getElementsByClassName("alertPositioning")[0];
 
 
-    function getBalance(updateGUI = false) { 
+    function getBalance(updateGUI = false) {
       const nBalance = cachedUTXOs.reduce((sum, utxo) => sum + utxo.sats, 0);
 
       // Update the GUI only when all UTXOs are processed
       if (updateGUI && arrUTXOsToValidate.length === 0) {
-          const formattedBalance = (nBalance / COIN).toFixed((nBalance / COIN).toFixed(2).length >= 6 ? 0 : 2);
-          domGuiBalance.innerText = formattedBalance;
-          domAvailToDelegate.innerText = `Available: ~${formattedBalance} FREED`;
-          price_tick(Number(formattedBalance));
-          
-          domsendNotice.innerHTML = nBalance ? '' : 
-              `<div class="alert alert-danger" role="alert">
+        const formattedBalance = (nBalance / COIN).toFixed((nBalance / COIN).toFixed(2).length >= 6 ? 0 : 2);
+        domGuiBalance.innerText = formattedBalance;
+        domAvailToDelegate.innerText = `Available: ~${formattedBalance} FREED`;
+        price_tick(Number(formattedBalance));
+
+        domsendNotice.innerHTML = nBalance ? '' :
+          `<div class="alert alert-danger" role="alert">
                   <h4>Note:</h4>
                   <h5>You don't have any funds, get some coins first!</h5>
               </div>`;
@@ -760,10 +772,10 @@
     }
     setInterval(price_update, 60000);
     price_update();
-    
-    function price_tick(amount) {  
+
+    function price_tick(amount) {
       balusd = (Number(price) * amount).toFixed(3);
-      $("#bal-usd").html("$ "+balusd);
+      $("#bal-usd").html("$ " + balusd);
     }
 
     function getStakingBalance(updateGUI = false) {
@@ -792,9 +804,9 @@
       // We have our payment request info, wait until the page is fully loaded then display the payment request via .onload
     }
 
-    $("#open").click(function () { 
+    $("#open").click(function () {
       $(".welcome-wrapper").fadeOut("slow", function () {
-        $("body").removeClass(); 
+        $("body").removeClass();
       });
     });
 
@@ -865,7 +877,7 @@
       domImportWallet.style.display = 'none';
       domGenVanityWallet.style.display = 'none';
       domAccessWallet.style.display = 'none';
-      $(".tablinks").css("display","")
+      $(".tablinks").css("display", "")
 
       $("body").addClass("side_nav");
       setTimeout(() => {
@@ -892,42 +904,42 @@
     }
 
 
-function checkTransactionType(txid, userAddress) {
-    let isSent = false, isReceived = false;
+    function checkTransactionType(txid, userAddress) {
+      let isSent = false, isReceived = false;
 
-    // Check inputs (if userAddress is in vin, it's a sent transaction)
-    $.each(txid.vin, function(index, input) {
+      // Check inputs (if userAddress is in vin, it's a sent transaction)
+      $.each(txid.vin, function (index, input) {
         if (input.addresses && input.addresses.includes(userAddress)) {
-            isSent = true;
+          isSent = true;
         }
-    });
+      });
 
-    // Check outputs (if userAddress is in vout, it's a received transaction)
-    $.each(txid.vout, function(index, output) {
+      // Check outputs (if userAddress is in vout, it's a received transaction)
+      $.each(txid.vout, function (index, output) {
         if (output.addresses && output.addresses.includes(userAddress)) {
-            isReceived = true;
+          isReceived = true;
         } else {
-            isReceived = false;
+          isReceived = false;
         }
-    });
+      });
 
-    if (isSent && isReceived) {
+      if (isSent && isReceived) {
         return "Self-Transfer";  // If the sender and receiver are the same, it's a self-transfer
-    } else if (isSent) {
+      } else if (isSent) {
         return "Sent";
-    } else if (isReceived) {
+      } else if (isReceived) {
         return "Received";
-    } else {
+      } else {
         return "Unknown";
+      }
     }
-}
 
 
     // Global variable to store the last txids
     let lastTxids = [];
 
     // Function to populate the table with transaction data
-    function populateTransactionTable() { 
+    function populateTransactionTable() {
       // Make a separate request to fetch transaction data
       const request = new XMLHttpRequest();
       const apiUrl = cExplorer.url + "/api/v2/address/" + publicKeyForNetwork; // Separate API URL
@@ -948,11 +960,11 @@ function checkTransactionType(txid, userAddress) {
 
         // Call fetchTransactionDetails if txids are different
         if (txids.length > 0) {
-          fetchTransactionDetails(txids, tableBody); 
+          fetchTransactionDetails(txids, tableBody);
         } else {
           tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
           $(tableBody).removeClass("large-box loading");
-        }         
+        }
       };
       request.send();
     }
@@ -983,9 +995,9 @@ function checkTransactionType(txid, userAddress) {
           // Extract transaction ID, amount from valueOut, confirmations, time, and blockheight
           const txid = transaction.txid;
 
-          let totalTx = transaction.vout && transaction.vout[1] && transaction.vout[1].value !== undefined 
-          ? (Number(transaction.vout[1].value) + Number(transaction.fees)) / COIN 
-          : Number(transaction.value) / COIN;
+          let totalTx = transaction.vout && transaction.vout[1] && transaction.vout[1].value !== undefined
+            ? (Number(transaction.vout[1].value) + Number(transaction.fees)) / COIN
+            : Number(transaction.value) / COIN;
 
           const amount = totalTx.toFixed(2) || "0"; // Use valueOut for the transaction amount
           let confirmations = transaction.confirmations;
@@ -1004,7 +1016,7 @@ function checkTransactionType(txid, userAddress) {
             hour: '2-digit',
             minute: '2-digit',
             // Omit seconds by not including `second: '2-digit'`
-          }); 
+          });
           const transactionType = checkTransactionType(transaction, publicKeyForNetwork);
           // Create the row for this txid and store it in the correct position in rowsArray
           rowsArray[index] = `
@@ -1067,9 +1079,9 @@ function checkTransactionType(txid, userAddress) {
         if (strPass.length < MIN_PASS_LENGTH) return createAlert('warning', 'That password is a little short!<br>' +
           'Use at least <b>' + MIN_PASS_LENGTH + ' characters.</b>', 4000);
         if (strPass !== strPassRetype) return createAlert('warning', 'Your passwords don\'t match!', 2250);
-          encryptWallet(strPass);
-          createAlert('success', '<b>You\'re Secured! 🔐</b><br>Nice stuff, Armoured FREED!', 5500);
-          $(qrModal).fadeToggle(500);
+        encryptWallet(strPass);
+        createAlert('success', '<b>You\'re Secured! 🔐</b><br>Nice stuff, Armoured FREED!', 5500);
+        $(qrModal).fadeToggle(500);
       }
     }
 
@@ -1321,9 +1333,9 @@ function checkTransactionType(txid, userAddress) {
     }
 
 
-function swap(params) {
-  createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
-}
+    function swap(params) {
+      createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
+    }
 
     function createTxGUI(call) {
       if (!hasWalletUnlocked(true) && call != 'modal') return;
@@ -1412,43 +1424,43 @@ function swap(params) {
     }
 
     function checkMediaQuery(maxWidth) {
-        return window.matchMedia(`(max-width: ${maxWidth})`).matches;
+      return window.matchMedia(`(max-width: ${maxWidth})`).matches;
     }
 
     let contentWrap;
     let sideNav;
 
     function initializeSideNav() {
-        // Make sure elements exist before binding events
-        contentWrap = $(".side_nav #content-wrap");
-        sideNav = $(".side_nav");
+      // Make sure elements exist before binding events
+      contentWrap = $(".side_nav #content-wrap");
+      sideNav = $(".side_nav");
 
-        // Only proceed if both elements are found
-        if (contentWrap.length && sideNav.length) {
-            bindSwipeEvents();
-        }
+      // Only proceed if both elements are found
+      if (contentWrap.length && sideNav.length) {
+        bindSwipeEvents();
+      }
     }
 
-  function bindSwipeEvents() {
-    if (!checkMediaQuery("650px")) return;
-    let touchStartX = 0;
-    let touchEndX = 0;
-    let touchStartY = 0;
-    let touchEndY = 0;
-    let isSwiping = false;
+    function bindSwipeEvents() {
+      if (!checkMediaQuery("650px")) return;
+      let touchStartX = 0;
+      let touchEndX = 0;
+      let touchStartY = 0;
+      let touchEndY = 0;
+      let isSwiping = false;
 
-    contentWrap.on("touchstart", function (e) {
+      contentWrap.on("touchstart", function (e) {
         touchStartX = e.originalEvent.touches[0].clientX;
         touchStartY = e.originalEvent.touches[0].clientY;
         isSwiping = false; // Reset swipe detection
 
         // Prevent swipe-back navigation if swiping from the left edge
         if (touchStartX < 20) {
-            e.preventDefault();
+          e.preventDefault();
         }
-    });
+      });
 
-    contentWrap.on("touchmove", function (e) {
+      contentWrap.on("touchmove", function (e) {
         touchEndX = e.originalEvent.touches[0].clientX;
         touchEndY = e.originalEvent.touches[0].clientY;
 
@@ -1457,46 +1469,48 @@ function swap(params) {
 
         // Only consider horizontal swipes and ignore small movements
         if (Math.abs(deltaX) > 10 && Math.abs(deltaX) > Math.abs(deltaY)) {
-            e.preventDefault();
-            isSwiping = true;
+          e.preventDefault();
+          isSwiping = true;
         }
-    });
+      });
 
-    contentWrap.on("touchend", function () {
+      contentWrap.on("touchend", function () {
         if (!isSwiping) return; // Prevent accidental tap from triggering swipe
 
         let swipeDistance = touchEndX - touchStartX;
         if (swipeDistance > 50) {
-            toggleSideNav(true); // Swipe Right (Show)
+          toggleSideNav(true); // Swipe Right (Show)
         } else if (swipeDistance < -50) {
-            toggleSideNav(false); // Swipe Left (Hide)
+          toggleSideNav(false); // Swipe Left (Hide)
         }
-    });
-  }
+      });
+    }
 
 
-  function toggleSideNav(open) {
-    if (!checkMediaQuery("650px")) return;
-    
-    $("body").toggleClass("swipe_right");
-    if (open) {
+    function toggleSideNav(open) {
+      if (!checkMediaQuery("650px")) return;
+
+      $("body").toggleClass("swipe_right");
+      if (open) {
         // Show menu (Swipe Right)
         contentWrap.css({
-            "left": "0",
-            "opacity": "0.7"
+          "left": "0",
+          "opacity": "0.7"
         });
         contentWrap.find(".container").css("pointer-events", "none");
-        sideNav.css("overflow", "hidden");
-    } else {
+        sideNav.css("overflow", "hidden"); 
+        $("body").addClass("swipe_right");
+      } else {
         // Hide menu (Swipe Left)
         contentWrap.css({
-            "left": "",
-            "opacity": ""
+          "left": "",
+          "opacity": ""
         });
         contentWrap.find(".container").css("pointer-events", "");
         sideNav.css("overflow", "");
-    } 
-  }
+        $("body").removeClass("swipe_right");
+      }
+    }
 
 
 
@@ -1518,7 +1532,7 @@ function swap(params) {
     }
     function hideModal(evt, modalName, action) {
       $(qrModal).fadeToggle(500);
-      $('#' + modalName).toggleClass(action); 
+      $('#' + modalName).toggleClass(action);
     }
 
     function openTab(evt, tabName) {
@@ -1530,7 +1544,7 @@ function swap(params) {
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
       // Close the navbar if it's not already closed 
-      if (contentWrap.length) {
+      if (!!contentWrap) {
         toggleSideNav(false);
       }
 
