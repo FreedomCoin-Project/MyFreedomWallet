@@ -328,9 +328,9 @@ function checkTxType(tx, allTxs) {
     let hashCount = allTxs.filter(transaction => transaction.hash === tx.hash).length;
 
   //  if (hashCount > 2) return "Multiple-Transfers"; // New case for more than two occurrences
-    if (isSent) return "Sent";
-    if (isReceived && tx.n == 1) return "Received";
     if (hashCount > 1 && tx.n == 1) return "Self-Transfer"; // Still a self-transfer if it appears twice
+    if (isSent) return "Sent";
+    if (isReceived && hashCount == 1) return "Received";
 
     return "Unknown";
 
