@@ -1438,10 +1438,21 @@ function swap(params) {
 
       contentWrap.on("touchstart", function (e) {
           touchStartX = e.originalEvent.touches[0].clientX;
+
+          // Prevent swipe-back navigation when swiping from the left edge
+          if (touchStartX < 20) {
+              e.preventDefault();
+          }
       });
 
       contentWrap.on("touchmove", function (e) {
           touchEndX = e.originalEvent.touches[0].clientX;
+
+          // If swiping horizontally, prevent default to avoid browser back action
+          let deltaX = touchEndX - touchStartX;
+          if (Math.abs(deltaX) > 10) {
+              e.preventDefault();
+          }
       });
 
       contentWrap.on("touchend", function () {
