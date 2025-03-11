@@ -286,6 +286,7 @@ function updateBalanceAndTransactions() {
             `;
 
             completedRequests++; 
+            $("bal-text").text(completedRequests);
             // Once all requests are completed, append the rows in order
             if (completedRequests === 5) {
               tableBody.innerHTML = rowsArray.join(''); // Append only the first 5 rows
