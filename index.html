@@ -395,7 +395,7 @@
                 <div id="bcg-wallet-box">
                   <div id="headline-balance">
                     <div id="balance-box" class="large-box loading">
-                      <div id="window-icon-piv">
+                      <div id="bal-wrapper">
                         <div id="piv-ring"></div>
                         <div id="bal-title">
                           <div class="noselect balance-title">
@@ -407,9 +407,7 @@
                           </p>
                         </div>
                         <span id="bal-usd"></span>
-                      </div>
-                      <div id="bal-wrapper">
-                        <div class="noselect balance-transaction">
+                        <div class="balance-transaction">
                           <div class="dep-text" onclick="openModal(event, 'address-box')">
                             <img src="./assets/images/icons/deposit.svg" alt="Deposit">
                             <span>Receive</span>
@@ -419,6 +417,9 @@
                             <span>Send</span>
                           </div>
                         </div>
+                      </div>
+                      <div id="coin-icon">
+                        <img src="./assets/images/freed.png" alt="FreedomCoin Logo">
                       </div>
                     </div>
                     <div id="swap-box" class="large-box">

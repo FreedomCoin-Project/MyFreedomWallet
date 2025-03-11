@@ -70,6 +70,10 @@ body {
     color: var(--color);
 }
 
+img {
+    width: 100%;
+}
+
 body.wlc {
     overflow: hidden;
 }
@@ -531,11 +535,9 @@ nav .btn-border:hover span, #Network.hover span {
 
 /* -- Headline dashboard -- */
 
-#window-icon-piv {
-    display: flex;
-    gap: 3px;
-    flex-direction: column;
-    align-items: flex-start;
+#coin-icon {
+    position: relative;
+    width: 100%;
 }
 
 #piv-ring {
@@ -582,14 +584,19 @@ nav .btn-border:hover span, #Network.hover span {
     justify-content: space-around;
 }
 
-#bal-wrapper {
-    font-size: 15px; 
+#bal-wrapper { 
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .balance-transaction {
     display: flex;
     gap: 20px;
+    margin-top: 10px;
 }
+
 .balance-transaction > div {
     cursor: pointer;
 }
@@ -1795,6 +1802,16 @@ a {
     #swap-box {
         display: none; 
     }
+    #headline-balance {
+        margin: 0 auto;
+    }
+    #headline-balance::before {
+        content: 'FreedomCoin';
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 800; 
+        color: var(--border-color);
+    }
 }
 
 @media screen and (max-width: 770px) {
@@ -1943,6 +1960,26 @@ a {
         left: 0;
         z-index: 0;
     } 
+    #headline-balance::before { 
+        text-align: center; 
+    }
+    .balance-transaction {
+        position: absolute;
+        width: 110%;
+        left: -5%;
+        top: 33%;
+        margin: 0;
+        justify-content: space-between;
+    }
+    .balance-transaction > div {
+        padding: 5px;
+        border: 1px solid var(--border-color);
+        border-radius: 100px;
+        backdrop-filter: blur(10px);
+    }
+    .dep-text img, .send-text img {
+        margin-right: 0;
+    }
 }
 
 /* Note: The rest of the media queries follow the same pattern, adding prefixes where necessary for transitions and transforms. */
