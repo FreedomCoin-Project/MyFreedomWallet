@@ -457,7 +457,7 @@
                     <div id="transaction_table">
                       <h6 style=" font-weight: 100; padding: 20px 5px;">Recent Transactions</h6>
                       <div id="transactionTableBody" class="large-box loading"> 
-                        <span>loading transactions!</span> 
+                        <span>Loading transactions...</span> 
                       </div> 
                       <div id="more_transaction"></div>
                     </div>
@@ -951,7 +951,7 @@ function checkTransactionType(txid, userAddress) {
           fetchTransactionDetails(txids, tableBody);
         } else {
           tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
-          $(tableBody).removeClass("loading");
+          $(tableBody).removeClass("large-box loading");
         }
       };
       request.send();

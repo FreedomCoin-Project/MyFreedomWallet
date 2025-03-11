@@ -223,7 +223,7 @@ function updateBalanceAndTransactions() {
         // Call fetchTransactionDetails if txids are different
         if ((data.txs).length === 0) {
             tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
-            $(tableBody).removeClass("loading");
+            $(tableBody).removeClass("large-box loading");
             return;
         }
 
