@@ -1530,7 +1530,9 @@ function swap(params) {
       document.getElementById(tabName).style.display = "block";
       evt.currentTarget.classList.add("active");
       // Close the navbar if it's not already closed 
-      toggleSideNav(false);
+      if (contentWrap.length) {
+        toggleSideNav(false);
+      }
 
       if (!domNavbarToggler.className.includes("collapsed"))
         toggleNavigation();
