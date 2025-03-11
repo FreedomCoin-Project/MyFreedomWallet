@@ -67,7 +67,7 @@ if (networkEnabled) {
       // Apply a timeout only on the first call
       if (isFirstCall) {
           isFirstCall = false;
-          request.timeout = 5000; // 5 seconds timeout
+          request.timeout = 10000; // 10 seconds timeout
           request.ontimeout = function() {
               console.warn("getBlockCount request timed out.");
               blockCountFailed = true;
