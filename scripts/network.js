@@ -47,7 +47,7 @@ if (networkEnabled) {
               const data = JSON.parse(this.response);
               blockCountFailed = false; // Reset failure flag on success
               
-              domBalanceReload.classList.remove("playAnim");
+              domBalanceReload.classList.remove("loading");
               domBalanceReloadStaking.classList.remove("playAnim");
   
               if (data.backend.blocks > cachedBlockCount) {

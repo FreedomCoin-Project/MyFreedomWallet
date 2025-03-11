@@ -394,7 +394,7 @@
               <div id="guiWallet" style="display: none;">
                 <div id="bcg-wallet-box">
                   <div id="headline-balance">
-                    <div id="balance-box" class="large-box">
+                    <div id="balance-box" class="large-box loading">
                       <div id="window-icon-piv">
                         <div id="piv-ring"></div>
                         <div id="bal-title">
@@ -1523,7 +1523,7 @@ function swap(params) {
       if (!publicKeyForNetwork) return;
 
       // Play reload anim
-      domBalanceReload.classList.add("playAnim");
+    //  domBalanceReload.classList.add("playAnim");
       domBalanceReloadStaking.classList.add("playAnim");
 
       // Fetch block count + UTXOs

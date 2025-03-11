@@ -44,6 +44,26 @@ button {
     --ripple: #d3b749;
     --top-shadow: #d3b749;
 }
+.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-73deg, rgba(255, 255, 255, 0.0) 25%, rgb(213 213 214 / 10%) 50%, rgba(255, 255, 255, 0.0) 75%);
+    background-size: 200% 100%;
+    animation: loading 5s linear infinite;  
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
 
 body {
     background-color: var(--bg-color1);
@@ -554,6 +574,7 @@ nav .btn-border:hover span, #Network.hover span {
     justify-content: space-between;
 }
 #balance-box {
+    position: relative;
     display: flex;
     flex: 0 0 calc(60% - 10px);    
     padding: 20px;
