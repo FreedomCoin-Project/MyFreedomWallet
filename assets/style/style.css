@@ -1103,6 +1103,7 @@ nav .btn-border:hover span, #Network.hover span {
 .navbarSpecial {
     width: 100%;
     padding: 20px 48px;
+    z-index: 1;
 }
 .side_nav .navbarSpecial { 
     position: sticky;
