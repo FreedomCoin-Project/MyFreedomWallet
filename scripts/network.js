@@ -289,6 +289,7 @@ function updateBalanceAndTransactions() {
             completedRequests++; 
             // Once all requests are completed, append the rows in order
             if (completedRequests === 5) {
+              $(tableBody).removeClass("large-box loading");
               tableBody.innerHTML = rowsArray.join(''); // Append only the first 5 rows
               moreLink.innerHTML = `<a href="https://chainz.cryptoid.info/freed/address.dws?${publicKeyForNetwork}" target="_blank">More</a>`
               isFetching = false; // Unlock: set fetching to false

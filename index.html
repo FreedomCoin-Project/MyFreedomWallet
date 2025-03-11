@@ -948,11 +948,11 @@ function checkTransactionType(txid, userAddress) {
 
         // Call fetchTransactionDetails if txids are different
         if (txids.length > 0) {
-          fetchTransactionDetails(txids, tableBody);
+          fetchTransactionDetails(txids, tableBody); 
         } else {
-          tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
-          $(tableBody).removeClass("large-box loading");
-        }
+          tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>'; 
+        }         
+        $(tableBody).removeClass("large-box loading");
       };
       request.send();
     }
