@@ -950,9 +950,9 @@ function checkTransactionType(txid, userAddress) {
         if (txids.length > 0) {
           fetchTransactionDetails(txids, tableBody); 
         } else {
-          tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>'; 
+          tableBody.innerHTML = '<tr><td colspan="3">No transactions</td></tr>';
+          $(tableBody).removeClass("large-box loading");
         }         
-        $(tableBody).removeClass("large-box loading");
       };
       request.send();
     }
@@ -1027,7 +1027,8 @@ function checkTransactionType(txid, userAddress) {
 
           // Once all requests are completed, append the rows in order
           if (completedRequests === txids.length) {
-            tableBody.innerHTML = rowsArray.join(''); // Append all rows at once
+            tableBody.innerHTML = rowsArray.join(''); // Append all rows at once 
+            $(tableBody).removeClass("large-box loading");
             moreLink.innerHTML = `<a href="${cExplorer.url}/address/${publicKeyForNetwork}" target="_blank">More</a>`
             isFetching = false; // Unlock: set fetching to false
           }
