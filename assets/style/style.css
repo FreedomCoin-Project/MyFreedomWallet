@@ -727,10 +727,14 @@ nav .btn-border:hover span, #Network.hover span {
 #transactionTableBody {
     position: relative;
     display: flex;
-    gap: 15px;
-    padding: 20px;
+    gap: 15px; 
     flex-direction: column;
 }
+
+#transactionTableBody.large-box.loading { 
+    padding: 20px; 
+}
+
 .transaction-row {
     display: flex;
     color: var(--color);
