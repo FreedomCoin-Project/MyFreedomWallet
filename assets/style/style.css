@@ -44,10 +44,34 @@ button {
     --ripple: #d3b749;
     --top-shadow: #d3b749;
 }
+.loading::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(-73deg, rgba(255, 255, 255, 0.0) 25%, rgb(213 213 214 / 10%) 50%, rgba(255, 255, 255, 0.0) 75%);
+    background-size: 200% 100%;
+    animation: loading 5s linear infinite;  
+}
+
+@keyframes loading {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
 
 body {
     background-color: var(--bg-color1);
     color: var(--color);
+}
+
+img {
+    width: 100%;
 }
 
 body.wlc {
@@ -125,6 +149,7 @@ button {
 }
 button:disabled {
     opacity: 0.7;
+    pointer-events: none;
 }
 button:hover {
     color: rgba(255, 255, 255, 0.95);
@@ -160,7 +185,7 @@ button:active {
     display: flex;
     margin-right: 1rem;
     color: #fff !important;
-    font-size: 21px;
+    font-size: 19px;
     font-weight: 800;
     white-space: nowrap;
     flex-direction: row;
@@ -168,7 +193,7 @@ button:active {
 }
 
 .brand-logo {
-    width: 40px;
+    width: 37px;
     margin-right: 10px;
 }
 
@@ -296,7 +321,11 @@ input::-moz-focus-inner {
     min-height: 100vh;
     flex-direction: column; 
 }
+.side_nav #page-container {
+    flex-direction: row; 
+}
 #content-wrap {
+    position: relative; 
     display: flex;
     flex-grow: 1;
     flex-direction: column;
@@ -356,7 +385,6 @@ input::-moz-focus-inner {
 .navbar-collapse {
     position: absolute; 
     right: 0;
-    top: 100%;
 }
 
 .buttons-section {
@@ -389,6 +417,11 @@ nav .btn-border {
     color: #fff;
     text-decoration: none;
 } 
+.side_nav nav .btn-border {
+    background: none;
+    box-shadow: none;
+}
+
 .btn-border img {
     position: relative;
     top: -1px;
@@ -398,7 +431,7 @@ nav .btn-border {
     transition: margin-right 0.5s ease; /* Add smooth transition */
     transition-delay: .1s;
 }
-nav .btn-border:hover img, #Network.hover img  {
+nav .btn-border:hover img:not(.side_nav img), #Network.hover img  {
     margin-right: 10px; /* Only add margin when span is visible */
 }
 nav .btn-border span {
@@ -502,11 +535,9 @@ nav .btn-border:hover span, #Network.hover span {
 
 /* -- Headline dashboard -- */
 
-#window-icon-piv {
-    display: flex;
-    gap: 3px;
-    flex-direction: column;
-    align-items: flex-start;
+#coin-icon {
+    position: relative;
+    width: 24%;
 }
 
 #piv-ring {
@@ -545,6 +576,7 @@ nav .btn-border:hover span, #Network.hover span {
     justify-content: space-between;
 }
 #balance-box {
+    position: relative;
     display: flex;
     flex: 0 0 calc(60% - 10px);    
     padding: 20px;
@@ -552,14 +584,19 @@ nav .btn-border:hover span, #Network.hover span {
     justify-content: space-around;
 }
 
-#bal-wrapper {
-    font-size: 15px; 
+#bal-wrapper { 
+    display: flex;
+    gap: 3px;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .balance-transaction {
     display: flex;
     gap: 20px;
+    margin-top: 10px;
 }
+
 .balance-transaction > div {
     cursor: pointer;
 }
@@ -660,15 +697,6 @@ nav .btn-border:hover span, #Network.hover span {
 /* -- Headline -- */
 
 /* -- Background -- */
-
-#big-frame-address {
-    display: block;
-    width: 90%;
-    height: auto;
-    margin: 0 auto;
-    padding: 40px 0;
-}
-
 #address-box, #Transaction {    
     position: absolute;
     display: none;
@@ -688,54 +716,76 @@ nav .btn-border:hover span, #Network.hover span {
 #transaction_table {
     margin: 0 auto;
 }
-
-#transaction_table {
-    margin-top: 30px;
-    padding: 30px 25px;
+  
+#big-frame-address {
+    display: block;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
+    padding: 40px 0;
+}
+#transactionTableBody {
+    position: relative;
+    display: flex;
+    gap: 15px; 
+    flex-direction: column;
 }
 
-#transaction_table th:not(:nth-child(-n+2)),
-#transaction_table td:not(:nth-child(-n+2)) {
-    text-align: center;
+#transactionTableBody.large-box.loading { 
+    padding: 20px; 
 }
 
-#transaction_table td[data-bheight] {
-    display: grid;
-    min-width: 70px;
+.transaction-row {
+    display: flex;
+    color: var(--color);
+    padding: 10px 20px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    transition: .5s;
 }
 
-#transaction_table td[data-bheight] a {
-    width: 100%;
-    overflow: hidden;
-    text-overflow: ellipsis;
+.transaction-row .details {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+ 
+.transaction-row .icon {
+    margin-right: 20px;
+    padding: 10px; 
+    border-radius: 100px;
+} 
+.transaction-row .icon.received { 
+    background: rgb(40 167 69 / 39%);
+} 
+.transaction-row .icon.sent { 
+    background: rgb(255 0 0 / 39%); 
+} 
+.transaction-row .icon.self-transfer, .transaction-row .icon.unknown { 
+    background: rgba(255, 217, 0, 0.39); 
+} 
+.transaction-row .icon::before {
+    content: '';
+    display: block;
+    width: 12px;
+    height: 12px;
+    background: inherit;
+    border-radius: inherit;
+}
+.transaction-row .status {
+    min-width: 90px;
 }
 
-#transaction_table table {
-    display: table;
-    width: 100%;
-}
 
-#transaction_table th,
-#transaction_table td {
-    padding: 8px;
-    text-align: left;
-}
-
-#transaction_table td:first-child {
-    text-wrap: balance;
-    font-size: 14px;
-}
-
-#transactionTableBody tr {
-    border-top: 1px solid var(--border-color);
-}
 
 #more_transaction {
     text-align: center;
-}
-
+  }
+  
 #more_transaction a {
     font-weight: 200;
+    margin-top: 20px;
     padding-right: 20px;
     color: #fff;
     background: url(../images/icons/arrow.svg) right no-repeat;
@@ -926,6 +976,7 @@ nav .btn-border:hover span, #Network.hover span {
 
 #stake-title {
     display: inline-block;
+    font-size: 20px;
     margin: 0;
     cursor: default;
 }
@@ -974,7 +1025,7 @@ nav .btn-border:hover span, #Network.hover span {
 #guiBalanceBoxStaking {
     display: inline-block;
     margin: 0;
-    font-size: x-large;
+    font-size: 20px !important;
 }
 
 #staking-box {
@@ -1004,6 +1055,7 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 .stake-balances {
+    font-size: 16px;
     margin-top: 1rem;
     margin-bottom: 0.75rem;
     padding: 5px;
@@ -1014,6 +1066,10 @@ nav .btn-border:hover span, #Network.hover span {
     font-size: 16px !important;
     text-align: center;
     line-height: 20px;
+}
+
+.stake-box .pivx-button-big {
+    text-transform: capitalize;
 }
 
 /* FOOTER */
@@ -1045,17 +1101,47 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 .navbarSpecial {
-    position: relative;
     width: 100%;
     padding: 20px 48px;
+    z-index: 1;
+}
+.side_nav .navbarSpecial { 
+    position: sticky;
+    top: 0;
+    width: 25%;
+    height: 100vh;
+    padding: 20px 10px;
+    background: var(--bg-color3);
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
-.wlc .navbarSpecial {
-    position: sticky;
-}
 nav > .container {
     position: relative; 
 }
+.side_nav nav > .container {
+    display: flex;
+    gap: 30px;
+    flex-direction: column;
+    align-items: flex-start;
+}
+.side_nav nav .navbar-collapse {
+    position: relative;
+    display: flex !important;
+    top: 0;
+    flex-direction: row;
+    align-items: flex-start;
+    justify-content: flex-end;
+}
+.side_nav nav .buttons-section {
+    padding: 0;
+    flex-direction: column;
+}
+.side_nav nav .btn-border span {
+    margin-left: 10px;
+    max-width: unset;
+    opacity: 1;
+} 
 
 /* New styling */
 
@@ -1375,7 +1461,7 @@ a {
     font-size: 14px !important;
     padding-top: 4px;
     padding-bottom: 4px;
-    background: #521685;
+    background: #2b2936;
     border: none;
     resize: none; 
 }
@@ -1488,6 +1574,48 @@ a {
     }
 }
 
+@media (max-width: 1050px) {
+    .side_nav .navbar {
+        flex: 0;
+        width: auto;
+    }
+    .side_nav .navbar .navbarSpecial {
+        width: auto;
+    }
+    .side_nav .navbar .nav-logo {
+        margin: 0;
+    }
+    .side_nav .navbar .brand-logo {
+        width: 40px; 
+        margin-right: 5px;
+    }
+    .side_nav .navbar-toggler, .side_nav .navbar .brand-txt {
+        display: none;
+    }
+    .side_nav nav .btn-border span { 
+        position: absolute;
+        background: linear-gradient(45deg, transparent, var(--bg-color3));
+        opacity: 0;
+        left: 0;
+        margin: 0;
+        padding: 10px 20px;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        transition: opacity 0.3s ease-out, left 0.3s ease-out 0.1s;
+    }
+    .side_nav nav .btn-border:hover span { 
+        left: 50px;
+        opacity: 1;
+        transition: opacity 0.2s ease-out 0.1s, left 0.3s ease-out;
+    }
+    .side_nav nav > .container { 
+        padding: 0;
+        flex-wrap: nowrap;
+        justify-content: center;
+        align-items: center;
+    }
+}
+
 @media screen and (min-width: 1025px) {
 
     /*Main Wallet page */
@@ -1556,18 +1684,10 @@ a {
     }
 }
 
-@media screen and (min-width: 992px) { 
-    .navbar-expand-lg .navbar-collapse { 
-        top: 0;
-        flex-direction: row;
-        justify-content: flex-end;
-    }
+@media screen and (min-width: 992px) {  
     .navbar-collapse > div {
         display: flex;
         gap: 50px;
-    }
-    #navbarNav a:nth-child(3) {
-        display: none;
     }
 }
 
@@ -1604,6 +1724,7 @@ a {
     }
 
     .navbar-collapse {
+        top: 100%;
         -webkit-transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
         transition: max-height 0.3s ease-out, opacity 0.3s ease-out;
     }
@@ -1691,6 +1812,16 @@ a {
     }
     #swap-box {
         display: none; 
+    }
+    #headline-balance {
+        margin: 0 auto;
+    }
+    #headline-balance::before {
+        content: 'FreedomCoin';
+        margin-bottom: 10px;
+        font-size: 18px;
+        font-weight: 800; 
+        color: var(--border-color);
     }
 }
 
@@ -1825,7 +1956,50 @@ a {
     }
 }
 
-/* Continue with the rest of your media queries here... */
+@media screen and (max-width: 650px) {
+    .side_nav #page-container {
+        overflow-x: hidden; /* Fallback */
+        overflow-x: clip; /* Modern browsers */
+    }
+    .side_nav #content-wrap {
+        min-width: 100%;
+        left: -65px;
+        background: inherit;
+        transition: cubic-bezier(0.4, 0, 0.2, 1)0.3s;
+        z-index: 1050;
+    }
+    .side_nav #content-wrap.left {
+        left: 0;
+        z-index: 0;
+    } 
+    #headline-balance::before { 
+        text-align: center; 
+    }
+    .balance-transaction {
+        position: absolute;
+        width: 110%;
+        left: -5%;
+        top: 33%;
+        margin: 0;
+        justify-content: space-between;
+    }
+    .balance-transaction > div {
+        padding: 5px;
+        border: 1px solid var(--border-color);
+        border-radius: 100px;
+        backdrop-filter: blur(10px);
+        /*border-width: 0;*/
+    }
+    /*.send-text {
+        border-left-width: 1px !important;
+    }
+    .dep-text {
+        border-right-width: 1px !important;
+    }*/
+    .dep-text img, .send-text img {
+        margin-right: 0;
+    }
+}
 
 /* Note: The rest of the media queries follow the same pattern, adding prefixes where necessary for transitions and transforms. */
 @media screen and (max-width: 600px) {
