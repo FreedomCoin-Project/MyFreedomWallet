@@ -329,7 +329,7 @@ function checkTxType(tx, allTxs) {
 
   //  if (hashCount > 2) return "Multiple-Transfers"; // New case for more than two occurrences
     if (hashCount > 1 && tx.n == 1) return "Self-Transfer"; // Still a self-transfer if it appears twice
-    if (isSent) return "Sent";
+    if (isSent && tx.n == 0) return "Sent";
     if (isReceived && hashCount == 1) return "Received";
 
     return "Unknown";
