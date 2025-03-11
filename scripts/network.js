@@ -302,6 +302,7 @@ function sync_block() {
             blockInterval = setInterval(() => {
                 currentBlock += Math.floor(Math.random() * 10) + 1; // Increment randomly between 1 to 10
                 $("#blocks").text("Current Block: " + currentBlock);
+                cachedBlockCount = currentBlock;
             }, 1000);
         });
 }
@@ -315,7 +316,7 @@ function checkTxType(tx, allTxs) {
     let hashCount = allTxs.filter(transaction => transaction.hash === tx.hash).length;
 
   //  if (hashCount > 2) return "Multiple-Transfers"; // New case for more than two occurrences
-    if (hashCount > 1) return "Self-Transfer"; // Still a self-transfer if it appears twice
+    if (hashCount > 1 && tx.n == 1) return "Self-Transfer"; // Still a self-transfer if it appears twice
     if (isSent) return "Sent";
     if (isReceived) return "Received";
 
