@@ -1927,8 +1927,8 @@ a {
         padding-bottom: 40px;
     }
     #genKeyWarning.hide { 
-        -webkit-transform: scaleY(0.8) translate(-92%, -40vh);
-        transform: scaleY(0.8) translate(-92%, -40vh);
+        -webkit-transform: scaleY(0.8) translate(-92%, 40vh);
+        transform: scaleY(0.8) translate(-92%, 40vh);
     }
     #genKeyWarning .pivx-button-big {
         padding: 13px 20px;
