@@ -768,7 +768,7 @@
 
     let price;
     function price_update() {
-      $.getJSON("https://api.nonkyc.io/api/v2/ticker/Freed_usdt", data => price = Number(data.last_price).toFixed(5));
+      $.getJSON("https://freedomcoin.global/pack/fetch-freed-price", data => price = Number(data.last_price).toFixed(5));
     }
     setInterval(price_update, 160000);
     price_update();
