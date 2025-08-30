@@ -1434,10 +1434,7 @@
       if (!networkEnabled) return console.warn("Offline mode active: For your security, the wallet will avoid ALL internet requests.");
       if (!publicKeyForNetwork) return;
 
-      // Play reload anim 
-      domBalanceReloadStaking.classList.add("playAnim");
-
-      // Fetch block count + UTXOs
+       // Fetch block count + UTXOs
       getBlockCount();
     }
 
