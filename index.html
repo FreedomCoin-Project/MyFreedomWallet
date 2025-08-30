@@ -682,24 +682,17 @@
 
   <script>
     // WALLET STATE DATA
-    let cachedUTXOs = [];
-    let arrDelegatedUTXOs = [];
-    let cachedBlockCount = 0;
-    let cachedColdStakeAddr = "tPXRNKJR65R67FThTKmVzXr4xjZpkUxDVt";
+    let cachedUTXOs = []; 
+    let cachedBlockCount = 0; 
 
     // Cached DOM elements
     const domStart = document.getElementById("start");
     const domSettings = document.getElementById("settingsTab");
-    const domNavbarToggler = document.getElementById("navbarToggler");
-    const domGuiStaking = document.getElementById('guiStaking');
+    const domNavbarToggler = document.getElementById("navbarToggler"); 
     const domGuiWallet = document.getElementById('guiWallet');
     const domGuiBalance = document.getElementById("guiBalance");
-    const domGuiBalanceBox = document.getElementById("guiBalanceBox");
-    const domBalanceReloadStaking = document.getElementById("balanceReloadStaking");
-    const domGuiBalanceStaking = document.getElementById("guiBalanceStaking");
-    const domGuiBalanceBoxStaking = document.getElementById("guiBalanceBoxStaking");
-    const domTxTab = document.getElementById("txTab");
-    const domStakeTab = document.getElementById("stakeTab");
+    const domGuiBalanceBox = document.getElementById("guiBalanceBox"); 
+    const domTxTab = document.getElementById("txTab"); 
     const domsendNotice = document.getElementById("notice");
     const domSimpleTXsTitleSpan = document.getElementById("simpleTransactionsTitle");
     const domSimpleTXs = document.getElementById("simpleTransactions");
@@ -734,9 +727,7 @@
     const domReqDesc = document.getElementById('reqDesc');
     const domReqDisplay = document.getElementById('reqDescDisplay');
     const domIdenticon = document.getElementById("identicon");
-    const domPrivKey = document.getElementById("privateKey");
-    const domAvailToDelegate = document.getElementById('availToDelegate');
-    const domAvailToUndelegate = document.getElementById('availToUndelegate');
+    const domPrivKey = document.getElementById("privateKey"); 
 
     // Aggregate menu screens and links for faster switching
     const arrDomScreens = document.getElementsByClassName("tabcontent");
@@ -752,8 +743,7 @@
       // Update the GUI only when all UTXOs are processed
       if (updateGUI && arrUTXOsToValidate.length === 0) {
         const formattedBalance = (nBalance / COIN).toFixed((nBalance / COIN).toFixed(2).length >= 6 ? 0 : 2);
-        domGuiBalance.innerText = formattedBalance;
-        domAvailToDelegate.innerText = `Available: ~${formattedBalance} FREED`;
+        domGuiBalance.innerText = formattedBalance; 
         price_tick(Number(formattedBalance));
 
         domsendNotice.innerHTML = nBalance ? '' :
@@ -777,19 +767,7 @@
       balusd = (Number(price) * amount).toFixed(3);
       $("#bal-usd").html("$ " + balusd);
     }
-
-    function getStakingBalance(updateGUI = false) {
-      const nBalance = arrDelegatedUTXOs.reduce((a, b) => a + b.sats, 0);
-
-      if (updateGUI) {
-        // Set the balance, and adjust font-size for large balance strings
-        domGuiBalanceStaking.innerText = Math.floor(nBalance / COIN);
-        domGuiBalanceBoxStaking.style.fontSize = Math.floor(nBalance / COIN).toString().length >= 4 ? "large" : "x-large";
-        domAvailToUndelegate.innerText = "Staking: ~" + (nBalance / COIN).toFixed(2) + " FREED";
-      }
-
-      return nBalance;
-    }
+ 
 
     // URL-Query request processing
     const queryString = window.location.search;
@@ -1166,116 +1144,8 @@
       const domID = document.getElementById(id);
       domID.style.display = domID.style.display === 'block' ? 'none' : 'block';
     }
-
-    function undelegateGUI() {
-      // Verify the amount
-      const nAmount = Math.round(Number(document.getElementById('undelegateAmount').value.trim()) * COIN);
-      if (nAmount < 0.01 * COIN || isNaN(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>Minimum amount is 0.01 FREED!', 2500);
-      if (!Number.isSafeInteger(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
-      undelegate(nAmount);
-    }
-
-    function undelegate(nValue) {
-      if (!hasWalletUnlocked(true)) return;
-
-      // Construct a TX and fetch Cold inputs
-      const nBalance = getStakingBalance();
-      const cTx = bitjs.transaction();
-      const cCoinControl = chooseUTXOs(cTx, nValue, 0, true);
-      if (!cCoinControl.success) return alert(cCoinControl.msg);
-
-      // Compute fee and change (or lack thereof)
-      const nFee = getFee(cTx.serialize().length);
-      const nChange = cCoinControl.nValue - (nFee + nValue);
-      if (nChange > 1.01 * COIN) {
-        // Enough change to resume cold staking, so we'll re-delegate change to the cold staking address
-        // Ensure the user has an address set - if not, request one!
-        if (!askForCSAddr()) return;
-
-        // Sanity
-        if (cachedColdStakeAddr.length !== 34 || !cachedColdStakeAddr.startsWith('S')) {
-          askForCSAddr(true);
-          return createAlert('success', '<b>Staking Address set!</b><br>Now go ahead and unstake!');
-        }
-
-        // The re-delegated change output
-        cTx.addcoldstakingoutput(publicKeyForNetwork, cachedColdStakeAddr, nChange / COIN);
-        console.log('Re-delegated delegation spend change!');
-      } else {
-        // Not enough change to cold stake, so we'll just unstake everything
-        cTx.addoutput(publicKeyForNetwork, nChange / COIN);
-        console.log('Spent all CS dust into redeem address!');
-      }
-
-      // The primary Cold-to-Public output
-      cTx.addoutput(publicKeyForNetwork, nValue / COIN);
-
-      // Debug-only verbose response
-      if (debug) domHumanReadable.innerHTML = "Balance: " + (nBalance / COIN) + "<br>Fee: " + (nFee / COIN) + "<br>To: " + address + "<br>Sent: " + (nValue / COIN) + (nChange > 0 ? "<br>Change Address: " + publicKeyForNetwork + "<br>Change: " + (nChange / COIN) : "");
-
-      // Sign and broadcast!
-      sendTransaction(cTx.sign(privateKeyForTransactions, 1, 'coldstake'), "<b>Delegation successfully spent!</b><br>Please wait for confirmations.");
-      domGenIt.innerHTML = "Continue";
-    }
-
-    function askForCSAddr(force = false) {
-      if (force) cachedColdStakeAddr = null;
-      if (cachedColdStakeAddr === "" || cachedColdStakeAddr === null) {
-        cachedColdStakeAddr = prompt('Please provide a Cold Staking address (either from your own node, or a 3rd-party!)').trim();
-        if (cachedColdStakeAddr) return true;
-      } else {
-        return true;
-      }
-      return false;
-    }
-
-    function delegateGUI() {
-      // Verify the amount
-      const nAmount = Math.round(Number(document.getElementById('delegateAmount').value.trim()) * COIN);
-      if (nAmount < COIN || isNaN(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>Minimum amount is 1 FREED!', 2500);
-      if (!Number.isSafeInteger(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
-
-      // Ensure the user has an address set - if not, request one!
-      if (!askForCSAddr()) return;
-
-      // Sanity
-      if (cachedColdStakeAddr.length !== 34 || !cachedColdStakeAddr.startsWith('S')) {
-        askForCSAddr(true);
-        return createAlert('success', '<b>Staking Address set!</b><br>Now go ahead and stake!');
-      }
-      delegate(nAmount, cachedColdStakeAddr);
-    }
-
-    function delegate(nValue, coldAddr) {
-      if (!hasWalletUnlocked(true)) return;
-
-      // Construct a TX and fetch Standard inputs
-      const nBalance = getBalance();
-      const cTx = bitjs.transaction();
-      const cCoinControl = chooseUTXOs(cTx, nValue, 0, false);
-      if (!cCoinControl.success) return alert(cCoinControl.msg);
-
-      // Compute fee and change (or lack thereof)
-      const nFee = getFee(cTx.serialize().length);
-      const nChange = cCoinControl.nValue - (nFee + nValue);
-      if (nChange > 0) {
-        // Change output
-        cTx.addoutput(publicKeyForNetwork, nChange / COIN);
-      } else {
-        // We're sending alot! So we deduct the fee from the send amount. There's not enough change to pay it with!
-        nValue -= nFee;
-      }
-
-      // The primary Standard-to-Cold output
-      cTx.addcoldstakingoutput(publicKeyForNetwork, coldAddr, nValue / COIN);
-
-      // Debug-only verbose response
-      if (debug) domHumanReadable.innerHTML = "Balance: " + (nBalance / COIN) + "<br>Fee: " + (nFee / COIN) + "<br>To: " + address + "<br>Sent: " + (nValue / COIN) + (nChange > 0 ? "<br>Change Address: " + publicKeyForNetwork + "<br>Change: " + (nChange / COIN) : "");
-
-      // Sign and broadcast!
-      sendTransaction(cTx.sign(privateKeyForTransactions, 1), "<b>Delegation successful!</b><br>Please wait for confirmations, enjoy your staking!");
-      domGenIt.innerHTML = "Continue";
-    }
+ 
+     
 
     // Coin Control response formats
     function ccError(msg = '') { return { success: false, msg } };
@@ -1285,7 +1155,7 @@
       console.log("Constructing TX of value: " + (nTotalSatsRequired / COIN) + " FREED");
 
       // Select the UTXO type bucket
-      const arrUTXOs = fColdOnly ? arrDelegatedUTXOs : cachedUTXOs;
+      const arrUTXOs = cachedUTXOs;
 
       // Select and return UTXO pointers (filters applied)
       const cCoinControl = { nValue: 0, nChange: 0, arrSelectedUTXOs: [] }
@@ -1355,11 +1225,7 @@
 
       // Sanity check the address
       const address = domAddress1s.value.trim();
-      // If Staking address: redirect to staking page
-      if (address.startsWith("S")) {
-        createAlert('warning', 'Here, use the <b>Stake</b> screen, not the Send screen!', 7500);
-        return domStakeTab.click();
-      }
+
       if (address.length !== 34) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad length (' + address.length + ')', 2500);
       if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad prefix ' + address[0] + ' (Should start with ' + PUBKEY_PREFIX + ')', 3500);
 
