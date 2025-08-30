@@ -47,8 +47,7 @@ if (networkEnabled) {
               const data = JSON.parse(this.response);
               blockCountFailed = false; // Reset failure flag on success
               
-              $("#balance-box").removeClass("loading"); 
-              domBalanceReloadStaking.classList.remove("playAnim");
+              $("#balance-box").removeClass("loading");  
   
               if (data.backend.blocks > cachedBlockCount) {
                     clearInterval(blockInterval);
@@ -102,9 +101,9 @@ if (networkEnabled) {
 
     if (cVout.scriptPubKey.type === 'pubkeyhash') {
         cachedUTXOs.push(cUTXO);
-    } else if (cVout.scriptPubKey.type === 'coldstake') {
-        arrDelegatedUTXOs.push(cUTXO);
-    }
+    }/* else if (cVout.scriptPubKey.type === 'coldstake') {
+         
+    }*/
 
     // Remove processed UTXO from queue
     arrUTXOsToValidate.shift();
@@ -114,8 +113,7 @@ if (networkEnabled) {
         acceptUTXO();
     } else {
         // Update the balance **only after all UTXOs are added**
-        getBalance(true);
-        getStakingBalance(true);
+        getBalance(true); 
     }
   }
 
@@ -133,8 +131,7 @@ if (networkEnabled) {
           arrUTXOsToValidate = JSON.parse(this.response);
 
           // Clear our UTXOs and begin accepting refreshed ones (TODO: build an efficient 'set merge' algo)
-          cachedUTXOs = [];
-          arrDelegatedUTXOs = [];
+          cachedUTXOs = []; 
           acceptUTXO();
 
           // Call the function to populate the table with transactions
