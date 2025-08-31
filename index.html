@@ -664,17 +664,17 @@
 
   <script>
     // WALLET STATE DATA
-    let cachedUTXOs = []; 
-    let cachedBlockCount = 0; 
+    let cachedUTXOs = [];
+    let cachedBlockCount = 0;
 
     // Cached DOM elements
     const domStart = document.getElementById("start");
     const domSettings = document.getElementById("settingsTab");
-    const domNavbarToggler = document.getElementById("navbarToggler"); 
+    const domNavbarToggler = document.getElementById("navbarToggler");
     const domGuiWallet = document.getElementById('guiWallet');
     const domGuiBalance = document.getElementById("guiBalance");
-    const domGuiBalanceBox = document.getElementById("guiBalanceBox"); 
-    const domTxTab = document.getElementById("txTab"); 
+    const domGuiBalanceBox = document.getElementById("guiBalanceBox");
+    const domTxTab = document.getElementById("txTab");
     const domsendNotice = document.getElementById("notice");
     const domSimpleTXsTitleSpan = document.getElementById("simpleTransactionsTitle");
     const domSimpleTXs = document.getElementById("simpleTransactions");
@@ -709,7 +709,7 @@
     const domReqDesc = document.getElementById('reqDesc');
     const domReqDisplay = document.getElementById('reqDescDisplay');
     const domIdenticon = document.getElementById("identicon");
-    const domPrivKey = document.getElementById("privateKey"); 
+    const domPrivKey = document.getElementById("privateKey");
 
     // Aggregate menu screens and links for faster switching
     const arrDomScreens = document.getElementsByClassName("tabcontent");
@@ -725,7 +725,7 @@
       // Update the GUI only when all UTXOs are processed
       if (updateGUI && arrUTXOsToValidate.length === 0) {
         const formattedBalance = (nBalance / COIN).toFixed((nBalance / COIN).toFixed(2).length >= 6 ? 0 : 2);
-        domGuiBalance.innerText = formattedBalance; 
+        domGuiBalance.innerText = formattedBalance;
         price_tick(Number(formattedBalance));
 
         domsendNotice.innerHTML = nBalance ? '' :
@@ -749,7 +749,7 @@
       balusd = (Number(price) * amount).toFixed(3);
       $("#bal-usd").html("$ " + balusd);
     }
- 
+
 
     // URL-Query request processing
     const queryString = window.location.search;
@@ -1126,45 +1126,45 @@
       const domID = document.getElementById(id);
       domID.style.display = domID.style.display === 'block' ? 'none' : 'block';
     }
- 
-     
+
+
 
     // Coin Control response formats
     function ccError(msg = '') { return { success: false, msg } };
     function ccSuccess(data) { return { success: true, ...data } };
 
-function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly = false) {
-    console.log("Constructing TX of value: " + (nTotalSatsRequired / COIN) + " FREED");
+    function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly = false) {
+      console.log("Constructing TX of value: " + (nTotalSatsRequired / COIN) + " FREED");
 
-    const arrUTXOs = cachedUTXOs;
-    const cCoinControl = { nValue: 0, nChange: 0, arrSelectedUTXOs: [] };
+      const arrUTXOs = cachedUTXOs;
+      const cCoinControl = { nValue: 0, nChange: 0, arrSelectedUTXOs: [] };
 
-    for (const cUTXO of arrUTXOs) {
+      for (const cUTXO of arrUTXOs) {
         if (cCoinControl.nValue >= nTotalSatsRequired) {
-            console.log("Coin Control: TX Constructed! Selected " + cCoinControl.arrSelectedUTXOs.length +
-                " input(s) (" + (cCoinControl.nValue / COIN) + " FREED)");
-            break;
+          console.log("Coin Control: TX Constructed! Selected " + cCoinControl.arrSelectedUTXOs.length +
+            " input(s) (" + (cCoinControl.nValue / COIN) + " FREED)");
+          break;
         }
         if (cUTXO.sats < nMinInputSize) continue;
 
         cCoinControl.arrSelectedUTXOs.push(cUTXO);
         cCoinControl.nValue += cUTXO.sats;
         console.log("Coin Control: Selected input " + cUTXO.id.substr(0, 6) + "(" + cUTXO.vout + ")... " +
-            "(Added " + (cUTXO.sats / COIN) + " FREED - Total: " + (cCoinControl.nValue / COIN) + ")");
-    }
+          "(Added " + (cUTXO.sats / COIN) + " FREED - Total: " + (cCoinControl.nValue / COIN) + ")");
+      }
 
-    if (cCoinControl.nValue < nTotalSatsRequired)
+      if (cCoinControl.nValue < nTotalSatsRequired)
         return ccError("Balance is too small! (Missing " +
-            (nTotalSatsRequired - cCoinControl.nValue).toLocaleString('en-gb') + " sats)");
+          (nTotalSatsRequired - cCoinControl.nValue).toLocaleString('en-gb') + " sats)");
 
-    for (const cUTXO of cCoinControl.arrSelectedUTXOs)
+      for (const cUTXO of cCoinControl.arrSelectedUTXOs)
         cTx.addinput(cUTXO.id, cUTXO.vout, cUTXO.script);
 
-    // FIX: Correct change calculation
-    cCoinControl.nChange = cCoinControl.nValue - nTotalSatsRequired;
+      // FIX: Correct change calculation
+      cCoinControl.nChange = cCoinControl.nValue - nTotalSatsRequired;
 
-    return ccSuccess(cCoinControl);
-}
+      return ccSuccess(cCoinControl);
+    }
 
     function formatNumber(value) {
       // Remove invalid characters
@@ -1189,11 +1189,11 @@ function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly =
       createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
     }
 
-  function createTxGUI(call) {
-    if (!hasWalletUnlocked(true) && call != 'modal') return;
+    function createTxGUI(call) {
+      if (!hasWalletUnlocked(true) && call != 'modal') return;
 
-    // Clear the inputs on 'Continue'
-    if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
+      // Clear the inputs on 'Continue'
+      if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
         domSimpleTXsTitleSpan.innerHTML = "Create a";
         domGenIt.innerHTML = 'Send Transaction';
         domTxOutput.innerHTML = '';
@@ -1203,64 +1203,68 @@ function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly =
         domReqDesc.value = '';
         domReqDisplay.style.display = 'none';
         return;
-    }
+      }
 
-    // Sanity check the address
-    const address = domAddress1s.value.trim();
-    if (address.length !== 34) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad length (' + address.length + ')', 2500);
-    if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad prefix ' + address[0] + ' (Should start with ' + PUBKEY_PREFIX + ')', 3500);
+      // Sanity check the address
+      const address = domAddress1s.value.trim();
+      if (address.length !== 34) return createAlert('warning', `<b>Invalid FREED address!</b><br>Bad length (${address.length})`, 2500);
+      if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', `<b>Invalid FREED address!</b><br>Bad prefix ${address[0]} (Should start with ${PUBKEY_PREFIX})`, 3500);
 
-    // Sanity check the amount
-    let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
-    if (nValue <= 0 || isNaN(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>You can\'t send \'nothing\'!', 2500);
-    if (!Number.isSafeInteger(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
+      // Sanity check the amount
+      let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
+      if (nValue <= 0 || isNaN(nValue)) return createAlert('warning', `<b>Invalid amount!</b><br>You can't send 'nothing'!`, 2500);
+      if (!Number.isSafeInteger(nValue)) return createAlert('warning', `<b>Invalid amount!</b><br>8 decimal limit exceeded`, 2500);
 
-    // Construct a TX and fetch Standard inputs
-    const nBalance = getBalance();
-    const cTx = bitjs.transaction();
+      // Construct TX and fetch standard inputs
+      const nBalance = getBalance();
+      const cTx = bitjs.transaction();
+      const cCoinControl = chooseUTXOs(cTx, nValue, 0, false);
+      if (!cCoinControl.success) return alert(cCoinControl.msg);
 
-    // --- Add 5% burn ---
-    const burnAmount = Math.floor(nValue * 0.05); // 5%
-    const totalSatsRequired = nValue + burnAmount;
+      // Compute fee
+      const nFee = getFee(cTx.serialize().length);
 
-    // Select UTXOs
-    const cCoinControl = chooseUTXOs(cTx, totalSatsRequired, 0, false);
-    if (!cCoinControl.success) return alert(cCoinControl.msg);
+      // Calculate burn amount (5%) and reduce from recipient
+      const burnAmount = Math.floor(nValue * 0.05);
+      const sendAmount = nValue - burnAmount;
 
-    // Compute fee
-    const nFee = getFee(cTx.serialize().length);
-
-    // Compute change
-    let nChange = cCoinControl.nValue - (nValue + burnAmount + nFee);
-    if (nChange < 0) {
-        // Not enough for change + fee, deduct from send amount
-        nValue += nChange; // nChange is negative
+      // Compute change
+      let nChange = cCoinControl.nValue - (sendAmount + nFee + burnAmount);
+      if (nChange < 0) {
+        // Not enough change to cover fee and burn
         nChange = 0;
-    }
+        sendAmount -= (nFee + burnAmount - cCoinControl.nValue);
+      }
 
-    // Primary output (receiver)
-    cTx.addoutput(address, nValue / COIN);
-
-    // Burn output
-    cTx.addoutput(BURN_WALLET, burnAmount / COIN);
-
-    // Change output
-    if (nChange > 0) {
+      // Change output
+      if (nChange > 0) {
         cTx.addoutput(publicKeyForNetwork, nChange / COIN);
+      }
+
+      // Primary output (receiver)
+      cTx.addoutput(address, sendAmount / COIN);
+
+      // Burn output (only if BURN_WALLET is set)
+      if (BURN_WALLET && burnAmount > 0) {
+        cTx.addoutput(BURN_WALLET, burnAmount / COIN);
+      }
+
+      // Debug info
+      if (debug) {
+        domHumanReadable.innerHTML = `
+            Balance: ${nBalance / COIN}<br>
+            Fee: ${nFee / COIN}<br>
+            To: ${address}<br>
+            Sent: ${sendAmount / COIN}<br>
+            Burn: ${burnAmount / COIN}${nChange > 0 ? `<br>Change Address: ${publicKeyForNetwork}<br>Change: ${nChange / COIN}` : ''}
+        `;
+      }
+
+      // Sign and broadcast
+      sendTransaction(cTx.sign(privateKeyForTransactions, 1));
+      domGenIt.innerHTML = "Continue";
     }
 
-    // Debug-only verbose response
-    if (debug) domHumanReadable.innerHTML = "Balance: " + (nBalance / COIN) +
-        "<br>Fee: " + (nFee / COIN) +
-        "<br>To: " + address +
-        "<br>Sent: " + (nValue / COIN) +
-        "<br>Burn: " + (burnAmount / COIN) +
-        (nChange > 0 ? "<br>Change Address: " + publicKeyForNetwork + "<br>Change: " + (nChange / COIN) : "");
-
-    // Sign and broadcast
-    sendTransaction(cTx.sign(privateKeyForTransactions, 1));
-    domGenIt.innerHTML = "Continue";
-}
 
     function createRawTransaction() {
       // Prepare a TX
@@ -1308,9 +1312,9 @@ function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly =
       setTimeout(
         () => {
           toggleSideNav(true);
-            setTimeout(() => {
-              toggleSideNav(false);
-            }, 2000); // 2 seconds later
+          setTimeout(() => {
+            toggleSideNav(false);
+          }, 2000); // 2 seconds later
         }, 3000
       );
     }
@@ -1372,7 +1376,7 @@ function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly =
           "opacity": "0.7"
         });
         contentWrap.find(".container").css("pointer-events", "none");
-        sideNav.css("overflow", "hidden"); 
+        sideNav.css("overflow", "hidden");
         $("body").addClass("swipe_right");
       } else {
         // Hide menu (Swipe Left)
@@ -1432,7 +1436,7 @@ function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly =
       if (!networkEnabled) return console.warn("Offline mode active: For your security, the wallet will avoid ALL internet requests.");
       if (!publicKeyForNetwork) return;
 
-       // Fetch block count + UTXOs
+      // Fetch block count + UTXOs
       getBlockCount();
     }
 
