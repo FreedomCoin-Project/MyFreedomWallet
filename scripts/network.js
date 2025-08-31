@@ -8,15 +8,25 @@ function networkError() {
     }
 }
 */
-function networkError(type) { 
+let lastUpdateTime = 0; 
+
+function networkError(type) {
+    const now = Date.now();
+
     if (type == 1) {
-        updateBalanceAndTransactions();
+        // Only run if more than 3 minutes (180000 ms) have passed
+        if (now - lastUpdateTime > 180_000) { 
+            lastUpdateTime = now;
+            updateBalanceAndTransactions();
+        }
         return;
-    } 
+    }
+
     if (disableNetwork()) {
-            createAlert('warning', 'Your network is off!');
-    } 
+        createAlert('warning', 'Your network is off!');
+    }
 }
+
 
 
 if (networkEnabled) {
@@ -24,6 +34,7 @@ if (networkEnabled) {
   var blockCountFailed = false;
   var isBlockCountPending = false;
   var isFirstCall = true;
+  
   var getBlockCount = function() {
       if (isBlockCountPending) {
           console.warn("getBlockCount request is already pending. Rejecting new call.");
@@ -101,9 +112,7 @@ if (networkEnabled) {
 
     if (cVout.scriptPubKey.type === 'pubkeyhash') {
         cachedUTXOs.push(cUTXO);
-    }/* else if (cVout.scriptPubKey.type === 'coldstake') {
-         
-    }*/
+    }
 
     // Remove processed UTXO from queue
     arrUTXOsToValidate.shift();
