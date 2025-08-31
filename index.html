@@ -45,25 +45,7 @@
   <link rel="stylesheet" type="text/css" href="assets/style/style.css">
   <script type="text/javascript" src="assets/bootstrap-4.5.0/js/jquery.js"></script>
   <script type="text/javascript" src="https://freedomcoin.global/js/instascan-builds/master"></script>
-
-  <!--- IMPORTANT: CHAIN PARAMS BELOW, DO NOT EDIT UNLESS YOU'RE ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING  --->
-  <script>
-    // In most BTC-derived coins, the below parameters can be found in the 'src/chainparams.cpp' Mainnet configuration.
-    // These below params share the same names as the CPP params, so finding and editing these is easy-peasy!
-
-    /* chainparams */
-    const PUBKEY_PREFIX = "T";
-    const PUBKEY_ADDRESS = 66;
-    const SECRET_KEY = 156;
-    const COIN = 1e8;
-
-    /* Internal tweaking parameters */
-    // A new encryption password must be 'at least' this long.
-    const MIN_PASS_LENGTH = 6;
-
-    // Cool stuff
-    const donationAddress = "Tdon431iLRCSHDaJLvT9W9auUR1Yvv1rkG";
-  </script>
+  <script type="text/javascript" src="https://freedomcoin.global/js/config/helpers.js"></script>
 </head>
 
 <body class="wlc">
@@ -1151,38 +1133,38 @@
     function ccError(msg = '') { return { success: false, msg } };
     function ccSuccess(data) { return { success: true, ...data } };
 
-    function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly = false) {
-      console.log("Constructing TX of value: " + (nTotalSatsRequired / COIN) + " FREED");
+function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly = false) {
+    console.log("Constructing TX of value: " + (nTotalSatsRequired / COIN) + " FREED");
 
-      // Select the UTXO type bucket
-      const arrUTXOs = cachedUTXOs;
+    const arrUTXOs = cachedUTXOs;
+    const cCoinControl = { nValue: 0, nChange: 0, arrSelectedUTXOs: [] };
 
-      // Select and return UTXO pointers (filters applied)
-      const cCoinControl = { nValue: 0, nChange: 0, arrSelectedUTXOs: [] }
-      for (const cUTXO of arrUTXOs) {
-        // Have we met the required sats threshold?
+    for (const cUTXO of arrUTXOs) {
         if (cCoinControl.nValue >= nTotalSatsRequired) {
-          // Required Coin Control value met, yahoo!
-          console.log("Coin Control: TX Constructed! Selected " + cCoinControl.arrSelectedUTXOs.length + " input(s) (" + (cCoinControl.nValue / COIN) + " FREED)");
-          break;
+            console.log("Coin Control: TX Constructed! Selected " + cCoinControl.arrSelectedUTXOs.length +
+                " input(s) (" + (cCoinControl.nValue / COIN) + " FREED)");
+            break;
         }
-        // Does the UTXO meet size requirements?
         if (cUTXO.sats < nMinInputSize) continue;
 
-        // Push UTXO and cache new total value
         cCoinControl.arrSelectedUTXOs.push(cUTXO);
         cCoinControl.nValue += cUTXO.sats;
-        console.log("Coin Control: Selected input " + cUTXO.id.substr(0, 6) + "(" + cUTXO.vout + ")... (Added " + (cUTXO.sats / COIN) + " FREED - Total: " + (cCoinControl.nValue / COIN) + ")");
-      };
-
-      // If we don't have enough value: leave the cTx alone and return false
-      if (cCoinControl.nValue < nTotalSatsRequired) return ccError("Balance is too small! (Missing " + (cCoinControl.nValue - nTotalSatsRequired).toLocaleString('en-gb') + " sats)");
-
-      // Reaching here: we have sufficient UTXOs, stuff them into the TX, calc final misc data and return!
-      for (const cUTXO of cCoinControl.arrSelectedUTXOs) cTx.addinput(cUTXO.id, cUTXO.vout, cUTXO.script);
-      cCoinControl.nChange = nTotalSatsRequired - cCoinControl.nValue;
-      return ccSuccess(cCoinControl);
+        console.log("Coin Control: Selected input " + cUTXO.id.substr(0, 6) + "(" + cUTXO.vout + ")... " +
+            "(Added " + (cUTXO.sats / COIN) + " FREED - Total: " + (cCoinControl.nValue / COIN) + ")");
     }
+
+    if (cCoinControl.nValue < nTotalSatsRequired)
+        return ccError("Balance is too small! (Missing " +
+            (nTotalSatsRequired - cCoinControl.nValue).toLocaleString('en-gb') + " sats)");
+
+    for (const cUTXO of cCoinControl.arrSelectedUTXOs)
+        cTx.addinput(cUTXO.id, cUTXO.vout, cUTXO.script);
+
+    // FIX: Correct change calculation
+    cCoinControl.nChange = cCoinControl.nValue - nTotalSatsRequired;
+
+    return ccSuccess(cCoinControl);
+}
 
     function formatNumber(value) {
       // Remove invalid characters
@@ -1207,12 +1189,12 @@
       createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
     }
 
-    function createTxGUI(call) {
-      if (!hasWalletUnlocked(true) && call != 'modal') return;
+  function createTxGUI(call) {
+    if (!hasWalletUnlocked(true) && call != 'modal') return;
 
-      // Clear the inputs on 'Continue'
-      if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
-        domSimpleTXsTitleSpan.innerHTML = "Create a"
+    // Clear the inputs on 'Continue'
+    if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
+        domSimpleTXsTitleSpan.innerHTML = "Create a";
         domGenIt.innerHTML = 'Send Transaction';
         domTxOutput.innerHTML = '';
         domHumanReadable.innerHTML = "";
@@ -1221,48 +1203,64 @@
         domReqDesc.value = '';
         domReqDisplay.style.display = 'none';
         return;
-      }
-
-      // Sanity check the address
-      const address = domAddress1s.value.trim();
-
-      if (address.length !== 34) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad length (' + address.length + ')', 2500);
-      if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad prefix ' + address[0] + ' (Should start with ' + PUBKEY_PREFIX + ')', 3500);
-
-      // Sanity check the amount
-      let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
-      if (nValue <= 0 || isNaN(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>You can\'t send \'nothing\'!', 2500);
-      if (!Number.isSafeInteger(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
-
-      // Construct a TX and fetch Standard inputs
-      const nBalance = getBalance();
-      const cTx = bitjs.transaction();
-      const cCoinControl = chooseUTXOs(cTx, nValue, 0, false);
-      if (!cCoinControl.success) return alert(cCoinControl.msg);
-
-      // Compute fee
-      const nFee = getFee(cTx.serialize().length);
-
-      // Compute change (or lack thereof)
-      const nChange = cCoinControl.nValue - (nFee + nValue);
-      if (nChange > 0) {
-        // Change output
-        cTx.addoutput(publicKeyForNetwork, nChange / COIN);
-      } else {
-        // We're sending alot! So we deduct the fee from the send amount. There's not enough change to pay it with!
-        nValue -= nFee;
-      }
-
-      // Primary output (receiver)
-      cTx.addoutput(address, nValue / COIN);
-
-      // Debug-only verbose response
-      if (debug) domHumanReadable.innerHTML = "Balance: " + (nBalance / COIN) + "<br>Fee: " + (nFee / COIN) + "<br>To: " + address + "<br>Sent: " + (nValue / COIN) + (nChange > 0 ? "<br>Change Address: " + publicKeyForNetwork + "<br>Change: " + (nChange / COIN) : "");
-
-      // Sign and broadcast!
-      sendTransaction(cTx.sign(privateKeyForTransactions, 1));
-      domGenIt.innerHTML = "Continue";
     }
+
+    // Sanity check the address
+    const address = domAddress1s.value.trim();
+    if (address.length !== 34) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad length (' + address.length + ')', 2500);
+    if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad prefix ' + address[0] + ' (Should start with ' + PUBKEY_PREFIX + ')', 3500);
+
+    // Sanity check the amount
+    let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
+    if (nValue <= 0 || isNaN(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>You can\'t send \'nothing\'!', 2500);
+    if (!Number.isSafeInteger(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
+
+    // Construct a TX and fetch Standard inputs
+    const nBalance = getBalance();
+    const cTx = bitjs.transaction();
+
+    // --- Add 5% burn ---
+    const burnAmount = Math.floor(nValue * 0.05); // 5%
+    const totalSatsRequired = nValue + burnAmount;
+
+    // Select UTXOs
+    const cCoinControl = chooseUTXOs(cTx, totalSatsRequired, 0, false);
+    if (!cCoinControl.success) return alert(cCoinControl.msg);
+
+    // Compute fee
+    const nFee = getFee(cTx.serialize().length);
+
+    // Compute change
+    let nChange = cCoinControl.nValue - (nValue + burnAmount + nFee);
+    if (nChange < 0) {
+        // Not enough for change + fee, deduct from send amount
+        nValue += nChange; // nChange is negative
+        nChange = 0;
+    }
+
+    // Primary output (receiver)
+    cTx.addoutput(address, nValue / COIN);
+
+    // Burn output
+    cTx.addoutput(BURN_WALLET, burnAmount / COIN);
+
+    // Change output
+    if (nChange > 0) {
+        cTx.addoutput(publicKeyForNetwork, nChange / COIN);
+    }
+
+    // Debug-only verbose response
+    if (debug) domHumanReadable.innerHTML = "Balance: " + (nBalance / COIN) +
+        "<br>Fee: " + (nFee / COIN) +
+        "<br>To: " + address +
+        "<br>Sent: " + (nValue / COIN) +
+        "<br>Burn: " + (burnAmount / COIN) +
+        (nChange > 0 ? "<br>Change Address: " + publicKeyForNetwork + "<br>Change: " + (nChange / COIN) : "");
+
+    // Sign and broadcast
+    sendTransaction(cTx.sign(privateKeyForTransactions, 1));
+    domGenIt.innerHTML = "Continue";
+}
 
     function createRawTransaction() {
       // Prepare a TX

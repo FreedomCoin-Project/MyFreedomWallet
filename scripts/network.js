@@ -149,46 +149,51 @@ if (networkEnabled) {
       request.send();
   };
 
-  var sendTransaction = function(hex, msg = '') {
-      const request = new XMLHttpRequest();
-      request.open('GET', cExplorer.url + "/api/v2/sendtx/" + hex, true);
-      request.onerror = networkError;
-      request.onreadystatechange = function () {
-          if (!this.response || (!this.status === 200 && !this.status === 400)) return;
-          if (this.readyState !== 4) return;
-          const data = JSON.parse(this.response);
-          if (data.result && data.result.length === 64) {
-              console.log('Transaction sent! ' + data.result);
-              let msg = (domAddress1s.value !== donationAddress) 
-                  ? "Your transaction was successful!" 
-                  : "Thank you for supporting MyFREEDWallet!💕";
-              
-              domTxOutput.innerHTML = `
-                  <span style="color:green">
-                      ${msg}<br>
-                      <a href="${cExplorer.url}/tx/${data.result}" target="_blank" 
+var sendTransaction = function(hex, msg = '') {
+    const request = new XMLHttpRequest();
+    request.open('GET', cExplorer.url + "/api/v2/sendtx/" + hex, true);
+    request.onerror = networkError;
+
+    request.onreadystatechange = function () {
+        if (!this.response || (!this.status === 200 && !this.status === 400)) return;
+        if (this.readyState !== 4) return;
+
+        const data = JSON.parse(this.response);
+
+        if (data.result && data.result.length === 64) {
+            console.log('Transaction sent! ' + data.result);
+            let msgText = (domAddress1s.value !== donationAddress)
+                ? "Your transaction was successful!"
+                : "Thank you for supporting MyFREEDWallet!💕";
+
+            domTxOutput.innerHTML = `
+                <span style="color:green">
+                    ${msgText}<br>
+                    <a href="${cExplorer.url}/tx/${data.result}" target="_blank" 
                         style="width: 100%; overflow: hidden; text-overflow: ellipsis;">
                         ${data.result}
-                      </a>
-                  </span>`;
-              domSimpleTXsTitleSpan.innerHTML = "Created a"
-              domSimpleTXs.style.display = 'none';
-              domAddress1s.value = domValue1s.value = '';
-              createAlert('success', msg || 'Transaction sent!', msg ? (1250 + (msg.length * 50)) : 1500);
-          } else {
-              console.log('Error sending transaction: ' + data.result);
-              createAlert('warning', 'Transaction Failed!', 1250);
-              // Attempt to parse and prettify JSON (if any), otherwise, display the raw output.
-              let strError = data.error;
-              try {
-                  strError = JSON.stringify(JSON.parse(data), null, 4);
-                  console.log('parsed');
-              } catch(e){console.log('no parse!'); console.log(e);}
-              domTxOutput.innerHTML = '<h4 style="color:red;font-family:mono !important;"><pre style="color: inherit;">' + strError + "</pre></h4>";
-          }
-      }
-      request.send();
-  }
+                    </a>
+                </span>`;
+            domSimpleTXsTitleSpan.innerHTML = "Created a"
+            domSimpleTXs.style.display = 'none';
+            domAddress1s.value = domValue1s.value = '';
+            createAlert('success', msgText || 'Transaction sent!', msgText ? (1250 + (msgText.length * 50)) : 1500);
+        } else {
+            console.log('Error sending transaction: ' + data.result);
+            createAlert('warning', 'Transaction Failed!', 1250);
+
+            let strError = data.error;
+            try {
+                strError = JSON.stringify(JSON.parse(data), null, 4);
+                console.log('parsed');
+            } catch(e) {
+                console.log('no parse!'); console.log(e);
+            }
+            domTxOutput.innerHTML = '<h4 style="color:red;font-family:mono !important;"><pre style="color: inherit;">' + strError + "</pre></h4>";
+        }
+    }
+    request.send();
+}
 
   var getFee = function (bytes) {
     // TEMPORARY: Hardcoded fee per-byte
