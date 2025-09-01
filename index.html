@@ -195,9 +195,9 @@
               <label>Amount</label>
               <br>
               <input class="center-text" type="text" id="value1s" maxlength="9"
-                oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
-              <span id='toburn'style='font-size:13px;color:red;'></span>
-              <span id='total_val'style='font-size:13px;color:red;'></span>
+                oninput="this.value = formatNumber(this.value, true)" onblur="addZeroIfDotEnd(this)">
+              <span id='toburn'style='font-size:13px;color:red;'></span><br>
+              <span id='total_val'style='font-size:13px;color:gray;'></span>
               <div id="reqDescDisplay" style="display: none;">
                 <label>Description (from the merchant)</label><br>
                 <input class="center-text" type="text" disabled id="reqDesc">
@@ -720,7 +720,6 @@
     // Alert DOM element
     const domAlertPos = document.getElementsByClassName("alertPositioning")[0];
 
-    let guiBal;
     function getBalance(updateGUI = false) {
       const nBalance = cachedUTXOs.reduce((sum, utxo) => sum + utxo.sats, 0);
       guiBal = nBalance / COIN;
@@ -1168,50 +1167,44 @@
       return ccSuccess(cCoinControl);
     }
 
-    function formatNumber(value) {
-      // Remove invalid characters
-      value = value.replace(/[^0-9.]/g, '');
-      // Prevent multiple decimal points
-      value = value.replace(/(\..*?)\..*/g, '$1');
-      // Automatically add a decimal if the first character is '0' and there's more input
-      if (value.startsWith('0') && value.length > 1 && !value.startsWith('0.')) {
-        value = '0.' + value.substring(1).replace('.', ''); // Remove existing decimals after auto-add
-      }
-      return value;
-    }
-    function addZeroIfDotEnd(input) {
-      // If the last character is a dot and the input length is more than 1
-      if (input.value.endsWith('.') && input.value.length > 1) {
-        input.value += '0'; // Append '0' after the dot
-      }
-    }
+function formatNumber(value, withBurn = false) {
+  // Remove invalid characters
+  value = value.replace(/[^0-9.]/g, '');
+  // Prevent multiple decimal points
+  value = value.replace(/(\..*?)\..*/g, '$1');
+  // Auto-correct "0" cases
+  if (value.startsWith('0') && value.length > 1 && !value.startsWith('0.')) {
+    value = '0.' + value.substring(1).replace('.', '');
+  }
 
-
-const originalFormatNumber = formatNumber;
-
-formatNumber = function (value) {
-    let formatted = originalFormatNumber(value);
-    let num = parseFloat(value) || 0; 
-    let burnAmount = num * BURN_PERCENT; 
+  if (withBurn) {
+    let num = parseFloat(value) || 0;
+    let burnAmount = num * BURN_PERCENT;
     $("#toburn").text(burnAmount.toFixed(8) + " FREED will be burned.");
+
     let totalAndBurn = guiBal - (num + burnAmount);
-    $("#total_val").text("Total Amount: "+ totalAndBurn.toFixed(8));
-    return formatted;
-}; 
-$("#domValue1s").on("input", function () {
-    formatNumber($(this).val());
-});
+    $("#total_val").text("Sending: " + totalAndBurn.toFixed(8));
+  }
+
+  return value;
+}
+
+function addZeroIfDotEnd(input) {
+  if (input.value.endsWith('.') && input.value.length > 1) {
+    input.value += '0';
+  }
+}
 
 
     function swap(params) {
       createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
     }
 
-    function createTxGUI(call) {
-      if (!hasWalletUnlocked(true) && call != 'modal') return;
+function createTxGUI(call) {
+    if (!hasWalletUnlocked(true) && call != 'modal') return;
 
-      // Clear the inputs on 'Continue'
-      if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
+    // Clear the inputs on 'Continue'
+    if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
         domSimpleTXsTitleSpan.innerHTML = "Create a";
         domGenIt.innerHTML = 'Send Transaction';
         domTxOutput.innerHTML = '';
@@ -1221,67 +1214,66 @@ $("#domValue1s").on("input", function () {
         domReqDesc.value = '';
         domReqDisplay.style.display = 'none';
         return;
-      }
+    }
 
-      // Sanity check the address
-      const address = domAddress1s.value.trim();
-      if (address.length !== 34) return createAlert('warning', `<b>Invalid FREED address!</b><br>Bad length (${address.length})`, 2500);
-      if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', `<b>Invalid FREED address!</b><br>Bad prefix ${address[0]} (Should start with ${PUBKEY_PREFIX})`, 3500);
+    // Sanity check the address
+    const address = domAddress1s.value.trim();
+    if (address.length !== 34) return createAlert('warning', `<b>Invalid FREED address!</b><br>Bad length (${address.length})`, 2500);
+    if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', `<b>Invalid FREED address!</b><br>Bad prefix ${address[0]} (Should start with ${PUBKEY_PREFIX})`, 3500);
 
-      // Sanity check the amount
-      let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
-      if (nValue <= 0 || isNaN(nValue)) return createAlert('warning', `<b>Invalid amount!</b><br>You can't send 'nothing'!`, 2500);
-      if (!Number.isSafeInteger(nValue)) return createAlert('warning', `<b>Invalid amount!</b><br>8 decimal limit exceeded`, 2500);
+    // Sanity check the amount
+    let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
+    if (nValue <= 0 || isNaN(nValue)) return createAlert('warning', `<b>Invalid amount!</b><br>You can't send 'nothing'!`, 2500);
+    if (!Number.isSafeInteger(nValue)) return createAlert('warning', `<b>Invalid amount!</b><br>8 decimal limit exceeded`, 2500);
 
-      // Construct TX and fetch standard inputs
-      const nBalance = getBalance();
-      const cTx = bitjs.transaction();
-      const cCoinControl = chooseUTXOs(cTx, nValue, 0, false);
-      if (!cCoinControl.success) return alert(cCoinControl.msg);
+    // Construct TX and fetch standard inputs
+    const nBalance = getBalance();
+    const cTx = bitjs.transaction();
 
-      // Compute fee
-      const nFee = getFee(cTx.serialize().length);
+    // Calculate burn (on top of send amount)
+    const burnAmount = Math.floor(nValue * 0.05);
 
-      // Calculate burn amount (5%) and reduce from recipient
-      const burnAmount = Math.floor(nValue * 0.05);
-      const sendAmount = nValue - burnAmount;
+    // Total required = value + burn + fee (fee estimated later)
+    const cCoinControl = chooseUTXOs(cTx, nValue + burnAmount, 0, false);
+    if (!cCoinControl.success) return alert(cCoinControl.msg);
 
-      // Compute change
-      let nChange = cCoinControl.nValue - (sendAmount + nFee + burnAmount);
-      if (nChange < 0) {
-        // Not enough change to cover fee and burn
-        nChange = 0;
-        sendAmount -= (nFee + burnAmount - cCoinControl.nValue);
-      }
+    // Compute fee
+    const nFee = getFee(cTx.serialize().length);
 
-      // Change output
-      if (nChange > 0) {
+    // Compute change (balance - everything)
+    let nChange = cCoinControl.nValue - (nValue + burnAmount + nFee);
+    if (nChange < 0) {
+        return createAlert('warning', `<b>Insufficient balance!</b><br>You need more to cover amount + 5% burn + fee.`, 3500);
+    }
+
+    // Change output
+    if (nChange > 0) {
         cTx.addoutput(publicKeyForNetwork, nChange / COIN);
-      }
+    }
 
-      // Primary output (receiver)
-      cTx.addoutput(address, sendAmount / COIN);
+    // Primary output (receiver gets full requested amount)
+    cTx.addoutput(address, nValue / COIN);
 
-      // Burn output (only if BURN_WALLET is set)
-      if (BURN_WALLET && burnAmount > 0) {
+    // Burn output (only if BURN_WALLET is set)
+    if (BURN_WALLET && burnAmount > 0) {
         cTx.addoutput(BURN_WALLET, burnAmount / COIN);
-      }
+    }
 
-      // Debug info
-      if (debug) {
+    // Debug info
+    if (debug) {
         domHumanReadable.innerHTML = `
             Balance: ${nBalance / COIN}<br>
             Fee: ${nFee / COIN}<br>
             To: ${address}<br>
-            Sent: ${sendAmount / COIN}<br>
+            Sent: ${nValue / COIN}<br>
             Burn: ${burnAmount / COIN}${nChange > 0 ? `<br>Change Address: ${publicKeyForNetwork}<br>Change: ${nChange / COIN}` : ''}
         `;
-      }
-
-      // Sign and broadcast
-      sendTransaction(cTx.sign(privateKeyForTransactions, 1));
-      domGenIt.innerHTML = "Continue";
     }
+
+    // Sign and broadcast
+    sendTransaction(cTx.sign(privateKeyForTransactions, 1));
+    domGenIt.innerHTML = "Continue";
+}
 
 
     function createRawTransaction() {

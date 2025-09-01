@@ -205,7 +205,7 @@ var sendTransaction = function(hex, msg = '') {
 // Global flag to track if fetching is in progress
 let isFetching = false; 
 const tableBody = document.getElementById('transactionTableBody'); // Table body element
-
+let guiBal;
 function updateBalanceAndTransactions() {
     var apiKey = "dfed93dffb52";
     var url = `https://chainz.cryptoid.info/freed/api.dws?q=multiaddr&active=${publicKeyForNetwork}&key=${apiKey}`;
@@ -226,7 +226,7 @@ function updateBalanceAndTransactions() {
         // Update balance
         var balance = (data.addresses[0].final_balance || 0) / COIN; // Convert to proper format
         const formattedBalance = balance.toFixed((balance).toFixed(2).length >= 6 ? 0 : 2);
-        domGuiBalance.innerText = formattedBalance; 
+        domGuiBalance.innerText = guiBal = formattedBalance;
         $("#balance-box").removeClass("loading");  
         price_tick(Number(formattedBalance));
         sync_block();
