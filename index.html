@@ -1180,10 +1180,10 @@ function formatNumber(value, withBurn = false) {
   if (withBurn) {
     let num = parseFloat(value) || 0;
     let burnAmount = num * BURN_PERCENT;
-    $("#toburn").text(burnAmount.toFixed(8) + " FREED will be burned.");
+    $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
 
     let totalAndBurn = guiBal - (num + burnAmount);
-    $("#total_val").text("Sending: " + totalAndBurn.toFixed(8));
+    $("#total_val").text("Total Amount: " + parseFloat(totalAndBurn.toFixed(8)));
   }
 
   return value;
