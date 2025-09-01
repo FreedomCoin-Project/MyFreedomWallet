@@ -1195,8 +1195,13 @@
 
       $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
       if (guiBal) {
-        let totalAndBurn = Number(guiBal) - (num + burnAmount);
-        $("#total_val").text("Total Amount: " + parseFloat(totalAndBurn.toFixed(8)));
+        let totalSpend = (num + burnAmount).toFixed(8);
+        let totalBal = Number(guiBal).toFixed(8);
+        if (totalSpend > totalBal) {
+         $("#total_val").text("Not Enough funds: " + parseFloat(totalBal - totalSpend));
+        } else {
+         $("#total_val").text("Total Amount: " + parseFloat(totalSpend));
+        }
       }
 
       return formatted;
