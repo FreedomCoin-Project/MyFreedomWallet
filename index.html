@@ -1200,7 +1200,7 @@
         if (totalSpend > totalBal) {
          $("#total_val").text("Not Enough funds: " + parseFloat(totalBal - totalSpend).toFixed(8));
         } else {
-         $("#total_val").text("Total Amount: " + parseFloat(totalSpend).toFixed(8));
+         $("#total_val").text("Total Amount: " + parseFloat(totalSpend.toFixed(8)));
         }
       }
 
