@@ -1167,7 +1167,7 @@
       return ccSuccess(cCoinControl);
     }
 
-    function formatNumber(value, withBurn = false) {
+    function formatNumber(value) {
       // Remove invalid characters
       value = value.replace(/[^0-9.]/g, '');
       // Prevent multiple decimal points
@@ -1176,24 +1176,34 @@
       if (value.startsWith('0') && value.length > 1 && !value.startsWith('0.')) {
         value = '0.' + value.substring(1).replace('.', ''); // Remove existing decimals after auto-add
       }
-
-      if (withBurn) {
-        let num = parseFloat(value) || 0;
-        let burnAmount = num * BURN_PERCENT;
-        $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
-        if (guiBal) {
-          let totalAndBurn = Number(guiBal) - (num + burnAmount);
-          $("#total_val").text("Total Amount: " + parseFloat(totalAndBurn.toFixed(8)));
-        }
-      }
       return value;
     }
-
     function addZeroIfDotEnd(input) {
+      // If the last character is a dot and the input length is more than 1
       if (input.value.endsWith('.') && input.value.length > 1) {
-        input.value += '0';
+        input.value += '0'; // Append '0' after the dot
       }
     }
+
+
+    const originalFormatNumber = formatNumber;
+
+    formatNumber = function (value) {
+      let formatted = originalFormatNumber(value);
+      let num = parseFloat(value) || 0;
+      let burnAmount = num * BURN_PERCENT;
+
+      $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
+      if (guiBal) {
+        let totalAndBurn = Number(guiBal) - (num + burnAmount);
+        $("#total_val").text("Total Amount: " + parseFloat(totalAndBurn.toFixed(8)));
+      }
+
+      return formatted;
+    };
+    $("#domValue1s").on("input", function () {
+      formatNumber($(this).val());
+    });
 
 
     function swap(params) {
