@@ -1199,8 +1199,10 @@
         let totalBal = Number(guiBal);
         if (totalSpend > totalBal) {
          $("#total_val").text("Not Enough funds: " + parseFloat(totalBal - totalSpend).toFixed(8));
+         $(".send_tx").prop("disabled", true);
         } else {
          $("#total_val").text("Total Amount: " + parseFloat(totalSpend.toFixed(8)));
+         $(".send_tx").prop("disabled", false);
         }
       }
 
