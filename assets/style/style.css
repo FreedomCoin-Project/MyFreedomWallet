@@ -961,9 +961,9 @@ nav .btn-border:hover span, #Network.hover span {
     margin-bottom: 20px; 
 }
 
-/* STAKE */
+/* SAVINGS */
 
-.add-frame {
+.savings-frame {
     display: block;
     margin: 0 auto;
     width: 85% !important;
@@ -974,19 +974,18 @@ nav .btn-border:hover span, #Network.hover span {
     padding: 5px;
 }
 
-#stake-title {
+#savings-title {
     display: inline-block;
-    font-size: 20px;
-    margin: 0;
+    font-size: 20px; 
     cursor: default;
 }
 
-#StakingTab {
+#SavingsTab {
     padding: 10px 10px 30px;
     margin: 20px 0 100px;
 }
 
-.staking-banner-bottom {
+.savings-banner-bottom {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -994,48 +993,30 @@ nav .btn-border:hover span, #Network.hover span {
     width: 100%;
 }
 
-#staking-rectangle {
+#savings-rectangle {
     position: relative;
-    display: block;
-    height: 100px;
+    display: flex;
     max-width: 100% !important;
     border-bottom: 1px solid var(--border-color);
+    justify-content: space-between;
+    align-content: center;
+    align-items: center;
 }
 
-#pivx-price-box {
-    height: 100px;
-    width: 240px;
-    float: left;
+#savings-price-box {
+    display: flex;
+}  
+
+#guiBalanceBoxSavings { 
+    display: flex;
+    align-items: center;
 }
 
-#icon-box-piv {
-    display: inline-block;
-    width: 80px;
-    height: 80px;
-    padding: 20px 15px 40px 35px;
-    margin: 0 !important;
+#savings-box { 
+    padding: 25px 20px;
 }
 
-#piv-price-amount {
-    margin: 0 !important;
-    padding: 30px 30px 30px 30px;
-    float: right;
-}
-
-#guiBalanceBoxStaking {
-    display: inline-block;
-    margin: 0;
-    font-size: 20px !important;
-}
-
-#staking-box {
-    height: 100px;
-    width: 220px;
-    float: right !important;
-    padding: 30px 30px 30px 20px;
-}
-
-.staking-piv-icon {
+.savings-icon {
     display: inline-block;
     width: 55px;
     height: 55px;
@@ -1046,31 +1027,27 @@ nav .btn-border:hover span, #Network.hover span {
     background-image: url(../images/freed-op.png);
 }
 
-.stake-box {
+.savings-box {
+    margin-top: 30px;
     text-align: center;
-    margin-left: auto !important;
-    margin-right: auto !important;
-    height: 220px;
-    margin: 30px 5px 10px;
 }
 
-.stake-balances {
-    font-size: 16px;
-    margin-top: 1rem;
-    margin-bottom: 0.75rem;
-    padding: 5px;
+.savings-balances {
+    font-size: 20px;
+    padding-left: 20px;
 }
 
-.stake-input {
+.savings-input {
     color: black;
     font-size: 16px !important;
     text-align: center;
     line-height: 20px;
 }
 
-.stake-box .pivx-button-big {
+.savings-box .pivx-button-big {
     text-transform: capitalize;
 }
+
 
 /* FOOTER */
 

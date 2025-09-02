@@ -71,9 +71,9 @@
                 <img src="./assets/icons/home.svg" loading="eager" alt="Dashboard">
                 <span>Dashboard</span>
               </a>
-              <a id="stakeTab" class="btn-border tablinks" onclick="openTab(event, 'StakingTab')" style="display: none">
-                <img src="./assets/icons/stake.svg" loading="eager" alt="Stake">
-                <span>Stake</span>
+              <a id="savingsTab" class="btn-border tablinks" onclick="openTab(event, 'SavingsTab')" style="display: none">
+                <img src="./assets/icons/stake.svg" loading="eager" alt="Savings">
+                <span>Savings</span>
               </a>
               <!--<a class="btn-border tablinks" style="display: none" onclick="$('#balance-box, #swap-box').toggle()">
                 <img src="./assets/icons/swap.svg" loading="eager" alt="Swap">
@@ -197,7 +197,7 @@
               <input class="center-text" type="text" id="value1s" maxlength="9"
                 oninput="this.value = formatNumber(this.value, true)" onblur="addZeroIfDotEnd(this)">
               <span id='toburn' style='font-size:13px;color:red;'></span><br>
-              <span id='total_val' style='font-size:13px;color:gray;'></span>
+              <span id='total_val' style='font-size:14px;color:gray;font-weight:bold;'></span>
               <div id="reqDescDisplay" style="display: none;">
                 <label>Description (from the merchant)</label><br>
                 <input class="center-text" type="text" disabled id="reqDesc">
@@ -511,63 +511,114 @@
             </div>
             <!-- // KEYPAIR SECTION -->
 
-            <div id="StakingTab" class="tabcontent">
-              <!-- STAKING FEATURES -->
-              <p id="info" class="minor-notif-subtext"><b>New Feature!</b><br>Please be aware MPW Cold Staking is a new,
-                slightly experimental feature, it may be unstable, and is currently slow. Please have patience when
-                using this feature, and wait for block confirmations before actions and balances are shown on-screen.
-              </p>
-              <div class="add-frame">
-                <div class="staking-banner-top">
-                  <div id="staking-rectangle" class="col-md-4">
-                    <div id="pivx-price-box">
-                      <div id="icon-box-piv">
-                        <div id="piv-price" class="staking-piv-icon"></div>
-                      </div>
-                      <div id="piv-price-amount">
-                        <p id="guiBalanceBoxStaking"><b id="guiBalanceStaking">~</b> FREED</p>
-                      </div>
-                    </div>
-                    <div id="staking-box">
-                      <h3 id="stake-title" class="noselect">Staking &nbsp;&nbsp;<span id="balanceReloadStaking"
-                          class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <div class="staking-banner-bottom">
-                  <div class="stake-box large-box col-md-4">
-                    <h5 id="availToDelegate" class="stake-balances">Available: 0 FREED</h5>
-                    <textarea id="delegateAmount" class="stake-input form-control private-key-area"></textarea>
-                    <div class="button-padd">
-                      <button class="pivx-button-big btn-border" onclick="delegateGUI()">
-                        <span class="buttoni-text btn_txt">Delegate</span>
-                        <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                            <path
-                              d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                            </path>
-                          </svg></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="stake-box large-box col-md-4">
-                    <h5 id="availToUndelegate" class="stake-balances">Staking: 0 FREED</h5>
-                    <textarea id="undelegateAmount" class="stake-input form-control private-key-area"></textarea>
-                    <div class="button-padd">
-                      <button class="pivx-button-big btn-border" onclick="undelegateGUI()">
-                        <span class="buttoni-text btn_txt">Undelegate</span>
-                        <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                            <path
-                              d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                            </path>
-                          </svg></span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <!-- STAKING FEATURES -->
-              </div>
+<div id="SavingsTab" class="tabcontent" style="display: none;">
+  <!-- SAVINGS FEATURES -->
+  <p id="info" class="minor-notif-subtext">
+    <b>New Feature!</b><br>
+    You can now lock your funds for a specific period and earn profits. 
+    During this time, your funds remain safely in your wallet but are not spendable until the end of the selected period. 
+    Savings can only be released once the lock period has ended, and any interest is available only at maturity.
+  </p>
+
+  <div class="savings-frame">
+    <div class="savings-banner-top">
+      <div id="savings-rectangle" class="col-md-4">
+        <div id="savings-price-box">
+          <div id="icon-box-savings">
+            <div id="savings-icon" class="savings-icon"></div>
+          </div>
+          
+            <div id="guiBalanceBoxSavings"><h5 id="availToLock" class="savings-balances">0 FREED</h5></div></div>
+            
+       
+        
+        <div id="savings-box">
+          <h3 id="savings-title" class="noselect">Savings &nbsp;&nbsp;
+            <span id="balanceReloadSavings" class="reload noselect" onclick="refreshChainData()">↻</span>
+          </h3>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="savings-banner-bottom">
+      <div class="col-md-8 savings-box">
+        
+        <textarea id="delegateAmount" class="savings-input form-control private-key-area" placeholder="Enter amount to lock"></textarea>
+        <div class="button-padd">
+          <button class="pivx-button-big btn-border" onclick="delegateGUI()">
+            <span class="buttoni-text btn_txt">Lock Savings</span>
+            <span class="buttoni-arrow btn_txt">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                <path d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                </path>
+              </svg>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SAVINGS HISTORY -->
+    <div id="transaction_table" style="margin-top: 20px;">
+      <h6 style=" font-weight: 100; padding: 20px 5px;">Savings History</h6>
+      <div id="transactionTableBody">
+
+        <!-- Example Active Saving -->
+        <a class="transaction-row large-box" href="#" target="_blank">
+          <div class="details">
+            <div class="icon self-transfer"></div>
+            <div class="type">
+              <span class="direction">Locked Period</span>
+              <div class="t-date">2025/09/01 → 2025/12/01</div>
             </div>
+          </div>
+          <div class="status">
+            <div class="t-amount">100.00 FREED</div>
+            <div class="t-status" style="color: orange;">Active</div>
+          </div>
+        </a>
+
+        <!-- Example Completed Saving -->
+        <a class="transaction-row large-box" href="#" target="_blank">
+          <div class="details">
+            <div class="icon received"></div>
+            <div class="type">
+              <span class="direction">Locked Period</span>
+              <div class="t-date">2025/06/01 → 2025/08/31</div>
+            </div>
+          </div>
+          <div class="status">
+            <div class="t-amount">50.00 FREED</div>
+            <div class="t-status" style="color: green;">Completed</div>
+          </div>
+        </a>
+
+        <!-- Example Released Saving -->
+        <a class="transaction-row large-box" href="#" target="_blank">
+          <div class="details">
+            <div class="icon unknown"></div>
+            <div class="type">
+              <span class="direction">Locked Period</span>
+              <div class="t-date">2025/05/01 → 2025/07/01</div>
+            </div>
+          </div>
+          <div class="status">
+            <div class="t-amount">75.00 FREED</div>
+            <div class="t-status" style="color: gray;">Released</div>
+          </div>
+        </a>
+
+      </div>
+      <div id="more_transaction">
+        <a href="https://chainz.cryptoid.info/freed/address.dws?TgeHoRr6jxFUvcihqbQpVb8hrBnGmvM5dr" target="_blank">More</a>
+      </div>
+    </div>
+    <!-- END SAVINGS HISTORY -->
+
+  </div>
+</div>
 
 
 
