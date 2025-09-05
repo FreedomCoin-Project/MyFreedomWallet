@@ -966,7 +966,8 @@ nav .btn-border:hover span, #Network.hover span {
 .savings-frame {
     display: block;
     margin: 0 auto;
-    width: 85% !important;
+    width: 85%;
+    min-width: 300px;
     background: linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
     background: -webkit-linear-gradient(0.25turn, var(--bg-color3), var(--bg-color2));
     border: 1px solid var(--border-color);
