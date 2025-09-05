@@ -1038,14 +1038,17 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 .savings-input {
-    color: black;
-    font-size: 16px !important;
     text-align: center;
-    line-height: 20px;
 }
 
 .savings-box .pivx-button-big {
     text-transform: capitalize;
+}
+
+.savings-frame #transaction_table {
+    width: 95%;
+    margin-top: 0 !important;
+    margin-bottom: 25px;
 }
 
 

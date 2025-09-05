@@ -514,7 +514,7 @@
 <div id="SavingsTab" class="tabcontent" style="display: none;">
   <!-- SAVINGS FEATURES -->
   <p id="info" class="minor-notif-subtext">
-    <b>New Feature!</b><br>
+    <div style=" font-size: 1.3em; font-weight: bold; ">Savings</div><br>
     You can now lock your funds for a specific period and earn profits. 
     During this time, your funds remain safely in your wallet but are not spendable until the end of the selected period. 
     Savings can only be released once the lock period has ended, and any interest is available only at maturity.
@@ -533,7 +533,7 @@
        
         
         <div id="savings-box">
-          <h3 id="savings-title" class="noselect">Savings &nbsp;&nbsp;
+          <h3 id="savings-title" class="noselect">
             <span id="balanceReloadSavings" class="reload noselect" onclick="refreshChainData()">↻</span>
           </h3>
         </div>
@@ -545,7 +545,7 @@
     <div class="savings-banner-bottom">
       <div class="col-md-8 savings-box">
         
-        <textarea id="delegateAmount" class="savings-input form-control private-key-area" placeholder="Enter amount to lock"></textarea>
+        <input type="number" name="Savings Amount" id="delegateAmount" class="savings-input" placeholder="Enter amount to lock"/>
         <div class="button-padd">
           <button class="pivx-button-big btn-border" onclick="delegateGUI()">
             <span class="buttoni-text btn_txt">Lock Savings</span>
@@ -564,13 +564,12 @@
     <div id="transaction_table" style="margin-top: 20px;">
       <h6 style=" font-weight: 100; padding: 20px 5px;">Savings History</h6>
       <div id="transactionTableBody">
-
+        <span>No Savings...</span>
         <!-- Example Active Saving -->
-        <a class="transaction-row large-box" href="#" target="_blank">
+        <!--<a class="transaction-row large-box" href="#" target="_blank">
           <div class="details">
             <div class="icon self-transfer"></div>
-            <div class="type">
-              <span class="direction">Locked Period</span>
+            <div class="type"> 
               <div class="t-date">2025/09/01 → 2025/12/01</div>
             </div>
           </div>
@@ -584,8 +583,7 @@
         <a class="transaction-row large-box" href="#" target="_blank">
           <div class="details">
             <div class="icon received"></div>
-            <div class="type">
-              <span class="direction">Locked Period</span>
+            <div class="type"> 
               <div class="t-date">2025/06/01 → 2025/08/31</div>
             </div>
           </div>
@@ -599,8 +597,7 @@
         <a class="transaction-row large-box" href="#" target="_blank">
           <div class="details">
             <div class="icon unknown"></div>
-            <div class="type">
-              <span class="direction">Locked Period</span>
+            <div class="type"> 
               <div class="t-date">2025/05/01 → 2025/07/01</div>
             </div>
           </div>
@@ -608,7 +605,7 @@
             <div class="t-amount">75.00 FREED</div>
             <div class="t-status" style="color: gray;">Released</div>
           </div>
-        </a>
+        </a>-->
 
       </div>
       <div id="more_transaction">
