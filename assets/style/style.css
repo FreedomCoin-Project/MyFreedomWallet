@@ -509,6 +509,8 @@ nav .btn-border:hover span, #Network.hover span {
 
 /* Style the tab content */
 .tabcontent {
+    width: 100%;
+    max-width: 900px;
     font-family: sans-serif;
     display: none;
     padding: 6px 12px;
@@ -957,6 +959,9 @@ nav .btn-border:hover span, #Network.hover span {
 
 /* -- Warning -- */
 
+#Settings #keyQR {
+    max-width: 82px;
+}
 .margin-padded-qr {
     margin-bottom: 20px; 
 }
@@ -974,6 +979,7 @@ nav .btn-border:hover span, #Network.hover span {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     padding: 5px;
+    overflow: hidden;
 }
 
 #savings-title {
