@@ -997,8 +997,7 @@ nav .btn-border:hover span, #Network.hover span {
 #savings-rectangle {
     position: relative;
     display: flex;
-    max-width: 100% !important;
-    border-bottom: 1px solid var(--border-color);
+    max-width: 100% !important; 
     justify-content: space-between;
     align-content: center;
     align-items: center;
@@ -1029,8 +1028,13 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 .savings-box {
-    margin-top: 30px;
+    display: flex;
+    width: 90%;
     text-align: center;
+    flex-direction: column;
+    align-items: center;
+    align-content: space-between;
+    justify-content: center;
 }
 
 .savings-balances {
