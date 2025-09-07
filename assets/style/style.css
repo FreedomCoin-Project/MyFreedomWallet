@@ -508,15 +508,17 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 /* Style the tab content */
-.tabcontent {
-    width: 100%;
-    max-width: 900px;
+.tabcontent { 
     font-family: sans-serif;
     display: none;
     padding: 6px 12px;
     border-radius: 8px;
 }
 
+#Settings {
+    width: 100%;
+    max-width: 900px;
+}
 
 .frame {
     display: block;
