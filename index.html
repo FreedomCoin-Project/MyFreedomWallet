@@ -45,25 +45,7 @@
   <link rel="stylesheet" type="text/css" href="assets/style/style.css">
   <script type="text/javascript" src="assets/bootstrap-4.5.0/js/jquery.js"></script>
   <script type="text/javascript" src="https://freedomcoin.global/js/instascan-builds/master"></script>
-
-  <!--- IMPORTANT: CHAIN PARAMS BELOW, DO NOT EDIT UNLESS YOU'RE ABSOLUTELY CERTAIN YOU KNOW WHAT YOU'RE DOING  --->
-  <script>
-    // In most BTC-derived coins, the below parameters can be found in the 'src/chainparams.cpp' Mainnet configuration.
-    // These below params share the same names as the CPP params, so finding and editing these is easy-peasy!
-
-    /* chainparams */
-    const PUBKEY_PREFIX = "T";
-    const PUBKEY_ADDRESS = 66;
-    const SECRET_KEY = 156;
-    const COIN = 1e8;
-
-    /* Internal tweaking parameters */
-    // A new encryption password must be 'at least' this long.
-    const MIN_PASS_LENGTH = 6;
-
-    // Cool stuff
-    const donationAddress = "Tdon431iLRCSHDaJLvT9W9auUR1Yvv1rkG";
-  </script>
+  <script type="text/javascript" src="https://freedomcoin.global/js/config/helpers.js"></script>
 </head>
 
 <body class="wlc">
@@ -89,9 +71,10 @@
                 <img src="./assets/icons/home.svg" loading="eager" alt="Dashboard">
                 <span>Dashboard</span>
               </a>
-              <a id="stakeTab" class="btn-border tablinks" onclick="openTab(event, 'StakingTab')" style="display: none">
-                <img src="./assets/icons/stake.svg" loading="eager" alt="Stake">
-                <span>Stake</span>
+              <a id="savingsTab" class="btn-border tablinks" onclick="openTab(event, 'SavingsTab')"
+                style="display: none">
+                <img src="./assets/icons/stake.svg" loading="eager" alt="Savings">
+                <span>Savings</span>
               </a>
               <!--<a class="btn-border tablinks" style="display: none" onclick="$('#balance-box, #swap-box').toggle()">
                 <img src="./assets/icons/swap.svg" loading="eager" alt="Swap">
@@ -101,6 +84,10 @@
                 style="display: none">
                 <img src="./assets/icons/setting.svg" loading="eager" alt="settings">
                 <span>Settings</span>
+              </a>
+              <a class="btn-border tablinks" onclick="openDonatePage()">
+                <img src="./assets/icons/donate.png" style="filter: invert(1);" loading="eager" alt="Donate">
+                <span>Donate</span>
               </a>
               <a class="btn-border tablinks">
                 <img src="./assets/icons/game.svg" loading="eager" alt="Games">
@@ -213,7 +200,9 @@
               <label>Amount</label>
               <br>
               <input class="center-text" type="text" id="value1s" maxlength="9"
-                oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
+                oninput="this.value = formatNumber(this.value, true)" onblur="addZeroIfDotEnd(this)">
+              <span id='toburn' style='font-size:13px;color:red;'></span><br>
+              <span id='total_val' style='font-size:14px;color:gray;font-weight:bold;'></span>
               <div id="reqDescDisplay" style="display: none;">
                 <label>Description (from the merchant)</label><br>
                 <input class="center-text" type="text" disabled id="reqDesc">
@@ -456,7 +445,7 @@
                             </select>
                           </div>
                         </div>
-                        <button id="swap-button" class="btn-border pivx-button-big" onclick="swap()">Swap</button>
+                        <button id="swap-button" class="btn-border pivx-button-big" onclick="opt('swap')">Swap</button>
                       </div>
                     </div>
                   </div>
@@ -527,151 +516,203 @@
             </div>
             <!-- // KEYPAIR SECTION -->
 
-            <div id="StakingTab" class="tabcontent">
-              <!-- STAKING FEATURES -->
-              <p id="info" class="minor-notif-subtext"><b>New Feature!</b><br>Please be aware MPW Cold Staking is a new,
-                slightly experimental feature, it may be unstable, and is currently slow. Please have patience when
-                using this feature, and wait for block confirmations before actions and balances are shown on-screen.
-              </p>
-              <div class="add-frame">
-                <div class="staking-banner-top">
-                  <div id="staking-rectangle" class="col-md-4">
-                    <div id="pivx-price-box">
-                      <div id="icon-box-piv">
-                        <div id="piv-price" class="staking-piv-icon"></div>
-                      </div>
-                      <div id="piv-price-amount">
-                        <p id="guiBalanceBoxStaking"><b id="guiBalanceStaking">~</b> FREED</p>
-                      </div>
-                    </div>
-                    <div id="staking-box">
-                      <h3 id="stake-title" class="noselect">Staking &nbsp;&nbsp;<span id="balanceReloadStaking"
-                          class="reload noselect" onclick="refreshChainData()">&#x21bb;</span></h3>
-                    </div>
-                  </div>
-                </div>
-                <br>
-                <div class="staking-banner-bottom">
-                  <div class="stake-box large-box col-md-4">
-                    <h5 id="availToDelegate" class="stake-balances">Available: 0 FREED</h5>
-                    <textarea id="delegateAmount" class="stake-input form-control private-key-area"></textarea>
-                    <div class="button-padd">
-                      <button class="pivx-button-big btn-border" onclick="delegateGUI()">
-                        <span class="buttoni-text btn_txt">Delegate</span>
-                        <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                            <path
-                              d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                            </path>
-                          </svg></span>
-                      </button>
-                    </div>
-                  </div>
-                  <div class="stake-box large-box col-md-4">
-                    <h5 id="availToUndelegate" class="stake-balances">Staking: 0 FREED</h5>
-                    <textarea id="undelegateAmount" class="stake-input form-control private-key-area"></textarea>
-                    <div class="button-padd">
-                      <button class="pivx-button-big btn-border" onclick="undelegateGUI()">
-                        <span class="buttoni-text btn_txt">Undelegate</span>
-                        <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                            <path
-                              d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                            </path>
-                          </svg></span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-                <!-- STAKING FEATURES -->
+            <div id="SavingsTab" class="tabcontent" style="display: none;">
+              <!-- SAVINGS FEATURES -->
+              <div id="info" class="minor-notif-subtext">
+                <h2 style="font-size: 1.3em; font-weight: bold;">Savings</h2>
+                <p>
+                  You can now lock your funds for a specific period and earn profits.
+                  During this time, your funds remain safely in your wallet but are not spendable until the end of the
+                  selected period.
+                  Savings can only be released once the lock period has ended, and any interest is available only at
+                  maturity.
+                </p>
               </div>
+
+              <div class="savings-frame large-box loading">
+                <div class="savings-banner-top">
+                  <div id="savings-rectangle" class="col-md-4">
+                    <div id="savings-price-box">
+                      <div id="icon-box-savings">
+                        <div id="savings-icon" class="savings-icon"></div>
+                      </div>
+
+                      <div id="guiBalanceBoxSavings">
+                        <h5 id="availToLock" class="savings-balances">0 FREED</h5>
+                      </div>
+                    </div>
+                    <div id="savings-box">
+                      <h3 id="savings-title" class="noselect">
+                        <span id="balanceReloadSavings" class="reload noselect" onclick="refreshChainData()">↻</span>
+                      </h3>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <br>
+              <div class="savings-frame">
+                <div class="savings-banner-bottom">
+                  <div class="savings-box">
+
+                    <input type="number" name="Savings Amount" id="delegateAmount" class="savings-input"
+                      placeholder="Enter amount to lock" />
+                    <div class="button-padd">
+                      <button class="pivx-button-big btn-border" onclick="opt('savings')">
+                        <span class="buttoni-text btn_txt">Lock Savings</span>
+                        <span class="buttoni-arrow btn_txt">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                            <path
+                              d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                            </path>
+                          </svg>
+                        </span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div> 
+
+                <!-- SAVINGS HISTORY -->
+                <div id="transaction_table" style="margin-top: 20px;">
+                  <h6 style="font-weight:100; padding:20px 5px;margin:auto;margin-bottom:.5rem;width:90%;">Savings History</h6>
+                  <div id="transactionTableBody"  class="savings-frame large-box loading">
+                    <span>No Savings...</span>
+                    <!-- Example Active Saving
+        <a class="transaction-row large-box" href="#" target="_blank">
+          <div class="details">
+            <div class="icon self-transfer"></div>
+            <div class="type"> 
+              <div class="t-date">2025/09/01 → 2025/12/01</div>
             </div>
+          </div>
+          <div class="status">
+            <div class="t-amount">100.00 FREED</div>
+            <div class="t-status" style="color: orange;">Active</div>
+          </div>
+        </a>
 
+        
+        <a class="transaction-row large-box" href="#" target="_blank">
+          <div class="details">
+            <div class="icon received"></div>
+            <div class="type"> 
+              <div class="t-date">2025/06/01 → 2025/08/31</div>
+            </div>
+          </div>
+          <div class="status">
+            <div class="t-amount">50.00 FREED</div>
+            <div class="t-status" style="color: green;">Completed</div>
+          </div>
+        </a>
 
+         
+        <a class="transaction-row large-box" href="#" target="_blank">
+          <div class="details">
+            <div class="icon unknown"></div>
+            <div class="type"> 
+              <div class="t-date">2025/05/01 → 2025/07/01</div>
+            </div>
+          </div>
+          <div class="status">
+            <div class="t-amount">75.00 FREED</div>
+            <div class="t-status" style="color: gray;">Released</div>
+          </div>
+        </a> -->
 
-
-            <div id="Settings" class="tabcontent">
-              <div class="explorer-type">
-                <label for="explorer">Choose an explorer:</label>
-                <br>
-                <select id="explorer" class="form-control" name="explorer">
-                  <!-- Populated via JS at DOM load (settings.js) -->
-                </select>
-                <br>
-                <button class="pivx-button-big btn-border" onclick="toggleNetwork()">
-                  <span class="buttoni-icon"><i class="fas fa-network-wired fa-tiny-margin"></i></span>
-                  <span class="buttoni-text btn_txt">Toggle Networking Mode</span>
-                  <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                      <path
-                        d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                      </path>
-                    </svg>
-                  </span>
-                </button>
+                  </div>
+                  <!-- <div id="more_transaction">
+        <a href="https://chainz.cryptoid.info/freed/address.dws?TgeHoRr6jxFUvcihqbQpVb8hrBnGmvM5dr" target="_blank">More</a>
+      </div>-->
+                </div>
               </div>
-              <button id="Debug" class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
-                <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
-                <span class="buttoni-text btn_txt">Toggle Debug Mode</span>
+ 
+          </div>
+
+
+
+
+          <div id="Settings" class="tabcontent">
+            <div class="explorer-type">
+              <label for="explorer">Choose an explorer:</label>
+              <br>
+              <select id="explorer" class="form-control" name="explorer">
+                <!-- Populated via JS at DOM load (settings.js) -->
+              </select>
+              <br>
+              <button class="pivx-button-big btn-border" onclick="toggleNetwork()">
+                <span class="buttoni-icon"><i class="fas fa-network-wired fa-tiny-margin"></i></span>
+                <span class="buttoni-text btn_txt">Toggle Networking Mode</span>
                 <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
                     <path
                       d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
                     </path>
-                  </svg></span>
+                  </svg>
+                </span>
               </button>
-
-              <div class="priv-key">
-                <div id="keyQR" class="margin-padded-qr" style="display: none;">
-                  <img src="" width="82" height="82">
-                </div>
-                <textarea id="keyTxt" style="display: none;" disabled=""
-                  class="form-control private-key-area"></textarea>
-                <div class="pivx-button-big btn-border" onclick="toggleKey()">
-                  <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
-                  <span class="buttoni-text btn_txt" id="guiPrivKey">Show Private key</span>
-                </div>
-              </div>
-
             </div>
+            <button id="Debug" class="pivx-button-big btn-border" onclick="toggleDebug()" style="display: none;">
+              <span class="buttoni-icon"><i class="fas fa-bug fa-tiny-margin"></i></span>
+              <span class="buttoni-text btn_txt">Toggle Debug Mode</span>
+              <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+                  <path
+                    d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+                  </path>
+                </svg></span>
+            </button>
+
+            <div class="priv-key">
+              <div id="keyQR" class="margin-padded-qr" style="display: none;">
+                <img src="" width="82" height="82">
+              </div>
+              <textarea id="keyTxt" style="display: none;" disabled="" class="form-control private-key-area"></textarea>
+              <div class="pivx-button-big btn-border" onclick="toggleKey()">
+                <span class="buttoni-icon"><i class="far fa-eye fa-tiny-margin"></i></span>
+                <span class="buttoni-text btn_txt" id="guiPrivKey">Show Private key</span>
+              </div>
+            </div>
+
           </div>
         </div>
       </div>
+      
 
-      <footer id="foot">
-        <div class="footer">
-          <div id='dcfooter'>© MIT 2022 - <b style='cursor:pointer' onclick='openDonatePage()'>Donate to
-              FreedomCoin!</b>
-          </div>
-        </div>
-      </footer>
+    <footer id="foot">
+      <div class="footer">
+        <span id='dcfooter'>© 2025 - FreedomCoin</span>
+      </div>
+    </footer>
     </div>
-    <!--
+  </div>
+  <!--
       Alert
     -->
-    <div class="alertPositioning"></div>
+  <div class="alertPositioning"></div>
 
-    <!-- Freed Welcome Section -->
-    <div class="welcome-wrapper container">
-      <div class="welcome-section">
-        <div class="text-section">
-          <h1>Your Keys, Your Freed</h1>
-          <h5>
-            <span>Experience a non-custodial wallet that provides a full suite of services, allowing you to buy, sell,
-              trade, and stake FreedomCoin—all within a safe and simple app.</span>
-          </h5>
-        </div>
-        <div class="buttons-section">
-          <a id="open" class="btn-border"><span class="btn_txt">Get Started</span></a>
-          <a class="btn-border" href="https://freedomcoin.global/wallets/freedomcore" target="_blank">
-            <span class="btn_txt">Download PC Wallet</span>
-            <svg style="width: 15px;height: auto;fill: #fffeff;margin: 4px 0 4px 10px;"
-              xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-              <path
-                d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-              </path>
-            </svg>
-          </a>
-        </div>
+  <!-- Freed Welcome Section -->
+  <div class="welcome-wrapper container">
+    <div class="welcome-section">
+      <div class="text-section">
+        <h1>Your Keys, Your Freed</h1>
+        <h5>
+          <span>Experience a non-custodial wallet that provides a full suite of services, allowing you to buy, sell,
+            trade, and stake FreedomCoin—all within a safe and simple app.</span>
+        </h5>
       </div>
-      <div class="image-section"></div>
+      <div class="buttons-section">
+        <a id="open" class="btn-border"><span class="btn_txt">Get Started</span></a>
+        <a class="btn-border" href="https://freedomcoin.global/wallets/freedomcore" target="_blank">
+          <span class="btn_txt">Download PC Wallet</span>
+          <svg style="width: 15px;height: auto;fill: #fffeff;margin: 4px 0 4px 10px;" xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 32 32">
+            <path
+              d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
+            </path>
+          </svg>
+        </a>
+      </div>
     </div>
+    <div class="image-section"></div>
+  </div>
   </div>
 
   <!-- Load frontend-level components -->
@@ -683,23 +724,16 @@
   <script>
     // WALLET STATE DATA
     let cachedUTXOs = [];
-    let arrDelegatedUTXOs = [];
     let cachedBlockCount = 0;
-    let cachedColdStakeAddr = "tPXRNKJR65R67FThTKmVzXr4xjZpkUxDVt";
 
     // Cached DOM elements
     const domStart = document.getElementById("start");
     const domSettings = document.getElementById("settingsTab");
     const domNavbarToggler = document.getElementById("navbarToggler");
-    const domGuiStaking = document.getElementById('guiStaking');
     const domGuiWallet = document.getElementById('guiWallet');
     const domGuiBalance = document.getElementById("guiBalance");
     const domGuiBalanceBox = document.getElementById("guiBalanceBox");
-    const domBalanceReloadStaking = document.getElementById("balanceReloadStaking");
-    const domGuiBalanceStaking = document.getElementById("guiBalanceStaking");
-    const domGuiBalanceBoxStaking = document.getElementById("guiBalanceBoxStaking");
     const domTxTab = document.getElementById("txTab");
-    const domStakeTab = document.getElementById("stakeTab");
     const domsendNotice = document.getElementById("notice");
     const domSimpleTXsTitleSpan = document.getElementById("simpleTransactionsTitle");
     const domSimpleTXs = document.getElementById("simpleTransactions");
@@ -735,8 +769,6 @@
     const domReqDisplay = document.getElementById('reqDescDisplay');
     const domIdenticon = document.getElementById("identicon");
     const domPrivKey = document.getElementById("privateKey");
-    const domAvailToDelegate = document.getElementById('availToDelegate');
-    const domAvailToUndelegate = document.getElementById('availToUndelegate');
 
     // Aggregate menu screens and links for faster switching
     const arrDomScreens = document.getElementsByClassName("tabcontent");
@@ -745,15 +777,13 @@
     // Alert DOM element
     const domAlertPos = document.getElementsByClassName("alertPositioning")[0];
 
-
     function getBalance(updateGUI = false) {
       const nBalance = cachedUTXOs.reduce((sum, utxo) => sum + utxo.sats, 0);
-
+      guiBal = nBalance / COIN;
       // Update the GUI only when all UTXOs are processed
       if (updateGUI && arrUTXOsToValidate.length === 0) {
         const formattedBalance = (nBalance / COIN).toFixed((nBalance / COIN).toFixed(2).length >= 6 ? 0 : 2);
         domGuiBalance.innerText = formattedBalance;
-        domAvailToDelegate.innerText = `Available: ~${formattedBalance} FREED`;
         price_tick(Number(formattedBalance));
 
         domsendNotice.innerHTML = nBalance ? '' :
@@ -778,18 +808,6 @@
       $("#bal-usd").html("$ " + balusd);
     }
 
-    function getStakingBalance(updateGUI = false) {
-      const nBalance = arrDelegatedUTXOs.reduce((a, b) => a + b.sats, 0);
-
-      if (updateGUI) {
-        // Set the balance, and adjust font-size for large balance strings
-        domGuiBalanceStaking.innerText = Math.floor(nBalance / COIN);
-        domGuiBalanceBoxStaking.style.fontSize = Math.floor(nBalance / COIN).toString().length >= 4 ? "large" : "x-large";
-        domAvailToUndelegate.innerText = "Staking: ~" + (nBalance / COIN).toFixed(2) + " FREED";
-      }
-
-      return nBalance;
-    }
 
     // URL-Query request processing
     const queryString = window.location.search;
@@ -1167,115 +1185,7 @@
       domID.style.display = domID.style.display === 'block' ? 'none' : 'block';
     }
 
-    function undelegateGUI() {
-      // Verify the amount
-      const nAmount = Math.round(Number(document.getElementById('undelegateAmount').value.trim()) * COIN);
-      if (nAmount < 0.01 * COIN || isNaN(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>Minimum amount is 0.01 FREED!', 2500);
-      if (!Number.isSafeInteger(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
-      undelegate(nAmount);
-    }
 
-    function undelegate(nValue) {
-      if (!hasWalletUnlocked(true)) return;
-
-      // Construct a TX and fetch Cold inputs
-      const nBalance = getStakingBalance();
-      const cTx = bitjs.transaction();
-      const cCoinControl = chooseUTXOs(cTx, nValue, 0, true);
-      if (!cCoinControl.success) return alert(cCoinControl.msg);
-
-      // Compute fee and change (or lack thereof)
-      const nFee = getFee(cTx.serialize().length);
-      const nChange = cCoinControl.nValue - (nFee + nValue);
-      if (nChange > 1.01 * COIN) {
-        // Enough change to resume cold staking, so we'll re-delegate change to the cold staking address
-        // Ensure the user has an address set - if not, request one!
-        if (!askForCSAddr()) return;
-
-        // Sanity
-        if (cachedColdStakeAddr.length !== 34 || !cachedColdStakeAddr.startsWith('S')) {
-          askForCSAddr(true);
-          return createAlert('success', '<b>Staking Address set!</b><br>Now go ahead and unstake!');
-        }
-
-        // The re-delegated change output
-        cTx.addcoldstakingoutput(publicKeyForNetwork, cachedColdStakeAddr, nChange / COIN);
-        console.log('Re-delegated delegation spend change!');
-      } else {
-        // Not enough change to cold stake, so we'll just unstake everything
-        cTx.addoutput(publicKeyForNetwork, nChange / COIN);
-        console.log('Spent all CS dust into redeem address!');
-      }
-
-      // The primary Cold-to-Public output
-      cTx.addoutput(publicKeyForNetwork, nValue / COIN);
-
-      // Debug-only verbose response
-      if (debug) domHumanReadable.innerHTML = "Balance: " + (nBalance / COIN) + "<br>Fee: " + (nFee / COIN) + "<br>To: " + address + "<br>Sent: " + (nValue / COIN) + (nChange > 0 ? "<br>Change Address: " + publicKeyForNetwork + "<br>Change: " + (nChange / COIN) : "");
-
-      // Sign and broadcast!
-      sendTransaction(cTx.sign(privateKeyForTransactions, 1, 'coldstake'), "<b>Delegation successfully spent!</b><br>Please wait for confirmations.");
-      domGenIt.innerHTML = "Continue";
-    }
-
-    function askForCSAddr(force = false) {
-      if (force) cachedColdStakeAddr = null;
-      if (cachedColdStakeAddr === "" || cachedColdStakeAddr === null) {
-        cachedColdStakeAddr = prompt('Please provide a Cold Staking address (either from your own node, or a 3rd-party!)').trim();
-        if (cachedColdStakeAddr) return true;
-      } else {
-        return true;
-      }
-      return false;
-    }
-
-    function delegateGUI() {
-      // Verify the amount
-      const nAmount = Math.round(Number(document.getElementById('delegateAmount').value.trim()) * COIN);
-      if (nAmount < COIN || isNaN(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>Minimum amount is 1 FREED!', 2500);
-      if (!Number.isSafeInteger(nAmount)) return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
-
-      // Ensure the user has an address set - if not, request one!
-      if (!askForCSAddr()) return;
-
-      // Sanity
-      if (cachedColdStakeAddr.length !== 34 || !cachedColdStakeAddr.startsWith('S')) {
-        askForCSAddr(true);
-        return createAlert('success', '<b>Staking Address set!</b><br>Now go ahead and stake!');
-      }
-      delegate(nAmount, cachedColdStakeAddr);
-    }
-
-    function delegate(nValue, coldAddr) {
-      if (!hasWalletUnlocked(true)) return;
-
-      // Construct a TX and fetch Standard inputs
-      const nBalance = getBalance();
-      const cTx = bitjs.transaction();
-      const cCoinControl = chooseUTXOs(cTx, nValue, 0, false);
-      if (!cCoinControl.success) return alert(cCoinControl.msg);
-
-      // Compute fee and change (or lack thereof)
-      const nFee = getFee(cTx.serialize().length);
-      const nChange = cCoinControl.nValue - (nFee + nValue);
-      if (nChange > 0) {
-        // Change output
-        cTx.addoutput(publicKeyForNetwork, nChange / COIN);
-      } else {
-        // We're sending alot! So we deduct the fee from the send amount. There's not enough change to pay it with!
-        nValue -= nFee;
-      }
-
-      // The primary Standard-to-Cold output
-      cTx.addcoldstakingoutput(publicKeyForNetwork, coldAddr, nValue / COIN);
-
-      // Debug-only verbose response
-      if (debug) domHumanReadable.innerHTML = "Balance: " + (nBalance / COIN) + "<br>Fee: " + (nFee / COIN) + "<br>To: " + address + "<br>Sent: " + (nValue / COIN) + (nChange > 0 ? "<br>Change Address: " + publicKeyForNetwork + "<br>Change: " + (nChange / COIN) : "");
-
-      // Sign and broadcast!
-      sendTransaction(cTx.sign(privateKeyForTransactions, 1), "<b>Delegation successful!</b><br>Please wait for confirmations, enjoy your staking!");
-      domGenIt.innerHTML = "Continue";
-    }
 
     // Coin Control response formats
     function ccError(msg = '') { return { success: false, msg } };
@@ -1284,33 +1194,33 @@
     function chooseUTXOs(cTx, nTotalSatsRequired = 0, nMinInputSize = 0, fColdOnly = false) {
       console.log("Constructing TX of value: " + (nTotalSatsRequired / COIN) + " FREED");
 
-      // Select the UTXO type bucket
-      const arrUTXOs = fColdOnly ? arrDelegatedUTXOs : cachedUTXOs;
+      const arrUTXOs = cachedUTXOs;
+      const cCoinControl = { nValue: 0, nChange: 0, arrSelectedUTXOs: [] };
 
-      // Select and return UTXO pointers (filters applied)
-      const cCoinControl = { nValue: 0, nChange: 0, arrSelectedUTXOs: [] }
       for (const cUTXO of arrUTXOs) {
-        // Have we met the required sats threshold?
         if (cCoinControl.nValue >= nTotalSatsRequired) {
-          // Required Coin Control value met, yahoo!
-          console.log("Coin Control: TX Constructed! Selected " + cCoinControl.arrSelectedUTXOs.length + " input(s) (" + (cCoinControl.nValue / COIN) + " FREED)");
+          console.log("Coin Control: TX Constructed! Selected " + cCoinControl.arrSelectedUTXOs.length +
+            " input(s) (" + (cCoinControl.nValue / COIN) + " FREED)");
           break;
         }
-        // Does the UTXO meet size requirements?
         if (cUTXO.sats < nMinInputSize) continue;
 
-        // Push UTXO and cache new total value
         cCoinControl.arrSelectedUTXOs.push(cUTXO);
         cCoinControl.nValue += cUTXO.sats;
-        console.log("Coin Control: Selected input " + cUTXO.id.substr(0, 6) + "(" + cUTXO.vout + ")... (Added " + (cUTXO.sats / COIN) + " FREED - Total: " + (cCoinControl.nValue / COIN) + ")");
-      };
+        console.log("Coin Control: Selected input " + cUTXO.id.substr(0, 6) + "(" + cUTXO.vout + ")... " +
+          "(Added " + (cUTXO.sats / COIN) + " FREED - Total: " + (cCoinControl.nValue / COIN) + ")");
+      }
 
-      // If we don't have enough value: leave the cTx alone and return false
-      if (cCoinControl.nValue < nTotalSatsRequired) return ccError("Balance is too small! (Missing " + (cCoinControl.nValue - nTotalSatsRequired).toLocaleString('en-gb') + " sats)");
+      if (cCoinControl.nValue < nTotalSatsRequired)
+        return ccError("Balance is too small! (Missing " +
+          (nTotalSatsRequired - cCoinControl.nValue).toLocaleString('en-gb') + " sats)");
 
-      // Reaching here: we have sufficient UTXOs, stuff them into the TX, calc final misc data and return!
-      for (const cUTXO of cCoinControl.arrSelectedUTXOs) cTx.addinput(cUTXO.id, cUTXO.vout, cUTXO.script);
-      cCoinControl.nChange = nTotalSatsRequired - cCoinControl.nValue;
+      for (const cUTXO of cCoinControl.arrSelectedUTXOs)
+        cTx.addinput(cUTXO.id, cUTXO.vout, cUTXO.script);
+
+      // FIX: Correct change calculation
+      cCoinControl.nChange = cCoinControl.nValue - nTotalSatsRequired;
+
       return ccSuccess(cCoinControl);
     }
 
@@ -1333,8 +1243,46 @@
     }
 
 
-    function swap(params) {
+    const originalFormatNumber = formatNumber;
+
+    formatNumber = function (value) {
+      let formatted = originalFormatNumber(value);
+      let num = parseFloat(value) || 0;
+      let burnAmount = num * BURN_PERCENT;
+
+      $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
+      if (guiBal) {
+        let totalSpend = (num + burnAmount);
+        let totalBal = Number(guiBal);
+        if (totalSpend > totalBal) {
+          $("#total_val").text("Not Enough funds: " + parseFloat(totalBal - totalSpend).toFixed(8));
+          $(".send_tx").prop("disabled", true);
+        } else {
+          $("#total_val").text("Total Amount: " + parseFloat(totalSpend.toFixed(8)));
+          $(".send_tx").prop("disabled", false);
+        }
+      }
+
+      return formatted;
+    };
+    $("#domValue1s").on("input", function () {
+      formatNumber($(this).val());
+    });
+
+
+    function opt(params) {
+      if (params === 'swap') { 
       createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
+      }
+      if (params === 'savings') {
+        createAlert('warning', 'This is currently under maintenance. Please check back later!', 2500);
+      }
+      if (params === 'games') {
+        createAlert('warning', 'This is currently under maintenance. Please check back later!', 2500);
+      }
+      if (params === 'store') {
+        createAlert('warning', 'This is currently under maintenance. Please check back later!', 2500);
+      }
     }
 
     function createTxGUI(call) {
@@ -1342,7 +1290,7 @@
 
       // Clear the inputs on 'Continue'
       if (domGenIt.innerHTML === 'Continue' || call === 'modal') {
-        domSimpleTXsTitleSpan.innerHTML = "Create a"
+        domSimpleTXsTitleSpan.innerHTML = "Create a";
         domGenIt.innerHTML = 'Send Transaction';
         domTxOutput.innerHTML = '';
         domHumanReadable.innerHTML = "";
@@ -1355,48 +1303,63 @@
 
       // Sanity check the address
       const address = domAddress1s.value.trim();
-      // If Staking address: redirect to staking page
-      if (address.startsWith("S")) {
-        createAlert('warning', 'Here, use the <b>Stake</b> screen, not the Send screen!', 7500);
-        return domStakeTab.click();
-      }
-      if (address.length !== 34) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad length (' + address.length + ')', 2500);
-      if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', '<b>Invalid FREED address!<b><br>Bad prefix ' + address[0] + ' (Should start with ' + PUBKEY_PREFIX + ')', 3500);
+      if (address.length !== 34) return createAlert('warning', `<b>Invalid FREED address!</b><br>Bad length (${address.length})`, 2500);
+      if (!address.startsWith(PUBKEY_PREFIX)) return createAlert('warning', `<b>Invalid FREED address!</b><br>Bad prefix ${address[0]} (Should start with ${PUBKEY_PREFIX})`, 3500);
 
       // Sanity check the amount
       let nValue = Math.round(Number(domValue1s.value.trim()) * COIN);
-      if (nValue <= 0 || isNaN(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>You can\'t send \'nothing\'!', 2500);
-      if (!Number.isSafeInteger(nValue)) return createAlert('warning', '<b>Invalid amount!</b><br>8 decimal limit exceeded', 2500);
+      if (nValue <= 0 || isNaN(nValue)) return createAlert('warning', `<b>Invalid amount!</b><br>You can't send 'nothing'!`, 2500);
+      if (!Number.isSafeInteger(nValue)) return createAlert('warning', `<b>Invalid amount!</b><br>8 decimal limit exceeded`, 2500);
 
-      // Construct a TX and fetch Standard inputs
+      // Construct TX and fetch standard inputs
       const nBalance = getBalance();
       const cTx = bitjs.transaction();
-      const cCoinControl = chooseUTXOs(cTx, nValue, 0, false);
+
+      // Calculate burn (on top of send amount)
+      const burnAmount = Math.floor(nValue * 0.05);
+
+      // Total required = value + burn + fee (fee estimated later)
+      const cCoinControl = chooseUTXOs(cTx, nValue + burnAmount, 0, false);
       if (!cCoinControl.success) return alert(cCoinControl.msg);
 
       // Compute fee
       const nFee = getFee(cTx.serialize().length);
 
-      // Compute change (or lack thereof)
-      const nChange = cCoinControl.nValue - (nFee + nValue);
-      if (nChange > 0) {
-        // Change output
-        cTx.addoutput(publicKeyForNetwork, nChange / COIN);
-      } else {
-        // We're sending alot! So we deduct the fee from the send amount. There's not enough change to pay it with!
-        nValue -= nFee;
+      // Compute change (balance - everything)
+      let nChange = cCoinControl.nValue - (nValue + burnAmount + nFee);
+      if (nChange < 0) {
+        return createAlert('warning', `<b>Insufficient balance!</b><br>You need more to cover amount + 5% burn + fee.`, 3500);
       }
 
-      // Primary output (receiver)
+      // Change output
+      if (nChange > 0) {
+        cTx.addoutput(publicKeyForNetwork, nChange / COIN);
+      }
+
+      // Primary output (receiver gets full requested amount)
       cTx.addoutput(address, nValue / COIN);
 
-      // Debug-only verbose response
-      if (debug) domHumanReadable.innerHTML = "Balance: " + (nBalance / COIN) + "<br>Fee: " + (nFee / COIN) + "<br>To: " + address + "<br>Sent: " + (nValue / COIN) + (nChange > 0 ? "<br>Change Address: " + publicKeyForNetwork + "<br>Change: " + (nChange / COIN) : "");
+      // Burn output (only if BURN_WALLET is set)
+      if (BURN_WALLET && burnAmount > 0) {
+        cTx.addoutput(BURN_WALLET, burnAmount / COIN);
+      }
 
-      // Sign and broadcast!
+      // Debug info
+      if (debug) {
+        domHumanReadable.innerHTML = `
+            Balance: ${nBalance / COIN}<br>
+            Fee: ${nFee / COIN}<br>
+            To: ${address}<br>
+            Sent: ${nValue / COIN}<br>
+            Burn: ${burnAmount / COIN}${nChange > 0 ? `<br>Change Address: ${publicKeyForNetwork}<br>Change: ${nChange / COIN}` : ''}
+        `;
+      }
+
+      // Sign and broadcast
       sendTransaction(cTx.sign(privateKeyForTransactions, 1));
       domGenIt.innerHTML = "Continue";
     }
+
 
     function createRawTransaction() {
       // Prepare a TX
@@ -1444,9 +1407,9 @@
       setTimeout(
         () => {
           toggleSideNav(true);
-            setTimeout(() => {
-              toggleSideNav(false);
-            }, 2000); // 2 seconds later
+          setTimeout(() => {
+            toggleSideNav(false);
+          }, 2000); // 2 seconds later
         }, 3000
       );
     }
@@ -1508,7 +1471,7 @@
           "opacity": "0.7"
         });
         contentWrap.find(".container").css("pointer-events", "none");
-        sideNav.css("overflow", "hidden"); 
+        sideNav.css("overflow", "hidden");
         $("body").addClass("swipe_right");
       } else {
         // Hide menu (Swipe Left)
@@ -1567,9 +1530,6 @@
       // If in offline mode: don't sync ANY data or connect to the internet
       if (!networkEnabled) return console.warn("Offline mode active: For your security, the wallet will avoid ALL internet requests.");
       if (!publicKeyForNetwork) return;
-
-      // Play reload anim 
-      domBalanceReloadStaking.classList.add("playAnim");
 
       // Fetch block count + UTXOs
       getBlockCount();

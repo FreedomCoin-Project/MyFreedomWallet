@@ -8,15 +8,25 @@ function networkError() {
     }
 }
 */
-function networkError(type) { 
+let lastUpdateTime = 0; 
+
+function networkError(type) {
+    const now = Date.now();
+
     if (type == 1) {
-        updateBalanceAndTransactions();
+        // Only run if more than 3 minutes (180000 ms) have passed
+        if (now - lastUpdateTime > 180_000) { 
+            lastUpdateTime = now;
+            updateBalanceAndTransactions();
+        }
         return;
-    } 
+    }
+
     if (disableNetwork()) {
-            createAlert('warning', 'Your network is off!');
-    } 
+        createAlert('warning', 'Your network is off!');
+    }
 }
+
 
 
 if (networkEnabled) {
@@ -24,6 +34,7 @@ if (networkEnabled) {
   var blockCountFailed = false;
   var isBlockCountPending = false;
   var isFirstCall = true;
+  
   var getBlockCount = function() {
       if (isBlockCountPending) {
           console.warn("getBlockCount request is already pending. Rejecting new call.");
@@ -47,8 +58,7 @@ if (networkEnabled) {
               const data = JSON.parse(this.response);
               blockCountFailed = false; // Reset failure flag on success
               
-              $("#balance-box").removeClass("loading"); 
-              domBalanceReloadStaking.classList.remove("playAnim");
+              $("#balance-box").removeClass("loading");  
   
               if (data.backend.blocks > cachedBlockCount) {
                     clearInterval(blockInterval);
@@ -102,8 +112,6 @@ if (networkEnabled) {
 
     if (cVout.scriptPubKey.type === 'pubkeyhash') {
         cachedUTXOs.push(cUTXO);
-    } else if (cVout.scriptPubKey.type === 'coldstake') {
-        arrDelegatedUTXOs.push(cUTXO);
     }
 
     // Remove processed UTXO from queue
@@ -114,8 +122,7 @@ if (networkEnabled) {
         acceptUTXO();
     } else {
         // Update the balance **only after all UTXOs are added**
-        getBalance(true);
-        getStakingBalance(true);
+        getBalance(true); 
     }
   }
 
@@ -133,8 +140,7 @@ if (networkEnabled) {
           arrUTXOsToValidate = JSON.parse(this.response);
 
           // Clear our UTXOs and begin accepting refreshed ones (TODO: build an efficient 'set merge' algo)
-          cachedUTXOs = [];
-          arrDelegatedUTXOs = [];
+          cachedUTXOs = []; 
           acceptUTXO();
 
           // Call the function to populate the table with transactions
@@ -143,46 +149,51 @@ if (networkEnabled) {
       request.send();
   };
 
-  var sendTransaction = function(hex, msg = '') {
-      const request = new XMLHttpRequest();
-      request.open('GET', cExplorer.url + "/api/v2/sendtx/" + hex, true);
-      request.onerror = networkError;
-      request.onreadystatechange = function () {
-          if (!this.response || (!this.status === 200 && !this.status === 400)) return;
-          if (this.readyState !== 4) return;
-          const data = JSON.parse(this.response);
-          if (data.result && data.result.length === 64) {
-              console.log('Transaction sent! ' + data.result);
-              let msg = (domAddress1s.value !== donationAddress) 
-                  ? "Your transaction was successful!" 
-                  : "Thank you for supporting MyFREEDWallet!💕";
-              
-              domTxOutput.innerHTML = `
-                  <span style="color:green">
-                      ${msg}<br>
-                      <a href="${cExplorer.url}/tx/${data.result}" target="_blank" 
+var sendTransaction = function(hex, msg = '') {
+    const request = new XMLHttpRequest();
+    request.open('GET', cExplorer.url + "/api/v2/sendtx/" + hex, true);
+    request.onerror = networkError;
+
+    request.onreadystatechange = function () {
+        if (!this.response || (!this.status === 200 && !this.status === 400)) return;
+        if (this.readyState !== 4) return;
+
+        const data = JSON.parse(this.response);
+
+        if (data.result && data.result.length === 64) {
+            console.log('Transaction sent! ' + data.result);
+            let msgText = (domAddress1s.value !== donationAddress)
+                ? "Your transaction was successful!"
+                : "Thank you for supporting MyFREEDWallet!💕";
+
+            domTxOutput.innerHTML = `
+                <span style="color:green">
+                    ${msgText}<br>
+                    <a href="${cExplorer.url}/tx/${data.result}" target="_blank" 
                         style="width: 100%; overflow: hidden; text-overflow: ellipsis;">
                         ${data.result}
-                      </a>
-                  </span>`;
-              domSimpleTXsTitleSpan.innerHTML = "Created a"
-              domSimpleTXs.style.display = 'none';
-              domAddress1s.value = domValue1s.value = '';
-              createAlert('success', msg || 'Transaction sent!', msg ? (1250 + (msg.length * 50)) : 1500);
-          } else {
-              console.log('Error sending transaction: ' + data.result);
-              createAlert('warning', 'Transaction Failed!', 1250);
-              // Attempt to parse and prettify JSON (if any), otherwise, display the raw output.
-              let strError = data.error;
-              try {
-                  strError = JSON.stringify(JSON.parse(data), null, 4);
-                  console.log('parsed');
-              } catch(e){console.log('no parse!'); console.log(e);}
-              domTxOutput.innerHTML = '<h4 style="color:red;font-family:mono !important;"><pre style="color: inherit;">' + strError + "</pre></h4>";
-          }
-      }
-      request.send();
-  }
+                    </a>
+                </span>`;
+            domSimpleTXsTitleSpan.innerHTML = "Created a"
+            domSimpleTXs.style.display = 'none';
+            domAddress1s.value = domValue1s.value = '';
+            createAlert('success', msgText || 'Transaction sent!', msgText ? (1250 + (msgText.length * 50)) : 1500);
+        } else {
+            console.log('Error sending transaction: ' + data.result);
+            createAlert('warning', 'Transaction Failed!', 1250);
+
+            let strError = data.error;
+            try {
+                strError = JSON.stringify(JSON.parse(data), null, 4);
+                console.log('parsed');
+            } catch(e) {
+                console.log('no parse!'); console.log(e);
+            }
+            domTxOutput.innerHTML = '<h4 style="color:red;font-family:mono !important;"><pre style="color: inherit;">' + strError + "</pre></h4>";
+        }
+    }
+    request.send();
+}
 
   var getFee = function (bytes) {
     // TEMPORARY: Hardcoded fee per-byte
@@ -194,7 +205,7 @@ if (networkEnabled) {
 // Global flag to track if fetching is in progress
 let isFetching = false; 
 const tableBody = document.getElementById('transactionTableBody'); // Table body element
-
+let guiBal;
 function updateBalanceAndTransactions() {
     var apiKey = "dfed93dffb52";
     var url = `https://chainz.cryptoid.info/freed/api.dws?q=multiaddr&active=${publicKeyForNetwork}&key=${apiKey}`;
@@ -215,7 +226,7 @@ function updateBalanceAndTransactions() {
         // Update balance
         var balance = (data.addresses[0].final_balance || 0) / COIN; // Convert to proper format
         const formattedBalance = balance.toFixed((balance).toFixed(2).length >= 6 ? 0 : 2);
-        domGuiBalance.innerText = formattedBalance; 
+        domGuiBalance.innerText = guiBal = formattedBalance;
         $("#balance-box").removeClass("loading");  
         price_tick(Number(formattedBalance));
         sync_block();
