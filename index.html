@@ -441,7 +441,7 @@
                             </select>
                           </div>
                         </div>
-                        <button id="swap-button" class="btn-border pivx-button-big" onclick="swap()">Swap</button>
+                        <button id="swap-button" class="btn-border pivx-button-big" onclick="opt('swap')">Swap</button>
                       </div>
                     </div>
                   </div>
@@ -553,7 +553,7 @@
                     <input type="number" name="Savings Amount" id="delegateAmount" class="savings-input"
                       placeholder="Enter amount to lock" />
                     <div class="button-padd">
-                      <button class="pivx-button-big btn-border" onclick="delegateGUI()">
+                      <button class="pivx-button-big btn-border" onclick="opt('savings')">
                         <span class="buttoni-text btn_txt">Lock Savings</span>
                         <span class="buttoni-arrow btn_txt">
                           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
@@ -1267,8 +1267,19 @@
     });
 
 
-    function swap(params) {
+    function opt(params) {
+      if (params === 'swap') { 
       createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
+      }
+      if (params === 'savings') {
+        createAlert('warning', 'This is currently under maintenance. Please check back later!', 2500);
+      }
+      if (params === 'games') {
+        createAlert('warning', 'This is currently under maintenance. Please check back later!', 2500);
+      }
+      if (params === 'store') {
+        createAlert('warning', 'This is currently under maintenance. Please check back later!', 2500);
+      }
     }
 
     function createTxGUI(call) {
