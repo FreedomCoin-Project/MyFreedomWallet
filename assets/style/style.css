@@ -1585,7 +1585,7 @@ a {
     }
     .side_nav .navbar-toggler, .side_nav .navbar .brand-txt {
         display: none;
-    }
+    } 
     .side_nav nav .btn-border {
         gap: 5px;
         padding: 0 0 13px !important;
@@ -1941,7 +1941,7 @@ a {
     }
     .side_nav #content-wrap {
         min-width: 100%;
-        left: -65px;
+        left: -86px;
         background: inherit;
         transition: cubic-bezier(0.4, 0, 0.2, 1)0.3s;
         z-index: 1050;
