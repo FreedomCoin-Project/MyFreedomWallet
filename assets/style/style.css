@@ -1586,7 +1586,7 @@ a {
     .side_nav .navbar-toggler, .side_nav .navbar .brand-txt {
         display: none;
     }
-    .side_nav nav .btn-border .btn-border {
+    .side_nav nav .btn-border {
         gap: 5px;
         padding: 0 0 13px !important;
         border-radius: 0;
