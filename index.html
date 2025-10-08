@@ -1247,10 +1247,10 @@
 
     formatNumber = function (value) {
       let formatted = originalFormatNumber(value);
-      let num = parseFloat(value) * COIN || 0;
+      let num = parseFloat(value) || 0;
      
-      const cappedBurnBase = (num * BURN_PERCENT);
-      const burnAmount =  Math.min(cappedBurnBase, burnCap);
+      const cappedBurnBase = ((num * COIN) * BURN_PERCENT);
+      const burnAmount =  Math.min(cappedBurnBase, burnCap) / COIN;
 
       $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
       if (guiBal) {
