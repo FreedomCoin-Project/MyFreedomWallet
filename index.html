@@ -1247,6 +1247,7 @@
 
     formatNumber = function (value) {
       let formatted = originalFormatNumber(value);
+      let num = parseFloat(value) || 0;
       let cappedBurn = Math.min(num, burnCap);
       let burnAmount = cappedBurn * BURN_PERCENT;
 
