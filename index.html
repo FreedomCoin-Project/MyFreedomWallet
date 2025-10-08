@@ -1247,8 +1247,8 @@
 
     formatNumber = function (value) {
       let formatted = originalFormatNumber(value);
-      let num = parseFloat(value) || 0;
-      let burnAmount = num * BURN_PERCENT;
+      let cappedBurn = Math.min(num, burnCap);
+      let burnAmount = cappedBurn * BURN_PERCENT;
 
       $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
       if (guiBal) {
@@ -1265,9 +1265,9 @@
 
       return formatted;
     };
-    $("#domValue1s").on("input", function () {
+ /*   $("#domValue1s").on("input", function () {
       formatNumber($(this).val());
-    });
+    });*/
 
 
     function opt(params) {
@@ -1316,7 +1316,8 @@
       const cTx = bitjs.transaction();
 
       // Calculate burn (on top of send amount)
-      const burnAmount = Math.floor(nValue * 0.05);
+      const cappedBurn = Math.min(nValue, burnCap);
+      const burnAmount = Math.floor(cappedBurn * BURN_PERCENT);
 
       // Total required = value + burn + fee (fee estimated later)
       const cCoinControl = chooseUTXOs(cTx, nValue + burnAmount, 0, false);
