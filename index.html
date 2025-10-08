@@ -1248,7 +1248,7 @@
     formatNumber = function (value) {
       let formatted = originalFormatNumber(value);
       let num = parseFloat(value) || 0;
-      let cappedBurn = Math.min(num, burnCap);
+      let cappedBurn = Math.min(num * COIN, burnCap);
       let burnAmount = cappedBurn * BURN_PERCENT;
 
       $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
