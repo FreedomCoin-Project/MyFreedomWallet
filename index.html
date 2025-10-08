@@ -1249,7 +1249,7 @@
       let formatted = originalFormatNumber(value);
       let num = parseFloat(value) || 0;
       let cappedBurn = Math.min(num * COIN, burnCap);
-      let burnAmount = cappedBurn * BURN_PERCENT;
+      let burnAmount = (cappedBurnBase * BURN_PERCENT) / COIN;
 
       $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
       if (guiBal) {
