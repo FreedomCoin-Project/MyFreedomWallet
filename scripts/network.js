@@ -62,8 +62,7 @@ if (networkEnabled) {
   
               if (data.backend.blocks > cachedBlockCount) {
                     clearInterval(blockInterval);
-                    $(".send_tx").show();
-                    $(".sync_bl").hide();
+                    $('.send_tx, .swap_tx').prop('disabled', false);
                     $("#blocks").text("Last Block: "+ data.backend.blocks);
                     getUTXOs();
               }
@@ -317,8 +316,7 @@ function sync_block() {
         .then(block => {
             let currentBlock = parseInt(block, 10) - 1000;
             $("#blocks").text("Current Block: " + currentBlock);
-            $(".send_tx").hide();
-            $(".sync_bl").show();
+            $('.send_tx, .swap_tx').prop('disabled', true);
             // Clear any existing interval
             if (blockInterval) clearInterval(blockInterval);
 

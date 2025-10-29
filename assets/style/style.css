@@ -154,6 +154,12 @@ button:disabled {
 button:hover {
     color: rgba(255, 255, 255, 0.95);
 }
+[disabled] > .synchronized, .synching {
+    display: none;
+}
+[disabled] > .synching {
+    display: block;
+}
 .my-qr-reader button {
     background: var(--primary);
     padding: 10px 20px;
@@ -632,12 +638,35 @@ nav .btn-border:hover span, #Network.hover span {
   
   /* Body */
   .swap-body {
+    position: relative;
     display: flex;
     gap: 15px;
     flex-wrap: wrap;
     flex-direction: row;
   }
   
+
+.swap-direction {
+    position: absolute;
+    width: 30px;
+    top: 5px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    padding: 3px;
+    border: 1px solid var(--border-color);
+    z-index: 50;
+    border-radius: 50%;
+}
+
+.swap-direction.to {
+    transform: rotate(90deg);
+}
+.swap-direction.from {
+    transform: rotate(270deg);
+}
+
+
   .swap-section {
     display: flex;
     flex: 0 0 calc(50% - 10px);
@@ -701,11 +730,12 @@ nav .btn-border:hover span, #Network.hover span {
 /* -- Headline -- */
 
 /* -- Background -- */
-#address-box, #Transaction {    
+#address-box, #swap, #Transaction {    
     position: absolute;
     display: none;
     width: 60%;
     min-width: 300px;
+    max-width: 800px;
     padding: 30px 25px;
     background: var(--bg-color1);
     top: 50%;
@@ -826,8 +856,14 @@ nav .btn-border:hover span, #Network.hover span {
     justify-content: center;
     align-items: center;
 }
-
-#guiAddress {
+.swap-to {
+    margin: 0 !important;
+    padding: 20px !important;
+    margin-left: 20px !important;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+}
+#guiAddress, #swapAddress {
     display: inline-block;
     width: 100%;
     font-size: 16px;
@@ -1066,6 +1102,15 @@ nav .btn-border:hover span, #Network.hover span {
 }
 
 
+#swap-info-address {
+    display: flex;
+    border-radius: 8px;
+    justify-content: center;
+    flex-direction: row;
+}
+
+
+
 /* FOOTER */
 
 #foot {
@@ -1294,7 +1339,7 @@ nav > .container {
 .buttoni-arrow {
     vertical-align: top !important;
     display: inline-block;
-    padding: 4px 0 4px 10px;
+    padding: 2px 0 4px 10px;
     -webkit-transition: all .2s ease-out;
     transition: all .2s ease-out;
 }

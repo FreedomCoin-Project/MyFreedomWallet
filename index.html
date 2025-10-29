@@ -213,11 +213,9 @@
               <button class="pivx-button-big btn-border send_tx" onclick="createTxGUI()">
                 <span class="buttoni-icon"><i class="fas fa-paper-plane fa-tiny-margin"></i></span>
                 <span class="buttoni-text btn_txt" id="genIt">Send Transaction</span>
-                <span class="buttoni-arrow btn_txt"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-                    <path
-                      d="M23.328 16.707L13.121 26.914a.5.5 0 01-.707 0l-2.828-2.828a.5.5 0 010-.707L16.964 16 9.586 8.621a.5.5 0 010-.707l2.828-2.828a.5.5 0 01.707 0l10.207 10.207a1 1 0 010 1.414z">
-                    </path>
-                  </svg></span>
+                <span class="buttoni-arrow btn_txt">
+                  <i class="fa-chevron-right fas fa-sm"></i>
+                </span>
               </button>
               <button class="pivx-button-big btn-border sync_bl" style="display:none;text-transform:capitalize;"
                 disabled>
@@ -570,14 +568,15 @@
                     </div>
                   </div>
                 </div>
-              </div> 
+              </div>
 
-                <!-- SAVINGS HISTORY -->
-                <div id="transaction_table" style="margin-top: 20px;">
-                  <h6 style="font-weight:100; padding:20px 5px;margin:auto;margin-bottom:.5rem;width:90%;">Savings History</h6>
-                  <div id="transactionTableBody"  class="savings-frame large-box loading">
-                    <span>No Savings...</span>
-                    <!-- Example Active Saving
+              <!-- SAVINGS HISTORY -->
+              <div id="transaction_table" style="margin-top: 20px;">
+                <h6 style="font-weight:100; padding:20px 5px;margin:auto;margin-bottom:.5rem;width:90%;">Savings History
+                </h6>
+                <div id="transactionTableBody" class="savings-frame large-box loading">
+                  <span>No Savings...</span>
+                  <!-- Example Active Saving
         <a class="transaction-row large-box" href="#" target="_blank">
           <div class="details">
             <div class="icon self-transfer"></div>
@@ -619,13 +618,13 @@
           </div>
         </a> -->
 
-                  </div>
-                  <!-- <div id="more_transaction">
+                </div>
+                <!-- <div id="more_transaction">
         <a href="https://chainz.cryptoid.info/freed/address.dws?TgeHoRr6jxFUvcihqbQpVb8hrBnGmvM5dr" target="_blank">More</a>
       </div>-->
-                </div>
               </div>
- 
+            </div>
+
           </div>
 
 
@@ -674,13 +673,13 @@
           </div>
         </div>
       </div>
-      
 
-    <footer id="foot">
-      <div class="footer">
-        <span id='dcfooter'>© 2025 - FreedomCoin</span>
-      </div>
-    </footer>
+
+      <footer id="foot">
+        <div class="footer">
+          <span id='dcfooter'>© 2025 - FreedomCoin</span>
+        </div>
+      </footer>
     </div>
   </div>
   <!--
@@ -1248,9 +1247,9 @@
     formatNumber = function (value) {
       let formatted = originalFormatNumber(value);
       let num = parseFloat(value) || 0;
-     
+
       const cappedBurnBase = ((num * COIN) * BURN_PERCENT);
-      const burnAmount =  Math.min(cappedBurnBase, burnCap) / COIN;
+      const burnAmount = Math.min(cappedBurnBase, burnCap) / COIN;
 
       $("#toburn").text(parseFloat(burnAmount.toFixed(8)) + " FREED will be burned.");
       if (guiBal) {
@@ -1273,8 +1272,8 @@
 
 
     function opt(params) {
-      if (params === 'swap') { 
-      createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
+      if (params === 'swap') {
+        createAlert('warning', 'Swap is temporarily unavailable. Please check back later!', 2500);
       }
       if (params === 'savings') {
         createAlert('warning', 'This is currently under maintenance. Please check back later!', 2500);
