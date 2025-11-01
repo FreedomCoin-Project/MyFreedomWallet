@@ -285,7 +285,7 @@
 
             <div id="addr-reader" class="my-qr-reader" style="position: relative;"></div>
             <br>
-            <label>Your LTC Address</label><br>
+            <label></label><br>
             <div class="scan-qr">
               <input type="text" id="address1s" style="width: 100%;font-family: monospace;" class="center-text">
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 122.61 122.88">
@@ -295,7 +295,7 @@
                 </path>
               </svg>
             </div>
-            <br><label>Sending 5000 FREED to</label><br>
+            <br><label></label><br>
             <div id="swap-info-address">
               <div style="width: auto;">
                 <div id="SwapQR">
@@ -307,8 +307,7 @@
               </div>
 
             </div>
-            <br><span id="sawp-details" style="font-size:13px;color:red;">Final LTC amount is calculated after fees and
-              price updates!</span>
+            <br><span id="sawp-details" style="font-size:13px;color:red;"></span>
             <br>
             <div id="HumanReadable"></div>
             <br>
@@ -1547,7 +1546,7 @@
       domID.style.display = domID.style.display === 'block' ? 'none' : 'block';
     }
 
-    function openModal(evt, modalName) {
+    function openModal(evt, modalName) { 
       $("#tx-modal").add(qrModal).fadeToggle(500); 
       if (modalName === 'close') {
         $('#tx-modal, #tx-modal > div').fadeOut(500);
