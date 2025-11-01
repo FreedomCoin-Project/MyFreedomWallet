@@ -700,7 +700,7 @@ nav .btn-border:hover span, #Network.hover span {
     outline: none;
   }
   
-  #from-coin {
+  #freed-name {
     appearance: none;
     -moz-appearance: none;
     -webkit-appearance: none;
@@ -732,6 +732,7 @@ nav .btn-border:hover span, #Network.hover span {
 /* -- Background -- */
 #tx-modal {    
     position: absolute; 
+    display: none;
     width: 60%;
     min-width: 300px;
     max-width: 800px;

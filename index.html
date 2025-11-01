@@ -141,7 +141,7 @@
               <span aria-hidden="true">×</span>
             </button>
             
-          <div id="address-box" class="large-box">
+          <div id="address-box">
             <div id="title-address-box">
               <h3 class="noselect addr-title">
                 <span>Your</span> FREED <span>Address</span>
@@ -279,6 +279,7 @@
               <h3 class="pivx-bold-title center-text"><span id="simpleTransactionsTitle">Creating a</span> Swap
               </h3>
             </div>
+            <br>
             <br>
             <!-- // TITLE SECTION -->
 
@@ -478,9 +479,9 @@
                         <div class="swap-section">
 
                           <div class="input-group">
-                            <input type="text" id="swap-from" maxlength="9"
+                            <input type="text" id="freed-val" maxlength="9"
                               oninput="this.value = formatNumber(this.value)" onblur="addZeroIfDotEnd(this)">
-                            <select id="from-coin">
+                            <select id="freed-name">
                               <option value="FREED">FREED</option>
                             </select>
                           </div>
@@ -489,9 +490,8 @@
                           </div>
 
                           <div class="input-group">
-                            <input type="text" id="swap-to" disabled="">
-                            <select id="to-coin">
-                            </select>
+                            <input type="text" id="coin-val" disabled="">
+                            <select id="coin-name"></select>
                           </div>
                         </div>
                         <button id="swap-button" class="btn-border pivx-button-big" onclick="opt('swap')">Swap</button>
@@ -1548,9 +1548,9 @@
     }
 
     function openModal(evt, modalName) {
-      $(qrModal).fadeToggle(500);
+      $(qrModal, "#tx-modal").fadeToggle(500);
       if (modalName === 'close') {
-        $('#tx-modal > div').fadeOut(500);
+        $('#tx-modal, #tx-modal > div').fadeOut(500);
         return;
       }
       $('#' + modalName).fadeToggle(500);
