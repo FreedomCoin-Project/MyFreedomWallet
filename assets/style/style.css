@@ -730,7 +730,7 @@ nav .btn-border:hover span, #Network.hover span {
 /* -- Headline -- */
 
 /* -- Background -- */
-#address-box, #swap, #Transaction {    
+#address-box, #swapTransactions, #Transaction {    
     position: absolute;
     display: none;
     width: 60%;
