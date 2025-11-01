@@ -730,9 +730,8 @@ nav .btn-border:hover span, #Network.hover span {
 /* -- Headline -- */
 
 /* -- Background -- */
-#address-box, #swapTransactions, #Transaction {    
-    position: absolute;
-    display: none;
+#tx-modal {    
+    position: absolute; 
     width: 60%;
     min-width: 300px;
     max-width: 800px;
@@ -743,8 +742,12 @@ nav .btn-border:hover span, #Network.hover span {
     -webkit-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%); 
     border: 1px solid var(--border-color);
+    border-radius: 8px;
     text-align: center;
 }
+#address-box, #swapTransactions, #Transaction {    
+    display: none;
+} 
 
 #address-box.large-box,
 #transaction_table {
@@ -1974,7 +1977,7 @@ a {
     .balance-transaction span {
         display: none;
     }
-    #address-box, #Transaction { 
+    #address-box, #swapTransactions, #Transaction { 
         width: 85%;
     }
 }
