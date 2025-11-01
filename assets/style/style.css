@@ -646,6 +646,7 @@ nav .btn-border:hover span, #Network.hover span {
   
 
 .swap-direction {
+    display: flex;
     width: 22%;
     padding: 4px;
     border-radius: 100px;
@@ -669,9 +670,8 @@ nav .btn-border:hover span, #Network.hover span {
 
   .swap-section {
     display: flex;
-    flex: 0 0 calc(50% - 10px);
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    flex-direction: row;
   }
   
   /* Input Group */
