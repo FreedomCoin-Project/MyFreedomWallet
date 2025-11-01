@@ -1548,7 +1548,7 @@
     }
 
     function openModal(evt, modalName) {
-      $(qrModal, "#tx-modal").fadeToggle(500);
+      $("#tx-modal").add(qrModal).fadeToggle(500); 
       if (modalName === 'close') {
         $('#tx-modal, #tx-modal > div').fadeOut(500);
         return;
