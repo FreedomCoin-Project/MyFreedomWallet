@@ -1978,7 +1978,7 @@ a {
     .balance-transaction span {
         display: none;
     }
-    #address-box, #swapTransactions, #Transaction { 
+    #tx-modal { 
         width: 85%;
     }
 }
