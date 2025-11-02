@@ -102,10 +102,17 @@ input, .scan-qr {
     outline: none;
     border: none;
 }
+.s-input-wrap {
+    position: relative;
+    margin-top: 30px;
+}
 .scan-qr {
     display: flex;
     flex-direction: row;
     align-items: center;
+}
+.s-input-wrap .scan-qr {
+    margin-top: 10px;
 }
 
 .scan-qr input {
