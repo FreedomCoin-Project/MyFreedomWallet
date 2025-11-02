@@ -1985,8 +1985,8 @@ a {
 
 @media screen and (max-width: 650px) {
     .side_nav #page-container {
-        overflow-x: hidden; /* Fallback */
-        overflow-x: clip; /* Modern browsers */
+        overflow-x: hidden;
+        overflow-x: clip;
     }
     .side_nav #content-wrap {
         min-width: 100%;
