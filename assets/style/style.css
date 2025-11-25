@@ -524,7 +524,7 @@ nav .btn-border:hover span, #Network.hover span {
 .tabcontent { 
     font-family: sans-serif;
     display: none;
-    padding: 6px 12px;
+    padding: 0 12px;
     border-radius: 8px;
 }
 
@@ -1249,6 +1249,7 @@ nav > .container {
 
 /*PIVX TEXT CUSTOMS*/
 .pivx-bold-title, .addr-title {
+    margin-top: 8px;
     line-height: 1.35em;
     font-size: calc(22px + .7vw);
     font-weight: 700;
